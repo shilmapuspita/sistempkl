@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+
 class AdminController extends BaseController
 {
     public function index()
@@ -9,5 +10,3 @@ class AdminController extends BaseController
         return view('/admin/dashboard');
     }
 }
-
-

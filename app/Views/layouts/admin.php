@@ -21,12 +21,14 @@
     <link rel="stylesheet" href="<?= base_url('admin/assets/css/style.css') ?>">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="<?= base_url('admin/assets/images/favicon.png') ?>" />
+    <!-- Font font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   </head>
   <body>
  <!-- partial:partials/_navbar.html -->
  <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
-          <a class="navbar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
+          <a class="navbar-brand brand-logo" href="index.html"><img style src="assets/images/inti_logo.png" alt="logo" /></a>
           <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
@@ -47,7 +49,7 @@
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                 <div class="nav-profile-img">
-                  <img src="assets/images/faces/face1.jpg" alt="image">
+                  <img src="assets/images/faces/akuu.jpg" alt="image">
                   <span class="availability-status online"></span>
                 </div>
                 <div class="nav-profile-text">
@@ -62,110 +64,6 @@
                   <i class="mdi mdi-logout me-2 text-primary"></i> Signout </a>
               </div>
             </li>
-            <li class="nav-item d-none d-lg-block full-screen-link">
-              <a class="nav-link">
-                <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
-              </a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="mdi mdi-email-outline"></i>
-                <span class="count-symbol bg-warning"></span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-end navbar-dropdown preview-list" aria-labelledby="messageDropdown">
-                <h6 class="p-3 mb-0">Messages</h6>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <img src="assets/images/faces/face4.jpg" alt="image" class="profile-pic">
-                  </div>
-                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                    <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Mark send you a message</h6>
-                    <p class="text-gray mb-0"> 1 Minutes ago </p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <img src="assets/images/faces/face2.jpg" alt="image" class="profile-pic">
-                  </div>
-                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                    <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Cregh send you a message</h6>
-                    <p class="text-gray mb-0"> 15 Minutes ago </p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <img src="assets/images/faces/face3.jpg" alt="image" class="profile-pic">
-                  </div>
-                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                    <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Profile picture updated</h6>
-                    <p class="text-gray mb-0"> 18 Minutes ago </p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <h6 class="p-3 mb-0 text-center">4 new messages</h6>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
-                <i class="mdi mdi-bell-outline"></i>
-                <span class="count-symbol bg-danger"></span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-end navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-                <h6 class="p-3 mb-0">Notifications</h6>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-success">
-                      <i class="mdi mdi-calendar"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                    <h6 class="preview-subject font-weight-normal mb-1">Event today</h6>
-                    <p class="text-gray ellipsis mb-0"> Just a reminder that you have an event today </p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-warning">
-                      <i class="mdi mdi-cog"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                    <h6 class="preview-subject font-weight-normal mb-1">Settings</h6>
-                    <p class="text-gray ellipsis mb-0"> Update dashboard </p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-info">
-                      <i class="mdi mdi-link-variant"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                    <h6 class="preview-subject font-weight-normal mb-1">Launch Admin</h6>
-                    <p class="text-gray ellipsis mb-0"> New admin wow! </p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <h6 class="p-3 mb-0 text-center">See all notifications</h6>
-              </div>
-            </li>
-            <li class="nav-item nav-logout d-none d-lg-block">
-              <a class="nav-link" href="#">
-                <i class="mdi mdi-power"></i>
-              </a>
-            </li>
-            <li class="nav-item nav-settings d-none d-lg-block">
-              <a class="nav-link" href="#">
-                <i class="mdi mdi-format-line-spacing"></i>
-              </a>
-            </li>
-          </ul>
           <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
             <span class="mdi mdi-menu"></span>
           </button>
@@ -179,7 +77,7 @@
             <li class="nav-item nav-profile">
               <a href="#" class="nav-link">
                 <div class="nav-profile-image">
-                  <img src="assets/images/faces/face1.jpg" alt="profile" />
+                  <img src="assets/images/faces/akuu.jpg" alt="profile" />
                   <span class="login-status online"></span>
                   <!--change to offline or busy as needed-->
                 </div>
@@ -191,90 +89,82 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?= base_url('admin'); ?>">
+              <a class="nav-link" href="<?= base_url('admin/dashboard'); ?>">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                <span class="menu-title">Basic UI Elements</span>
+                <span class="menu-title">PKL/RISET</span>
                 <i class="menu-arrow"></i>
                 <i class="mdi mdi-crosshairs-gps menu-icon"></i>
               </a>
               <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item">
-                    <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a>
+                    <a class="nav-link" href="pages/ui-features/buttons.html">All Data</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="pages/ui-features/dropdowns.html">Dropdowns</a>
+                    <a class="nav-link" href="pages/ui-features/dropdowns.html">Data Siswa PKL</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="pages/ui-features/typography.html">Typography</a>
+                    <a class="nav-link" href="pages/ui-features/typography.html">Data Siswa Riset</a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="pages/ui-features/typography.html">Data Internship</a>
+                  </li>
+                  <!-- <li class="nav-item">
+                    <a class="nav-link" href="pages/ui-features/typography.html">Data Selesai</a>
+                  </li> -->
                 </ul>
               </div>
             </li>
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
-                <span class="menu-title">Icons</span>
+                <span class="menu-title">Mentor</span>
                 <i class="mdi mdi-contacts menu-icon"></i>
               </a>
               <div class="collapse" id="icons">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item">
-                    <a class="nav-link" href="pages/icons/font-awesome.html">Font Awesome</a>
+                    <a class="nav-link" href="<?= base_url('/mentor'); ?>">All Mentor</a>
                   </li>
                 </ul>
               </div>
             </li>
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="#forms" aria-expanded="false" aria-controls="forms">
-                <span class="menu-title">Forms</span>
+                <span class="menu-title">Institution</span>
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
               </a>
               <div class="collapse" id="forms">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item">
-                    <a class="nav-link" href="pages/forms/basic_elements.html">Form Elements</a>
-                  </li>
-                </ul>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
-                <span class="menu-title">Charts</span>
-                <i class="mdi mdi-chart-bar menu-icon"></i>
-              </a>
-              <div class="collapse" id="charts">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a class="nav-link" href="pages/charts/chartjs.html">ChartJs</a>
+                    <a class="nav-link" href="<?= base_url('/lembaga'); ?>">All Data Institution</a>
                   </li>
                 </ul>
               </div>
             </li>
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
-                <span class="menu-title">Tables</span>
+                <span class="menu-title">Major</span>
                 <i class="mdi mdi-table-large menu-icon"></i>
               </a>
               <div class="collapse" id="tables">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item">
-                    <a class="nav-link" href="pages/tables/basic-table.html">Basic table</a>
+                    <a class="nav-link" href="<?= base_url('/major'); ?>">All Data Major</a>
                   </li>
                 </ul>
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-                <span class="menu-title">User Pages</span>
-                <i class="menu-arrow"></i>
+              <a class="nav-link" href="">
+                <span class="menu-title">KA. Urusan/Surat</span>
                 <i class="mdi mdi-lock menu-icon"></i>
               </a>
-              <div class="collapse" id="auth">
+              <!-- <div class="collapse" id="auth">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item">
                     <a class="nav-link" href="pages/samples/blank-page.html"> Blank Page </a>
@@ -292,7 +182,7 @@
                     <a class="nav-link" href="pages/samples/error-500.html"> 500 </a>
                   </li>
                 </ul>
-              </div>
+              </div> -->
             </li>
             <li class="nav-item">
               <a class="nav-link" href="docs/documentation.html" target="_blank">
@@ -303,6 +193,7 @@
           </ul>
         </nav>
         <!-- partial -->
+       <?= $this->renderSection('content')?>
 <!-- container-scroller -->
     <!-- plugins:js -->
     <script src="<?= base_url ('admin/assets/vendors/js/vendor.bundle.base.js') ?>"></script>

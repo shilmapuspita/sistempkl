@@ -7,14 +7,10 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 $routes->get('/admin/dashboard', 'AdminController::index');
+$routes->get('/major', 'MajorController::showJurusan');
+$routes->get('/lembaga', 'LembagaController::showLembaga');
+$routes->get('/mentor', 'MentorController::showMentor');
 
-// $routes->group('admin', function ($routes) {
-//     $routes->get('dashboard', 'Admin\Dashboard::index');
-// });
-// $routes->group('admin', function ($routes) {
-//     $routes->get('/', 'Admin\AdminController::index'); // Redirect ke dashboard
-//     $routes->get('dashboard', 'Admin\Dashboard::index'); // Dashboard utama
-// });
 
 
 
