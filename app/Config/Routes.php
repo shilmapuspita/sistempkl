@@ -11,6 +11,12 @@ $routes->get('/major', 'MajorController::showJurusan');
 $routes->get('/lembaga', 'LembagaController::showLembaga');
 $routes->get('/mentor', 'MentorController::showMentor');
 
+// Routes Data Siswa
+$routes->get('/siswa', 'SiswaController::showSiswa');
+$routes->get('/siswaPKL', 'SiswaController::showSiswaPKL');
+$routes->get('/siswaRiset', 'SiswaController::showSiswaRiset');
+
+
 
 
 
