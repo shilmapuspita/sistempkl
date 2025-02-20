@@ -20,4 +20,3 @@ $routes->get('/intern', 'InternshipController::showInternship');
 
 $routes->get('/admin/login', 'AdminController::login');
 $routes->get('/admin/register', 'AdminController::register');
-
