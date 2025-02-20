@@ -28,7 +28,6 @@
               <i class="fa-solid fa-plus"></i> Add Data
               </a>
             </div>
-            </p>
             <div class="table-responsive">
             <table class="table table-striped table-bordered">
               <thead>
