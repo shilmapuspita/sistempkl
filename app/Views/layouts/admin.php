@@ -103,13 +103,13 @@
               <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item">
-                    <a class="nav-link" href="pages/ui-features/buttons.html">All Data</a>
+                    <a class="nav-link" href="<?= base_url('/siswa'); ?>">All Data</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="pages/ui-features/dropdowns.html">Data Siswa PKL</a>
+                    <a class="nav-link" href="<?= base_url('/siswaPKL'); ?>">Data Siswa PKL</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="pages/ui-features/typography.html">Data Siswa Riset</a>
+                    <a class="nav-link" href="<?= base_url('/siswaRiset'); ?>">Data Siswa Riset</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="pages/ui-features/typography.html">Data Internship</a>
