@@ -53,18 +53,9 @@
         <ul>
           <li><a href="#hero" class="active">Home</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <ul>
-            <li class="dropdown"><a href="#"><span>Informasi</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-              <ul>
-                <li><a href="#">Prosedur PKL/Magang</a></li>
-                <li><a href="#">Data Siswa/Mahasiswa</a></li>
-                <li><a href="#">Lembaga</a></li>
-              </ul>
-            </li>
-          </ul>
+          <li><a href="#portfolio">Informasi</a></li>
           </li>
-          <li><a href="#contact">Login</a></li>
+          <li><a href="admin/login">Login</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -107,11 +98,9 @@
           </div>
 
           <div class="col-lg-6 ps-lg-4 content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
-            <h3>PENDAHULUAN</h3>
+            <h3>PT INTI (Persero)</h3>
             <p>
-              Di banyak Lembaga Pendidikan, Praktek Kerja Lapangan/Riset merupakan mata kuliah wajib yang harus diambil oleh setiap siswa/mahasiswa. Untuk itulah PT. INTI sudah sejak beberapa tahun silam membantu para siswa/mahasiswa untuk belajar mengaplikasikan ilmunya di dunia kerja nyata dan menjadi upaya yang efektif untuk menjembatani kesenjangan teori yang diterima para siswa/mahasiswa di perkuliahan dengan tantangan implementasi teori di dunia kerja nyata.
-
-              Agar penerimaan, penempatan dan pelaksanaan praktek kerja lapangan/riset di PT. INTI ini berjalan dengan baik yang akan berdampak pada citra perusahaan, maka perlu dibuat prosedur yang menjadi acuan para siswa/mahasiswa melakukan kerja praktek/riset di PT. INTI.
+            PT INTI (Persero), one of the state-owned enterprises in strategic industries, was officially established on December 30, 1974. The Company headquartered in Jalan Moch Toha No. 77 Bandung has portfolio in the fields of Manufacture, System Integrator, and Digital. To support its business, PT INTI (Persero) also operates an eight hectares production facility on Jalan Moch Toha No 225 which produces telecommunications and electronic devices.
             </p>
           </div>
 
@@ -160,7 +149,7 @@
     <br>
     <!-- Clients Section -->
     <section id="clients" class="clients section">
-    <h2 style="text-align: center;"><b>Lembaga dengan jumlah peserta PKL terbanyak di PT.INTI</b></h2>
+      <h2 style="text-align: center;"><b>Lembaga dengan jumlah peserta PKL terbanyak di PT.INTI</b></h2>
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row g-0 clients-wrap">
@@ -208,169 +197,51 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Informasi</h2>
-        <p>Pada bagian ini terdapat informasi mengenai prosedur pengajuan PKL/Magang, data siswa/mahasiswa yang menjalani PKL/Magang, serta data lembaga yang bekerja sama.</p>
+        <h2 class="section-title-text">Informasi</h2>
+        <p class="section-description">
+          Banyak institusi pendidikan mewajibkan Praktek Kerja Lapangan (PKL) atau riset sebagai bagian dari kurikulum akademik.
+          Sebagai bentuk dukungan, PT. INTI telah membuka kesempatan bagi siswa dan mahasiswa untuk mengembangkan keterampilan mereka di dunia industri.
+          Program ini dirancang untuk mengurangi kesenjangan antara teori yang dipelajari di perkuliahan dan realitas di lapangan.
+          Untuk memastikan kelancaran proses penerimaan, penempatan, dan pelaksanaan PKL atau riset di PT. INTI serta menjaga reputasi perusahaan,
+          diperlukan prosedur yang dapat dijadikan panduan bagi peserta dalam menjalankan kegiatan ini.
+        </p>
       </div><!-- End Section Title -->
 
-      <div class="container">
+      <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
 
-        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+        <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
+          <li id="menu-prosedur" class="filter-menu" data-filter=".filter-app">Prosedur Pengajuan PKL/Magang</li>
+          |
+          <li id="menu-flowchart" class="filter-menu" data-filter=".filter-product">Flowchart</li>
+        </ul>
 
-          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
-            <li data-filter=".filter-app">Prosedur Pengajuan PKL/Magang</li>|
-            <li data-filter=".filter-product">Data Siswa/Mahasiswa</li>|
-            <li data-filter=".filter-branding">Data Lembaga </li>
-          </ul><!-- End Portfolio Filters -->
+        <div class="d-flex justify-content-center align-items-center flex-column" data-aos="fade-up" data-aos-delay="200">
 
-          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+          <!-- Prosedur Pengajuan PKL/Magang -->
+          <div class="portfolio-item isotope-item filter-app d-none">
+            <h4 class="portfolio-item-title">Prosedur</h4>
+            <p class="portfolio-item-description">Berikut adalah prosedur PKL/Magang</p>
+            <img src="assets/img/portfolio/prosedur.png" class="img-fluid" alt="Prosedur">
+            <div class="portfolio-info">
+              <a href="assets/img/portfolio/prosedur.png" data-gallery="portfolio-gallery-app" class="glightbox preview-link">
+                <i class="bi bi-zoom-in"></i>
+              </a>
+            </div>
+          </div><!-- End Portfolio Item -->
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/app-1.jpg" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>App 1</h4>
-                  <p style="text-align: center;">Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/app-1.jpg" title="App 1" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
+          <!-- Flowchart -->
+          <div class="portfolio-item isotope-item filter-product d-none">
+            <h4 class="portfolio-item-title">Flowchart</h4>
+            <p class="portfolio-item-description">Berikut adalah tahapan alur proses PKL/Magang</p>
+            <img src="assets/img/portfolio/flowchart.jpg" class="img-fluid" alt="Flowchart">
+            <div class="portfolio-info">
+              <a href="assets/img/portfolio/flowchart.jpg" data-gallery="portfolio-gallery-product" class="glightbox preview-link">
+                <i class="bi bi-zoom-in"></i>
+              </a>
+            </div>
+          </div><!-- End Portfolio Item -->
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/product-1.jpg" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>Product 1</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/product-1.jpg" title="Product 1" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/branding-1.jpg" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>Branding 1</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/branding-1.jpg" title="Branding 1" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/books-1.jpg" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>Books 1</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/books-1.jpg" title="Branding 1" data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/app-2.jpg" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>App 2</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/app-2.jpg" title="App 2" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/product-2.jpg" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>Product 2</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/product-2.jpg" title="Product 2" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/branding-2.jpg" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>Branding 2</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/branding-2.jpg" title="Branding 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/books-2.jpg" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>Books 2</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/books-2.jpg" title="Branding 2" data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/app-3.jpg" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>App 3</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/app-3.jpg" title="App 3" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/product-3.jpg" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>Product 3</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/product-3.jpg" title="Product 3" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/branding-3.jpg" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>Branding 3</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/branding-3.jpg" title="Branding 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/books-3.jpg" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>Books 3</h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/books-3.jpg" title="Branding 3" data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-          </div><!-- End Portfolio Container -->
-
-        </div>
+        </div><!-- End Portfolio Container -->
 
       </div>
 
@@ -423,15 +294,12 @@
     </div>
 
     <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Butterfly</strong> <span>All Rights Reserved</span></p>
       <div class="credits">
-        Designed by <a href="https://bootstrapmade.com/">Shilma Puspita</a>
+        by Shilma Puspita
       </div>
     </div>
 
   </footer>
-
-
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

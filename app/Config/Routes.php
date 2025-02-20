@@ -15,8 +15,9 @@ $routes->get('/mentor', 'MentorController::showMentor');
 $routes->get('/siswa', 'SiswaController::showSiswa');
 $routes->get('/siswaPKL', 'SiswaController::showSiswaPKL');
 $routes->get('/siswaRiset', 'SiswaController::showSiswaRiset');
+$routes->get('/intern', 'InternshipController::showInternship');
 
 
-
-
+$routes->get('/admin/login', 'AdminController::login');
+$routes->get('/admin/register', 'AdminController::register');
 

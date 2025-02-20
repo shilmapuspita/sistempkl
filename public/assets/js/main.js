@@ -177,3 +177,28 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   window.addEventListener("scroll", navmenuScrollspy);
 });
+
+// main.js
+
+document.addEventListener('DOMContentLoaded', function () {
+  const menuProsedur = document.getElementById('menu-prosedur');
+  const menuFlowchart = document.getElementById('menu-flowchart');
+  const filterApp = document.querySelectorAll('.filter-app');
+  const filterProduct = document.querySelectorAll('.filter-product');
+
+  // Fungsi untuk menampilkan dan menyembunyikan filter
+  function toggleFilter(filterToShow, filterToHide) {
+    filterToShow.forEach(item => item.classList.remove('d-none'));
+    filterToHide.forEach(item => item.classList.add('d-none'));
+  }
+
+  // Event listener untuk filter menu Prosedur
+  menuProsedur.addEventListener('click', function () {
+    toggleFilter(filterApp, filterProduct);
+  });
+
+  // Event listener untuk filter menu Flowchart
+  menuFlowchart.addEventListener('click', function () {
+    toggleFilter(filterProduct, filterApp);
+  });
+});
