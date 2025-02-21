@@ -1,10 +1,12 @@
+<?php if (session_status() == PHP_SESSION_NONE) { session(); } ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Purple Admin</title>
+    <title>SISTEMPKL</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="<?= base_url('admin/assets/vendors/mdi/css/materialdesignicons.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('admin/assets/vendors/ti-icons/css/themify-icons.css') ?>">
@@ -21,6 +23,9 @@
     <link rel="stylesheet" href="<?= base_url('admin/assets/css/style.css') ?>">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="<?= base_url('admin/assets/images/favicon.png') ?>" />
+    <!-- custom css -->
+    <link rel="stylesheet" href="<?= base_url('admin/assets/css/custom.css') ?>">
+
     <!-- Font font-awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   </head>
@@ -60,7 +65,7 @@
                 <a class="dropdown-item" href="#">
                   <i class="mdi mdi-cached me-2 text-success"></i> Activity Log </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="<?= base_url('/') ?>">
                   <i class="mdi mdi-logout me-2 text-primary"></i> Signout </a>
               </div>
             </li>
@@ -112,7 +117,7 @@
                     <a class="nav-link" href="<?= base_url('/siswaRiset'); ?>">Data Siswa Riset</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="pages/ui-features/typography.html">Data Internship</a>
+                    <a class="nav-link" href="<?= base_url('/intern'); ?>">Data Internship</a>
                   </li>
                   <!-- <li class="nav-item">
                     <a class="nav-link" href="pages/ui-features/typography.html">Data Selesai</a>

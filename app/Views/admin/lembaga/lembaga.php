@@ -8,12 +8,12 @@
     <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-primary text-white me-2">
                   <i class="mdi mdi-home"></i>
-                </span> All Data Major
+                </span> All Data Institutions
               </h3>
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="<?= base_url('admin/dashboard'); ?>">Dashboard</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Major</li>
+          <li class="breadcrumb-item active" aria-current="page">Institutions</li>
         </ol>
       </nav>
     </div>
@@ -21,30 +21,36 @@
       <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
-            <h2 class="card-title" style="text-align: center;">JURUSAN LEMBAGA PENDIDIKAN MITRA PT INTI</h2>
+            <h2 class="card-title" style="text-align: center;">LEMBAGA PENDIDIKAN MITRA PT INTI</h2>
             <br>
             <div class="d-flex justify-content-between mb-5">
               <a href="<?= base_url('/users/create') ?>" class="btn btn-info btn-sm">
               <i class="fa-solid fa-plus"></i> Add Data
               </a>
             </div>
-            </p>
-            <table class="table">
+            <div class="table-responsive">
+            <table class="table table-striped table-bordered">
               <thead>
                 <tr>
                   <th>No</th>
-                  <th>ID Jurusan</th>
-                  <th>Jurusan</th>
+                  <th>ID Lembaga</th>
+                  <th>Nama Lembaga</th>
+                  <th>Alamat</th>
+                  <th>Kontak</th>
+                  <th>Email</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                <?php $no = 1; ?>
-                <?php foreach ($jurusan as $row) : ?>
+                <?php $no = 1 + (10 * ($pager->getCurrentPage() - 1)); ?>
+                <?php foreach ($lembaga as $row) : ?>
                   <tr>
                     <td><?= $no++; ?></td>
-                    <td><?= esc($row['ID_JURUSAN']); ?></td>
-                    <td><?= esc($row['NAMA_JURUSAN']); ?></td>
+                    <td><?= esc($row['ID_LEMBAGA']); ?></td>
+                    <td><?= esc($row['NAMA_LEMBAGA']); ?></td>
+                    <td><?= esc($row['ALAMAT_LEMBAGA']); ?></td>
+                    <td><?= esc($row['TELP_LEMBAGA']); ?></td>
+                    <td><?= esc($row['EMAIL_LEMBAGA']); ?></td>
                     <td>
                       <a href="" class="btn btn-warning btn-sm">
                         <i class="fa-solid fa-edit"></i> Edit
@@ -57,6 +63,11 @@
                 <?php endforeach; ?>
               </tbody>
             </table>
+            </div>
+             <!-- Menambahkan pagination -->
+             <div class="d-flex justify-content-center mt-3">
+                        <?= $pager->links() ?>
+                    </div>
           </div>
         </div>
       </div>

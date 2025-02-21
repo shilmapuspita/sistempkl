@@ -8,12 +8,12 @@
     <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-primary text-white me-2">
                   <i class="mdi mdi-home"></i>
-                </span> All Data Mentor
+                </span> All Data Major
               </h3>
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="<?= base_url('admin/dashboard'); ?>">Dashboard</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Mentor</li>
+          <li class="breadcrumb-item active" aria-current="page">Major</li>
         </ol>
       </nav>
     </div>
@@ -21,43 +21,30 @@
       <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
-            <h2 class="card-title" style="text-align: center;">MENTOR PKL/RISET PT INTI</h2>
+            <h2 class="card-title" style="text-align: center;">JURUSAN LEMBAGA PENDIDIKAN MITRA PT INTI</h2>
             <br>
             <div class="d-flex justify-content-between mb-5">
-              <a href="<?= base_url('/users/create') ?>" class="btn btn-info btn-sm">
+              <a href="<?= base_url('/major/create') ?>" class="btn btn-info btn-sm">
               <i class="fa-solid fa-plus"></i> Add Data
               </a>
             </div>
             </p>
-            <div class="table-responsive">
-            <table class="table table-striped table-bordered">
+            <table class="table">
               <thead>
                 <tr>
                   <th>No</th>
-                  <th>ID MENTOR</th>
-                  <th>NIP</th>
-                  <th>NAMA</th>
-                  <th>DIVISI</th>
-                  <th>BAGIAN</th>
-                  <th>NIP ATASAN</th>
-                  <th>NAMA ATASAN</th>
-                  <th>JABATAN ATASAN</th>
-                  <th>ACTION</th>
+                  <th>ID Jurusan</th>
+                  <th>Jurusan</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                <?php $no = 1; ?>
-                <?php foreach ($pembimbing as $row) : ?>
+                <?php $no = 1 + (10 * ($pager->getCurrentPage() - 1)); ?>
+                <?php foreach ($jurusan as $row) : ?>
                   <tr>
                     <td><?= $no++; ?></td>
-                    <td><?= esc($row['ID_PEMBIMBING']); ?></td>
-                    <td><?= esc($row['NIP']); ?></td>
-                    <td><?= esc($row['NAMA']); ?></td>
-                    <td><?= esc($row['DIVISI']); ?></td>
-                    <td><?= esc($row['BAGIAN']); ?></td>
-                    <td><?= esc($row['NIP_ATASAN']); ?></td>
-                    <td><?= esc($row['NAMA_ATASAN']); ?></td>
-                    <td><?= esc($row['NAMA_JABATAN']); ?></td>
+                    <td><?= esc($row['ID_JURUSAN']); ?></td>
+                    <td><?= esc($row['NAMA_JURUSAN']); ?></td>
                     <td>
                       <a href="" class="btn btn-warning btn-sm">
                         <i class="fa-solid fa-edit"></i> Edit
@@ -70,8 +57,11 @@
                 <?php endforeach; ?>
               </tbody>
             </table>
-            </div>
           </div>
+          <!-- Menambahkan pagination -->
+          <div class="d-flex justify-content-center mt-3">
+                        <?= $pager->links() ?>
+                    </div>
         </div>
       </div>
     </div>

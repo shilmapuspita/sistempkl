@@ -20,7 +20,7 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h2 class="card-title" style="text-align: center;">DATA PESERTA PKL/RISET (MAHASISWA & SISWA)</h2>
+                    <h2 class="card-title" style="text-align: center;">DATA PESERTA RISET (MAHASISWA & SISWA)</h2>
                     <br>
                     <div class="d-flex justify-content-between mb-5">
                         <a href="<?= base_url('/users/create') ?>" class="btn btn-info btn-sm">
@@ -43,33 +43,25 @@
                                     <th>TANGGAL AWAL</th>
                                     <th>TANGGAL AKHIR</th>
                                     <th>NAMA PEMBIMBING</th>
-                                    <th>STATUS</th>
                                     <th>ACTION</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $no = 1; ?>
-                                <?php foreach ($datasiswa as $row) : ?>
+                                <?php $no = 1 + (10 * ($pager->getCurrentPage() - 1)); ?>
+                                <?php foreach ($datasiswa as $siswa) : ?>
                                     <tr>
                                         <td><?= $no++; ?></td>
-                                        <td><?= esc($row['ID_PKL']); ?></td>
-                                        <td><?= esc($row['NM_SISWA']); ?></td>
-                                        <td><?= esc($row['TANGGAL']); ?></td>
-                                        <td><?= esc($row['JENIS_PKL']); ?></td>
-                                        <td><?= esc($row['LEMBAGA']); ?></td>
-                                        <td><?= esc($row['JURUSAN']); ?></td>
-                                        <td><?= esc($row['DIVISI']); ?></td>
-                                        <td><?= esc($row['BAGIAN']); ?></td>
-                                        <td><?= esc($row['TGL_AWAL']); ?></td>
-                                        <td><?= esc($row['TGL_AKHIR']); ?></td>
-                                        <td><?= esc($row['NAMA_PEMB']); ?></td>
-                                        <td>
-                                            <?php if ($siswa['status'] == 1) : ?>
-                                                 <span>Sudah Selesai</span>
-                                            <?php else : ?>
-                                                 <span>Belum Selesai</span>
-                                            <?php endif; ?>
-                                        </td>
+                                        <td><?= esc($siswa['ID_PKL']) ?></td>
+                                        <td><?= esc($siswa['NM_SISWA']) ?></td>
+                                        <td><?= esc($siswa['TANGGAL']) ?></td>
+                                        <td><?= esc($siswa['JENIS_PKL']) ?></td>
+                                        <td><?= esc($siswa['LEMBAGA']) ?></td>
+                                        <td><?= esc($siswa['JURUSAN']) ?></td>
+                                        <td><?= esc($siswa['DIVISI']) ?></td>
+                                        <td><?= esc($siswa['BAGIAN']) ?></td>
+                                        <td><?= esc($siswa['TGL_AWAL']) ?></td>
+                                        <td><?= esc($siswa['TGL_AKHIR']) ?></td>
+                                        <td><?= esc($siswa['NAMA_PEMB']) ?></td>
                                         <td>
                                             <a href="" class="btn btn-warning btn-sm">
                                                 <i class="fa-solid fa-edit"></i> Edit
@@ -82,6 +74,10 @@
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
+                    </div>
+                    <!-- Menambahkan pagination -->
+                    <div class="d-flex justify-content-center mt-3">
+                        <?= $pager->links() ?>
                     </div>
                 </div>
             </div>

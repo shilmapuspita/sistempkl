@@ -2,17 +2,20 @@
 
 namespace App\Controllers;
 
-use App\Models\MentorModel;
 use CodeIgniter\Controller;
+use App\Models\MentorModel;
 
-class MentorController extends Controller
+class MentorController extends BaseController
 {
     public function showMentor()
     {
         $model = new MentorModel();
-        $data['pembimbing'] = $model->findAll();
+        $data = [
+            'pembimbing' => $model->getPaginateData(10),
+            'pager' => $model->pager
+        ];
 
-        return view('admin/mentor', $data);
+
+        return view('admin/mentor/mentor', $data);
     }
 }
-

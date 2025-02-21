@@ -20,7 +20,7 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h2 class="card-title" style="text-align: center;">DATA PESERTA RISET (MAHASISWA & SISWA)</h2>
+                    <h2 class="card-title" style="text-align: center;">DATA PESERTA PKL (MAHASISWA & SISWA)</h2>
                     <br>
                     <div class="d-flex justify-content-between mb-5">
                         <a href="<?= base_url('/users/create') ?>" class="btn btn-info btn-sm">
@@ -47,7 +47,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $no = 1; ?>
+                                <?php $no = 1 + (10 * ($pager->getCurrentPage() - 1)); ?>
                                 <?php foreach ($datasiswa as $siswa) : ?>
                                     <tr>
                                         <td><?= $no++; ?></td>
@@ -74,6 +74,10 @@
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
+                    </div>
+                                        <!-- Menambahkan pagination -->
+                                        <div class="d-flex justify-content-center mt-3">
+                        <?= $pager->links() ?>
                     </div>
                 </div>
             </div>
