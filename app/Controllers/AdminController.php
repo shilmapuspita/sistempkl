@@ -18,16 +18,17 @@ class AdminController extends BaseController
 
     public function processRegister()
     {
-        $adminModel = new AdminModel();
+        $adminModel = new \App\Models\AdminModel();
 
         $data = [
             'username' => $this->request->getPost('username'),
-            'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT) //hash password
+            'email' => $this->request->getPost('email'),
+            'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT)
         ];
 
         $adminModel->insert($data);
 
-        return redirect()->to('/admin/login')->with('success', 'Registrasi berhasil, Silakan login.');
+        return redirect()->to('/admin/login')->with('success', 'Registrasi berhasil, silakan login.');
     }
 
     public function login()
@@ -66,6 +67,7 @@ class AdminController extends BaseController
     public function logout()
     {
         session()->destroy();
+        
         return redirect()->to('/');
     }
 }

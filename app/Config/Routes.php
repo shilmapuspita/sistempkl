@@ -11,10 +11,15 @@ $routes->get('/major', 'MajorController::showJurusan');
 $routes->get('/lembaga', 'LembagaController::showLembaga');
 $routes->get('/mentor', 'MentorController::showMentor');
 
+
+$routes->get('/admin/login', 'AdminController::login');
+$routes->get('/admin/register', 'AdminController::register');
+
 // Routes Data Siswa
 $routes->get('/siswa', 'SiswaController::showSiswa');
 $routes->get('/siswaPKL', 'SiswaController::showSiswaPKL');
 $routes->get('/siswaRiset', 'SiswaController::showSiswaRiset');
+
 $routes->get('/intern', 'InternshipController::showInternship');
 
 
@@ -23,4 +28,3 @@ $routes->get('/admin/register', 'AdminController::register');
 $routes->post('/admin/register', 'AdminController::processRegister');
 $routes->get('/admin/login', 'AdminController::login');
 $routes->get('/admin/login', 'AdminController::processLogin');
-
