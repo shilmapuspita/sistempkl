@@ -10,7 +10,11 @@ class MentorController extends Controller
     public function showMentor()
     {
         $model = new MentorModel();
-        $data['pembimbing'] = $model->findAll();
+        $data = [
+            'pembimbing' => $model->getPaginateData(10),
+            'pager' => $model->pager
+        ];
+
 
         return view('admin/mentor/mentor', $data);
     }

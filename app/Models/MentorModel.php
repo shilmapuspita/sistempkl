@@ -10,4 +10,8 @@ class MentorModel extends Model
     protected $primaryKey = 'ID_PEMBIMBING'; // Primary key tabel
     protected $allowedFields = ['ID_PEMBIMBING', 'NIP', 'NAMA', 'DIVISI', 'BAGIAN', 'NIP_ATASAN', 'NAMA_ATASAN', 'NAMA_JABATAN']; // Kolom yang bisa diakses
     
+    public function getPaginateData($perPage)
+    {
+        return $this->paginate($perPage);
+    }
 }

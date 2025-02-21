@@ -42,7 +42,7 @@
                 </tr>
               </thead>
               <tbody>
-                <?php $no = 1; ?>
+                <?php $no = 1 + (10 * ($pager->getCurrentPage() - 1)); ?>
                 <?php foreach ($lembaga as $row) : ?>
                   <tr>
                     <td><?= $no++; ?></td>
@@ -64,6 +64,10 @@
               </tbody>
             </table>
             </div>
+             <!-- Menambahkan pagination -->
+             <div class="d-flex justify-content-center mt-3">
+                        <?= $pager->links() ?>
+                    </div>
           </div>
         </div>
       </div>

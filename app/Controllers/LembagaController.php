@@ -10,8 +10,11 @@ class LembagaController extends Controller
     public function showLembaga()
     {
         $model = new LembagaModel();
-        $data['lembaga'] = $model->findAll(); // Ambil semua data dari tabel lembaga
-
+        $data = [
+        'lembaga' => $model->getPaginateData(10), // Ambil semua data dari tabel lembaga
+        'pager' => $model->pager
+        ];
+        
         return view('admin/lembaga/lembaga', $data); // Kirim data ke view
     }
 }

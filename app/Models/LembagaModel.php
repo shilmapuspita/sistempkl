@@ -10,4 +10,9 @@ class LembagaModel extends Model
     protected $primaryKey = 'ID_LEMBAGA'; // Primary key tabel
     protected $allowedFields = ['NAMA_LEMBAGA', 'ALAMAT_LEMBAGA', 'TELP_LEMBAGA', 'EMAIL_LEMBAGA']; // Kolom yang bisa diakses
     
+     // Menambahkan fungsi untuk pagination
+     public function getPaginateData($perPage)
+     {
+         return $this->paginate($perPage);
+     }
 }
