@@ -24,7 +24,7 @@
             <h2 class="card-title" style="text-align: center;">JURUSAN LEMBAGA PENDIDIKAN MITRA PT INTI</h2>
             <br>
             <div class="d-flex justify-content-between mb-5">
-              <a href="<?= base_url('/users/create') ?>" class="btn btn-info btn-sm">
+              <a href="<?= base_url('/major/create') ?>" class="btn btn-info btn-sm">
               <i class="fa-solid fa-plus"></i> Add Data
               </a>
             </div>

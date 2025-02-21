@@ -7,7 +7,11 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 $routes->get('/admin/dashboard', 'AdminController::index');
+
+// routes major
 $routes->get('/major', 'MajorController::showJurusan');
+$routes->get('/major/create', 'MajorController::create');
+
 $routes->get('/lembaga', 'LembagaController::showLembaga');
 $routes->get('/mentor', 'MentorController::showMentor');
 
@@ -19,8 +23,14 @@ $routes->get('/intern', 'InternshipController::showInternship');
 
 
 // routes untuk register dan login
+$routes->group('login', ['filter' => 'redirectIfAuthenticated'], function ($routes) {
+    $routes->get('/', 'AdminController::login');
+    $routes->post('/', 'AdminController::processLogin');
+});
+// $routes->get('/admin/login', 'AdminController::login');
+// $routes->post('/admin/login', 'AdminController::processLogin');
+
 $routes->get('/admin/register', 'AdminController::register');
 $routes->post('/admin/register', 'AdminController::processRegister');
-$routes->get('/admin/login', 'AdminController::login');
-$routes->get('/admin/login', 'AdminController::processLogin');
+
 

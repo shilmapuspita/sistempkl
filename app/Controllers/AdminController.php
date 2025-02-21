@@ -47,7 +47,7 @@ class AdminController extends BaseController
         if ($admin) {
             if (password_verify($password, $admin['password'])) { // Cek hash password
                 $session->set([
-                    'admin_id' => $admin['id'],
+                    'admin_id' => $admin['id_admin'],
                     'admin_username' => $admin['username'],
                     'logged_in' => true
                 ]);
