@@ -12,6 +12,6 @@ class LembagaController extends Controller
         $model = new LembagaModel();
         $data['lembaga'] = $model->findAll(); // Ambil semua data dari tabel lembaga
 
-        return view('admin/lembaga', $data); // Kirim data ke view
+        return view('admin/lembaga/lembaga', $data); // Kirim data ke view
     }
 }

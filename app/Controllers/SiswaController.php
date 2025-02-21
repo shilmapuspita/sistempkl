@@ -12,7 +12,7 @@ class SiswaController extends Controller
         $model = new SiswaModel();
         $data['datasiswa'] = $model->findAll(); // Ambil semua data dari tabel siswa
 
-        return view('admin/siswa', $data); // Kirim data ke view
+        return view('admin/siswa/siswa', $data); // Kirim data ke view
     }
 
     public function showSiswaPKL()
@@ -20,7 +20,7 @@ class SiswaController extends Controller
         $model = new SiswaModel();
         $data['datasiswa'] = $model->where('JENIS_PKL', 'PKL')->findAll(); // Ambil hanya siswa PKL
 
-        return view('admin/siswaPKL', $data);
+        return view('admin/siswa/siswaPKL', $data);
     }
 
     public function showSiswaRiset()
@@ -28,6 +28,6 @@ class SiswaController extends Controller
         $model = new SiswaModel();
         $data['datasiswa'] = $model->where('JENIS_PKL', 'RISET')->findAll(); // Ambil hanya siswa RISET
 
-        return view('admin/siswaRiset', $data);
+        return view('admin/siswa/siswaRiset', $data);
     }
 }
