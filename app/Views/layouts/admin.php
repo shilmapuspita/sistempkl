@@ -23,6 +23,9 @@
     <link rel="stylesheet" href="<?= base_url('admin/assets/css/style.css') ?>">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="<?= base_url('admin/assets/images/favicon.png') ?>" />
+    <!-- custom css -->
+    <link rel="stylesheet" href="<?= base_url('admin/assets/css/custom.css') ?>">
+
     <!-- Font font-awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   </head>
