@@ -15,12 +15,14 @@ $routes->get('/major/create', 'MajorController::create');
 $routes->get('/lembaga', 'LembagaController::showLembaga');
 $routes->get('/mentor', 'MentorController::showMentor');
 
+// $routes->get('/admin/login', 'AdminController::login');
+// $routes->get('/admin/register', 'AdminController::register');
+
 // Routes Data Siswa
 $routes->get('/siswa', 'SiswaController::showSiswa');
 $routes->get('/siswaPKL', 'SiswaController::showSiswaPKL');
 $routes->get('/siswaRiset', 'SiswaController::showSiswaRiset');
 $routes->get('/intern', 'InternshipController::showInternship');
-
 
 // routes untuk register dan login
 $routes->group('login', ['filter' => 'redirectIfAuthenticated'], function ($routes) {
@@ -32,5 +34,3 @@ $routes->group('login', ['filter' => 'redirectIfAuthenticated'], function ($rout
 
 $routes->get('/admin/register', 'AdminController::register');
 $routes->post('/admin/register', 'AdminController::processRegister');
-
-

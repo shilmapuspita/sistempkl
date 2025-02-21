@@ -2,10 +2,10 @@
 
 namespace App\Controllers;
 
-use App\Models\MentorModel;
 use CodeIgniter\Controller;
+use App\Models\MentorModel;
 
-class MentorController extends Controller
+class MentorController extends BaseController
 {
     public function showMentor()
     {
@@ -19,4 +19,3 @@ class MentorController extends Controller
         return view('admin/mentor/mentor', $data);
     }
 }
-
