@@ -12,7 +12,7 @@ class MentorController extends Controller
         $model = new MentorModel();
         $data['pembimbing'] = $model->findAll();
 
-        return view('admin/mentor', $data);
+        return view('admin/mentor/mentor', $data);
     }
 }
 
