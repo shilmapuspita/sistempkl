@@ -40,8 +40,8 @@
               <?php if (session()->getFlashdata('success')): ?>
                 <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
               <?php endif; ?>
-              
-              <form class="pt-3" action="<?= base_url('admin/login') ?>" method="post">
+
+              <form class="pt-3" action="<?= base_url('/login') ?>" method="post">
                 <div class="form-group">
                   <input type="username" class="form-control form-control-lg" id="username" name="username" placeholder="Username">
                 </div>
