@@ -43,7 +43,6 @@
                                     <th>TANGGAL AWAL</th>
                                     <th>TANGGAL AKHIR</th>
                                     <th>NAMA PEMBIMBING</th>
-                                    <th>STATUS</th>
                                     <th>ACTION</th>
                                 </tr>
                             </thead>
@@ -63,13 +62,6 @@
                                         <td><?= esc($row['TGL_AWAL']); ?></td>
                                         <td><?= esc($row['TGL_AKHIR']); ?></td>
                                         <td><?= esc($row['NAMA_PEMB']); ?></td>
-                                        <td>
-                                            <?php if ($siswa['status'] == 1) : ?>
-                                                 <span>Sudah Selesai</span>
-                                            <?php else : ?>
-                                                 <span>Belum Selesai</span>
-                                            <?php endif; ?>
-                                        </td>
                                         <td>
                                             <a href="" class="btn btn-warning btn-sm">
                                                 <i class="fa-solid fa-edit"></i> Edit
