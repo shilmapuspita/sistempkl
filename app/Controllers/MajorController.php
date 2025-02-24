@@ -23,4 +23,14 @@ class MajorController extends Controller
     {
         return view('admin/major/create');
     }
+
+    public function store()
+    {
+        $jurusanModel = new JurusanModel();
+        $jurusanModel->save([
+            'jurusan'  => $this->request->getPost('NAMA_JURUSAN'),
+        ]);
+        session()->setFlashdata('success', 'Nama Jurusan Berhasil Ditambahkan!');
+        return redirect()->to('/major');
+    }
 }

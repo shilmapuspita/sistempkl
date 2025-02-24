@@ -11,6 +11,7 @@ $routes->get('/admin/dashboard', 'AdminController::index', ['filter' => 'authent
 // routes major
 $routes->get('/major', 'MajorController::showJurusan');
 $routes->get('/major/create', 'MajorController::create');
+$routes->post('/major/store', 'MajorController::store');
 
 $routes->get('/lembaga', 'LembagaController::showLembaga');
 $routes->get('/mentor', 'MentorController::showMentor');
