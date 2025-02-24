@@ -26,7 +26,7 @@ class Authenticate implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         if (! session('logged_in')) {
-            return redirect()->to(site_url('admin/login'));
+            return redirect()->to(site_url('/login'));
         }
     }
 
