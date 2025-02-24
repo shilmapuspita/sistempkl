@@ -22,12 +22,13 @@ class AdminController extends BaseController
 
         $data = [
             'username' => $this->request->getPost('username'),
-            'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT) //hash password
+            // 'email' => $this->request->getPost('email'),
+            'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT)
         ];
 
         $adminModel->insert($data);
 
-        return redirect()->to('/admin/login')->with('success', 'Registrasi berhasil, Silakan login.');
+        return redirect()->to('/login')->with('success', 'Registrasi berhasil, silakan login.');
     }
 
     public function login()
@@ -47,18 +48,18 @@ class AdminController extends BaseController
         if ($admin) {
             if (password_verify($password, $admin['password'])) { // Cek hash password
                 $session->set([
-                    'admin_id' => $admin['id'],
+                    'admin_id' => $admin['id_admin'],
                     'admin_username' => $admin['username'],
                     'logged_in' => true
                 ]);
                 return redirect()->to('/admin/dashboard');
             } else {
                 $session->setFlashdata('error', 'Password salah');
-                return redirect()->to('/admin/login');
+                return redirect()->to('/login');
             }
         } else {
             $session->setFlashdata('error', 'Username tidak ditemukan');
-            return redirect()->to('/admin/login');
+            return redirect()->to('/login');
         }
     }
 
@@ -66,6 +67,7 @@ class AdminController extends BaseController
     public function logout()
     {
         session()->destroy();
+        
         return redirect()->to('/');
     }
 }

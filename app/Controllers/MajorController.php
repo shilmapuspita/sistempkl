@@ -15,7 +15,12 @@ class MajorController extends Controller
             'jurusan' => $model->getPaginateData(10), // Ambil semua data dari tabel jurusan
             'pager' => $model->pager 
         ];
-        
+
         return view('admin/major/major', $data); // Kirim data ke view
+    }
+
+    public function create()
+    {
+        return view('admin/major/create');
     }
 }
