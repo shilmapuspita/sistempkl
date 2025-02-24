@@ -18,17 +18,17 @@ class AdminController extends BaseController
 
     public function processRegister()
     {
-        $adminModel = new \App\Models\AdminModel();
+        $adminModel = new AdminModel();
 
         $data = [
             'username' => $this->request->getPost('username'),
-            'email' => $this->request->getPost('email'),
+            // 'email' => $this->request->getPost('email'),
             'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT)
         ];
 
         $adminModel->insert($data);
 
-        return redirect()->to('/admin/login')->with('success', 'Registrasi berhasil, silakan login.');
+        return redirect()->to('/login')->with('success', 'Registrasi berhasil, silakan login.');
     }
 
     public function login()
@@ -55,11 +55,11 @@ class AdminController extends BaseController
                 return redirect()->to('/admin/dashboard');
             } else {
                 $session->setFlashdata('error', 'Password salah');
-                return redirect()->to('/admin/login');
+                return redirect()->to('/login');
             }
         } else {
             $session->setFlashdata('error', 'Username tidak ditemukan');
-            return redirect()->to('/admin/login');
+            return redirect()->to('/login');
         }
     }
 
