@@ -12,8 +12,17 @@ $routes->get('/admin/dashboard', 'AdminController::index', ['filter' => 'authent
 $routes->get('/major', 'MajorController::showJurusan');
 $routes->get('/major/create', 'MajorController::create');
 
+// routes mentor
+$routes->get('/mentor', 'MentorController::showMentor'); 
+$routes->get('/mentor/create', 'MentorController::create'); 
+$routes->post('/mentor/store', 'MentorController::store'); 
+
+$routes->get('/mentor/edit/(:num)', 'MentorController::edit/$1'); 
+$routes->post('/mentor/update/(:num)', 'MentorController::update/$1');
+$routes->get('/mentor/delete/(:num)', 'MentorController::delete/$1');
+
+// routes lembaga
 $routes->get('/lembaga', 'LembagaController::showLembaga');
-$routes->get('/mentor', 'MentorController::showMentor');
 
 // Routes Data Siswa
 $routes->get('/siswa', 'SiswaController::showSiswa');
