@@ -61,12 +61,6 @@
                                     <option value="" selected disabled>Pilih Divisi</option>
                                     <option value="SATUAN PENGAWASAN INTERN">Satuan Pengawasan Intern</option>
                                     <option value="SEKRETARIS PERUSAHAAN">sekretaris Perusahaan</option>
-                                    <option value="DIREKTORAT OPERASI">Direktorat Operasi</option>
-                                    <option value="PEMASARAN DAN PENJUALAN">Pemasaran dan Penjualan</option>
-                                    <option value="OPERASIONAL & K3LH">Operasional & K3LH</option>
-                                    <option value="DIREKTORAT KUG, SDM, HUKUM, & MR">Direktorat KUG, SDM, Hukum, & MR</option>
-                                    <option value="KEUANGAN & AKUNTANSI">Keuangan & Akuntansi</option>
-                                    <option value=" PENDUKUNG USAHA">Pendukung Usaha</option>
                                 </select>
                             </div>
                             <div class="form-group">
