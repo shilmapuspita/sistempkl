@@ -34,7 +34,7 @@
                             <?= csrf_field() ?>
                             <div class="form-group">
                                 <label for="exampleInputNIP">NIP</label>
-                                <input type="text" class="form-control" name="nip" id="exampleInputNIP" placeholder="Masukkan NIP" value="<?= old('nip') ?>" required>
+                                <input type="text" class="form-control" name="nip" id="exampleInputNIP" placeholder="Masukkan NIP" value="<?= old('nip') ?>" pattern="[A-Za-z0-9.,]+" title="Gunakan hanya huruf, angka, dan karakter .," required>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName">Nama</label>
@@ -44,28 +44,53 @@
                                 <label for="exampleInputDivisi">Divisi</label>
                                 <select class="form-control" name="divisi" id="exampleInputDivisi" required>
                                     <option value="" selected disabled>Pilih Divisi</option>
-                                    <option value="SATUAN PENGAWASAN INTERN">Satuan Pengawasan Intern</option>
-                                    <option value="SEKRETARIS PERUSAHAAN">sekretaris Perusahaan</option>
-                                    <option value="DIREKTORAT OPERASI">Direktorat Operasi</option>
-                                    <option value="PEMASARAN DAN PENJUALAN">Pemasaran dan Penjualan</option>
-                                    <option value="OPERASIONAL & K3LH">Operasional & K3LH</option>
-                                    <option value="DIREKTORAT KUG, SDM, HUKUM, & MR">Direktorat KUG, SDM, Hukum, & MR</option>
-                                    <option value="KEUANGAN & AKUNTANSI">Keuangan & Akuntansi</option>
-                                    <option value=" PENDUKUNG USAHA">Pendukung Usaha</option>
+                                    <option value="Operation">Operation</option>
+                                    <option value="Financial Planning & Analysis">Financial Planning & Analysis</option>
+                                    <option value="Internal Audit Group">Internal Audit Group</option>
+                                    <option value="Commercial Engineering">Commercial Engineering</option>
+                                    <option value="Sales & Marketing">Sales & Marketing</option>
+                                    <option value="Procurement & Material Management">Procurement & Material Management</option>
+                                    <option value="Corporate Secretary">Corporate Secretary</option>
+                                    <option value="Legal & Risk Management">Legal & Risk Management</option>
+                                    <option value="Human Capital & General Affair">Human Capital & General Affair</option>
+                                    <option value="PT. IPMS">PT. IPMS</option>
+                                    <option value="PT. IGOC">PT. IGOC</option>
+                                    <option value="Satuan Pengawasan Intern">Satuan Pengawasan Intern</option>
                                 </select>
                             </div>
-
                             <div class="form-group">
                                 <label for="exampleInputBagian">Bagian</label>
-                                <select class="form-control" name="divisi" id="exampleInputDivisi" required>
-                                    <option value="" selected disabled>Pilih Divisi</option>
-                                    <option value="SATUAN PENGAWASAN INTERN">Satuan Pengawasan Intern</option>
-                                    <option value="SEKRETARIS PERUSAHAAN">sekretaris Perusahaan</option>
+                                <select class="form-control" name="bagian" id="exampleInputBagian" required>
+                                    <option value="" selected disabled>Pilih Bagian</option>
+                                    <option value="Production">Production</option>
+                                    <option value="Project Group">Project Group</option>
+                                    <option value="Treasury & Taxation">Treasury & Taxation</option>
+                                    <option value="Financial Accounting">Financial Accounting</option>
+                                    <option value="Operation Planning & Control">Operation Planning & Control</option>
+                                    <option value="Audit Plan & Control">Audit Plan & Control</option>
+                                    <option value="IT & Product Development">IT & Product Development</option>
+                                    <option value="Account Manager">Account Manager</option>
+                                    <option value="Procurement Planning & Control">Procurement Planning & Control</option>
+                                    <option value="Procurement">Procurement</option>
+                                    <option value="Corporate Communication">Corporate Communication</option>
+                                    <option value="CSR & Community Development">CSR & Community Development</option>
+                                    <option value="Legal">Legal</option>
+                                    <option value="Sales Engineering">Sales Engineering</option>
+                                    <option value="Quality Management & HSE">Quality Management & HSE</option>
+                                    <option value="Partnership">Partnership</option>
+                                    <option value="Sales & Marketing Operation">Sales & Marketing Operation</option>
+                                    <option value="Human Capital">Human Capital</option>
+                                    <option value="Sales & Marketing Planning & Control">Sales & Marketing Planning & Control</option>
+                                    <option value="Billing & Collection Management">Billing & Collection Management</option>
+                                    <option value="Financial Planning, Controlling & Reporting">Financial Planning, Controlling & Reporting</option>
+                                    <option value="IT & Product Development Group">IT & Product Development Group</option>
+                                    <option value="Business Development">Business Development</option>
+                                    <option value="SProject">Project</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputNIPatasan">NIP Atasan</label>
-                                <input type="number" class="form-control" name="nip_atasan" id="exampleInputNIPatasan" placeholder="Masukkan NIP Atasan" value="<?= old('nip_atasan') ?>" required>
+                                <input type="text" class="form-control" name="nip_atasan" id="exampleInputNIPatasan" placeholder="Masukkan NIP Atasan" value="<?= old('nip_atasan') ?>" pattern="[A-Za-z0-9.,]+" title="Gunakan hanya huruf, angka, dan karakter .,]" required>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputNamaAtasan">Nama Atasan</label>
