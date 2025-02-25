@@ -10,12 +10,6 @@
                   <i class="mdi mdi-home"></i>
                 </span> All Data Institutions
               </h3>
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="<?= base_url('admin/dashboard'); ?>">Dashboard</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Institutions</li>
-        </ol>
-      </nav>
     </div>
     <div class="row">
       <div class="col-lg-12 grid-margin stretch-card">
@@ -24,7 +18,7 @@
             <h2 class="card-title" style="text-align: center;">LEMBAGA PENDIDIKAN MITRA PT INTI</h2>
             <br>
             <div class="d-flex justify-content-between mb-5">
-              <a href="<?= base_url('/users/create') ?>" class="btn btn-info btn-sm">
+              <a href="<?= base_url('/lembaga/create') ?>" class="btn btn-info btn-sm">
               <i class="fa-solid fa-plus"></i> Add Data
               </a>
             </div>
@@ -52,10 +46,10 @@
                     <td><?= esc($row['TELP_LEMBAGA']); ?></td>
                     <td><?= esc($row['EMAIL_LEMBAGA']); ?></td>
                     <td>
-                      <a href="" class="btn btn-warning btn-sm">
+                      <a href="<?= base_url('/lembaga/edit/' . $row['ID_LEMBAGA']) ?>" class="btn btn-warning btn-sm">
                         <i class="fa-solid fa-edit"></i> Edit
                       </a>
-                      <a href="" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')">
+                      <a href="<?= base_url('/lembaga/delete/' . $row['ID_LEMBAGA']) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')">
                         <i class="fa-solid fa-trash"></i> Delete
                       </a>
                     </td>

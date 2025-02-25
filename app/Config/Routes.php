@@ -11,6 +11,10 @@ $routes->get('/admin/dashboard', 'AdminController::index', ['filter' => 'authent
 // routes major
 $routes->get('/major', 'MajorController::showJurusan');
 $routes->get('/major/create', 'MajorController::create');
+$routes->post('/major/store', 'MajorController::store');
+$routes->get('/major/edit/(:num)', 'MajorController::edit/$1'); 
+$routes->post('/major/update/(:num)', 'MajorController::update/$1');
+$routes->get('/major/delete/(:num)', 'MajorController::delete/$1');
 
 // routes mentor
 $routes->get('/mentor', 'MentorController::showMentor'); 
@@ -23,6 +27,11 @@ $routes->get('/mentor/delete/(:num)', 'MentorController::delete/$1');
 
 // routes lembaga
 $routes->get('/lembaga', 'LembagaController::showLembaga');
+$routes->get('/lembaga/create', 'LembagaController::create');
+$routes->post('/lembaga/store', 'LembagaController::store'); 
+$routes->get('/lembaga/edit/(:num)', 'LembagaController::edit/$1'); 
+$routes->post('/lembaga/update/(:num)', 'LembagaController::update/$1');
+$routes->get('/lembaga/delete/(:num)', 'LembagaController::delete/$1');
 
 // Routes Data Siswa
 $routes->get('/siswa', 'SiswaController::showSiswa');
@@ -36,7 +45,6 @@ $routes->group('login', ['filter' => 'redirectIfAuthenticated'], function ($rout
     $routes->post('/', 'AdminController::processLogin');
 });
 $routes->get('logout', 'AdminController::logout');
-
 // routes untuk register
 $routes->get('/admin/register', 'AdminController::register');
 $routes->post('/admin/register', 'AdminController::processRegister');
