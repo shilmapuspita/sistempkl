@@ -10,12 +10,6 @@
                   <i class="mdi mdi-home"></i>
                 </span> All Data Major
               </h3>
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="<?= base_url('admin/dashboard'); ?>">Dashboard</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Major</li>
-        </ol>
-      </nav>
     </div>
     <div class="row">
       <div class="col-lg-12 grid-margin stretch-card">
@@ -46,10 +40,10 @@
                     <td><?= esc($row['ID_JURUSAN']); ?></td>
                     <td><?= esc($row['NAMA_JURUSAN']); ?></td>
                     <td>
-                      <a href="" class="btn btn-warning btn-sm">
+                      <a href="<?= base_url('/major/edit/' . $row['ID_JURUSAN']) ?>" class="btn btn-warning btn-sm">
                         <i class="fa-solid fa-edit"></i> Edit
                       </a>
-                      <a href="" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')">
+                      <a href="<?= base_url('/major/delete/' . $row['ID_JURUSAN']) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus jurusan ini?')">
                         <i class="fa-solid fa-trash"></i> Delete
                       </a>
                     </td>

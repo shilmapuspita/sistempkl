@@ -26,11 +26,69 @@ class MajorController extends Controller
 
     public function store()
     {
-        $jurusanModel = new JurusanModel();
-        $jurusanModel->save([
-            'jurusan'  => $this->request->getPost('NAMA_JURUSAN'),
+        $validation = $this->validate([
+            'nama_jurusan'          => 'required',
         ]);
-        session()->setFlashdata('success', 'Nama Jurusan Berhasil Ditambahkan!');
-        return redirect()->to('/major');
+
+        if (!$validation) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        $data = [
+            'NAMA_JURUSAN'          => $this->request->getPost('nama_jurusan'),
+        ];
+
+        $jurusanModel = new JurusanModel();
+        $jurusanModel->insert($data);
+
+        return redirect()->to('/major')->with('success', 'Data jurusan berhasil ditambahkan!');
+    }
+
+    public function edit($id)
+    {
+        $jurusanModel = new JurusanModel();
+        $jurusan = $jurusanModel->find($id);
+
+        if (!$jurusan) {
+            return redirect()->to('/major')->with('errors', 'Data Jurusan tidak ditemukan.');
+        }
+
+        $data = [
+            'jurusan' => $jurusan
+        ];
+
+        return view('admin/major/edit', $data);
+    }
+
+    public function update($id)
+    {
+        $validation = $this->validate([
+            'nama_jurusan'        => 'required',
+        ]);
+
+        if (!$validation) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        $jurusanModel = new JurusanModel();
+        $jurusanModel->update($id, [
+            'NAMA_JURUSAN'          => $this->request->getPost('nama_jurusan'),
+        ]);
+
+        return redirect()->to('/major')->with('success', 'Data jurusan berhasil diubah!');
+    }
+
+    public function delete($id)
+    {
+        $jurusanModel = new JurusanModel();
+
+        $jurusan = $jurusanModel->find($id);
+        if (!$jurusan) {
+            return redirect()->to('/major')->with('error', 'Data Jurusan tidak ditemukan.');
+        }
+
+        $jurusanModel->delete($id);
+
+        return redirect()->to('/major')->with('success', 'Data jurusan berhasil dihapus!');
     }
 }

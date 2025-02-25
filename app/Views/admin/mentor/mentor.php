@@ -1,94 +1,134 @@
 <?= $this->extend('layouts/admin') ?>
 
 <?= $this->section('content') ?>
-<!-- partial -->
+
 <div class="main-panel">
   <div class="content-wrapper">
     <div class="page-header">
-    <h3 class="page-title">
-                <span class="page-title-icon bg-gradient-primary text-white me-2">
-                  <i class="mdi mdi-home"></i>
-                </span> All Data Mentor
-              </h3>
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="<?= base_url('admin/dashboard'); ?>">Dashboard</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Mentor</li>
-        </ol>
-      </nav>
+      <h3 class="page-title">
+        <span class="page-title-icon bg-gradient-primary text-white me-2">
+          <i class="fa-solid fa-chalkboard-teacher"></i>
+        </span> All Data Mentor
+      </h3>
     </div>
+
+    <!-- Notifikasi Flashdata -->
+    <?php if (session()->getFlashdata('success')) : ?>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="fa-solid fa-circle-check me-2"></i>
+        <?= session()->getFlashdata('success') ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <?php endif; ?>
+
+    <?php if (session()->getFlashdata('error')) : ?>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="fa-solid fa-triangle-exclamation me-2"></i>
+        <?= session()->getFlashdata('error') ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <?php endif; ?>
+
     <div class="row">
       <div class="col-lg-12 grid-margin stretch-card">
-        <div class="card">
+        <div class="card shadow-lg">
           <div class="card-body">
-            <h2 class="card-title" style="text-align: center;">MENTOR PKL/RISET PT INTI</h2>
+            <h2 class="card-title text-center text-primary fw-bold">MENTOR PKL/RISET PT INTI</h2>
             <br>
-            <div class="d-flex justify-content-between mb-5">
-              <a href="<?= base_url('/users/create') ?>" class="btn btn-info btn-sm">
-              <i class="fa-solid fa-plus"></i> Add Data
+
+            <!-- Pencarian & Add Button -->
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <input type="text" id="searchInput" class="form-control w-25 shadow-sm" placeholder="🔍 Cari mentor...">
+              <a href="<?= base_url('/mentor/create') ?>" class="btn btn-gradient-primary btn-sm shadow-sm">
+                <i class="fa-solid fa-user-plus"></i> Add Data
               </a>
             </div>
-            </p>
+
             <div class="table-responsive">
-            <table class="table table-striped table-bordered">
-              <thead>
-                <tr>
-                  <th>No</th>
-                  <th>ID MENTOR</th>
-                  <th>NIP</th>
-                  <th>NAMA</th>
-                  <th>DIVISI</th>
-                  <th>BAGIAN</th>
-                  <th>NIP ATASAN</th>
-                  <th>NAMA ATASAN</th>
-                  <th>JABATAN ATASAN</th>
-                  <th>ACTION</th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php $no = 1 + (10 * ($pager->getCurrentPage() - 1)); ?>
-                <?php foreach ($pembimbing as $row) : ?>
+              <table class="table table-hover table-striped table-bordered text-center shadow-sm" id="mentorTable">
+                <thead class="bg-primary text-white">
                   <tr>
-                    <td><?= $no++; ?></td>
-                    <td><?= esc($row['ID_PEMBIMBING']); ?></td>
-                    <td><?= esc($row['NIP']); ?></td>
-                    <td><?= esc($row['NAMA']); ?></td>
-                    <td><?= esc($row['DIVISI']); ?></td>
-                    <td><?= esc($row['BAGIAN']); ?></td>
-                    <td><?= esc($row['NIP_ATASAN']); ?></td>
-                    <td><?= esc($row['NAMA_ATASAN']); ?></td>
-                    <td><?= esc($row['NAMA_JABATAN']); ?></td>
-                    <td>
-                      <a href="" class="btn btn-warning btn-sm">
-                        <i class="fa-solid fa-edit"></i> Edit
-                      </a>
-                      <a href="" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')">
-                        <i class="fa-solid fa-trash"></i> Delete
-                      </a>
-                    </td>
+                    <th>No</th>
+                    <th>ID MENTOR</th>
+                    <th>NIP</th>
+                    <th>NAMA</th>
+                    <th>DIVISI</th>
+                    <th>BAGIAN</th>
+                    <th>NIP ATASAN</th>
+                    <th>NAMA ATASAN</th>
+                    <th>JABATAN ATASAN</th>
+                    <th>ACTION</th>
                   </tr>
-                <?php endforeach; ?>
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  <?php $no = 1 + (10 * ($pager->getCurrentPage() - 1)); ?>
+                  <?php foreach ($pembimbing as $row) : ?>
+                    <tr>
+                      <td><?= $no++; ?></td>
+                      <td><?= esc($row['ID_PEMBIMBING']); ?></td>
+                      <td><?= esc($row['NIP']); ?></td>
+                      <td><?= esc($row['NAMA']); ?></td>
+                      <td><?= esc($row['DIVISI']); ?></td>
+                      <td><?= esc($row['BAGIAN']); ?></td>
+                      <td><?= esc($row['NIP_ATASAN']); ?></td>
+                      <td><?= esc($row['NAMA_ATASAN']); ?></td>
+                      <td><?= esc($row['NAMA_JABATAN']); ?></td>
+                      <td class="text-center">
+                        <a href="<?= base_url('/mentor/edit/' . $row['ID_PEMBIMBING']) ?>" class="text-warning me-2 text-decoration-none" data-bs-toggle="tooltip" title="Edit">
+                          <i class="bi bi-pencil-square fs-5 align-middle"></i>
+                        </a>
+                        <a href="<?= base_url('/mentor/delete/' . $row['ID_PEMBIMBING']) ?>" class="text-danger text-decoration-none" data-bs-toggle="tooltip" title="Delete" onclick="return confirm('Yakin ingin menghapus data ini?')">
+                          <i class="bi bi-trash3-fill fs-5 align-middle"></i>
+                        </a>
+                      </td>
+                    </tr>
+                  <?php endforeach; ?>
+                </tbody>
+              </table>
             </div>
-             <!-- Menambahkan pagination -->
-             <div class="d-flex justify-content-center mt-3">
-                        <?= $pager->links() ?>
-                    </div>
+
+            <!-- Pagination -->
+            <div class="d-flex justify-content-center mt-3">
+              <?= $pager->links() ?>
+            </div>
+
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!-- content-wrapper ends -->
-  <!-- partial:../../partials/_footer.html -->
+
   <footer class="footer">
     <div class="d-sm-flex justify-content-center justify-content-sm-between">
-      <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2023 <a href="https://www.bootstrapdash.com/" target="_blank">BootstrapDash</a>. All rights reserved.</span>
-      <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
+      <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">
+        Copyright © 2025 <a href="https://www.bootstrapdash.com/" target="_blank">BootstrapDash</a>. All rights reserved.
+      </span>
+      <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
+        Made with <i class="fa-solid fa-heart text-danger"></i> by Team INTI
+      </span>
     </div>
   </footer>
-  <!-- partial -->
 </div>
-<!-- main-panel ends -->
+
+<!-- untuk search -->
+<script>
+  document.getElementById("searchInput").addEventListener("keyup", function() {
+    let filter = this.value.toUpperCase();
+    let rows = document.querySelector("#mentorTable tbody").rows;
+
+    for (let i = 0; i < rows.length; i++) {
+      let txtValue = rows[i].textContent || rows[i].innerText;
+      rows[i].style.display = txtValue.toUpperCase().indexOf(filter) > -1 ? "" : "none";
+    }
+  });
+
+  // Aktifkan tooltip Bootstrap
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl);
+  });
+</script>
+
+
+
 <?= $this->endSection() ?>
