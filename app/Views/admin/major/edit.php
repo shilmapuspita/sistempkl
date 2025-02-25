@@ -7,20 +7,14 @@
             <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-primary text-white me-2">
                     <i class="mdi mdi-home"></i>
-                </span> Add Data Jurusan
+                </span> Edit Data Jurusan
             </h3>
         </div>
         <div class="row">
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                    <?php if (session()->getFlashdata('success')) : ?>
-                            <div class="alert alert-success">
-                                <?= session()->getFlashdata('success') ?>
-                            </div>
-                        <?php endif; ?>
-
-                        <?php if (session()->getFlashdata('errors')) : ?>
+                    <?php if (session()->getFlashdata('errors')) : ?>
                             <div class="alert alert-danger">
                                 <ul>
                                     <?php foreach (session()->getFlashdata('errors') as $error) : ?>
@@ -30,11 +24,12 @@
                             </div>
                         <?php endif; ?>
 
-                        <form class="forms-sample" action="<?= base_url('/major/store') ?>" method="post">
+                        <form class="forms-sample" action="<?= base_url('/major/update/' . $jurusan['ID_JURUSAN']) ?>" method="post">
                         <?= csrf_field() ?>
+                        <input type="hidden" name="id_jurusan" value="<?= $jurusan['ID_JURUSAN'] ?>">
                             <div class="form-group">
                                 <label for="exampleInputJurusan">Nama Jurusan</label>
-                                <input type="text" class="form-control" id="exampleInputName1" name="nama_jurusan" placeholder="Masukan Nama Jurusan" value="<?= old('nama_jurusan') ?>" required>
+                                <input type="text" class="form-control" id="exampleInputName1" name="nama_jurusan" placeholder="Masukan Nama Jurusan" value="<?= old('nama_jurusan', $jurusan['NAMA_JURUSAN']) ?>" required>
                             </div>
                             <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
                             <a href="<?= base_url('/major') ?>" class="btn btn-light">Cancel</a>
