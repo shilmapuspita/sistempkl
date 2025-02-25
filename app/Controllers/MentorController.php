@@ -26,11 +26,11 @@ class MentorController extends BaseController
     public function store()
     {
         $validation = $this->validate([
-            'nip'          => 'required|numeric',
+            'nip'          => 'required|regex_match[/^[A-Za-z0-9.,?+\-\s]+$/]',
             'nama'         => 'required',
             'divisi'       => 'required',
             'bagian'       => 'required',
-            'nip_atasan'   => 'required|numeric',
+            'nip_atasan'   => 'required|regex_match[/^[A-Za-z0-9.,?+\-\s]+$/]',
             'nama_atasan'  => 'required',
             'nama_jabatan' => 'required',
         ]);
@@ -74,15 +74,15 @@ class MentorController extends BaseController
     public function update($id)
     {
         $validation = $this->validate([
-            'nip'        => 'required|numeric',
+            'nip'        => 'required|regex_match[/^[A-Za-z0-9.,?+\-\s]+$/]',
             'nama'       => 'required',
             'divisi'     => 'required',
             'bagian'     => 'required',
-            'nip_atasan' => 'required|numeric',
+            'nip_atasan' => 'required|regex_match[/^[A-Za-z0-9.,?+\-\s]+$/]',
             'nama_atasan' => 'required',
             'nama_jabatan' => 'required',
         ]);
-
+        
         if (!$validation) {
             return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
         }

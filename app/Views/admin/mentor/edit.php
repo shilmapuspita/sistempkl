@@ -29,7 +29,7 @@
                             <input type="hidden" name="id_pembimbing" value="<?= $mentor['ID_PEMBIMBING'] ?>">
                             <div class="form-group">
                                 <label for="exampleInputNIP">NIP</label>
-                                <input type="number" class="form-control" name="nip" id="exampleInputNIP" value="<?= old('nip', $mentor['NIP']) ?>" required>
+                                <input type="text" class="form-control" name="nip" id="exampleInputNIP" value="<?= old('nip', $mentor['NIP']) ?>" pattern="[A-Za-z0-9.,]+" title="Gunakan hanya huruf, angka, dan karakter .," required>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName">Nama</label>
@@ -45,7 +45,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputNIPAtasan">NIP Atasan</label>
-                                <input type="number" class="form-control" name="nip_atasan" id="exampleInputNIPAtasan" value="<?= old('nip_atasan', $mentor['NIP_ATASAN']) ?>" required>
+                                <input type="text" class="form-control" name="nip_atasan" id="exampleInputNIPAtasan" value="<?= old('nip_atasan', $mentor['NIP_ATASAN']) ?>" pattern="[A-Za-z0-9.,]+" title="Gunakan hanya huruf, angka, dan karakter .," required>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputNamaAtasan">Nama Atasan</label>
