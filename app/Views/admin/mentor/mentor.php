@@ -43,7 +43,6 @@
                 <i class="fa-solid fa-user-plus"></i> Add Data
               </a>
             </div>
-
             <div class="table-responsive">
               <table class="table table-hover table-striped table-bordered text-center shadow-sm" id="mentorTable">
                 <thead class="bg-primary text-white">
