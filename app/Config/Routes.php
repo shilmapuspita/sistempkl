@@ -33,11 +33,14 @@ $routes->get('/lembaga/edit/(:num)', 'LembagaController::edit/$1');
 $routes->post('/lembaga/update/(:num)', 'LembagaController::update/$1');
 $routes->get('/lembaga/delete/(:num)', 'LembagaController::delete/$1');
 
-
 // Routes Data Siswa
 $routes->get('/siswa', 'SiswaController::showSiswa');
 $routes->get('siswaPKL', 'SiswaController::showSiswaPKL');
 $routes->get('siswaRiset', 'SiswaController::showSiswaRiset');
+$routes->get('/siswaPKL', 'SiswaController::showSiswaPKL');
+$routes->get('/siswaRiset', 'SiswaController::showSiswaRiset');
+
+//routes data inter
 $routes->get('/intern', 'InternshipController::showInternship');
 
 // routes PKL
@@ -66,4 +69,3 @@ $routes->get('logout', 'AdminController::logout');
 // routes untuk register
 $routes->get('/admin/register', 'AdminController::register');
 $routes->post('/admin/register', 'AdminController::processRegister');
-    
