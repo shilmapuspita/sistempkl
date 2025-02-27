@@ -5,7 +5,7 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use App\Models\SiswaModel;
 
-class SiswaController extends Controller
+    class SiswaController extends Controller
 {
     protected $siswaModel;
 
