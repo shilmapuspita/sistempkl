@@ -38,7 +38,10 @@ $routes->get('/lembaga/delete/(:num)', 'LembagaController::delete/$1');
 $routes->get('/siswa', 'SiswaController::showSiswa');
 $routes->get('/siswaPKL', 'SiswaController::showSiswaPKL');
 $routes->get('/siswaRiset', 'SiswaController::showSiswaRiset');
+
+//routes data intern
 $routes->get('/intern', 'InternshipController::showInternship');
+$routes->get('/intern/create', 'InternshipController::create');
 
 // routes untuk  login
 $routes->group('login', ['filter' => 'redirectIfAuthenticated'], function ($routes) {

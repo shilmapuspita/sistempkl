@@ -7,30 +7,44 @@
     <div class="page-header">
       <h3 class="page-title">
         <span class="page-title-icon bg-gradient-primary text-white me-2">
-          <i class="mdi mdi-home"></i>
+          <i class="fa-solid fa-chalkboard-teacher"></i>
         </span> All Data Mahasiswa Internship
       </h3>
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="<?= base_url('admin/dashboard'); ?>">Dashboard</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Data Internship</li>
-        </ol>
-      </nav>
-    </div>
+      </div>
+
+       <!-- Notifikasi Flashdata -->
+    <?php if (session()->getFlashdata('success')) : ?>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="fa-solid fa-circle-check me-2"></i>
+        <?= session()->getFlashdata('success') ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <?php endif; ?>
+
+    <?php if (session()->getFlashdata('error')) : ?>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="fa-solid fa-triangle-exclamation me-2"></i>
+        <?= session()->getFlashdata('error') ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <?php endif; ?>
+
     <div class="row">
       <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
-            <h2 class="card-title" style="text-align: center;">DATA MAHASISWA INTERNSHIP PT INTI</h2>
+            <h2 class="card-title text-center text-primary fw-bold">DATA MAHASISWA INTERNSHIP PT INTI</h2>
             <br>
-            <div class="d-flex justify-content-between mb-5">
-              <a href="<?= base_url('/users/create') ?>" class="btn btn-info btn-sm">
-                <i class="fa-solid fa-plus"></i> Add Data
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <input type="text" id="searchInput" class="form-control w-25 shadow-sm" placeholder="🔍 Cari mentor...">
+              <a href="<?= base_url('/intern/create') ?>" class="btn btn-gradient-primary btn-sm shadow-sm">
+                <i class="fa-solid fa-user-plus"></i> Add Data
               </a>
             </div>
             <div class="table-responsive">
-              <table class="table table-striped table-bordered">
-                <thead>
+              <table class="table table-hover table-striped table-bordered text-center shadow-sm" id="mentorTable">
+                <thead class="bg-primary text-white">
                   <tr>
                     <th>No</th>
                     <th>ID Mahasiswa</th>
@@ -65,12 +79,12 @@
                       <td><?= esc($row['TGL_AWAL']); ?></td>
                       <td><?= esc($row['TGL_AKHIR']); ?></td>
                       <td><?= esc($row['NAMA_PEMB']); ?></td>
-                      <td>
-                        <a href="" class="btn btn-warning btn-sm">
-                          <i class="fa-solid fa-edit"></i> Edit
+                      <td class="text-center">
+                        <a href="" class="text-warning me-2 text-decoration-none" data-bs-toggle="tooltip" title="Edit">
+                          <i class="bi bi-pencil-square fs-5 align-middle"></i>
                         </a>
-                        <a href="" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')">
-                          <i class="fa-solid fa-trash"></i> Delete
+                        <a href="" class="text-danger text-decoration-none" data-bs-toggle="tooltip" title="Delete" onclick="return confirm('Yakin ingin menghapus data ini?')">
+                          <i class="bi bi-trash3-fill fs-5 align-middle"></i>
                         </a>
                       </td>
                     </tr>
