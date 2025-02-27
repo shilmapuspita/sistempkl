@@ -128,7 +128,4 @@
     return new bootstrap.Tooltip(tooltipTriggerEl);
   });
 </script>
-
-
-
 <?= $this->endSection() ?>
