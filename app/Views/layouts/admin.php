@@ -119,13 +119,13 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('/siswaPKL'); ?>">
+                <a class="nav-link" href="<?= base_url('siswa/PKL'); ?>">
                   <span class="menu-title">Data Siswa PKL</span>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('/siswaRiset'); ?>">
+                <a class="nav-link" href="<?= base_url('siswa/riset'); ?>">
                   <span class="menu-title">Data Siswa Riset</span>
                 </a>
               </li>

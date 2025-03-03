@@ -35,12 +35,30 @@ $routes->get('/lembaga/delete/(:num)', 'LembagaController::delete/$1');
 
 // Routes Data Siswa
 $routes->get('/siswa', 'SiswaController::showSiswa');
-$routes->get('/siswaPKL', 'SiswaController::showSiswaPKL');
-$routes->get('/siswaRiset', 'SiswaController::showSiswaRiset');
 
-//routes data inter
+// routes PKL
+$routes->get('siswa/PKL', 'SiswaController::showSiswaPKL');
+$routes->get('siswa/PKL/create', 'SiswaController::createSiswaPKL');
+$routes->post('siswa/PKL/store', 'SiswaController::storeSiswaPKL');
+$routes->get('siswa/PKL/edit/(:num)', 'SiswaController::editSiswaPKL/$1');
+$routes->post('siswa/PKL/update/(:num)', 'SiswaController::updateSiswaPKL/$1');
+$routes->get('siswa/PKL/delete/(:num)', 'SiswaController::deleteSiswaPKL/$1');
+
+// routes riset
+$routes->get('siswa/riset', 'SiswaController::showSiswaRiset');
+$routes->get('siswa/riset/create', 'SiswaController::createSiswaRiset');
+$routes->post('siswa/riset/store', 'SiswaController::storeSiswaRiset');
+$routes->get('siswa/riset/edit/(:num)', 'SiswaController::editSiswaRiset/$1');
+$routes->post('siswa/riset/update/(:num)', 'SiswaController::updateSiswaRiset/$1');
+$routes->get('siswa/riset/delete/(:num)', 'SiswaController::deleteSiswaRiset/$1');
+
+//routes data intern
 $routes->get('/intern', 'InternshipController::showInternship');
 $routes->get('/intern/create', 'InternshipController::create');
+$routes->post('/intern/store', 'InternshipController::store');
+$routes->get('/intern/edit/(:num)', 'InternshipController::edit/$1');
+$routes->post('/intern/update/(:num)', 'InternshipController::update/$1');
+$routes->get('/intern/delete/(:num)', 'InternshipController::delete/$1');
 
 // routes untuk  login
 $routes->group('login', ['filter' => 'redirectIfAuthenticated'], function ($routes) {
