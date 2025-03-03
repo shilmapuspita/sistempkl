@@ -45,60 +45,90 @@ class InternshipController extends Controller
         }
 
         $data = [
-            'NAMA_JURUSAN'          => $this->request->getPost('nama_jurusan'),
+            'NO'            => strtoupper(esc($this->request->getPost('no_surat'))),
+            'BATCH'         => strtoupper(esc($this->request->getPost('batch'))),
+            'TANGGAL'       => strtoupper(esc($this->request->getPost('tanggal'))),
+            'NM_SISWA'      => strtoupper(esc($this->request->getPost('nama'))),
+            'LEMBAGA'       => strtoupper(esc($this->request->getPost('lembaga'))),
+            'JURUSAN'       => strtoupper(esc($this->request->getPost('jurusan'))),
+            'DIVISI'        => strtoupper(esc($this->request->getPost('divisi'))),
+            'BAGIAN'        => strtoupper(esc($this->request->getPost('bagian'))),
+            'TGL_AWAL'      => strtoupper(esc($this->request->getPost('tgl_awal'))),
+            'TGL_AKHIR'     => strtoupper(esc($this->request->getPost('tgl_akhir'))),
+            'NAMA_PEMB'     => strtoupper(esc($this->request->getPost('nama_pemb'))),
         ];
 
-        $jurusanModel = new JurusanModel();
-        $jurusanModel->insert($data);
+        $internModel = new InternshipModel();
+        $internModel->insert($data);
 
-        return redirect()->to('/major')->with('success', 'Data jurusan berhasil ditambahkan!');
+        return redirect()->to('/intern')->with('success', 'Data Mahasiswa Internship berhasil ditambahkan!');
     }
 
     public function edit($id)
     {
-        $jurusanModel = new JurusanModel();
-        $jurusan = $jurusanModel->find($id);
+        $internModel = new InternshipModel();
+        $intern = $internModel->find($id);
 
-        if (!$jurusan) {
-            return redirect()->to('/major')->with('errors', 'Data Jurusan tidak ditemukan.');
+        if (!$intern) {
+            return redirect()->to('/intern')->with('errors', 'Data Mahasiswa tidak ditemukan.');
         }
 
         $data = [
-            'jurusan' => $jurusan
+            'intern' => $intern
         ];
 
-        return view('admin/major/edit', $data);
+        return view('admin/siswa/intern/edit', $data);
     }
 
     public function update($id)
     {
         $validation = $this->validate([
-            'nama_jurusan'        => 'required',
+            'no_surat'          => 'required|numeric',
+            'batch'             => 'required|numeric',
+            'tanggal'             => 'required',
+            'nama'             => 'required',
+            'lembaga'             => 'required',
+            'jurusan'             => 'required',
+            'divisi'             => 'required',
+            'bagian'             => 'required',
+            'tgl_awal'             => 'required',
+            'tgl_akhir'             => 'required',
+            'nama_pemb'             => 'required',
         ]);
 
         if (!$validation) {
             return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
         }
 
-        $jurusanModel = new JurusanModel();
-        $jurusanModel->update($id, [
-            'NAMA_JURUSAN'          => $this->request->getPost('nama_jurusan'),
+        $internModel = new InternshipModel();
+        $internModel->update($id, [
+            'NO'            => strtoupper(esc($this->request->getPost('no_surat'))),
+            'BATCH'         => strtoupper(esc($this->request->getPost('batch'))),
+            'TANGGAL'       => strtoupper(esc($this->request->getPost('tanggal'))),
+            'NM_SISWA'      => strtoupper(esc($this->request->getPost('nama'))),
+            'LEMBAGA'       => strtoupper(esc($this->request->getPost('lembaga'))),
+            'JURUSAN'       => strtoupper(esc($this->request->getPost('jurusan'))),
+            'DIVISI'        => strtoupper(esc($this->request->getPost('divisi'))),
+            'BAGIAN'        => strtoupper(esc($this->request->getPost('bagian'))),
+            'TGL_AWAL'      => strtoupper(esc($this->request->getPost('tgl_awal'))),
+            'TGL_AKHIR'     => strtoupper(esc($this->request->getPost('tgl_akhir'))),
+            'NAMA_PEMB'     => strtoupper(esc($this->request->getPost('nama_pemb'))),
         ]);
 
-        return redirect()->to('/major')->with('success', 'Data jurusan berhasil diubah!');
+        return redirect()->to('/intern')->with('success', 'Data Mahasiswa Internship berhasil diubah!');
     }
 
     public function delete($id)
     {
-        $jurusanModel = new JurusanModel();
+        $internModel = new InternshipModel();
 
-        $jurusan = $jurusanModel->find($id);
-        if (!$jurusan) {
-            return redirect()->to('/major')->with('error', 'Data Jurusan tidak ditemukan.');
+        $intern = $internModel->find($id);
+        if (!$intern) {
+            return redirect()->to('/intern')->with('error', 'Data Mahasiswa tidak ditemukan.');
         }
 
-        $jurusanModel->delete($id);
+        $internModel->delete($id);
 
-        return redirect()->to('/major')->with('success', 'Data jurusan berhasil dihapus!');
+        return redirect()->to('/intern')->with('success', 'Data Mahasiswa berhasil dihapus!');
     }
 }

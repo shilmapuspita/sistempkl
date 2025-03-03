@@ -80,10 +80,10 @@
                       <td><?= esc($row['TGL_AKHIR']); ?></td>
                       <td><?= esc($row['NAMA_PEMB']); ?></td>
                       <td class="text-center">
-                        <a href="" class="text-warning me-2 text-decoration-none" data-bs-toggle="tooltip" title="Edit">
+                        <a href="<?= base_url('/intern/edit/' . $row['ID_PKL']) ?>" class="text-warning me-2 text-decoration-none" data-bs-toggle="tooltip" title="Edit">
                           <i class="bi bi-pencil-square fs-5 align-middle"></i>
                         </a>
-                        <a href="" class="text-danger text-decoration-none" data-bs-toggle="tooltip" title="Delete" onclick="return confirm('Yakin ingin menghapus data ini?')">
+                        <a href="<?= base_url('/intern/delete/' . $row['ID_PKL']) ?>" class="text-danger text-decoration-none" data-bs-toggle="tooltip" title="Delete" onclick="return confirm('Yakin ingin menghapus data ini?')">
                           <i class="bi bi-trash3-fill fs-5 align-middle"></i>
                         </a>
                       </td>
