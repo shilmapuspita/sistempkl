@@ -23,8 +23,8 @@
                     <h2 class="card-title" style="text-align: center;">DATA PESERTA PKL/RISET (MAHASISWA & SISWA)</h2>
                     <br>
                     <div class="d-flex justify-content-between mb-5">
-                        <a href="<?= base_url('/users/create') ?>" class="btn btn-info btn-sm">
-                            <i class="fa-solid fa-plus"></i> Add Data
+                        <a href="<?= base_url('/mentor/create') ?>" class="btn btn-gradient-blue btn-sm shadow-sm">
+                            <i class="fa-solid fa-user-plus"></i> Add Data
                         </a>
                     </div>
                     <div class="table-responsive">
@@ -42,6 +42,7 @@
                                     <th>BAGIAN</th>
                                     <th>TANGGAL AWAL</th>
                                     <th>TANGGAL AKHIR</th>
+                                    <th>STATUS</th>
                                     <th>NAMA PEMBIMBING</th>
                                     <th>ACTION</th>
                                 </tr>
@@ -53,14 +54,15 @@
                                         <td><?= $no++; ?></td>
                                         <td><?= esc($row['ID_PKL']); ?></td>
                                         <td><?= esc($row['NM_SISWA']); ?></td>
-                                        <td><?= esc($row['TANGGAL']); ?></td>
+                                        <td><?= esc($row['TGL_DAFTAR']); ?></td>
                                         <td><?= esc($row['JENIS_PKL']); ?></td>
                                         <td><?= esc($row['LEMBAGA']); ?></td>
                                         <td><?= esc($row['JURUSAN']); ?></td>
                                         <td><?= esc($row['DIVISI']); ?></td>
                                         <td><?= esc($row['BAGIAN']); ?></td>
-                                        <td><?= esc($row['TGL_AWAL']); ?></td>
+                                        <td><?= esc($row['TGL_MULAI']); ?></td>
                                         <td><?= esc($row['TGL_AKHIR']); ?></td>
+                                        <td><?= esc($row['STATUS']); ?></td>
                                         <td><?= esc($row['NAMA_PEMB']); ?></td>
                                         <td>
                                             <a href="" class="btn btn-warning btn-sm">

@@ -6,43 +6,31 @@
         <div class="page-header">
             <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-primary text-white me-2">
-                    <i class="mdi mdi-home"></i>
-                </span> Add Data Mentor
+                    <i class="fa-solid fa-chalkboard-teacher"></i>
+                </span> Tambah Data Mentor
             </h3>
         </div>
-        <div class="row">
-            <div class="col-12 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <?php if (session()->getFlashdata('success')) : ?>
-                            <div class="alert alert-success">
-                                <?= session()->getFlashdata('success') ?>
-                            </div>
-                        <?php endif; ?>
 
-                        <?php if (session()->getFlashdata('errors')) : ?>
-                            <div class="alert alert-danger">
-                                <ul>
-                                    <?php foreach (session()->getFlashdata('errors') as $error) : ?>
-                                        <li><?= esc($error) ?></li>
-                                    <?php endforeach; ?>
-                                </ul>
-                            </div>
-                        <?php endif; ?>
+        <div class="card shadow-lg">
+            <div class="card-body">
+                <h4 class="card-title text-center text-primary fw-bold">FORMULIR DATA MENTOR</h4>
+                <br>
+                <form action="<?= base_url('/mentor/store') ?>" method="post">
+                    <?= csrf_field() ?>
 
-                        <form class="forms-sample" action="<?= base_url('/mentor/store') ?>" method="post">
-                            <?= csrf_field() ?>
+                    <div class="row">
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label for="exampleInputNIP">NIP</label>
-                                <input type="text" class="form-control" name="nip" id="exampleInputNIP" placeholder="Masukkan NIP" value="<?= old('nip') ?>" pattern="[A-Za-z0-9.,]+" title="Gunakan hanya huruf, angka, dan karakter .," required>
+                                <label><i class="fa-solid fa-id-badge"></i> NIP</label>
+                                <input type="text" name="nip" class="form-control shadow-sm" required>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputName">Nama</label>
-                                <input type="text" class="form-control" name="nama" id="exampleInputName" placeholder="Masukkan nama" value="<?= old('nama') ?>" required>
+                                <label><i class="fa-solid fa-user"></i> Nama Mentor</label>
+                                <input type="text" name="nama" class="form-control shadow-sm text-uppercase" required>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputDivisi">Divisi</label>
-                                <select class="form-control" name="divisi" id="exampleInputDivisi" required>
+                                <label><i class="fa-solid fa-building"></i> Divisi</label>
+                                <select class="form-select form-select-sm shadow-sm" name="divisi" required>
                                     <option value="" selected disabled>Pilih Divisi</option>
                                     <option value="Operation">Operation</option>
                                     <option value="Financial Planning & Analysis">Financial Planning & Analysis</option>
@@ -53,14 +41,14 @@
                                     <option value="Corporate Secretary">Corporate Secretary</option>
                                     <option value="Legal & Risk Management">Legal & Risk Management</option>
                                     <option value="Human Capital & General Affair">Human Capital & General Affair</option>
-                                    <option value="PT. IPMS">PT. IPMS</option>
-                                    <option value="PT. IGOC">PT. IGOC</option>
-                                    <option value="Satuan Pengawasan Intern">Satuan Pengawasan Intern</option>
                                 </select>
                             </div>
+                        </div>
+
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label for="exampleInputBagian">Bagian</label>
-                                <select class="form-control" name="bagian" id="exampleInputBagian" required>
+                                <label><i class="fa-solid fa-briefcase"></i> Bagian</label>
+                                <select class="form-select form-select-sm shadow-sm" name="bagian" required>
                                     <option value="" selected disabled>Pilih Bagian</option>
                                     <option value="Production">Production</option>
                                     <option value="Project Group">Project Group</option>
@@ -70,48 +58,34 @@
                                     <option value="Audit Plan & Control">Audit Plan & Control</option>
                                     <option value="IT & Product Development">IT & Product Development</option>
                                     <option value="Account Manager">Account Manager</option>
-                                    <option value="Procurement Planning & Control">Procurement Planning & Control</option>
-                                    <option value="Procurement">Procurement</option>
-                                    <option value="Corporate Communication">Corporate Communication</option>
-                                    <option value="CSR & Community Development">CSR & Community Development</option>
-                                    <option value="Legal">Legal</option>
-                                    <option value="Sales Engineering">Sales Engineering</option>
-                                    <option value="Quality Management & HSE">Quality Management & HSE</option>
-                                    <option value="Partnership">Partnership</option>
-                                    <option value="Sales & Marketing Operation">Sales & Marketing Operation</option>
-                                    <option value="Human Capital">Human Capital</option>
-                                    <option value="Sales & Marketing Planning & Control">Sales & Marketing Planning & Control</option>
-                                    <option value="Billing & Collection Management">Billing & Collection Management</option>
-                                    <option value="Financial Planning, Controlling & Reporting">Financial Planning, Controlling & Reporting</option>
-                                    <option value="IT & Product Development Group">IT & Product Development Group</option>
-                                    <option value="Business Development">Business Development</option>
-                                    <option value="SProject">Project</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputNIPatasan">NIP Atasan</label>
-                                <input type="text" class="form-control" name="nip_atasan" id="exampleInputNIPatasan" placeholder="Masukkan NIP Atasan" value="<?= old('nip_atasan') ?>" pattern="[A-Za-z0-9.,]+" title="Gunakan hanya huruf, angka, dan karakter .,]" required>
+                                <label><i class="fa-solid fa-id-badge"></i> NIP Atasan</label>
+                                <input type="text" name="nip_atasan" class="form-control shadow-sm" required>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputNamaAtasan">Nama Atasan</label>
-                                <input type="text" class="form-control" name="nama_atasan" id="exampleInputNamaAtasan" placeholder="Masukkan Nama Atasan" value="<?= old('nama_atasan') ?>" required>
+                                <label><i class="fa-solid fa-user-tie"></i> Nama Atasan</label>
+                                <input type="text" name="nama_atasan" class="form-control shadow-sm text-uppercase" required>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputNamaJabatan">Nama Jabatan</label>
-                                <input type="text" class="form-control" name="nama_jabatan" id="exampleInputNamaJabatan" placeholder="Masukkan Nama Jabatan" value="<?= old('nama_jabatan') ?>" required>
+                                <label><i class="fa-solid fa-briefcase"></i> Nama Jabatan</label>
+                                <input type="text" name="nama_jabatan" class="form-control shadow-sm text-uppercase" required>
                             </div>
-                            <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
-                            <a href="<?= base_url('/mentor') ?>" class="btn btn-light">Cancel</a>
-                        </form>
+                        </div>
                     </div>
-                </div>
+
+                    <div class="d-flex justify-content-center mt-4">
+                        <button type="submit" class="btn btn-gradient-primary me-2 shadow-sm">
+                            <i class="fa-solid fa-floppy-disk"></i> Simpan
+                        </button>
+                        <a href="<?= base_url('/mentor') ?>" class="btn btn-gradient-secondary shadow-sm">
+                            <i class="fa-solid fa-xmark"></i> Batal
+                        </a>
+                    </div>
+                </form>
             </div>
-            <footer class="footer">
-                <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2023 <a href="https://www.bootstrapdash.com/" target="_blank">BootstrapDash</a>. All rights reserved.</span>
-                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
-                </div>
-            </footer>
         </div>
-        <!-- main-panel ends -->
-        <?= $this->endSection() ?>
+    </div>
+</div>
+<?= $this->endSection() ?>

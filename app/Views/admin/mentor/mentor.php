@@ -39,11 +39,10 @@
             <!-- Pencarian & Add Button -->
             <div class="d-flex justify-content-between align-items-center mb-3">
               <input type="text" id="searchInput" class="form-control w-25 shadow-sm" placeholder="🔍 Cari mentor...">
-              <a href="<?= base_url('/mentor/create') ?>" class="btn btn-gradient-primary btn-sm shadow-sm">
+              <a href="<?= base_url('/mentor/create') ?>" class="btn btn-gradient-blue btn-sm shadow-sm">
                 <i class="fa-solid fa-user-plus"></i> Add Data
               </a>
             </div>
-
             <div class="table-responsive">
               <table class="table table-hover table-striped table-bordered text-center shadow-sm" id="mentorTable">
                 <thead class="bg-primary text-white">
@@ -74,11 +73,19 @@
                       <td><?= esc($row['NAMA_ATASAN']); ?></td>
                       <td><?= esc($row['NAMA_JABATAN']); ?></td>
                       <td class="text-center">
-                        <a href="<?= base_url('/mentor/edit/' . $row['ID_PEMBIMBING']) ?>" class="text-warning me-2 text-decoration-none" data-bs-toggle="tooltip" title="Edit">
-                          <i class="bi bi-pencil-square fs-5 align-middle"></i>
+                        <a href="<?= base_url('/mentor/edit/' . $row['ID_PEMBIMBING']) ?>"
+                          class="btn btn-gradient-blue btn-sm shadow-sm"
+                          data-bs-toggle="tooltip"
+                          title="Edit">
+                          <i class="bi bi-pencil-square fs-6 align-middle"></i>
                         </a>
-                        <a href="<?= base_url('/mentor/delete/' . $row['ID_PEMBIMBING']) ?>" class="text-danger text-decoration-none" data-bs-toggle="tooltip" title="Delete" onclick="return confirm('Yakin ingin menghapus data ini?')">
-                          <i class="bi bi-trash3-fill fs-5 align-middle"></i>
+
+                        <a href="<?= base_url('/mentor/delete/' . $row['ID_PEMBIMBING']) ?>"
+                          class="btn btn-gradient-blue btn-sm shadow-sm"
+                          data-bs-toggle="tooltip"
+                          title="Delete"
+                          onclick="return confirm('Yakin ingin menghapus data ini?')">
+                          <i class="bi bi-trash3-fill fs-6 align-middle"></i>
                         </a>
                       </td>
                     </tr>
@@ -128,7 +135,4 @@
     return new bootstrap.Tooltip(tooltipTriggerEl);
   });
 </script>
-
-
-
 <?= $this->endSection() ?>
