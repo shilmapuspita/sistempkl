@@ -7,12 +7,19 @@ use App\Models\MentorModel;
 
 class MentorController extends BaseController
 {
+    protected $mentorModel;
+
+    public function __construct()
+    {
+        $this->mentorModel = new MentorModel();
+    }
+
     public function showMentor()
     {
-        $model = new MentorModel();
         $data = [
-            'pembimbing' => $model->getPaginateData(10),
-            'pager' => $model->pager
+            'pembimbing' => $this->mentorModel->getPaginateData(10),
+            'pager' => $this->mentorModel->pager,
+            'currentPage' => 'mentor'
         ];
 
         return view('admin/mentor/mentor', $data);
@@ -20,12 +27,13 @@ class MentorController extends BaseController
 
     public function create()
     {
-        return view('admin/mentor/create');
+        return view('admin/mentor/create', ['currentPage' => 'mentor']);
     }
 
     public function store()
     {
-        $validation = $this->validate([
+        $validation = \Config\Services::validation();
+        $rules = [
             'nip'          => 'required|regex_match[/^[A-Za-z0-9.,?+\-\s]+$/]',
             'nama'         => 'required',
             'divisi'       => 'required',
@@ -33,85 +41,87 @@ class MentorController extends BaseController
             'nip_atasan'   => 'required|regex_match[/^[A-Za-z0-9.,?+\-\s]+$/]',
             'nama_atasan'  => 'required',
             'nama_jabatan' => 'required',
-        ]);
+        ];
 
-        if (!$validation) {
-            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        if (!$this->validate($rules)) {
+            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
         }
 
         $data = [
-            'NIP'          => $this->request->getPost('nip'),
-            'NAMA'         => $this->request->getPost('nama'),
-            'DIVISI'       => $this->request->getPost('divisi'),
-            'BAGIAN'       => $this->request->getPost('bagian'),
-            'NIP_ATASAN'   => $this->request->getPost('nip_atasan'),
-            'NAMA_ATASAN'  => $this->request->getPost('nama_atasan'),
-            'NAMA_JABATAN' => $this->request->getPost('nama_jabatan'),
+            'NIP'          => strtoupper(esc($this->request->getPost('nip'))),
+            'NAMA'         => strtoupper(esc($this->request->getPost('nama'))),
+            'DIVISI'       => strtoupper(esc($this->request->getPost('divisi'))),
+            'BAGIAN'       => strtoupper(esc($this->request->getPost('bagian'))),
+            'NIP_ATASAN'   => strtoupper(esc($this->request->getPost('nip_atasan'))),
+            'NAMA_ATASAN'  => strtoupper(esc($this->request->getPost('nama_atasan'))),
+            'NAMA_JABATAN' => strtoupper(esc($this->request->getPost('nama_jabatan'))),
         ];
 
-        $mentorModel = new MentorModel();
-        $mentorModel->insert($data);
+        $this->mentorModel->insert($data);
 
-        return redirect()->to('/mentor')->with('success', 'Data mentor berhasil ditambahkan!');
+        session()->setFlashdata('success', 'Data mentor berhasil ditambahkan!');
+        return redirect()->to('/mentor');
     }
 
     public function edit($id)
     {
-        $mentorModel = new MentorModel();
-        $mentor = $mentorModel->find($id);
+        $mentor = $this->mentorModel->find($id);
 
         if (!$mentor) {
-            return redirect()->to('/mentor')->with('errors', 'Data mentor tidak ditemukan.');
+            session()->setFlashdata('error', 'Data mentor tidak ditemukan.');
+            return redirect()->to('/mentor');
         }
 
-        $data = [
-            'mentor' => $mentor
-        ];
-
-        return view('admin/mentor/edit', $data);
+        return view('admin/mentor/edit', [
+            'mentor' => $mentor,
+            'currentPage' => 'mentor'
+        ]);
     }
 
     public function update($id)
     {
-        $validation = $this->validate([
-            'nip'        => 'required|regex_match[/^[A-Za-z0-9.,?+\-\s]+$/]',
-            'nama'       => 'required',
-            'divisi'     => 'required',
-            'bagian'     => 'required',
-            'nip_atasan' => 'required|regex_match[/^[A-Za-z0-9.,?+\-\s]+$/]',
-            'nama_atasan' => 'required',
+        $validation = \Config\Services::validation();
+        $rules = [
+            'nip'          => 'required|regex_match[/^[A-Za-z0-9.,?+\-\s]+$/]',
+            'nama'         => 'required',
+            'divisi'       => 'required',
+            'bagian'       => 'required',
+            'nip_atasan'   => 'required|regex_match[/^[A-Za-z0-9.,?+\-\s]+$/]',
+            'nama_atasan'  => 'required',
             'nama_jabatan' => 'required',
-        ]);
-        
-        if (!$validation) {
-            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        ];
+
+        if (!$this->validate($rules)) {
+            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
         }
 
-        $mentorModel = new MentorModel();
-        $mentorModel->update($id, [
-            'NIP'          => $this->request->getPost('nip'),
-            'NAMA'         => $this->request->getPost('nama'),
-            'DIVISI'       => $this->request->getPost('divisi'),
-            'BAGIAN'       => $this->request->getPost('bagian'),
-            'NIP_ATASAN'   => $this->request->getPost('nip_atasan'),
-            'NAMA_ATASAN'  => $this->request->getPost('nama_atasan'),
-            'NAMA_JABATAN' => $this->request->getPost('nama_jabatan'),
-        ]);
+        $data = [
+            'NIP'          => strtoupper(esc($this->request->getPost('nip'))),
+            'NAMA'         => strtoupper(esc($this->request->getPost('nama'))),
+            'DIVISI'       => strtoupper(esc($this->request->getPost('divisi'))),
+            'BAGIAN'       => strtoupper(esc($this->request->getPost('bagian'))),
+            'NIP_ATASAN'   => strtoupper(esc($this->request->getPost('nip_atasan'))),
+            'NAMA_ATASAN'  => strtoupper(esc($this->request->getPost('nama_atasan'))),
+            'NAMA_JABATAN' => strtoupper(esc($this->request->getPost('nama_jabatan'))),
+        ];
 
-        return redirect()->to('/mentor')->with('success', 'Data mentor berhasil diubah!');
+        $this->mentorModel->update($id, $data);
+
+        session()->setFlashdata('success', 'Data mentor berhasil diubah!');
+        return redirect()->to('/mentor');
     }
 
     public function delete($id)
     {
-        $mentorModel = new MentorModel();
-
-        $mentor = $mentorModel->find($id);
+        $mentor = $this->mentorModel->find($id);
         if (!$mentor) {
-            return redirect()->to('/mentor')->with('error', 'Data mentor tidak ditemukan.');
+            session()->setFlashdata('error', 'Data mentor tidak ditemukan.');
+            return redirect()->to('/mentor');
         }
 
-        $mentorModel->delete($id);
+        $this->mentorModel->delete($id);
 
-        return redirect()->to('/mentor')->with('success', 'Data mentor berhasil dihapus!');
+        session()->setFlashdata('success', 'Data mentor berhasil dihapus!');
+        return redirect()->to('/mentor');
     }
 }
