@@ -23,8 +23,8 @@
                     <h2 class="card-title" style="text-align: center;">DATA PESERTA PKL/RISET (MAHASISWA & SISWA)</h2>
                     <br>
                     <div class="d-flex justify-content-between mb-5">
-                        <a href="<?= base_url('/users/create') ?>" class="btn btn-info btn-sm">
-                            <i class="fa-solid fa-plus"></i> Add Data
+                        <a href="<?= base_url('/mentor/create') ?>" class="btn btn-gradient-blue btn-sm shadow-sm">
+                            <i class="fa-solid fa-user-plus"></i> Add Data
                         </a>
                     </div>
                     <div class="table-responsive">

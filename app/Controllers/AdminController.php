@@ -6,68 +6,94 @@ use App\Models\AdminModel;
 
 class AdminController extends BaseController
 {
+    protected $adminModel;
+    protected $session;
+
+    public function __construct()
+    {
+        $this->adminModel = new AdminModel();
+        $this->session = session();
+    }
+
     public function index()
     {
-        return view('admin/dashboard');
+        $data = [
+            'title' => 'Dashboard',
+            'currentPage' => 'dashboard'
+        ];
+        return view('admin/dashboard', $data);
     }
 
     public function register()
     {
-        return view('admin/register');
+        $data = [
+            'title' => 'Register',
+            'currentPage' => 'register'
+        ];
+        return view('admin/register', $data);
     }
 
     public function processRegister()
     {
-        $adminModel = new AdminModel();
+        // Validasi input
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'username' => 'required|min_length[3]|is_unique[admin.username]',
+            'password' => 'required|min_length[6]'
+        ]);
 
-        $data = [
+        if (!$validation->withRequest($this->request)->run()) {
+            return redirect()->to('/register')->withInput()->with('errors', $validation->getErrors());
+        }
+
+        // Simpan data ke database
+        $this->adminModel->insert([
             'username' => $this->request->getPost('username'),
-            // 'email' => $this->request->getPost('email'),
             'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT)
-        ];
-
-        $adminModel->insert($data);
+        ]);
 
         return redirect()->to('/login')->with('success', 'Registrasi berhasil, silakan login.');
     }
 
     public function login()
     {
-        return view('admin/login');
+        $data = [
+            'title' => 'Login',
+            'currentPage' => 'login'
+        ];
+        return view('admin/login', $data);
     }
 
     public function processLogin()
     {
-        $session = session();
-        $adminModel = new AdminModel();
         $username = $this->request->getPost('username');
         $password = $this->request->getPost('password');
 
-        $admin = $adminModel->where('username', $username)->first();
+        // Validasi input
+        if (!$username || !$password) {
+            return redirect()->to('/login')->with('error', 'Username dan password wajib diisi.');
+        }
 
-        if ($admin) {
-            if (password_verify($password, $admin['password'])) { // Cek hash password
-                $session->set([
-                    'admin_id' => $admin['id_admin'],
-                    'admin_username' => $admin['username'],
-                    'logged_in' => true
-                ]);
-                return redirect()->to('/admin/dashboard');
-            } else {
-                $session->setFlashdata('error', 'Password salah');
-                return redirect()->to('/login');
-            }
+        // Cek di database
+        $admin = $this->adminModel->where('username', $username)->first();
+
+        if ($admin && password_verify($password, $admin['password'])) {
+            // Set session login
+            $this->session->set([
+                'admin_id' => $admin['id_admin'],
+                'admin_username' => $admin['username'],
+                'logged_in' => true
+            ]);
+
+            return redirect()->to('/admin/dashboard')->with('success', 'Login berhasil.');
         } else {
-            $session->setFlashdata('error', 'Username tidak ditemukan');
-            return redirect()->to('/login');
+            return redirect()->to('/login')->with('error', 'Username atau password salah.');
         }
     }
 
-
     public function logout()
     {
-        session()->destroy();
-        
-        return redirect()->to('/');
+        $this->session->destroy();
+        return redirect()->to('/login')->with('success', 'Anda telah logout.');
     }
 }
