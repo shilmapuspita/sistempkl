@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use CodeIgniter\Controller;
-use App\Models\JurusanModel; 
+use App\Models\JurusanModel;
 
 class MajorController extends Controller
 {
@@ -12,12 +12,14 @@ class MajorController extends Controller
     {
         $model = new JurusanModel();
         $data = [
-            'jurusan' => $model->getPaginateData(10), // Ambil semua data dari tabel jurusan
-            'pager' => $model->pager 
+            'jurusan' => $model->getPaginateData(10),
+            'pager' => $model->pager,
+            'currentPage' => 'major'
         ];
 
-        return view('admin/major/major', $data); // Kirim data ke view
+        return view('admin/major/major', $data);
     }
+
 
     public function create()
     {

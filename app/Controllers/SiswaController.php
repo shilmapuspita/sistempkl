@@ -20,7 +20,8 @@ use App\Models\SiswaModel;
     {
         $data = [
             'datasiswa' => $this->siswaModel->where('JENIS_PKL', 'PKL')->paginate(10),
-            'pager' => $this->siswaModel->pager
+            'pager' => $this->siswaModel->pager,
+            'currentPage' => 'siswaPKL'
         ];
 
         return view('admin/siswa/PKL/siswaPKL', $data);
@@ -106,7 +107,8 @@ use App\Models\SiswaModel;
     {
         $data = [
             'datasiswa' => $this->siswaModel->where('JENIS_PKL', 'RISET')->paginate(10),
-            'pager' => $this->siswaModel->pager
+            'pager' => $this->siswaModel->pager,
+            'currentPage' => 'siswaRiset'
         ];
 
         return view('admin/siswa/Riset/siswaRiset', $data);

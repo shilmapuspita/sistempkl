@@ -11,11 +11,12 @@ class InternshipController extends Controller
     {
         $model = new InternshipModel();
         $data = [
-            'datapmmb' => $model->getPaginateData(10), // Ambil semua data dari tabel datapmmb
-            'pager' => $model->pager
+            'datapmmb' => $model->getPaginateData(10), 
+            'pager' => $model->pager,
+            'currentPage' => 'internship'
         ];
 
-        return view('admin/siswa/intern/intern', $data); // Kirim data ke view
+        return view('admin/siswa/intern/intern', $data); 
     }
 
     public function create()
