@@ -39,7 +39,7 @@
                         <!-- Pencarian & Add Button -->
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <input type="text" id="searchInput" class="form-control w-25 shadow-sm" placeholder="🔍 Cari siswa...">
-                            <a href="<?= base_url('riset/create') ?>" class="btn btn-gradient-primary btn-sm shadow-sm">
+                            <a href="<?= base_url('/mentor/create') ?>" class="btn btn-gradient-blue btn-sm shadow-sm">
                                 <i class="fa-solid fa-user-plus"></i> Add Data
                             </a>
                         </div>
@@ -49,7 +49,7 @@
                                 <thead class="bg-primary text-white">
                                     <tr>
                                         <th>No</th>
-                                        <th>ID PKLT</th>
+                                        <th>ID PKL</th>
                                         <th>NAMA SISWA</th>
                                         <th>TANGGAL</th>
                                         <th>JENIS PKL</th>

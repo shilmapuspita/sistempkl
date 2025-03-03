@@ -18,7 +18,8 @@ class MentorController extends BaseController
     {
         $data = [
             'pembimbing' => $this->mentorModel->getPaginateData(10),
-            'pager' => $this->mentorModel->pager
+            'pager' => $this->mentorModel->pager,
+            'currentPage' => 'mentor'
         ];
 
         return view('admin/mentor/mentor', $data);
@@ -26,13 +27,13 @@ class MentorController extends BaseController
 
     public function create()
     {
-        return view('admin/mentor/create');
+        return view('admin/mentor/create', ['currentPage' => 'mentor']);
     }
 
     public function store()
     {
         $validation = \Config\Services::validation();
-        $validation->setRules([
+        $rules = [
             'nip'          => 'required|regex_match[/^[A-Za-z0-9.,?+\-\s]+$/]',
             'nama'         => 'required',
             'divisi'       => 'required',
@@ -40,9 +41,9 @@ class MentorController extends BaseController
             'nip_atasan'   => 'required|regex_match[/^[A-Za-z0-9.,?+\-\s]+$/]',
             'nama_atasan'  => 'required',
             'nama_jabatan' => 'required',
-        ]);
+        ];
 
-        if (!$this->validate($validation->getRules())) {
+        if (!$this->validate($rules)) {
             return redirect()->back()->withInput()->with('errors', $validation->getErrors());
         }
 
@@ -58,7 +59,8 @@ class MentorController extends BaseController
 
         $this->mentorModel->insert($data);
 
-        return redirect()->to('/mentor')->with('success', 'Data mentor berhasil ditambahkan!');
+        session()->setFlashdata('success', 'Data mentor berhasil ditambahkan!');
+        return redirect()->to('/mentor');
     }
 
     public function edit($id)
@@ -66,16 +68,20 @@ class MentorController extends BaseController
         $mentor = $this->mentorModel->find($id);
 
         if (!$mentor) {
-            return redirect()->to('/mentor')->with('errors', 'Data mentor tidak ditemukan.');
+            session()->setFlashdata('error', 'Data mentor tidak ditemukan.');
+            return redirect()->to('/mentor');
         }
 
-        return view('admin/mentor/edit', ['mentor' => $mentor]);
+        return view('admin/mentor/edit', [
+            'mentor' => $mentor,
+            'currentPage' => 'mentor'
+        ]);
     }
 
     public function update($id)
     {
         $validation = \Config\Services::validation();
-        $validation->setRules([
+        $rules = [
             'nip'          => 'required|regex_match[/^[A-Za-z0-9.,?+\-\s]+$/]',
             'nama'         => 'required',
             'divisi'       => 'required',
@@ -83,9 +89,9 @@ class MentorController extends BaseController
             'nip_atasan'   => 'required|regex_match[/^[A-Za-z0-9.,?+\-\s]+$/]',
             'nama_atasan'  => 'required',
             'nama_jabatan' => 'required',
-        ]);
+        ];
 
-        if (!$this->validate($validation->getRules())) {
+        if (!$this->validate($rules)) {
             return redirect()->back()->withInput()->with('errors', $validation->getErrors());
         }
 
@@ -101,18 +107,21 @@ class MentorController extends BaseController
 
         $this->mentorModel->update($id, $data);
 
-        return redirect()->to('/mentor')->with('success', 'Data mentor berhasil diubah!');
+        session()->setFlashdata('success', 'Data mentor berhasil diubah!');
+        return redirect()->to('/mentor');
     }
 
     public function delete($id)
     {
         $mentor = $this->mentorModel->find($id);
         if (!$mentor) {
-            return redirect()->to('/mentor')->with('error', 'Data mentor tidak ditemukan.');
+            session()->setFlashdata('error', 'Data mentor tidak ditemukan.');
+            return redirect()->to('/mentor');
         }
 
         $this->mentorModel->delete($id);
 
-        return redirect()->to('/mentor')->with('success', 'Data mentor berhasil dihapus!');
+        session()->setFlashdata('success', 'Data mentor berhasil dihapus!');
+        return redirect()->to('/mentor');
     }
 }

@@ -10,9 +10,9 @@
           <i class="fa-solid fa-chalkboard-teacher"></i>
         </span> All Data Mahasiswa Internship
       </h3>
-      </div>
+    </div>
 
-       <!-- Notifikasi Flashdata -->
+    <!-- Notifikasi Flashdata -->
     <?php if (session()->getFlashdata('success')) : ?>
       <div class="alert alert-success alert-dismissible fade show" role="alert">
         <i class="fa-solid fa-circle-check me-2"></i>
@@ -38,7 +38,7 @@
 
             <div class="d-flex justify-content-between align-items-center mb-3">
               <input type="text" id="searchInput" class="form-control w-25 shadow-sm" placeholder="🔍 Cari mentor...">
-              <a href="<?= base_url('/intern/create') ?>" class="btn btn-gradient-primary btn-sm shadow-sm">
+              <a href="<?= base_url('/mentor/create') ?>" class="btn btn-gradient-blue btn-sm shadow-sm">
                 <i class="fa-solid fa-user-plus"></i> Add Data
               </a>
             </div>
