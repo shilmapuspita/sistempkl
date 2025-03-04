@@ -52,7 +52,7 @@
                                 <?php foreach ($datasiswa as $row) : ?>
                                     <tr>
                                         <td><?= $no++; ?></td>
-                                        <td><?= esc($row['ID_PKL']); ?></td>
+                                        <td><?= esc($row['ID']); ?></td>
                                         <td><?= esc($row['NM_SISWA']); ?></td>
                                         <td><?= esc($row['TGL_DAFTAR']); ?></td>
                                         <td><?= esc($row['JENIS_PKL']); ?></td>

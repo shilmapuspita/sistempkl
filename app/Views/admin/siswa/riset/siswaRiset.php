@@ -51,14 +51,15 @@
                                         <th>No</th>
                                         <th>ID PKL</th>
                                         <th>NAMA SISWA</th>
-                                        <th>TANGGAL</th>
+                                        <th>TANGGAL DAFTAR</th>
                                         <th>JENIS PKL</th>
                                         <th>LEMBAGA</th>
                                         <th>JURUSAN</th>
                                         <th>DIVISI</th>
                                         <th>BAGIAN</th>
-                                        <th>TANGGAL AWAL</th>
+                                        <th>TANGGAL MULAI</th>
                                         <th>TANGGAL AKHIR</th>
+                                        <th>STATUS</th>
                                         <th>NAMA PEMBIMBING</th>
                                         <th>ACTION</th>
                                     </tr>
@@ -68,22 +69,23 @@
                                     <?php foreach ($datasiswa as $siswa) : ?>
                                         <tr>
                                             <td><?= $no++; ?></td>
-                                            <td><?= esc($siswa['ID_PKL']) ?></td>
+                                            <td><?= esc($siswa['ID']) ?></td>
                                             <td><?= esc($siswa['NM_SISWA']) ?></td>
-                                            <td><?= esc($siswa['TANGGAL']) ?></td>
+                                            <td><?= esc($siswa['TGL_DAFTAR']) ?></td>
                                             <td><?= esc($siswa['JENIS_PKL']) ?></td>
                                             <td><?= esc($siswa['LEMBAGA']) ?></td>
                                             <td><?= esc($siswa['JURUSAN']) ?></td>
                                             <td><?= esc($siswa['DIVISI']) ?></td>
                                             <td><?= esc($siswa['BAGIAN']) ?></td>
-                                            <td><?= esc($siswa['TGL_AWAL']) ?></td>
+                                            <td><?= esc($siswa['TGL_MULAI']) ?></td>
                                             <td><?= esc($siswa['TGL_AKHIR']) ?></td>
+                                            <td><?= esc($siswa['STATUS']) ?></td>
                                             <td><?= esc($siswa['NAMA_PEMB']) ?></td>
                                             <td class="text-center">
-                                                <a href="<?= base_url('siswa/riset/edit/' . $siswa['ID_PKL']) ?>" class="text-warning me-2 text-decoration-none" data-bs-toggle="tooltip" title="Edit">
+                                                <a href="<?= base_url('siswa/riset/edit/' . $siswa['ID']) ?>" class="text-warning me-2 text-decoration-none" data-bs-toggle="tooltip" title="Edit">
                                                     <i class="bi bi-pencil-square fs-5 align-middle"></i>
                                                 </a>
-                                                <a href="<?= base_url('siswa/riset/delete/' . $siswa['ID_PKL']) ?>" class="text-danger text-decoration-none" data-bs-toggle="tooltip" title="Delete" onclick="return confirm('Yakin ingin menghapus data ini?')">
+                                                <a href="<?= base_url('siswa/riset/delete/' . $siswa['ID']) ?>" class="text-danger text-decoration-none" data-bs-toggle="tooltip" title="Delete" onclick="return confirm('Yakin ingin menghapus data ini?')">
                                                     <i class="bi bi-trash3-fill fs-5 align-middle"></i>
                                                 </a>
                                             </td>

@@ -58,6 +58,7 @@
                     <th>Bagian</th>
                     <th>Tanggal Awal</th>
                     <th>Tanggal Akhir</th>
+                    <th>Status</th>
                     <th>Nama Pembimbing</th>
                     <th>Action</th>
                   </tr>
@@ -67,23 +68,24 @@
                   <?php foreach ($datapmmb as $row) : ?>
                     <tr>
                       <td><?= $no++; ?></td>
-                      <td><?= esc($row['ID_PKL']); ?></td>
-                      <td><?= esc($row['NO']); ?></td>
+                      <td><?= esc($row['ID']); ?></td>
+                      <td><?= esc($row['NO_SURAT']); ?></td>
                       <td><?= esc($row['BATCH']); ?></td>
-                      <td><?= esc($row['TANGGAL']); ?></td>
+                      <td><?= esc($row['TGL_DAFTAR']); ?></td>
                       <td><?= esc($row['NM_SISWA']); ?></td>
                       <td><?= esc($row['LEMBAGA']); ?></td>
                       <td><?= esc($row['JURUSAN']); ?></td>
                       <td><?= esc($row['DIVISI']); ?></td>
                       <td><?= esc($row['BAGIAN']); ?></td>
-                      <td><?= esc($row['TGL_AWAL']); ?></td>
+                      <td><?= esc($row['TGL_MULAI']); ?></td>
                       <td><?= esc($row['TGL_AKHIR']); ?></td>
+                      <td><?= esc($row['STATUS']); ?></td>
                       <td><?= esc($row['NAMA_PEMB']); ?></td>
                       <td class="text-center">
-                        <a href="<?= base_url('/intern/edit/' . $row['ID_PKL']) ?>" class="text-warning me-2 text-decoration-none" data-bs-toggle="tooltip" title="Edit">
+                        <a href="<?= base_url('/intern/edit/' . $row['ID']) ?>" class="text-warning me-2 text-decoration-none" data-bs-toggle="tooltip" title="Edit">
                           <i class="bi bi-pencil-square fs-5 align-middle"></i>
                         </a>
-                        <a href="<?= base_url('/intern/delete/' . $row['ID_PKL']) ?>" class="text-danger text-decoration-none" data-bs-toggle="tooltip" title="Delete" onclick="return confirm('Yakin ingin menghapus data ini?')">
+                        <a href="<?= base_url('/intern/delete/' . $row['ID']) ?>" class="text-danger text-decoration-none" data-bs-toggle="tooltip" title="Delete" onclick="return confirm('Yakin ingin menghapus data ini?')">
                           <i class="bi bi-trash3-fill fs-5 align-middle"></i>
                         </a>
                       </td>
