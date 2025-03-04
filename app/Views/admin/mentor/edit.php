@@ -15,6 +15,17 @@
             <div class="card-body">
                 <h4 class="card-title text-center text-primary fw-bold">FORMULIR EDIT MENTOR</h4>
                 <br>
+
+                <?php if (session()->getFlashdata('errors')) : ?>
+                            <div class="alert alert-danger">
+                                <ul>
+                                    <?php foreach (session()->getFlashdata('errors') as $error) : ?>
+                                        <li><?= esc($error) ?></li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
+                        <?php endif; ?>
+                        
                 <form action="<?= base_url('/mentor/update/' . $mentor['ID_PEMBIMBING']) ?>" method="post">
                     <?= csrf_field() ?>
 

@@ -54,9 +54,6 @@ $routes->get('siswa/riset/edit/(:num)', 'SiswaController::editSiswaRiset/$1');
 $routes->post('siswa/riset/update/(:num)', 'SiswaController::updateSiswaRiset/$1');
 $routes->get('siswa/riset/delete/(:num)', 'SiswaController::deleteSiswaRiset/$1');
 
-//routes data intern
-$routes->get('/intern', 'InternshipController::showInternship');
-
 // routes PKL
 $routes->get('siswa/PKL', 'SiswaController::showSiswaPKL');
 $routes->get('siswa/PKL/create', 'SiswaController::createSiswaPKL');
@@ -72,6 +69,10 @@ $routes->post('siswa/riset/store', 'SiswaController::storeSiswaRiset');
 $routes->get('siswa/riset/edit/(:num)', 'SiswaController::editSiswaRiset/$1');
 $routes->post('siswa/riset/update/(:num)', 'SiswaController::updateSiswaRiset/$1');
 $routes->get('siswa/riset/delete/(:num)', 'SiswaController::deleteSiswaRiset/$1');
+
+//routes data intern
+$routes->get('/intern', 'InternshipController::showInternship');
+
 $routes->get('/intern/create', 'InternshipController::create');
 $routes->post('/intern/store', 'InternshipController::store');
 $routes->get('/intern/edit/(:num)', 'InternshipController::edit/$1');

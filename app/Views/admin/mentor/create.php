@@ -15,6 +15,24 @@
             <div class="card-body">
                 <h4 class="card-title text-center text-primary fw-bold">FORMULIR DATA MENTOR</h4>
                 <br>
+
+                
+                <?php if (session()->getFlashdata('success')) : ?>
+                    <div class="alert alert-success">
+                        <?= session()->getFlashdata('success') ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php if (session()->getFlashdata('errors')) : ?>
+                    <div class="alert alert-danger">
+                        <ul>
+                            <?php foreach (session()->getFlashdata('errors') as $error) : ?>
+                                <li><?= esc($error) ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                <?php endif; ?>
+                
                 <form action="<?= base_url('/mentor/store') ?>" method="post">
                     <?= csrf_field() ?>
 
@@ -25,7 +43,7 @@
                                 <input type="text" name="nip" class="form-control shadow-sm" required>
                             </div>
                             <div class="form-group">
-                                <label><i class="fa-solid fa-user"></i> Nama Mentor</label>
+                                <label> Nama Mentor</label>
                                 <input type="text" name="nama" class="form-control shadow-sm text-uppercase" required>
                             </div>
                             <div class="form-group">

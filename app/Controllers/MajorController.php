@@ -23,7 +23,12 @@ class MajorController extends Controller
 
     public function create()
     {
-        return view('admin/major/create');
+        $data = [
+            'title' => 'Tambah Jurusan',
+            'currentPage' => 'major',
+        ];
+
+        return view('admin/major/create', $data);
     }
 
     public function store()
@@ -51,12 +56,15 @@ class MajorController extends Controller
         $jurusanModel = new JurusanModel();
         $jurusan = $jurusanModel->find($id);
 
+
         if (!$jurusan) {
             return redirect()->to('/major')->with('errors', 'Data Jurusan tidak ditemukan.');
         }
 
         $data = [
-            'jurusan' => $jurusan
+            'jurusan' => $jurusan,
+            'title' => 'Tambah Jurusan',
+            'currentPage' => 'major',
         ];
 
         return view('admin/major/edit', $data);
