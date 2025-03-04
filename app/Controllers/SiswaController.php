@@ -42,7 +42,13 @@ use App\Models\SiswaModel;
 
     public function createSiswaPKL()
     {
-        return view('admin/siswa/PKL/create');
+        
+        $data = [
+            'title' => 'Tambah Siswa PKL',
+            'currentPage' => 'siswaPKL',
+        ];
+
+        return view('admin/siswa/PKL/create', $data);
     }
 
     public function storeSiswaPKL()
@@ -129,7 +135,12 @@ use App\Models\SiswaModel;
 
     public function createSiswaRiset()
     {
-        return view('admin/siswa/Riset/create');
+        $data = [
+            'title' => 'Tambah Siswa Riset',
+            'currentPage' => 'siswaRiset',
+        ];
+
+        return view('admin/siswa/Riset/create', $data);
     }
 
     public function storeSiswaRiset()
@@ -151,6 +162,7 @@ use App\Models\SiswaModel;
         $this->siswaModel->insert($data);
         session()->setFlashdata('success', 'Data siswa riset berhasil ditambahkan!');
         return redirect()->to(base_url('siswaRiset'));
+
     }
 
     public function editSiswaRiset($id)

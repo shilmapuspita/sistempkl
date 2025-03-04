@@ -36,7 +36,11 @@
             <h2 class="card-title text-center text-primary fw-bold">MENTOR PKL/RISET PT INTI</h2>
             <br>
 
-            <!-- Pencarian & Add Button -->
+            <form action="<?= base_url('mentor/upload') ?>" method="post" enctype="multipart/form-data">
+              <input type="file" name="excel_file" required>
+              <button type="submit">Upload</button>
+            </form>
+
             <div class="d-flex justify-content-between align-items-center mb-3">
               <input type="text" id="searchInput" class="form-control w-25 shadow-sm" placeholder="🔍 Cari mentor...">
               <a href="<?= base_url('/mentor/create') ?>" class="btn btn-gradient-blue btn-sm shadow-sm">
