@@ -22,14 +22,6 @@
       </div>
     <?php endif; ?>
 
-    <?php if (session()->getFlashdata('error')) : ?>
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <i class="fa-solid fa-triangle-exclamation me-2"></i>
-        <?= session()->getFlashdata('error') ?>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-    <?php endif; ?>
-
     <div class="row">
       <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
@@ -40,7 +32,7 @@
             <!-- Pencarian & Add Button -->
             <div class="d-flex justify-content-between align-items-center mb-3">
               <input type="text" id="searchInput" class="form-control w-25 shadow-sm" placeholder="🔍 Cari mentor...">
-              <a href="<?= base_url('/mentor/create') ?>" class="btn btn-gradient-blue btn-sm shadow-sm">
+              <a href="<?= base_url('/lembaga/create') ?>" class="btn btn-gradient-blue btn-sm shadow-sm">
                 <i class="fa-solid fa-user-plus"></i> Add Data
               </a>
             </div>

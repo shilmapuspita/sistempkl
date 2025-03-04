@@ -6,14 +6,14 @@
         <div class="page-header">
             <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-primary text-white me-2">
-                    <i class="mdi mdi-home"></i>
+                    <i class="fa-solid fa-chalkboard-teacher"></i>
                 </span> Add Data Jurusan
             </h3>
         </div>
-        <div class="row">
-            <div class="col-12 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
+        <div class="card shadow-lg">
+            <div class="card-body">
+                <h4 class="card-title text-center text-primary fw-bold">FORMULIR DATA JURUSAN</h4>
+                <br>
                     <?php if (session()->getFlashdata('success')) : ?>
                             <div class="alert alert-success">
                                 <?= session()->getFlashdata('success') ?>
@@ -33,11 +33,18 @@
                         <form class="forms-sample" action="<?= base_url('/major/store') ?>" method="post">
                         <?= csrf_field() ?>
                             <div class="form-group">
-                                <label for="exampleInputJurusan">Nama Jurusan</label>
-                                <input type="text" class="form-control" id="exampleInputName1" name="nama_jurusan" placeholder="Masukan Nama Jurusan" value="<?= old('nama_jurusan') ?>" required>
+                                <label><i class="fa-solid fa-briefcase"></i> Nama Jurusan</label>
+                                <input type="text" class="form-control" id="exampleInputName1" name="nama_jurusan" value="<?= old('nama_jurusan') ?>" required>
                             </div>
-                            <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
-                            <a href="<?= base_url('/major') ?>" class="btn btn-light">Cancel</a>
+                            
+                            <div class="d-flex justify-content-center mt-4">
+                        <button type="submit" class="btn btn-gradient-primary me-2 shadow-sm">
+                            <i class="fa-solid fa-floppy-disk"></i> Simpan
+                        </button>
+                        <a href="<?= base_url('/major') ?>" class="btn btn-gradient-secondary shadow-sm">
+                            <i class="fa-solid fa-xmark"></i> Batal
+                        </a>
+                    </div>
                         </form>
                     </div>
                 </div>

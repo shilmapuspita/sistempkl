@@ -26,7 +26,12 @@ class LembagaController extends BaseController
 
     public function create()
     {
-        return view('admin/lembaga/create', ['currentPage' => 'lembaga']);
+        $data = [
+            'title' => 'Tambah Lembaga',
+            'currentPage' => 'lembaga',
+        ];
+
+        return view('admin/lembaga/create', $data);
     }
 
     public function store()
