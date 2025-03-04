@@ -20,10 +20,10 @@ $routes->get('/major/delete/(:num)', 'MajorController::delete/$1');
 $routes->get('/mentor', 'MentorController::showMentor');
 $routes->get('/mentor/create', 'MentorController::create');
 $routes->post('/mentor/store', 'MentorController::store');
-
 $routes->get('/mentor/edit/(:num)', 'MentorController::edit/$1');
 $routes->post('/mentor/update/(:num)', 'MentorController::update/$1');
 $routes->get('/mentor/delete/(:num)', 'MentorController::delete/$1');
+$routes->post('/mentor/upload', 'MentorController::upload');
 
 // routes lembaga
 $routes->get('/lembaga', 'LembagaController::showLembaga');
@@ -35,7 +35,6 @@ $routes->get('/lembaga/delete/(:num)', 'LembagaController::delete/$1');
 
 // Routes Data Siswa
 $routes->get('/siswa', 'SiswaController::showSiswa');
-
 
 // routes PKL
 $routes->get('siswa/PKL', 'SiswaController::showSiswaPKL');
@@ -55,11 +54,11 @@ $routes->get('siswa/riset/delete/(:num)', 'SiswaController::deleteSiswaRiset/$1'
 
 //routes data intern
 $routes->get('/intern', 'InternshipController::showInternship');
-$routes->get('/intern/create', 'InternshipController::create');
-$routes->post('/intern/store', 'InternshipController::store');
-$routes->get('/intern/edit/(:num)', 'InternshipController::edit/$1');
-$routes->post('/intern/update/(:num)', 'InternshipController::update/$1');
-$routes->get('/intern/delete/(:num)', 'InternshipController::delete/$1');
+$routes->get('siswa/intern/create', 'InternshipController::create');
+$routes->post('siswa/intern/store', 'InternshipController::store');
+$routes->get('siswa/intern/edit/(:num)', 'InternshipController::edit/$1');
+$routes->post('siswa/intern/update/(:num)', 'InternshipController::update/$1');
+$routes->get('siswa/intern/delete/(:num)', 'InternshipController::delete/$1');
 
 // routes untuk  login
 $routes->group('login', ['filter' => 'redirectIfAuthenticated'], function ($routes) {

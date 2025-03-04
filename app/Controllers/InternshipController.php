@@ -21,7 +21,12 @@ class InternshipController extends Controller
 
     public function create()
     {
-        return view('admin/siswa/intern/create');
+        $data = [
+            'title' => 'Tambah Siswa Intern',
+            'currentPage' => 'intern',
+        ];
+
+        return view('admin/siswa/intern/create', $data);
     }
 
     public function store()
