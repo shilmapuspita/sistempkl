@@ -85,7 +85,7 @@
   <div class="register-container">
     <img src="/assets/img/inti.png" alt="Logo">
     <h4>Welcome! Let's Create an Account</h4>
-    <h6>Start your journey with us</h6>
+    <h6>Start your journey now!</h6>
     <br>
     <?php if (session()->getFlashdata('error')): ?>
       <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
