@@ -20,69 +20,101 @@
   <link rel="stylesheet" href="/admin/assets/css/style.css">
   <!-- End layout styles -->
   <link rel="shortcut icon" href="/admin/assets/images/favicon.png" />
+  <style>
+    body {
+      background: linear-gradient(135deg, #00509E, #1B98E0) !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+
+    .login-container {
+      background: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .login-container img {
+      width: 120px;
+      margin-bottom: 20px;
+    }
+
+    .login-container h4 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .login-container input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .login-container button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(to right, #003366, #f5fbff);
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .login-container button:hover {
+      background: linear-gradient(135deg, #00509E, #007BFF) !important;
+    }
+
+    .login-container button {
+      background: linear-gradient(135deg, #1B98E0, #00509E) !important;
+    }
+
+    .login-container a {
+      display: block;
+      margin-top: 10px;
+      color: #f5fbff, #003366;
+      text-decoration: none;
+    }
+  </style>
 </head>
 
 <body>
-  <div class="container-scroller">
-    <div class="container-fluid page-body-wrapper full-page-wrapper">
-      <div class="content-wrapper d-flex align-items-center auth">
-        <div class="row flex-grow">
-          <div class="col-lg-4 mx-auto">
-            <div class="auth-form-light text-left p-5">
-              <div class="brand-logo">
-                <img src="/assets/img/inti.png">
-              </div>
-              <h4>Hello! let's get started</h4>
-              <h6 class="font-weight-light">Sign in to continue.</h6>
-              <?php if (session()->getFlashdata('error')): ?>
-                <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
-              <?php endif; ?>
-              <?php if (session()->getFlashdata('success')): ?>
-                <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
-              <?php endif; ?>
-
-              <form class="pt-3" action="<?= base_url('/login') ?>" method="post">
-                <div class="form-group">
-                  <input type="username" class="form-control form-control-lg" id="username" name="username" placeholder="Username">
-                </div>
-                <div class="form-group">
-                  <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Password">
-                </div>
-                <div class="mt-3 d-grid gap-2">
-                  <button type="submit" class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn">SIGN IN</button>
-
-                </div>
-                <div class="my-2 d-flex justify-content-between align-items-center">
-                  <div class="form-check">
-                    <label class="form-check-label text-muted">
-                      <input type="checkbox" class="form-check-input"> Keep me signed in </label>
-                  </div>
-                  <a href="#" class="auth-link text-primary">Forgot password?</a>
-                </div>
-                <div class="text-center mt-4 font-weight-light"> Don't have an account? <a href="<?= base_url('admin/register') ?>" class="text-primary">Create</a>
-                </div>
-              </form>
-            </div>
-          </div>
+  <div class="login-container">
+    <img src="/assets/img/inti.png" alt="Logo">
+    <h4>Haloo! Let's Start Today with Bismillaah</h4>
+    <h6>Sign In for Start the Dayy!</h6>
+    <!-- <p>Sign in to continue.</p> -->
+    <?php if (session()->getFlashdata('error')): ?>
+      <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
+    <?php endif; ?>
+    <?php if (session()->getFlashdata('success')): ?>
+      <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
+    <?php endif; ?>
+    <br>
+    <form action="<?= base_url('/login') ?>" method="post">
+      <input type="text" name="username" placeholder="Username" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <button type="submit">SIGN IN</button>
+    </form>
+    <!-- <a href="#">Forgot password?</a> -->
+    <br>
+    <div class="text-center mt-2 font-weight-light">
+      <span>Belum punya akun?
+          <a href="<?= base_url('admin/register') ?>" class="text-primary" style="text-decoration: underline; font-weight: bold;">Register</a>
+        </span>
         </div>
-      </div>
-      <!-- content-wrapper ends -->
     </div>
-    <!-- page-body-wrapper ends -->
   </div>
-  <!-- container-scroller -->
-  <!-- plugins:js -->
-  <script src="/admin/assets/vendors/js/vendor.bundle.base.js"></script>
-  <!-- endinject -->
-  <!-- Plugin js for this page -->
-  <!-- End plugin js for this page -->
-  <!-- inject:js -->
-  <script src="/admin/assets/js/off-canvas.js"></script>
-  <script src="/admin/assets/js/misc.js"></script>
-  <script src="/admin/assets/js/settings.js"></script>
-  <script src="/admin/assets/js/todolist.js"></script>
-  <script src="/admin/assets/js/jquery.cookie.js"></script>
-  <!-- endinject -->
 </body>
+
 
 </html>

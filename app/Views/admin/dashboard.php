@@ -55,7 +55,6 @@
                     <h4 class="font-weight-normal mb-3">Collaborating Institutions <i class="mdi mdi-bookmark-outline mdi-24px float-end"></i>
                     </h4>
                     <h2 class="mb-5">617  Institution</h2>
-                    <!-- <h6 class="card-text">Decreased by 10%</h6> -->
                   </div>
                 </div>
               </div>
