@@ -36,17 +36,27 @@
             <h2 class="card-title text-center text-primary fw-bold">MENTOR PKL/RISET PT INTI</h2>
             <br>
 
-            <form action="<?= base_url('mentor/upload') ?>" method="post" enctype="multipart/form-data">
-              <input type="file" name="excel_file" required>
-              <button type="submit">Upload</button>
+            <form action="<?= base_url('/mentor/upload') ?>" method="post" enctype="multipart/form-data" class="p-3 bg-white shadow rounded">
+              <div class="mb-3">
+                <label for="file_excel" class="form-label fw-bold text-primary">Upload File Excel</label>
+                <input class="form-control border-primary" type="file" name="excel_file" id="excel_file" required>
+              </div>
+              <button type="submit" class="btn btn-gradient-blue px-4 py-2 d-flex align-items-center gap-2 shadow-sm">
+                <i class="fa-solid fa-upload"></i> Upload
+              </button>
             </form>
 
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <input type="text" id="searchInput" class="form-control w-25 shadow-sm" placeholder="🔍 Cari mentor...">
-              <a href="<?= base_url('/mentor/create') ?>" class="btn btn-gradient-blue btn-sm shadow-sm">
+            <div class="d-flex justify-content-between align-items-center mb-3 mt-4">
+              <div class="position-relative w-50">
+                <input type="text" id="searchInput" class="form-control shadow-sm ps-5 rounded-pill" placeholder="Cari mentor...">
+                <i class="fa-solid fa-magnifying-glass position-absolute text-primary"
+                  style="left: 15px; top: 50%; transform: translateY(-50%); font-size: 16px;"></i>
+              </div>
+              <a href="<?= base_url('/mentor/create') ?>" class="btn btn-gradient-blue btn-sm shadow-sm d-flex align-items-center gap-2">
                 <i class="fa-solid fa-user-plus"></i> Add Data
               </a>
             </div>
+
             <div class="table-responsive">
               <table class="table table-hover table-striped table-bordered text-center shadow-sm" id="mentorTable">
                 <thead class="bg-primary text-white">
