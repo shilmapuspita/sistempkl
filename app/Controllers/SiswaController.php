@@ -14,18 +14,6 @@ use App\Models\SiswaModel;
         $this->siswaModel = new SiswaModel();
     }
 
-    // =================== ALL Siswa/Mahasiswa =================== //
-    public function showSiswa()
-{
-    $model = new SiswaModel();
-    $data = [
-        'datasiswa' => $model->getPaginateData(10), // menampilkan 10 data per halaman
-        'pager' => $model->pager, // menggunakan pagination bawaan CI
-        'currentPage' => 'siswa'
-    ];
-
-    return view('admin/siswa/siswa', $data); // Kirim data ke view
-}
 
     // =================== Siswa PKL =================== //
 
