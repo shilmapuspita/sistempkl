@@ -69,7 +69,7 @@ use App\Models\SiswaModel;
 
         $this->siswaModel->insert($data);
         session()->setFlashdata('success', 'Data siswa PKL berhasil ditambahkan!');
-        return redirect()->to(base_url('siswaPKL'));
+        return redirect()->to(base_url('siswa/PKL'));
     }
 
     public function editSiswaPKL($id)
@@ -106,7 +106,7 @@ use App\Models\SiswaModel;
 
         $this->siswaModel->update($id, $data);
         session()->setFlashdata('success', 'Data siswa PKL berhasil diperbarui!');
-        return redirect()->to(base_url('siswaPKL'));
+        return redirect()->to(base_url('siswa/PKL'));
     }
 
     public function deleteSiswaPKL($id)
@@ -117,7 +117,7 @@ use App\Models\SiswaModel;
 
         $this->siswaModel->delete($id);
         session()->setFlashdata('success', 'Data siswa PKL berhasil dihapus!');
-        return redirect()->to(base_url('siswaPKL'));
+        return redirect()->to(base_url('siswa/PKL'));
     }
 
     // =================== Siswa Riset =================== //
@@ -161,7 +161,7 @@ use App\Models\SiswaModel;
 
         $this->siswaModel->insert($data);
         session()->setFlashdata('success', 'Data siswa riset berhasil ditambahkan!');
-        return redirect()->to(base_url('siswaRiset'));
+        return redirect()->to(base_url('siswa/riset'));
 
     }
 
@@ -199,7 +199,7 @@ use App\Models\SiswaModel;
 
         $this->siswaModel->update($id, $data);
         session()->setFlashdata('success', 'Data siswa riset berhasil diperbarui!');
-        return redirect()->to(base_url('siswaRiset'));
+        return redirect()->to(base_url('siswa/riset'));
     }
 
     public function deleteSiswaRiset($id)
@@ -210,6 +210,6 @@ use App\Models\SiswaModel;
 
         $this->siswaModel->delete($id);
         session()->setFlashdata('success', 'Data siswa riset berhasil dihapus!');
-        return redirect()->to(base_url('siswaRiset'));
+        return redirect()->to(base_url('siswa/riset'));
     }
 }

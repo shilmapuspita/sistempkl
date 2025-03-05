@@ -33,9 +33,6 @@ $routes->get('/lembaga/edit/(:num)', 'LembagaController::edit/$1');
 $routes->post('/lembaga/update/(:num)', 'LembagaController::update/$1');
 $routes->get('/lembaga/delete/(:num)', 'LembagaController::delete/$1');
 
-// Routes Data Siswa
-$routes->get('/siswa', 'SiswaController::showSiswa');
-
 // routes PKL
 $routes->get('siswa/PKL', 'SiswaController::showSiswaPKL');
 $routes->get('siswa/PKL/create', 'SiswaController::createSiswaPKL');
