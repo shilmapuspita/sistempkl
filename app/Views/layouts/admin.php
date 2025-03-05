@@ -125,11 +125,6 @@ if (!session()->has('logged_in')) {
           <div class="collapse <?= (in_array($currentPage, ['siswa', 'siswaPKL', 'siswaRiset', 'intern'])) ? 'show' : '' ?>" id="ui-basic">
             <ul class="nav flex-column sub-menu">
               <li class="nav-item">
-                <a class="nav-link <?= ($currentPage == 'siswa') ? 'active' : '' ?>" href="<?= base_url('/siswa'); ?>">
-                  All Data Siswa
-                </a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link <?= ($currentPage == 'siswaPKL') ? 'active' : '' ?>" href="<?= base_url('siswa/PKL'); ?>">
                   Data Siswa PKL
                 </a>
