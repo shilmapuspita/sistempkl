@@ -21,10 +21,6 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label><i class="fa-solid fa-id-badge"></i> ID PKL</label>
-                                <input type="text" name="ID_PKL" class="form-control shadow-sm" required>
-                            </div>
-                            <div class="form-group">
                                 <label><i class="fa-solid fa-user"></i> Nama Siswa</label>
                                 <input type="text" name="NM_SISWA" class="form-control shadow-sm text-uppercase" required>
                             </div>
@@ -40,13 +36,13 @@
                                 <label><i class="fa-solid fa-building"></i> Lembaga</label>
                                 <input type="text" name="LEMBAGA" class="form-control shadow-sm text-uppercase" required>
                             </div>
-                        </div>
-
-                        <div class="col-md-6">
                             <div class="form-group">
                                 <label><i class="fa-solid fa-book"></i> Jurusan</label>
                                 <input type="text" name="JURUSAN" class="form-control shadow-sm text-uppercase" required>
                             </div>
+                        </div>
+
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label>
                                     <i class="fa-solid fa-layer-group me-2"></i> Divisi
@@ -119,7 +115,7 @@
                         <button type="submit" class="btn btn-gradient-primary me-2 shadow-sm">
                             <i class="fa-solid fa-floppy-disk"></i> Simpan
                         </button>
-                        <a href="<?= base_url('siswa/riset/siswaRiset') ?>" class="btn btn-gradient-secondary shadow-sm">
+                        <a href="<?= base_url('siswa/riset') ?>" class="btn btn-gradient-secondary shadow-sm">
                             <i class="fa-solid fa-xmark"></i> Batal
                         </a>
                     </div>

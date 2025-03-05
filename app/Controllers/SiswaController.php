@@ -118,7 +118,7 @@ use App\Models\SiswaModel;
             'currentPage' => 'siswaRiset'
         ];
 
-        return view('admin/siswa/Riset/siswaRiset', $data);
+        return view('admin/siswa/riset/siswaRiset', $data);
     }
 
     public function createSiswaRiset()

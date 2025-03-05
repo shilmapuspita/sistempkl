@@ -90,8 +90,8 @@
 <body>
   <div class="login-container">
     <img src="/assets/img/inti.png" alt="Logo">
-    <h4>Haloo! Let's Start Today with Bismillaah</h4>
-    <h6>Sign In for Start the Dayy!</h6>
+    <h4>Haloo! Let's Start Today with Bismillah</h4>
+    <h6>⋆˚ Sign In for Start the Dayyy! ♡</h6>
     <!-- <p>Sign in to continue.</p> -->
     <?php if (session()->getFlashdata('error')): ?>
       <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
