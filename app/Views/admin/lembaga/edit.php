@@ -53,7 +53,7 @@
                                     </div>
                                     <div class="d-flex justify-content-center mt-4">
                                         <button type="submit" class="btn btn-gradient-blue me-2 shadow-sm">
-                                            <i class="fa-solid fa-floppy-disk"></i> Simpan
+                                            <i class="fa-solid fa-floppy-disk"></i> Simpan Perubahan
                                         </button>
                                         <a href="<?= base_url('/lembaga') ?>" class="btn btn-gradient-secondary shadow-sm">
                                             <i class="fa-solid fa-xmark"></i> Batal
