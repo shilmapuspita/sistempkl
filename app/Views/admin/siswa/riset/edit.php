@@ -21,8 +21,8 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label><i class="fa-solid fa-id-badge"></i> ID PKL</label>
-                                <input type="text" name="ID_PKL" class="form-control shadow-sm" value="<?= $siswa['ID_PKL'] ?>" readonly>
+                                <label><i class="fa-solid fa-book"></i> Jurusan</label>
+                                <input type="text" name="JURUSAN" class="form-control shadow-sm text-uppercase" value="<?= $siswa['JURUSAN'] ?>" required>
                             </div>
                             <div class="form-group">
                                 <label><i class="fa-solid fa-user"></i> Nama Siswa</label>
@@ -43,10 +43,6 @@
                         </div>
 
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label><i class="fa-solid fa-book"></i> Jurusan</label>
-                                <input type="text" name="JURUSAN" class="form-control shadow-sm text-uppercase" value="<?= $siswa['JURUSAN'] ?>" required>
-                            </div>
                             <div class="form-group">
                                 <label><i class="fa-solid fa-users"></i> Divisi</label>
                                 <input type="text" name="DIVISI" class="form-control shadow-sm text-uppercase"
