@@ -100,10 +100,16 @@
       <button type="submit">REGISTER</button>
     </form>
     <br>
-    <div class="text-center mt-4 font-weight-light">
-      <span>Already have an account?</span>
-      <a href="<?= base_url('/login') ?>" class="text-primary" style="text-decoration: underline; font-weight: bold;">Login</a>
-    </div>
+    <div class="text-center mt-4">
+    <span class="d-inline-flex align-items-baseline">
+        Already have an account? 
+        <a href="<?= base_url('/login') ?>" class="text-primary fw-bold ms-1" 
+           style="text-decoration: none; border-bottom: 1px solid currentColor;">
+            Login
+        </a>
+    </span>
+</div>
+
   </div>
 
   </div>

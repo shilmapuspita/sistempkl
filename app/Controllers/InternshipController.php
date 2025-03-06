@@ -79,7 +79,8 @@ class InternshipController extends Controller
         }
 
         $data = [
-            'intern' => $intern
+            'intern' => $intern,
+            'currentPage' => 'intern',
         ];
 
         return view('admin/siswa/intern/edit', $data);
