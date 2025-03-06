@@ -31,13 +31,17 @@
 
             <!-- Pencarian & Add Button -->
             <div class="d-flex justify-content-between align-items-center mb-3">
-              <input type="text" id="searchInput" class="form-control w-25 shadow-sm" placeholder="🔍 Cari mentor...">
+              <div class="position-relative w-50">
+                <input type="text" id="searchInput" class="form-control shadow-sm ps-5 rounded-pill" placeholder="Cari lembaga ...">
+                <i class="fa-solid fa-magnifying-glass position-absolute text-primary"
+                  style="left: 15px; top: 50%; transform: translateY(-50%); font-size: 16px;"></i>
+              </div>
               <a href="<?= base_url('/lembaga/create') ?>" class="btn btn-gradient-blue btn-sm shadow-sm">
                 <i class="fa-solid fa-user-plus"></i> Add Data
               </a>
             </div>
             <div class="table-responsive">
-              <table class="table table-hover table-striped table-bordered text-center shadow-sm" id="mentorTable">
+              <table class="table table-hover table-striped table-bordered text-center shadow-sm" id="lembagaTable">
                 <thead class="bg-primary text-white">
                   <tr>
                     <th>No</th>
@@ -100,4 +104,22 @@
   <!-- partial -->
 </div>
 <!-- main-panel ends -->
+
+<script>
+  document.getElementById("searchInput").addEventListener("keyup", function() {
+    let filter = this.value.toUpperCase();
+    let rows = document.querySelector("#lembagaTable tbody").rows;
+
+    for (let i = 0; i < rows.length; i++) {
+      let txtValue = rows[i].textContent || rows[i].innerText;
+      rows[i].style.display = txtValue.toUpperCase().indexOf(filter) > -1 ? "" : "none";
+    }
+  });
+
+  // Aktifkan tooltip Bootstrap
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl);
+  });
+</script>
 <?= $this->endSection() ?>

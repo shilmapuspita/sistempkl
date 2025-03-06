@@ -70,8 +70,13 @@ use App\Models\SiswaModel;
 
         $siswa['TGL_AWAL'] = date('Y-m-d', strtotime($siswa['TGL_AWAL']));
         $siswa['TGL_AKHIR'] = date('Y-m-d', strtotime($siswa['TGL_AKHIR']));
+
+        $data = [
+            'siswa' => $siswa,
+            'currentPage' => 'siswaPKL'
+        ];
         
-        return view('admin/siswa/PKL/edit', ['siswa' => $siswa]);
+        return view('admin/siswa/PKL/edit', $data);
     }
 
     public function updateSiswaPKL($id)
@@ -164,7 +169,12 @@ use App\Models\SiswaModel;
         $siswa['TGL_AWAL'] = date('Y-m-d', strtotime($siswa['TGL_AWAL']));
         $siswa['TGL_AKHIR'] = date('Y-m-d', strtotime($siswa['TGL_AKHIR']));
 
-        return view('admin/siswa/Riset/edit', ['siswa' => $siswa]);
+        $data = [
+            'siswa' => $siswa,
+            'currentPage' => 'siswaRiset'
+        ];
+
+        return view('admin/siswa/Riset/edit', $data);
     }
 
     public function updateSiswaRiset($id)
