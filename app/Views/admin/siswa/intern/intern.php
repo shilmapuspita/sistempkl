@@ -6,9 +6,9 @@
   <div class="content-wrapper">
     <div class="page-header">
       <h3 class="page-title">
-        <span class="page-title-icon bg-gradient-primary text-white me-2">
+        <span class="btn btn-gradient-blue p-2 shadow-sm" >
           <i class="fa-solid fa-chalkboard-teacher"></i>
-        </span> All Data Mahasiswa Internship
+        </span>  All Data Mahasiswa Internship
       </h3>
     </div>
 
@@ -38,7 +38,7 @@
 
             <div class="d-flex justify-content-between align-items-center mb-3">
               <input type="text" id="searchInput" class="form-control w-25 shadow-sm" placeholder="🔍 Cari mentor...">
-              <a href="<?= base_url('siswa/intern/create') ?>" class="btn btn-gradient-blue btn-sm shadow-sm">
+              <a href="<?= base_url('intern/create') ?>" class="btn btn-gradient-blue btn-sm shadow-sm">
                 <i class="fa-solid fa-user-plus"></i> Add Data
               </a>
             </div>
@@ -82,11 +82,11 @@
                       <td><?= esc($row['STATUS']); ?></td>
                       <td><?= esc($row['NAMA_PEMB']); ?></td>
                       <td class="text-center">
-                        <a href="<?= base_url('/intern/edit/' . $row['ID']) ?>" class="text-warning me-2 text-decoration-none" data-bs-toggle="tooltip" title="Edit">
-                          <i class="bi bi-pencil-square fs-5 align-middle"></i>
+                        <a href="<?= base_url('intern/edit/' . $row['ID']) ?>" class="btn btn-gradient-blue btn-sm shadow-sm" data-bs-toggle="tooltip" title="Edit">
+                          <i class="bi bi-pencil-square fs-6 align-middle"></i>
                         </a>
-                        <a href="<?= base_url('/intern/delete/' . $row['ID']) ?>" class="text-danger text-decoration-none" data-bs-toggle="tooltip" title="Delete" onclick="return confirm('Yakin ingin menghapus data ini?')">
-                          <i class="bi bi-trash3-fill fs-5 align-middle"></i>
+                        <a href="<?= base_url('intern/delete/' . $row['ID']) ?>" class="btn btn-gradient-blue btn-sm shadow-sm" data-bs-toggle="tooltip" title="Delete" onclick="return confirm('Yakin ingin menghapus data ini?')">
+                          <i class="bi bi-trash3-fill fs-6 align-middle"></i>
                         </a>
                       </td>
                     </tr>

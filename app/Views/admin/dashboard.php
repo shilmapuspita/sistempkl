@@ -24,7 +24,7 @@
           <div class="content-wrapper">
             <div class="page-header">
               <h3 class="page-title">
-                <span class="page-title-icon bg-gradient-primary text-white me-2">
+                <span class="btn btn-gradient-blue p-2 shadow-sm">
                   <i class="mdi mdi-home"></i>
                 </span> Dashboard
               </h3>
@@ -37,7 +37,7 @@
                     <h4 class="font-weight-normal mb-3">Mahasiswa/Siswa PKL/Riset <i class="mdi mdi-chart-line mdi-24px float-end"></i>
                     </h4>
                     <h2 class="mb-5">17,179 </h2>
-                    <h6 class="card-text">Based On Data From 2007 To 2004</h6>
+                    <h6 class="card-text">Based On Data From 2007 To 2024</h6>
                   </div>
                 </div>
               </div>
