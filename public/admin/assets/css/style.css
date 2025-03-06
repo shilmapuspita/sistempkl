@@ -25523,8 +25523,14 @@ dl li {
   background-color: #FFFFFF !important;
 }
 
+.sidebar .nav-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
 .sidebar .nav-link.active {
-  color: #4x9b5e7 !important; 
+  color: #4x9b5e7 !important;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 8px; 
 }
 
 .sidebar .nav-item.active > .nav-link {
@@ -25553,6 +25559,9 @@ dl li {
   transition-duration: 0.25s;
   transition-property: background;
   -webkit-transition-property: background;
+  transition: all 0.3s ease-in-out;
+  border-radius: 8px;
+  margin-bottom: 10px;
 }
 .sidebar .nav .nav-item .collapse {
   z-index: 999;
