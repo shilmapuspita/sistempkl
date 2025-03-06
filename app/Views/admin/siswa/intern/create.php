@@ -5,7 +5,7 @@
     <div class="content-wrapper">
         <div class="page-header">
             <h3 class="page-title">
-                <span class="page-title-icon bg-gradient-primary text-white me-2">
+                <span class="btn btn-gradient-blue p-2 shadow-sm">
                     <i class="fa-solid fa-user-graduate"></i>
                 </span> Tambah Data Peserta Internship
             </h3>
@@ -130,7 +130,7 @@
                     </div>
 
                     <div class="d-flex justify-content-center mt-4">
-                        <button type="submit" class="btn btn-gradient-primary me-2 shadow-sm">
+                        <button type="submit" class="btn btn-gradient-blue me-2 shadow-sm">
                             <i class="fa-solid fa-floppy-disk"></i> Simpan
                         </button>
                         <a href="<?= base_url('/intern') ?>" class="btn btn-gradient-secondary shadow-sm">

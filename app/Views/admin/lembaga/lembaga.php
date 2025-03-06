@@ -6,7 +6,7 @@
   <div class="content-wrapper">
     <div class="page-header">
       <h3 class="page-title">
-        <span class="page-title-icon bg-gradient-primary text-white me-2">
+        <span class="btn btn-gradient-blue p-2 shadow-sm">
           <i class="fa-solid fa-chalkboard-teacher"></i>
         </span> All Data Institutions
       </h3>

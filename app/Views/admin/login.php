@@ -107,12 +107,15 @@
     </form>
     <!-- <a href="#">Forgot password?</a> -->
     <br>
-    <div class="text-center mt-2 font-weight-light">
-      <span>Belum punya akun?
-          <a href="<?= base_url('admin/register') ?>" class="text-primary" style="text-decoration: underline; font-weight: bold;">Register</a>
-        </span>
-        </div>
-    </div>
+    <div class="text-center mt-2">
+    <span class="d-inline-flex align-items-baseline">
+        Belum punya akun? 
+        <a href="<?= base_url('admin/register') ?>" class="text-primary fw-bold ms-1" 
+           style="text-decoration: none; border-bottom: 1px solid currentColor;">
+            Register
+        </a>
+    </span>
+</div>
   </div>
 </body>
 
