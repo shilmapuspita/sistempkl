@@ -86,7 +86,7 @@ $routes->post('/admin/register', 'AdminController::processRegister');
 
 // routes untuk edit profil
 $routes->get('admin/edit_profile', 'AdminController::editProfile'); 
-$routes->post('admin/update_profile', 'AdminController::updateProfile');
+$routes->post('admin/update-profil', 'AdminController::updateProfile');
 
 
 

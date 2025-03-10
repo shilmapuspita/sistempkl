@@ -2,34 +2,14 @@
 
 <?= $this->section('content') ?>
 
-<!-- Pesan sukses login -->
+<!-- Flash Message (Pindah ke dekat logo INTI) -->
 <?php if (session()->getFlashdata('success')) : ?>
-  <div class="alert alert-success">
+  <div class="alert alert-success position-absolute p-2 px-3 shadow-sm"
+    style="top: 25px; left: 230px; z-index: 1050; font-size: 14px; font-weight: bold;">
     <?= session()->getFlashdata('success'); ?>
   </div>
 <?php endif; ?>
 
-<div class="row p-0 m-0 proBanner" id="proBanner">
-  <div class="col-md-12 p-0 m-0">
-    <div class="card-body card-body-padding d-flex align-items-center justify-content-between">
-      <div class="ps-lg-3">
-        <div class="d-flex align-items-center justify-content-between">
-          <p class="mb-0 font-weight-medium me-3 buy-now-text">
-            <?php if (session()->getFlashdata('success')) : ?>
-              Congratulations, <?= esc(session()->get('admin_username')) ?>, you are logged in NOW!
-            <?php endif; ?>
-          </p>
-        </div>
-      </div>
-      <div class="d-flex align-items-center justify-content-between">
-        <a href="#"><i class="mdi mdi-home me-3 text-white"></i></a>
-        <button id="bannerClose" class="btn border-0 p-0">
-          <i class="mdi mdi-close text-white mr-0"></i>
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <div class="main-panel">
   <div class="content-wrapper">
@@ -74,14 +54,39 @@
       </div>
     </div>
   </div>
-
-  <!-- Footer -->
+  <div class="container d-flex justify-content-center">
+    <div class="row w-100">
+      <div class="col-lg-6 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body p-0 d-flex justify-content-center">
+            <div id="inline-datepicker" class="datepicker datepicker-custom"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title text-dark text-center">Todo List</h4>
+            <div class="add-items d-flex">
+              <input type="text" class="form-control todo-list-input" placeholder="What do you need to do today?">
+              <button class="add btn btn-gradient-primary font-weight-bold todo-list-add-btn" id="add-task">Add</button>
+            </div>
+            <div class="list-wrapper">
+              <ul class="d-flex flex-column-reverse todo-list todo-list-custom">
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <footer class="footer">
     <div class="d-sm-flex justify-content-center justify-content-sm-between">
-      <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2025 <a href="https://www.instagram.com/deanpramona" target="_blank">Dean Pramona</a>. All rights reserved.</span>
+      <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2025 <a href="https://www.instagram.com/deanpramona?igsh=b2k2bXI2amVub2J5" target="_blank">Dean Pramona</a>. All rights reserved.</span>
       <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
     </div>
   </footer>
+  <!-- partial -->
 </div>
 
 <?= $this->endSection() ?>
