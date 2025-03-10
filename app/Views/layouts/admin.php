@@ -55,9 +55,10 @@ if (!session()->has('logged_in')) {
           <!-- Profil Dropdown -->
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link d-flex align-items-center" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-              <!-- Foto Profil -->
+              <!-- foto profil -->
               <div class="nav-profile-image">
-                <img src="<?= base_url('admin/assets/images/faces/akuu.jpg') ?>" alt="profile"
+                <img src="<?= base_url(session('foto') && session('foto') !== 'default.jpg' ? 'uploads/profile_pictures/' . session('foto') : 'admin/assets/images/default.jpg') ?>"
+                  alt="Foto Profil"
                   style="width: 35px; height: 35px; object-fit: cover; border-radius: 50%;" />
               </div>
               <!-- Nama Profil -->

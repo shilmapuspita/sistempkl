@@ -13,6 +13,7 @@
 
         <div class="card shadow-lg">
             <div class="card-body">
+                <!-- Alert Jika Ada Error -->
                 <?php if (session()->getFlashdata('errors')) : ?>
                     <div class="alert alert-danger">
                         <ul>
@@ -23,39 +24,49 @@
                     </div>
                 <?php endif; ?>
 
+                <!-- Alert Jika Sukses -->
+                <?php if (session()->getFlashdata('success')) : ?>
+                    <div class="alert alert-success">
+                        <?= session()->getFlashdata('success') ?>
+                    </div>
+                <?php endif; ?>
+
                 <h4 class="card-title text-center text-primary fw-bold">FORMULIR EDIT PROFIL</h4>
                 <br>
+
                 <form action="<?= base_url('admin/update-profil') ?>" method="post" enctype="multipart/form-data">
                     <?= csrf_field() ?>
 
                     <div class="row">
                         <div class="col-md-6">
+                            <!-- Username -->
                             <div class="form-group">
                                 <label><i class="fa-solid fa-user-circle"></i> Username</label>
-                                <input type="text" class="form-control shadow-sm" id="username" name="username" 
-                                       value="<?= session('username') ?>" required>
+                                <input type="text" class="form-control shadow-sm" id="username" name="username"
+                                    value="<?= old('username', session('username')) ?>" required>
                             </div>
 
+                            <!-- Email -->
                             <div class="form-group">
                                 <label><i class="fa-solid fa-envelope"></i> Email</label>
-                                <input type="email" class="form-control shadow-sm" id="email" name="email" 
-                                       value="<?= session('email') ?>" required>
+                                <input type="email" class="form-control shadow-sm" id="email" name="email"
+                                    value="<?= old('email', session('email')) ?>" required>
                             </div>
 
+                            <!-- Foto Profil -->
                             <div class="form-group">
                                 <label><i class="fa-solid fa-image"></i> Foto Profil</label>
+                                <div class="mb-2">
+                                    <img src="<?= base_url(session('foto') && session('foto') !== 'default.jpg' ? 'uploads/profile_pictures/' . session('foto') : 'admin/assets/images/default.jpg') ?>"
+                                        alt="Foto Profil" class="rounded-circle shadow-sm"
+                                        style="width: 70px; height: 70px; object-fit: cover;">
+                                </div>
                                 <input type="file" class="form-control shadow-sm" id="foto" name="foto">
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label><i class="fa-solid fa-lock"></i> Password Baru (Opsional)</label>
-                                <input type="password" class="form-control shadow-sm" id="password" name="password">
                             </div>
                         </div>
                     </div>
 
+                    <!-- Tombol Simpan & Batal -->
                     <div class="d-flex justify-content-center mt-4">
                         <button type="submit" class="btn btn-gradient-blue me-2 shadow-sm">
                             <i class="fa-solid fa-save"></i> Simpan Perubahan
