@@ -51,30 +51,34 @@ if (!session()->has('logged_in')) {
         <span class="mdi mdi-menu"></span>
       </button>
       <ul class="navbar-nav navbar-nav-right">
-        <li class="nav-item nav-profile dropdown">
-          <a class="nav-link d-flex align-items-center" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-            <!-- Foto Profil -->
-            <div class="nav-profile-image">
-              <img src="<?= base_url('admin/assets/images/faces/akuu.jpg') ?>" alt="profile"
-                style="width: 35px; height: 35px; object-fit: cover; border-radius: 50%;" />
-            </div>
-            <!-- Nama Profil -->
-            <div class="nav-profile-text ms-2">
-              <p><?= session('username') ?></p>
-            </div>
-            <!-- Ikon Dropdown -->
-            <i class="fa-solid fa-chevron-down text-primary ms-2"></i>
-          </a>
-          <!-- Dropdown Menu -->
-          <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-            <a class="dropdown-item" href="#">
-              <i class="bi bi-pencil me-2 text-success"></i> Edit Profil
+        <ul class="navbar-nav ms-auto">
+          <!-- Profil Dropdown -->
+          <li class="nav-item nav-profile dropdown">
+            <a class="nav-link d-flex align-items-center" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+              <!-- Foto Profil -->
+              <div class="nav-profile-image">
+                <img src="<?= base_url('admin/assets/images/faces/akuu.jpg') ?>" alt="profile"
+                  style="width: 35px; height: 35px; object-fit: cover; border-radius: 50%;" />
+              </div>
+              <!-- Nama Profil -->
+              <div class="nav-profile-text ms-2">
+                <p><?= esc(session('username')) ?></p>
+              </div>
+              <!-- Ikon Dropdown -->
+              <i class="fa-solid fa-chevron-down text-primary ms-2"></i>
             </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="<?= base_url('logout') ?>">
-              <i class="mdi mdi-logout me-2 text-primary"></i> Signout </a>
-          </div>
-        </li>
+            <!-- Dropdown Menu -->
+            <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
+              <a class="dropdown-item" href="<?= base_url('admin/edit_profile') ?>">
+                <i class="bi bi-pencil me-2 text-success"></i> Edit Profile
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="<?= base_url('logout') ?>">
+                <i class="mdi mdi-logout me-2 text-primary"></i> Signout
+              </a>
+            </div>
+          </li>
+        </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center"
           type="button"
           data-bs-toggle="offcanvas"
