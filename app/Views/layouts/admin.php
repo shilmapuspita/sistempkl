@@ -26,8 +26,8 @@ if (!session()->has('logged_in')) {
   <!-- inject:css -->
   <!-- endinject -->
   <!-- Layout styles -->
-  <link rel="stylesheet" href="<?= base_url('admin/assets/css/style.css') ?>">
   <link rel="stylesheet" href="<?= base_url('admin/assets/css/custom.css') ?>">
+  <link rel="stylesheet" href="<?= base_url('admin/assets/css/style.css') ?>">
   <!-- End layout styles -->
   <link rel="shortcut icon" href="<?= base_url('admin/assets/images/favicon.png') ?>" />
 
@@ -39,7 +39,7 @@ if (!session()->has('logged_in')) {
   <!-- partial:partials/_navbar.html -->
   <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
-      <a class="navbar-brand brand-logo" href="index.html">
+      <a class="navbar-brand brand-logo" href="<?= base_url('/') ?>">
         <img src="<?= base_url('admin/assets/images/inti_logo.png') ?>" alt="logo" style="max-width: 100px; height: auto; object-fit: contain;" />
       </a>
     </div>
