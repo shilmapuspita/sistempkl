@@ -13,7 +13,7 @@ class JurusanModel extends Model
      // Menambahkan fungsi untuk pagination
      public function getPaginateData($perPage)
      {
-         return $this->paginate($perPage);
+         return $this->paginate($perPage, 'default');
      }
     
 }
