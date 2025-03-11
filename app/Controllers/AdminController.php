@@ -92,14 +92,15 @@ class AdminController extends BaseController
         }
 
         // Ambil foto profil atau gunakan default
-        $profilePicture = !empty($admin['profile_picture']) ? $admin['profile_picture'] : 'default.jpg';
+        $foto = !empty($admin['foto']) ? $admin['foto'] : 'default.jpg';
 
-        // Set session dengan foto profil
+        // Set session dengan foto profil yang benar
         session()->set([
-            'admin_id'       => $admin['id_admin'],
-            'username'       => $admin['username'],
-            'profile_picture' => $profilePicture, // Simpan foto di session
-            'logged_in'      => true
+            'admin_id' => $admin['id_admin'],
+            'username' => $admin['username'],
+            'email'    => $admin['email'], // Pastikan email disimpan juga
+            'foto'     => $foto,
+            'logged_in' => true
         ]);
 
         // Set flashdata sukses
@@ -116,87 +117,86 @@ class AdminController extends BaseController
     }
 
     public function editProfile()
-{
-    if (!$this->session->get('logged_in')) {
-        return redirect()->to('/login')->with('error', 'Silakan login terlebih dahulu.');
-    }
-
-    $admin = $this->adminModel->find($this->session->get('admin_id'));
-
-    return view('admin/edit_profile', [
-        'title'       => 'Edit Profile',
-        'currentPage' => 'edit_profile',
-        'admin'       => $admin
-    ]);
-}
-
-public function updateProfile()
-{
-    if (!$this->session->get('logged_in')) {
-        return redirect()->to('/login')->with('error', 'Silakan login terlebih dahulu.');
-    }
-
-    $id = $this->session->get('admin_id');
-
-    // Validasi input
-    $validationRules = [
-        'username' => 'required|min_length[3]',
-        'email'    => 'required|valid_email',
-        'foto'     => 'permit_empty|is_image[foto]|max_size[foto,2048]',
-        'password' => 'permit_empty|min_length[6]',
-    ];
-
-    if (!$this->validate($validationRules)) {
-        return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
-    }
-
-    // Ambil data admin
-    $admin = $this->adminModel->find($id);
-    if (!$admin) {
-        return redirect()->back()->with('error', 'Data admin tidak ditemukan.');
-    }
-
-    // Siapkan data yang akan diperbarui
-    $data = [
-        'username' => $this->request->getPost('username'),
-        'email'    => $this->request->getPost('email'),
-    ];
-
-    // Update password jika ada input baru
-    if ($this->request->getPost('password')) {
-        $data['password'] = password_hash($this->request->getPost('password'), PASSWORD_DEFAULT);
-    }
-
-    // Upload Foto Profil Baru
-    $foto = $this->request->getFile('foto');
-    if ($foto && $foto->isValid() && !$foto->hasMoved()) {
-        $uploadPath = 'uploads/profile_pictures/'; // Pastikan folder ini ada di public/
-
-        // Hapus foto lama jika ada dan bukan default.jpg
-        $oldFoto = isset($admin['foto']) ? $admin['foto'] : 'default.jpg';
-        if ($oldFoto !== 'default.jpg' && file_exists(FCPATH . $uploadPath . $oldFoto)) {
-            unlink(FCPATH . $uploadPath . $oldFoto);
+    {
+        if (!$this->session->get('logged_in')) {
+            return redirect()->to('/login')->with('error', 'Silakan login terlebih dahulu.');
         }
 
-        // Simpan foto baru
-        $newName = $foto->getRandomName();
-        $foto->move(FCPATH . $uploadPath, $newName);
-        $data['foto'] = $newName;
-    } else {
-        // Pakai foto lama atau default.jpg
-        $data['foto'] = isset($admin['foto']) && !empty($admin['foto']) ? $admin['foto'] : 'default.jpg';
+        $admin = $this->adminModel->find($this->session->get('admin_id'));
+
+        return view('admin/edit_profile', [
+            'title'       => 'Edit Profile',
+            'currentPage' => 'edit_profile',
+            'admin'       => $admin
+        ]);
     }
 
-    // Update database
-    $this->adminModel->update($id, $data);
+    public function updateProfile()
+    {
+        if (!$this->session->get('logged_in')) {
+            return redirect()->to('/login')->with('error', 'Silakan login terlebih dahulu.');
+        }
 
-    // Perbarui session dengan gambar default jika kosong
-    $this->session->set([
-        'username' => $data['username'],
-        'email'    => $data['email'],
-        'foto'     => isset($data['foto']) && !empty($data['foto']) ? $data['foto'] : 'default.jpg',
-    ]);
+        $id = $this->session->get('admin_id');
 
-    return redirect()->to('admin/edit_profile')->with('success', 'Profil berhasil diperbarui!');
-}
+        // Validasi input
+        $validationRules = [
+            'username' => 'required|min_length[3]',
+            'email'    => 'required|valid_email',
+            'foto'     => 'permit_empty|is_image[foto]|max_size[foto,2048]',
+        ];
+
+        if (!$this->validate($validationRules)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        // Ambil data admin
+        $admin = $this->adminModel->find($id);
+        if (!$admin) {
+            return redirect()->back()->with('error', 'Data admin tidak ditemukan.');
+        }
+
+        // Siapkan data yang akan diperbarui
+        $data = [
+            'username' => $this->request->getPost('username'),
+            'email'    => $this->request->getPost('email'),
+        ];
+
+        // Update password jika ada input baru
+        if ($this->request->getPost('password')) {
+            $data['password'] = password_hash($this->request->getPost('password'), PASSWORD_DEFAULT);
+        }
+
+        // Upload Foto Profil Baru
+        $foto = $this->request->getFile('foto');
+        if ($foto && $foto->isValid() && !$foto->hasMoved()) {
+            $uploadPath = 'uploads/profile_pictures/'; // Pastikan folder ini ada di public/
+
+            // Hapus foto lama jika ada dan bukan default.jpg
+            $oldFoto = isset($admin['foto']) ? $admin['foto'] : 'default.jpg';
+            if ($oldFoto !== 'default.jpg' && file_exists(FCPATH . $uploadPath . $oldFoto)) {
+                unlink(FCPATH . $uploadPath . $oldFoto);
+            }
+
+            // Simpan foto baru
+            $newName = $foto->getRandomName();
+            $foto->move(FCPATH . $uploadPath, $newName);
+            $data['foto'] = $newName;
+        } else {
+            // Pakai foto lama atau default.jpg
+            $data['foto'] = isset($admin['foto']) && !empty($admin['foto']) ? $admin['foto'] : 'default.jpg';
+        }
+
+        // Update database
+        $this->adminModel->update($id, $data);
+
+        // Perbarui session dengan gambar default jika kosong
+        $this->session->set([
+            'username' => $data['username'],
+            'email'    => $data['email'],
+            'foto'     => isset($data['foto']) && !empty($data['foto']) ? $data['foto'] : 'default.jpg',
+        ]);
+
+        return redirect()->to('admin/edit_profile')->with('success', 'Profil berhasil diperbarui!');
+    }
 }
