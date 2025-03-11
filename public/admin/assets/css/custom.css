@@ -1,14 +1,63 @@
-.pagination .page-item.active .page-link {
-    background-color: #007bff !important;
-    border-color: #007bff;
+.pagination-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.pagination {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background: #ffffff; /* Tetap putih */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 5px;
+}
+
+.pagination li {
+    margin: 0 3px;
+}
+
+.pagination li a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #007bff;
+    transition: background 0.3s, color 0.3s;
+    border-radius: 5px;
+}
+
+.pagination li a:hover {
+    background: linear-gradient(135deg, #1B98E0, #00509E);
     color: white;
 }
 
-.pagination .page-item .page-link {
+.pagination .active a {
+    background: linear-gradient(135deg, #1B98E0, #00509E);
+    color: white;
+    font-weight: bold;
+}
+
+/* Style untuk titik-titik (...) */
+.pagination .dots {
+    padding: 10px 15px;
+    color: #999;
+    font-weight: bold;
+}
+
+/* Style untuk tombol Next & Prev */
+.pagination .prev a, 
+.pagination .next a {
+    font-weight: bold;
+    background: #e9ecef;
+    border-radius: 5px;
+    padding: 10px 15px;
     color: #007bff;
 }
 
-.pagination .page-item .page-link:hover {
-    background-color: #0056b3;
+.pagination .prev a:hover, 
+.pagination .next a:hover {
+    background: linear-gradient(135deg, #1B98E0, #00509E);
     color: white;
 }
