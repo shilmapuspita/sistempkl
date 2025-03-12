@@ -98,7 +98,7 @@ class AdminController extends BaseController
         session()->set([
             'admin_id' => $admin['id_admin'],
             'username' => $admin['username'],
-            'email'    => $admin['email'], // Pastikan email disimpan juga
+            'email'    => $admin['email'],
             'foto'     => $foto,
             'logged_in' => true
         ]);
@@ -116,11 +116,26 @@ class AdminController extends BaseController
         return redirect()->to('/login');
     }
 
-    public function editProfile()
+    public function profile()
     {
         if (!$this->session->get('logged_in')) {
             return redirect()->to('/login')->with('error', 'Silakan login terlebih dahulu.');
         }
+
+        $admin = $this->adminModel->find($this->session->get('admin_id'));
+
+        return view('admin/profile', [
+            'title' => 'Profile',
+            'currentPage' => 'profile',
+            'admin' => $admin
+        ]);
+    }
+
+    public function editProfile()
+    {
+        if (!$this->session->get('logged_in')) {
+            return redirect()->to('/login')->with('error', 'Silakan login terlebih dahulu.');
+        }   
 
         $admin = $this->adminModel->find($this->session->get('admin_id'));
 
