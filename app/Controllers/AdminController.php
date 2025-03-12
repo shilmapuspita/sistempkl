@@ -223,8 +223,11 @@ class AdminController extends BaseController
     $this->session->set([
         'username' => $updatedAdmin['username'],
         'email'    => $updatedAdmin['email'],
-        'foto'     => !empty($updatedAdmin['foto']) ? $updatedAdmin['foto'] : 'default.jpg',
+        'foto'     => !empty($admin['foto']) ? base_url('uploads/' . $admin['foto']) : base_url('uploads/default.jpg'),
+        'logged_in' => true
     ]);
+
+    // var_dump(session()->get()); die; // Debugging
 
     return redirect()->to('admin/profile')->with('success', 'Profil berhasil diperbarui!');
 }
