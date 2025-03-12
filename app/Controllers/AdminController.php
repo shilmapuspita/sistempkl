@@ -219,13 +219,16 @@ class AdminController extends BaseController
         // Ambil ulang data setelah update
         $updatedAdmin = $this->adminModel->getAdminById($id);
 
-        // Perbarui session dengan data terbaru
-        $this->session->set([
-            'username' => $updatedAdmin['username'],
-            'email'    => $updatedAdmin['email'],
-            'foto'     => !empty($updatedAdmin['foto']) ? $updatedAdmin['foto'] : 'default.jpg',
-        ]);
+    // Perbarui session dengan data terbaru
+    $this->session->set([
+        'username' => $updatedAdmin['username'],
+        'email'    => $updatedAdmin['email'],
+        'foto'     => !empty($admin['foto']) ? base_url('uploads/' . $admin['foto']) : base_url('uploads/default.jpg'),
+        'logged_in' => true
+    ]);
 
-        return redirect()->to('admin/profile')->with('success', 'Profil berhasil diperbarui!');
-    }
+    // var_dump(session()->get()); die; // Debugging
+
+    return redirect()->to('admin/profile')->with('success', 'Profil berhasil diperbarui!');
+}
 }
