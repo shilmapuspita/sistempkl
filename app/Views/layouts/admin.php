@@ -70,8 +70,8 @@ if (!session()->has('logged_in')) {
             </a>
             <!-- Dropdown Menu -->
             <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-              <a class="dropdown-item" href="<?= base_url('admin/edit_profile') ?>">
-                <i class="bi bi-pencil me-2 text-success"></i> Edit Profile
+              <a class="dropdown-item" href="<?= base_url('admin/profile') ?>">
+                <i class="bi bi-pencil me-2 text-success"></i> Profile
               </a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="<?= base_url('logout') ?>">
