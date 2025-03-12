@@ -98,7 +98,6 @@ class AdminController extends BaseController
         session()->set([
             'admin_id' => $admin['id_admin'],
             'username' => $admin['username'],
-            'email'    => $admin['email'], // Pastikan email disimpan juga
             'foto'     => $foto,
             'logged_in' => true
         ]);
