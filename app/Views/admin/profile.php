@@ -28,10 +28,10 @@
                     <div class="col-md-8">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
-                                <i class="fa-solid fa-user-circle"></i> <strong>Username:</strong> <?= esc(session('username')) ?>
+                                <i class="fa-solid fa-user-circle"></i> <strong>Username: </strong> <?= esc(session('username')) ?>
                             </li>
                             <li class="list-group-item">
-                                <i class="fa-solid fa-envelope"></i> <strong>Email:</strong> <?= esc(session('email')) ?>
+                                <i class="fa-solid fa-envelope"></i> <strong>Email: </strong> <?= esc(session('email')) ?>
                             </li>
                         </ul>
                         

@@ -61,3 +61,22 @@
     background: linear-gradient(135deg, #1B98E0, #00509E);
     color: white;
 }
+
+.nav-profile-image img.profile-img {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  .nav-profile-text {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .nav-link.d-flex {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Memberikan jarak antara elemen */
+  }
+  
