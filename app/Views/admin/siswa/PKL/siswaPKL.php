@@ -29,6 +29,51 @@
             </div>
         <?php endif; ?>
 
+        <form method="get" action="<?= base_url('siswa/PKL') ?>" class="mb-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="nama_siswa">Nama Siswa</label>
+                    <input type="text" name="nama_siswa" id="nama_siswa" class="form-control" placeholder="Cari berdasarkan nama..." value="<?= esc($_GET['nama_siswa'] ?? '') ?>">
+                </div>
+                <div class="col-md-4">
+                    <label for="lembaga">Lembaga</label>
+                    <input type="text" name="lembaga" id="lembaga" class="form-control" placeholder="Nama lembaga..." value="<?= esc($_GET['lembaga'] ?? '') ?>">
+                </div>
+                <div class="col-md-4">
+                    <label for="jurusan">Jurusan</label>
+                    <input type="text" name="jurusan" id="jurusan" class="form-control" placeholder="Nama jurusan..." value="<?= esc($_GET['jurusan'] ?? '') ?>">
+                </div>
+                <div class="col-md-4">
+                    <label for="divisi">Divisi</label>
+                    <input type="text" name="divisi" id="divisi" class="form-control" placeholder="Nama divisi..." value="<?= esc($_GET['divisi'] ?? '') ?>">
+                </div>
+                <div class="col-md-4">
+                    <label for="bagian">Bagian</label>
+                    <input type="text" name="bagian" id="bagian" class="form-control" placeholder="Nama bagian..." value="<?= esc($_GET['bagian'] ?? '') ?>">
+                </div>
+                <div class="col-md-4">
+                    <label for="pembimbing">Nama Pembimbing</label>
+                    <input type="text" name="pembimbing" id="pembimbing" class="form-control" placeholder="Nama pembimbing..." value="<?= esc($_GET['pembimbing'] ?? '') ?>">
+                </div>
+                <div class="col-md-4">
+                    <label for="tanggal_mulai">Tanggal Mulai</label>
+                    <input type="date" name="tanggal_mulai" id="tanggal_mulai" class="form-control" value="<?= esc($_GET['tanggal_mulai'] ?? '') ?>">
+                </div>
+                <div class="col-md-4">
+                    <label for="tanggal_akhir">Tanggal Akhir</label>
+                    <input type="date" name="tanggal_akhir" id="tanggal_akhir" class="form-control" value="<?= esc($_GET['tanggal_akhir'] ?? '') ?>">
+                </div>
+                <div class="col-md-4">
+                    <label for="tanggal_daftar">Tanggal Daftar</label>
+                    <input type="date" name="tanggal_daftar" id="tanggal_daftar" class="form-control" value="<?= esc($_GET['tanggal_daftar'] ?? '') ?>">
+                </div>
+                <div class="col-md-4 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary me-2">Set Filter</button>
+                    <a href="<?= base_url('siswa/PKL') ?>" class="btn btn-secondary">Clear Filter</a>
+                </div>
+            </div>
+        </form>
+
         <div class="row">
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card shadow-lg">

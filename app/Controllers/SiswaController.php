@@ -5,7 +5,7 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use App\Models\SiswaModel;
 
-    class SiswaController extends Controller
+class SiswaController extends Controller
 {
     protected $siswaModel;
 
@@ -19,8 +19,75 @@ use App\Models\SiswaModel;
 
     public function showSiswaPKL()
     {
+        $query = $this->siswaModel->select("
+        TANGGAL as TGL_DAFTAR, 
+        ID_PKL as ID,
+        NM_SISWA, 
+        JENIS_PKL, 
+        LEMBAGA, 
+        JURUSAN, 
+        DIVISI, 
+        BAGIAN, 
+        TGL_AWAL as TGL_MULAI, 
+        TGL_AKHIR, 
+        NAMA_PEMB,
+        (CASE 
+            WHEN TGL_AWAL > CURDATE() THEN 'Belum Mulai'
+            WHEN TGL_AWAL <= CURDATE() AND TGL_AKHIR >= CURDATE() THEN 'Aktif'
+            ELSE 'Sudah Selesai'
+        END) as STATUS
+    ")->where('JENIS_PKL', 'PKL');
+
+        // Ambil data dari GET
+        $nama_siswa = $this->request->getGet('nama_siswa');
+        $lembaga = $this->request->getGet('lembaga');
+        $jurusan = $this->request->getGet('jurusan');
+        $divisi = $this->request->getGet('divisi');
+        $bagian = $this->request->getGet('bagian');
+        $pembimbing = $this->request->getGet('pembimbing');
+        $status = $this->request->getGet('status');
+        $tanggal_awal = $this->request->getGet('tanggal_mulai');
+        $tanggal_akhir = $this->request->getGet('tanggal_akhir');
+        $tanggal_daftar = $this->request->getGet('tanggal_daftar');
+
+        // Tambahkan filter ke query jika ada input
+        if (!empty($nama_siswa)) {
+            $query->like('NM_SISWA', $nama_siswa);
+        }
+        if (!empty($lembaga)) {
+            $query->where('LEMBAGA', $lembaga);
+        }
+        if (!empty($jurusan)) {
+            $query->where('JURUSAN', $jurusan);
+        }
+        if (!empty($divisi)) {
+            $query->where('DIVISI', $divisi);
+        }
+        if (!empty($bagian)) {
+            $query->where('BAGIAN', $bagian);
+        }
+        if (!empty($status)) {
+            $query->having('STATUS', $status); // Karena STATUS adalah hasil CASE
+        }
+        if (!empty($pembimbing)) {
+            $query->where('NAMA_PEMB', $pembimbing);
+        }
+
+        // Filter Tanggal (Pastikan format sesuai database)
+        if (!empty($tanggal_awal)) {
+            $tanggal_awal = date('Y-m-d', strtotime(str_replace('/', '-', $tanggal_awal)));
+            $query->where('TGL_AWAL >=', $tanggal_awal);
+        }
+        if (!empty($tanggal_akhir)) {
+            $tanggal_akhir = date('Y-m-d', strtotime(str_replace('/', '-', $tanggal_akhir)));
+            $query->where('TGL_AKHIR <=', $tanggal_akhir);
+        }
+        if (!empty($tanggal_daftar)) {
+            $query->where('TANGGAL >=', date('Y-m-d', strtotime($tanggal_daftar)));
+        }
+
         $data = [
-            'datasiswa' => $this->siswaModel->where('JENIS_PKL', 'PKL')->getPaginateData(10),
+            'datasiswa' => $query->paginate(10),
             'pager' => $this->siswaModel->pager,
             'currentPage' => 'siswaPKL'
         ];
@@ -28,9 +95,10 @@ use App\Models\SiswaModel;
         return view('admin/siswa/PKL/siswaPKL', $data);
     }
 
+
     public function createSiswaPKL()
     {
-        
+
         $data = [
             'title' => 'Tambah Siswa PKL',
             'currentPage' => 'siswaPKL',
@@ -75,7 +143,7 @@ use App\Models\SiswaModel;
             'siswa' => $siswa,
             'currentPage' => 'siswaPKL'
         ];
-        
+
         return view('admin/siswa/PKL/edit', $data);
     }
 
@@ -155,7 +223,6 @@ use App\Models\SiswaModel;
         $this->siswaModel->insert($data);
         session()->setFlashdata('success', 'Data siswa riset berhasil ditambahkan!');
         return redirect()->to(base_url('siswa/riset'));
-
     }
 
     public function editSiswaRiset($id)

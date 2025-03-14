@@ -77,6 +77,6 @@
   .nav-link.d-flex {
     display: flex;
     align-items: center;
-    gap: 8px; /* Memberikan jarak antara elemen */
+    gap: 6px; 
   }
   
