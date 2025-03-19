@@ -11,8 +11,10 @@ class SiswaModel extends Model
     protected $allowedFields = ['NM_SISWA', 'TANGGAL', 'JENIS_PKL', 'LEMBAGA', 'JURUSAN', 'DIVISI', 'BAGIAN', 'TGL_AWAL', 'TGL_AKHIR', 'NAMA_PEMB']; // Kolom yang bisa diakses
 
     // Fungsi untuk mengambil data dengan filter tanggal dan pagination
-    public function getFilteredData($perPage, $startDate = null, $endDate = null, $regDate = null)
+    public function getFilteredData($perPage, $jenisPKL = null, $startDate = null, $endDate = null, $regDate = null)
     {
+        $query = $this->db->table('datasiswa');
+
         $query = $this->select("
             TANGGAL as TGL_DAFTAR, 
             ID_PKL as ID,
@@ -30,12 +32,17 @@ class SiswaModel extends Model
                 WHEN TGL_AWAL <= CURDATE() AND TGL_AKHIR >= CURDATE() THEN 'Aktif'
                 ELSE 'Sudah Selesai'
             END as STATUS
-        ")->where('JENIS_PKL', 'PKL');
+        ");
+
+        // **Filter berdasarkan jenis PKL (agar halaman PKL dan Riset terpisah)**
+        if (!empty($jenisPKL)) {
+            $query->where("JENIS_PKL", $jenisPKL);
+        }
 
         // Filter berdasarkan tanggal mulai
         if (!empty($startDate) && !empty($endDate)) {
             $query->where("TGL_AWAL >=", $startDate)
-                  ->where("TGL_AKHIR <=", $endDate);
+                ->where("TGL_AKHIR <=", $endDate);
         }
 
         // Filter berdasarkan tanggal daftar

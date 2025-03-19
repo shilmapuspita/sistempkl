@@ -156,7 +156,7 @@
     </div>
 </div>
 
-<!-- untuk search -->
+<!-- untuk search
 <script>
     document.getElementById("searchInput").addEventListener("keyup", function() {
         let filter = this.value.toUpperCase();
@@ -173,5 +173,6 @@
     var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl);
     });
-</script>
+</script> -->
+
 <?= $this->endSection() ?>
