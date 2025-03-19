@@ -2,7 +2,6 @@
 
 <?= $this->section('content') ?>
 
-<!-- Flash Message (Pindah ke dekat logo INTI) -->
 <?php if (session()->getFlashdata('success')) : ?>
   <div class="alert alert-success position-absolute p-2 px-3 shadow-sm"
     style="top: 25px; left: 230px; z-index: 1050; font-size: 14px; font-weight: bold;">

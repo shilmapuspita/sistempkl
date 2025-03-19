@@ -18,10 +18,10 @@
                 <div class="row">
                     <div class="col-md-4 text-center">
                         <!-- Foto Profil -->
-                        <img src="<?= base_url(session('foto') && session('foto') !== 'default.jpg' 
-                            ? 'uploads/profile_pictures/' . session('foto') 
-                            : 'admin/assets/images/default.jpg') ?>" 
-                            alt="Foto Profil" class="rounded-circle shadow-sm" 
+                        <img src="<?= base_url(!empty(session('foto')) && session('foto') !== 'default.jpg'
+                                        ? 'uploads/profile_pictures/' . session('foto')
+                                        : 'admin/assets/images/default.jpg') ?>"
+                            alt="Foto Profil" class="rounded-circle shadow-sm"
                             style="width: 150px; height: 150px; object-fit: cover;">
                     </div>
 
@@ -34,7 +34,7 @@
                                 <i class="fa-solid fa-envelope"></i> <strong>Email: </strong> <?= esc(session('email')) ?>
                             </li>
                         </ul>
-                        
+
                         <!-- Tombol Edit Profil -->
                         <div class="mt-4">
                             <a href="<?= base_url('admin/edit_profile') ?>" class="btn btn-gradient-blue shadow-sm">
