@@ -15,7 +15,7 @@
             <div class="card-body">
                 <h4 class="card-title text-center text-primary fw-bold">FORMULIR PESERTA RISET</h4>
                 <br>
-                <form action="<?= base_url('siswa/PKL/store') ?>" method="post">
+                <form action="<?= base_url('siswa/riset/store') ?>" method="post">
                     <?= csrf_field() ?>
 
                     <div class="row">

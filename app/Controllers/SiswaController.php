@@ -67,24 +67,20 @@ class SiswaController extends Controller
             $query->where('BAGIAN', $bagian);
         }
         if (!empty($status)) {
-            $query->having('STATUS', $status); // Karena STATUS adalah hasil CASE
+            $query->having('STATUS', $status); 
         }
         if (!empty($pembimbing)) {
             $query->where('NAMA_PEMB', $pembimbing);
         }
-
-        // Filter Tanggal (Pastikan format sesuai database)
         if (!empty($tanggal_awal)) {
-            $tanggal_awal = date('Y-m-d', strtotime(str_replace('/', '-', $tanggal_awal)));
-            $query->where('TGL_AWAL >=', $tanggal_awal);
+            $query->where("DATE(STR_TO_DATE(TGL_AWAL, '%d %M %Y')) >=", "DATE(STR_TO_DATE('$tanggal_awal', '%Y-%m-%d'))");
         }
         if (!empty($tanggal_akhir)) {
-            $tanggal_akhir = date('Y-m-d', strtotime(str_replace('/', '-', $tanggal_akhir)));
-            $query->where('TGL_AKHIR <=', $tanggal_akhir);
+            $query->where("DATE(STR_TO_DATE(TGL_AKHIR, '%d %M %Y')) <=", "DATE(STR_TO_DATE('$tanggal_akhir', '%Y-%m-%d'))");
         }
         if (!empty($tanggal_daftar)) {
-            $query->where('TANGGAL >=', date('Y-m-d', strtotime($tanggal_daftar)));
-        }
+            $query->where("DATE(TANGGAL) >=", "DATE('$tanggal_daftar')");
+        }        
 
         $data = [
             'datasiswa' => $query->paginate(10),
@@ -185,9 +181,10 @@ class SiswaController extends Controller
 
     public function showSiswaRiset()
     {
+        $model = new SiswaModel();
         $data = [
-            'datasiswa' => $this->siswaModel->where('JENIS_PKL', 'RISET')->getPaginateData(10),
-            'pager' => $this->siswaModel->pager,
+            'datasiswa' => $model->getFilteredData(10, 'RISET'),
+            'pager' => $model->pager,
             'currentPage' => 'siswaRiset'
         ];
 
