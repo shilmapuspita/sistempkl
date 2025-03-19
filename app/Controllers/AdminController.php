@@ -170,7 +170,7 @@ class AdminController extends BaseController
         $validationRules = [
             'username' => 'required|min_length[3]',
             'email'    => 'required|valid_email',
-            'foto'     => 'permit_empty|is_image[foto]|max_size[foto,2048]',
+            'foto'     => 'permit_empty|is_image[foto]|max_size[foto,2048]'
         ];
 
         if (!$this->validate($validationRules)) {
@@ -178,12 +178,12 @@ class AdminController extends BaseController
         }
 
         // Ambil data admin dari database
-        $admin = $this->adminModel->getAdminById($id);
+        $admin = $this->adminModel->find($id);
         if (!$admin) {
             return redirect()->back()->with('error', 'Data admin tidak ditemukan.');
         }
 
-        // Siapkan data yang akan diperbarui
+        // Data yang akan diperbarui
         $data = [
             'username' => $this->request->getPost('username'),
             'email'    => $this->request->getPost('email'),
@@ -196,39 +196,42 @@ class AdminController extends BaseController
 
         // Upload Foto Profil Baru
         $foto = $this->request->getFile('foto');
-        if ($foto && $foto->isValid() && !$foto->hasMoved()) {
-            $uploadPath = 'uploads/profile_pictures/'; // Pastikan folder ini ada di public/
+        $uploadPath = 'uploads/profile_pictures/';
 
-            // Hapus foto lama jika ada dan bukan default.jpg
-            if ($admin['foto'] !== 'default.jpg' && file_exists(FCPATH . $uploadPath . $admin['foto'])) {
-                unlink(FCPATH . $uploadPath . $admin['foto']);
+        // Pastikan folder ada
+        if (!is_dir(FCPATH . $uploadPath)) {
+            mkdir(FCPATH . $uploadPath, 0777, true);
+        }
+
+        if ($foto && $foto->isValid() && !$foto->hasMoved()) {
+            // Hapus foto lama jika bukan default.jpg
+            if (!empty($admin['foto']) && $admin['foto'] !== 'default.jpg') {
+                $oldFotoPath = FCPATH . $uploadPath . $admin['foto'];
+                if (is_file($oldFotoPath)) {
+                    unlink($oldFotoPath);
+                }
             }
 
             // Simpan foto baru
             $newName = $foto->getRandomName();
             $foto->move(FCPATH . $uploadPath, $newName);
             $data['foto'] = $newName;
-        } else {
-            // Jika tidak ada foto baru, gunakan foto lama
-            $data['foto'] = $admin['foto'];
         }
 
         // Update database
         $this->adminModel->update($id, $data);
 
         // Ambil ulang data setelah update
-        $updatedAdmin = $this->adminModel->getAdminById($id);
+        $updatedAdmin = $this->adminModel->find($id);
 
-    // Perbarui session dengan data terbaru
-    $this->session->set([
-        'username' => $updatedAdmin['username'],
-        'email'    => $updatedAdmin['email'],
-        'foto'     => !empty($admin['foto']) ? base_url('uploads/' . $admin['foto']) : base_url('uploads/default.jpg'),
-        'logged_in' => true
-    ]);
+        // Perbarui session dengan data terbaru
+        $this->session->set([
+            'username' => $updatedAdmin['username'],
+            'email'    => $updatedAdmin['email'],
+            'foto'     => !empty($updatedAdmin['foto']) ? $updatedAdmin['foto'] : 'default.jpg',
+            'logged_in' => true
+        ]);
 
-    // var_dump(session()->get()); die; // Debugging
-
-    return redirect()->to('admin/profile')->with('success', 'Profil berhasil diperbarui!');
-}
+        return redirect()->to('admin/profile')->with('success', 'Profil berhasil diperbarui!');
+    }
 }
