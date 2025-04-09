@@ -6,9 +6,9 @@ use CodeIgniter\Model;
 
 class SiswaModel extends Model
 {
-    protected $table = 'datasiswa';  // Nama tabel di database
-    protected $primaryKey = 'ID_PKL'; // Primary key tabel
-    protected $allowedFields = ['NM_SISWA', 'TANGGAL', 'JENIS_PKL', 'LEMBAGA', 'JURUSAN', 'DIVISI', 'BAGIAN', 'TGL_AWAL', 'TGL_AKHIR', 'NAMA_PEMB']; // Kolom yang bisa diakses
+    protected $table = 'datasiswa';
+    protected $primaryKey = 'ID_PKL';
+    protected $allowedFields = ['NM_SISWA', 'TANGGAL', 'JENIS_PKL', 'LEMBAGA', 'JURUSAN', 'DIVISI', 'BAGIAN', 'TGL_AWAL', 'TGL_AKHIR', 'NAMA_PEMB'];
 
     // Fungsi untuk mengambil data dengan filter tanggal dan pagination
     public function getFilteredData($perPage, $jenisPKL = null, $startDate = null, $endDate = null, $regDate = null)
@@ -45,11 +45,16 @@ class SiswaModel extends Model
                 ->where("TGL_AKHIR <=", $endDate);
         }
 
-        // Filter berdasarkan tanggal daftar
         if (!empty($regDate)) {
-            $query->where("TANGGAL", $regDate);
+            die("Tanggal Filter: " . $regDate);
+            $regDate = date('Y-m-d', strtotime(str_replace('/', '-', $regDate)));
+            $query->where("DATE(TANGGAL)", $regDate);
         }
-
-        return $query->paginate($perPage);
+        
+        // Debugging query
+        echo $query->getCompiledSelect();
+        exit;
+        
+        return $query->paginate($perPage);        
     }
 }
