@@ -27,7 +27,7 @@
           <div class="card-body">
             <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
             <h4 class="font-weight-normal mb-3">Mahasiswa/Siswa PKL/Riset <i class="mdi mdi-chart-line mdi-24px float-end"></i></h4>
-            <h2 class="mb-5">17,179</h2>
+            <h2 class="mb-3"><?= number_format($totalSiswa) ?></h2>
             <h6 class="card-text">Based On Data From 2007 To 2024</h6>
           </div>
         </div>
@@ -37,7 +37,7 @@
           <div class="card-body">
             <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
             <h4 class="font-weight-normal mb-3">Collaborating Institutions <i class="mdi mdi-bookmark-outline mdi-24px float-end"></i></h4>
-            <h2 class="mb-5">617 Institutions</h2>
+            <h2 class="mb-3"><?= number_format($totalInstitusi) ?> Institutions</h2>
           </div>
         </div>
       </div>
@@ -46,7 +46,7 @@
           <div class="card-body">
             <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
             <h3 class="font-weight-normal mb-3">Mentor <i class="mdi mdi-diamond mdi-24px float-end"></i></h3>
-            <h2 class="mb-5">190</h2>
+            <h2 class="mb-3"><?= number_format($totalMentor) ?></h2>
             <h6 class="card-text">Experienced Mentors In Their Fields</h6>
           </div>
         </div>
