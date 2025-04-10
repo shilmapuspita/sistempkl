@@ -28,12 +28,12 @@ class SiswaController extends Controller
         JURUSAN, 
         DIVISI, 
         BAGIAN, 
-        TGL_AWAL as TGL_MULAI, 
+        tanggal_mulai_fix as TGL_MULAI, 
         TGL_AKHIR, 
         NAMA_PEMB,
         (CASE 
-            WHEN TGL_AWAL > CURDATE() THEN 'Belum Mulai'
-            WHEN TGL_AWAL <= CURDATE() AND TGL_AKHIR >= CURDATE() THEN 'Aktif'
+            WHEN tanggal_mulai_fix > CURDATE() THEN 'Belum Mulai'
+            WHEN tanggal_mulai_fix <= CURDATE() AND TGL_AKHIR >= CURDATE() THEN 'Aktif'
             ELSE 'Sudah Selesai'
         END) as STATUS
     ")->where('JENIS_PKL', 'PKL');
@@ -67,21 +67,23 @@ class SiswaController extends Controller
             $query->where('BAGIAN', $bagian);
         }
         if (!empty($status)) {
-            $query->having('STATUS', $status); 
+            $query->having('STATUS', $status);
         }
         if (!empty($pembimbing)) {
             $query->where('NAMA_PEMB', $pembimbing);
         }
         if (!empty($tanggal_awal)) {
-            $query->where("DATE(STR_TO_DATE(TGL_AWAL, '%d %M %Y')) >=", "DATE(STR_TO_DATE('$tanggal_awal', '%Y-%m-%d'))");
+            $query->where("tanggal_mulai_fix >=", $tanggal_awal);
         }
         if (!empty($tanggal_akhir)) {
-            $query->where("DATE(STR_TO_DATE(TGL_AKHIR, '%d %M %Y')) <=", "DATE(STR_TO_DATE('$tanggal_akhir', '%Y-%m-%d'))");
+            $query->where("tgl_akhir_fix <=", $tanggal_akhir);
         }
         if (!empty($tanggal_daftar)) {
-            $query->where("DATE(TANGGAL) >=", "DATE('$tanggal_daftar')");
-        }        
-
+            $query->where("TANGGAL >=", $tanggal_daftar);
+        }
+        
+        dd($tanggal_awal, $tanggal_akhir, $query->getCompiledSelect());
+        
         $data = [
             'datasiswa' => $query->paginate(10),
             'pager' => $this->siswaModel->pager,
@@ -114,8 +116,8 @@ class SiswaController extends Controller
             'JURUSAN' => strtoupper($this->request->getPost('JURUSAN')),
             'DIVISI' => strtoupper($this->request->getPost('DIVISI')),
             'BAGIAN' => strtoupper($this->request->getPost('BAGIAN')),
-            'TGL_AWAL' => $this->request->getPost('TGL_AWAL'),
-            'TGL_AKHIR' => $this->request->getPost('TGL_AKHIR'),
+            'tanggal_mulai_fix' => $this->request->getPost('tanggal_mulai_fix'),
+            'tgl_akhir_fix' => $this->request->getPost('tgl_akhir_fix'),
             'NAMA_PEMB' => strtoupper($this->request->getPost('NAMA_PEMB')),
         ];
 
@@ -132,8 +134,8 @@ class SiswaController extends Controller
             return redirect()->to(base_url('siswaPKL'))->with('error', 'Data tidak ditemukan!');
         }
 
-        $siswa['TGL_AWAL'] = date('Y-m-d', strtotime($siswa['TGL_AWAL']));
-        $siswa['TGL_AKHIR'] = date('Y-m-d', strtotime($siswa['TGL_AKHIR']));
+        $siswa['tanggal_mulai_fix'] = date('Y-m-d', strtotime($siswa['tanggal_mulai_fix']));
+        $siswa['tgl_akhir_fix'] = date('Y-m-d', strtotime($siswa['tgl_akhir_fix']));
 
         $data = [
             'siswa' => $siswa,
@@ -156,8 +158,8 @@ class SiswaController extends Controller
             'JURUSAN' => strtoupper($this->request->getPost('JURUSAN')),
             'DIVISI' => strtoupper($this->request->getPost('DIVISI')),
             'BAGIAN' => strtoupper($this->request->getPost('BAGIAN')),
-            'TGL_AWAL' => $this->request->getPost('TGL_AWAL'),
-            'TGL_AKHIR' => $this->request->getPost('TGL_AKHIR'),
+            'tanggal_mulai_fix' => $this->request->getPost('tanggal_mulai_fix'),
+            'tgl_akhir_fix' => $this->request->getPost('tgl_akhir_fix'),
             'NAMA_PEMB' => strtoupper($this->request->getPost('NAMA_PEMB')),
         ];
 
@@ -212,8 +214,8 @@ class SiswaController extends Controller
             'JURUSAN' => strtoupper($this->request->getPost('JURUSAN')),
             'DIVISI' => strtoupper($this->request->getPost('DIVISI')),
             'BAGIAN' => strtoupper($this->request->getPost('BAGIAN')),
-            'TGL_AWAL' => $this->request->getPost('TGL_AWAL'),
-            'TGL_AKHIR' => $this->request->getPost('TGL_AKHIR'),
+            'tanggal_mulai_fix' => $this->request->getPost('tanggal_mulai_fix'),
+            'tgl_akhir_fix' => $this->request->getPost('tgl_akhir_fix'),
             'NAMA_PEMB' => strtoupper($this->request->getPost('NAMA_PEMB')),
         ];
 
@@ -230,8 +232,8 @@ class SiswaController extends Controller
             return redirect()->to(base_url('siswaRiset'))->with('error', 'Data tidak ditemukan!');
         }
 
-        $siswa['TGL_AWAL'] = date('Y-m-d', strtotime($siswa['TGL_AWAL']));
-        $siswa['TGL_AKHIR'] = date('Y-m-d', strtotime($siswa['TGL_AKHIR']));
+        $siswa['tanggal_mulai_fix'] = date('Y-m-d', strtotime($siswa['tanggal_mulai_fix']));
+        $siswa['tgl_akhir_fix'] = date('Y-m-d', strtotime($siswa['tgl_akhir_fix']));
 
         $data = [
             'siswa' => $siswa,
@@ -254,8 +256,8 @@ class SiswaController extends Controller
             'JURUSAN' => strtoupper($this->request->getPost('JURUSAN')),
             'DIVISI' => strtoupper($this->request->getPost('DIVISI')),
             'BAGIAN' => strtoupper($this->request->getPost('BAGIAN')),
-            'TGL_AWAL' => $this->request->getPost('TGL_AWAL'),
-            'TGL_AKHIR' => $this->request->getPost('TGL_AKHIR'),
+            'tanggal_mulai_fix' => $this->request->getPost('tanggal_mulai_fix'),
+            'tgl_akhir_fix' => $this->request->getPost('tgl_akhir_fix'),
             'NAMA_PEMB' => strtoupper($this->request->getPost('NAMA_PEMB')),
         ];
 

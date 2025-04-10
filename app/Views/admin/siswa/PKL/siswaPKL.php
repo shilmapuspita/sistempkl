@@ -127,7 +127,7 @@
                                             <td><?= esc($siswa['DIVISI']) ?></td>
                                             <td><?= esc($siswa['BAGIAN']) ?></td>
                                             <td><?= esc($siswa['TGL_MULAI']) ?></td>
-                                            <td><?= esc($siswa['TGL_AKHIR']) ?></td>
+                                            <td><?= date('d-m-Y', strtotime($siswa['TGL_AKHIR'])) ?></td>
                                             <td><?= esc($siswa['STATUS']) ?></td>
                                             <td><?= esc($siswa['NAMA_PEMB']) ?></td>
                                             <td class="text-center">
