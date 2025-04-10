@@ -19,7 +19,7 @@ class SiswaController extends Controller
 
     public function showSiswaPKL()
     {
-        $query = $this->siswaModel->select("
+        $this->siswaModel->select("
         TANGGAL as TGL_DAFTAR, 
         ID_PKL as ID,
         NM_SISWA, 
@@ -38,7 +38,7 @@ class SiswaController extends Controller
         END) as STATUS
     ")->where('JENIS_PKL', 'PKL');
 
-        // Ambil data dari GET
+        // Ambil filter dari GET
         $nama_siswa = $this->request->getGet('nama_siswa');
         $lembaga = $this->request->getGet('lembaga');
         $jurusan = $this->request->getGet('jurusan');
@@ -50,49 +50,45 @@ class SiswaController extends Controller
         $tanggal_akhir = $this->request->getGet('tanggal_akhir');
         $tanggal_daftar = $this->request->getGet('tanggal_daftar');
 
-        // Tambahkan filter ke query jika ada input
         if (!empty($nama_siswa)) {
-            $query->like('NM_SISWA', $nama_siswa);
+            $this->siswaModel->like('NM_SISWA', $nama_siswa);
         }
         if (!empty($lembaga)) {
-            $query->where('LEMBAGA', $lembaga);
+            $this->siswaModel->where('LEMBAGA', $lembaga);
         }
         if (!empty($jurusan)) {
-            $query->where('JURUSAN', $jurusan);
+            $this->siswaModel->where('JURUSAN', $jurusan);
         }
         if (!empty($divisi)) {
-            $query->where('DIVISI', $divisi);
+            $this->siswaModel->where('DIVISI', $divisi);
         }
         if (!empty($bagian)) {
-            $query->where('BAGIAN', $bagian);
+            $this->siswaModel->where('BAGIAN', $bagian);
         }
         if (!empty($status)) {
-            $query->having('STATUS', $status);
+            $this->siswaModel->having('STATUS', $status);
         }
         if (!empty($pembimbing)) {
-            $query->where('NAMA_PEMB', $pembimbing);
+            $this->siswaModel->where('NAMA_PEMB', $pembimbing);
         }
         if (!empty($tanggal_awal)) {
-            $query->where("tanggal_mulai_fix >=", $tanggal_awal);
+            $this->siswaModel->where("tanggal_mulai_fix >=", $tanggal_awal);
         }
         if (!empty($tanggal_akhir)) {
-            $query->where("tgl_akhir_fix <=", $tanggal_akhir);
+            $this->siswaModel->where("tgl_akhir_fix <=", $tanggal_akhir);
         }
         if (!empty($tanggal_daftar)) {
-            $query->where("TANGGAL >=", $tanggal_daftar);
+            $this->siswaModel->where("TANGGAL >=", $tanggal_daftar);
         }
-        
-        dd($tanggal_awal, $tanggal_akhir, $query->getCompiledSelect());
-        
+
         $data = [
-            'datasiswa' => $query->paginate(10),
+            'datasiswa' => $this->siswaModel->paginate(10),
             'pager' => $this->siswaModel->pager,
-            'currentPage' => 'siswaPKL'
+            'currentPage' => $this->request->getVar('page') ?? 1
         ];
 
         return view('admin/siswa/PKL/siswaPKL', $data);
     }
-
 
     public function createSiswaPKL()
     {

@@ -6,9 +6,9 @@ use CodeIgniter\Model;
 
 class SiswaModel extends Model
 {
-    protected $table = 'datasiswa';  // Nama tabel di database
-    protected $primaryKey = 'ID_PKL'; // Primary key tabel
-    protected $allowedFields = ['NM_SISWA', 'TANGGAL', 'JENIS_PKL', 'LEMBAGA', 'JURUSAN', 'DIVISI', 'BAGIAN', 'tanggal_mulai_fix', 'tgl_akhir_fix', 'NAMA_PEMB']; // Kolom yang bisa diakses
+    protected $table = 'datasiswa';  
+    protected $primaryKey = 'ID_PKL'; 
+    protected $allowedFields = ['NM_SISWA', 'TANGGAL', 'JENIS_PKL', 'LEMBAGA', 'JURUSAN', 'DIVISI', 'BAGIAN', 'tanggal_mulai_fix', 'tgl_akhir_fix', 'NAMA_PEMB'];
 
     // Fungsi untuk mengambil data dengan filter tanggal dan pagination
     public function getFilteredData($perPage, $jenisPKL = null, $startDate = null, $endDate = null, $regDate = null)
