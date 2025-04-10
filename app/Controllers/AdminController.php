@@ -85,19 +85,19 @@ class AdminController extends BaseController
         ];
 
         if (!$this->validate($validationRules)) {
-            return redirect()->to('/admin/login')->withInput()->with('errors', $this->validator->getErrors());
+            return redirect()->to('/login')->withInput()->with('errors', $this->validator->getErrors());
         }
 
         // Cari user berdasarkan username
         $admin = $this->adminModel->where('username', $this->request->getPost('username'))->first();
 
         if (!$admin) {
-            return redirect()->to('/admin/login')->with('error', 'Username tidak ditemukan.');
+            return redirect()->to('/login')->with('error', 'Username tidak ditemukan.');
         }
 
         // Verifikasi password
         if (!password_verify($this->request->getPost('password'), $admin['password'])) {
-            return redirect()->to('/admin/login')->with('error', 'Password salah.');
+            return redirect()->to('/login')->with('error', 'Password salah.');
         }
 
         // Pastikan email & foto diambil dari database dengan benar

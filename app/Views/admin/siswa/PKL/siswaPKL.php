@@ -67,10 +67,23 @@
                     <label for="tanggal_daftar">Tanggal Daftar</label>
                     <input type="date" name="tanggal_daftar" id="tanggal_daftar" class="form-control" value="<?= esc($_GET['tanggal_daftar'] ?? '') ?>">
                 </div>
-                <div class="col-md-4 d-flex align-items-end">
-                    <button type="submit" class="btn btn-primary me-2">Set Filter</button>
-                    <a href="<?= base_url('siswa/PKL') ?>" class="btn btn-secondary">Clear Filter</a>
+                <div class="col-md-12 d-flex mt-3">
+                    <button type="submit" class="btn text-white flex-grow-1 me-2"
+                        style="background-color: #4A90E2; border-color: #4A90E2;"
+                        onmouseover="this.style.backgroundColor='#357ABD'; this.style.borderColor='#357ABD';"
+                        onmouseout="this.style.backgroundColor='#4A90E2'; this.style.borderColor='#4A90E2';">
+                        Set Filter
+                    </button>
+                    <a href="<?= base_url('siswa/PKL') ?>" class="btn text-white flex-grow-1"
+                        style="background-color: #B0B0B0; border-color: #B0B0B0;"
+                        onmouseover="this.style.backgroundColor='#909090'; this.style.borderColor='#909090';"
+                        onmouseout="this.style.backgroundColor='#B0B0B0'; this.style.borderColor='#B0B0B0';">
+                        Clear Filter
+                    </a>
                 </div>
+
+
+
             </div>
         </form>
 

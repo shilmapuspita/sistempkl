@@ -6,7 +6,7 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->get('/', 'Home::index');
-$routes->get('/admin/dashboard', 'AdminController::index', ['filter' => 'authenticate']);
+$routes->get('/admin/dashboard', 'DashboardController::index', ['filter' => 'authenticate']);
 
 // routes major
 $routes->get('/major', 'MajorController::showJurusan');

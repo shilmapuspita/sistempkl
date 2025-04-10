@@ -44,11 +44,16 @@ class SiswaModel extends Model
                 ->where("tgl_akhir_fix <=", $endDate);
         }
 
-        // Filter berdasarkan tanggal daftar
         if (!empty($regDate)) {
-            $query->where("TANGGAL", $regDate);
+            die("Tanggal Filter: " . $regDate);
+            $regDate = date('Y-m-d', strtotime(str_replace('/', '-', $regDate)));
+            $query->where("DATE(TANGGAL)", $regDate);
         }
-
-        return $query->paginate($perPage);
+        
+        // Debugging query
+        echo $query->getCompiledSelect();
+        exit;
+        
+        return $query->paginate($perPage);        
     }
 }
