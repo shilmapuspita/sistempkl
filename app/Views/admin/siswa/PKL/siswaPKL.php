@@ -127,7 +127,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $no = 1 + (10 * ($pager->getCurrentPage() - 1)); ?>
+                                <?php $no = 1 + (10 * ($currentPage - 1)); ?>
                                     <?php foreach ($datasiswa as $siswa) : ?>
                                         <tr>
                                             <td><?= $no++; ?></td>
