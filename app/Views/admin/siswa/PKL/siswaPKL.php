@@ -56,12 +56,12 @@
                     <input type="text" name="pembimbing" id="pembimbing" class="form-control" placeholder="Nama pembimbing..." value="<?= esc($_GET['pembimbing'] ?? '') ?>">
                 </div>
                 <div class="col-md-4">
-                    <label for="tanggal_mulai">Tanggal Mulai</label>
-                    <input type="date" name="tanggal_mulai" id="tanggal_mulai" class="form-control" value="<?= esc($_GET['tanggal_mulai'] ?? '') ?>">
+                    <label for="tanggal_mulai_fix">Tanggal Mulai</label>
+                    <input type="date" name="tanggal_mulai_fix" id="tanggal_mulai" class="form-control" value="<?= esc($_GET['tanggal_mulai_fix'] ?? '') ?>">
                 </div>
                 <div class="col-md-4">
-                    <label for="tanggal_akhir">Tanggal Akhir</label>
-                    <input type="date" name="tanggal_akhir" id="tanggal_akhir" class="form-control" value="<?= esc($_GET['tanggal_akhir'] ?? '') ?>">
+                    <label for="tgl_akhir_fix">Tanggal Akhir</label>
+                    <input type="date" name="tgl_akhir_fix" id="tanggal_akhir" class="form-control" value="<?= esc($_GET['tgl_akhir_fix'] ?? '') ?>">
                 </div>
                 <div class="col-md-4">
                     <label for="tanggal_daftar">Tanggal Daftar</label>
@@ -133,14 +133,14 @@
                                             <td><?= $no++; ?></td>
                                             <td><?= esc($siswa['ID']) ?></td>
                                             <td><?= esc($siswa['NM_SISWA']) ?></td>
-                                            <td><?= esc($siswa['TGL_DAFTAR']) ?></td>
+                                            <td><?= date('d-m-Y', strtotime($siswa['TGL_DAFTAR'])); ?></td>
                                             <td><?= esc($siswa['JENIS_PKL']) ?></td>
                                             <td><?= esc($siswa['LEMBAGA']) ?></td>
                                             <td><?= esc($siswa['JURUSAN']) ?></td>
                                             <td><?= esc($siswa['DIVISI']) ?></td>
                                             <td><?= esc($siswa['BAGIAN']) ?></td>
-                                            <td><?= esc($siswa['TGL_MULAI']) ?></td>
-                                            <td><?= date('d-m-Y', strtotime($siswa['TGL_AKHIR'])) ?></td>
+                                            <td><?= date('d-m-Y', strtotime($siswa['tanggal_mulai_fix'])); ?></td>
+                                            <td><?= date('d-m-Y', strtotime($siswa['tgl_akhir_fix'])) ?></td>
                                             <td><?= esc($siswa['STATUS']) ?></td>
                                             <td><?= esc($siswa['NAMA_PEMB']) ?></td>
                                             <td class="text-center">
@@ -168,24 +168,4 @@
         </div>
     </div>
 </div>
-
-<!-- untuk search
-<script>
-    document.getElementById("searchInput").addEventListener("keyup", function() {
-        let filter = this.value.toUpperCase();
-        let rows = document.querySelector("#siswaTable tbody").rows;
-
-        for (let i = 0; i < rows.length; i++) {
-            let txtValue = rows[i].textContent || rows[i].innerText;
-            rows[i].style.display = txtValue.toUpperCase().indexOf(filter) > -1 ? "" : "none";
-        }
-    });
-
-    // Aktifkan tooltip Bootstrap
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl);
-    });
-</script> -->
-
 <?= $this->endSection() ?>
