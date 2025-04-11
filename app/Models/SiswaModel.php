@@ -24,8 +24,8 @@ class SiswaModel extends Model
             JURUSAN, 
             DIVISI, 
             BAGIAN, 
-            tanggal_mulai_fix as TGL_MULAI, 
-            tgl_akhir_fix as TGL_AKHIR, 
+            tanggal_mulai_fix, 
+            tgl_akhir_fix, 
             NAMA_PEMB,
             CASE 
                 WHEN tanggal_mulai_fix > CURDATE() THEN 'Belum Mulai'

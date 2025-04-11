@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 use App\Models\SiswaModel;
+use DateTime;
 
 class SiswaController extends Controller
 {
@@ -13,9 +14,6 @@ class SiswaController extends Controller
     {
         $this->siswaModel = new SiswaModel();
     }
-
-
-    // =================== Siswa PKL =================== //
 
     public function showSiswaPKL()
     {
@@ -28,17 +26,17 @@ class SiswaController extends Controller
         JURUSAN, 
         DIVISI, 
         BAGIAN, 
-        tanggal_mulai_fix as TGL_MULAI, 
-        TGL_AKHIR, 
+        tanggal_mulai_fix, 
+        tgl_akhir_fix, 
         NAMA_PEMB,
         (CASE 
             WHEN tanggal_mulai_fix > CURDATE() THEN 'Belum Mulai'
-            WHEN tanggal_mulai_fix <= CURDATE() AND TGL_AKHIR >= CURDATE() THEN 'Aktif'
+            WHEN tanggal_mulai_fix <= CURDATE() AND tgl_akhir_fix >= CURDATE() THEN 'Aktif'
             ELSE 'Sudah Selesai'
         END) as STATUS
     ")->where('JENIS_PKL', 'PKL');
 
-        // Ambil filter dari GET
+        //ambil inputan filter
         $nama_siswa = $this->request->getGet('nama_siswa');
         $lembaga = $this->request->getGet('lembaga');
         $jurusan = $this->request->getGet('jurusan');
@@ -46,10 +44,11 @@ class SiswaController extends Controller
         $bagian = $this->request->getGet('bagian');
         $pembimbing = $this->request->getGet('pembimbing');
         $status = $this->request->getGet('status');
-        $tanggal_awal = $this->request->getGet('tanggal_mulai');
-        $tanggal_akhir = $this->request->getGet('tanggal_akhir');
+        $tanggal_awal = $this->request->getGet('tanggal_mulai_fix');
+        $tanggal_akhir = $this->request->getGet('tgl_akhir_fix');
         $tanggal_daftar = $this->request->getGet('tanggal_daftar');
 
+        //filter sesuai dari inputan
         if (!empty($nama_siswa)) {
             $this->siswaModel->like('NM_SISWA', $nama_siswa);
         }
@@ -71,14 +70,15 @@ class SiswaController extends Controller
         if (!empty($pembimbing)) {
             $this->siswaModel->where('NAMA_PEMB', $pembimbing);
         }
+
         if (!empty($tanggal_awal)) {
-            $this->siswaModel->where("tanggal_mulai_fix >=", $tanggal_awal);
+            $this->siswaModel->where("DATE(tanggal_mulai_fix) ", $tanggal_awal);
         }
         if (!empty($tanggal_akhir)) {
-            $this->siswaModel->where("tgl_akhir_fix <=", $tanggal_akhir);
+            $this->siswaModel->where("DATE(tgl_akhir_fix) ", $tanggal_akhir);
         }
         if (!empty($tanggal_daftar)) {
-            $this->siswaModel->where("TANGGAL >=", $tanggal_daftar);
+            $this->siswaModel->where("DATE(TANGGAL)", $tanggal_daftar);
         }
 
         $data = [
