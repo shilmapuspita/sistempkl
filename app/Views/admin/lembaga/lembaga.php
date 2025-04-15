@@ -11,8 +11,6 @@
         </span> All Data Institutions
       </h3>
     </div>
-
-
     <!-- Notifikasi Flashdata -->
     <?php if (session()->getFlashdata('success')) : ?>
       <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -21,14 +19,12 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     <?php endif; ?>
-
     <div class="row">
       <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
             <h2 class="card-title text-center text-primary fw-bold">LEMBAGA PENDIDIKAN MITRA PT INTI</h2>
             <br>
-
             <!-- Pencarian & Add Button -->
             <div class="d-flex justify-content-between align-items-center mb-3">
               <div class="position-relative w-50">

@@ -8,8 +8,6 @@
     <?= session()->getFlashdata('success'); ?>
   </div>
 <?php endif; ?>
-
-
 <div class="main-panel">
   <div class="content-wrapper">
     <div class="page-header">
@@ -19,7 +17,6 @@
         </span> Dashboard
       </h3>
     </div>
-
     <!-- Statistik Dashboard -->
     <div class="row">
       <div class="col-md-4 stretch-card grid-margin">
@@ -53,6 +50,59 @@
       </div>
     </div>
   </div>
+  <!-- Bar Chart + Filter Bulan/Tahun -->
+<div class="row">
+  <div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Chart Mahasiswa/Siswa Aktif per Divisi & Bagian</h4>
+
+        <!-- Filter Bulan & Tahun -->
+        <form method="get" action="<?= base_url('admin/dashboard') ?>" class="mb-4">
+          <div class="row">
+            <div class="col-md-3">
+              <label for="bulan">Pilih Bulan:</label>
+              <select name="bulan" id="bulan" class="form-control">
+                <?php
+                $namaBulan = [
+                  '01' => 'Januari', '02' => 'Februari', '03' => 'Maret', '04' => 'April',
+                  '05' => 'Mei', '06' => 'Juni', '07' => 'Juli', '08' => 'Agustus',
+                  '09' => 'September', '10' => 'Oktober', '11' => 'November', '12' => 'Desember'
+                ];
+                foreach ($namaBulan as $num => $nama) {
+                  $selected = ($bulan ?? date('m')) === $num ? 'selected' : '';
+                  echo "<option value='$num' $selected>$nama</option>";
+                }
+                ?>
+              </select>
+            </div>
+
+            <div class="col-md-3">
+              <label for="tahun">Pilih Tahun:</label>
+              <select name="tahun" id="tahun" class="form-control">
+                <?php
+                $currentYear = date('Y');
+                for ($year = $currentYear; $year >= 2020; $year--) {
+                  $selected = ($tahun ?? date('Y')) == $year ? 'selected' : '';
+                  echo "<option value='$year' $selected>$year</option>";
+                }
+                ?>
+              </select>
+            </div>
+
+            <div class="col-md-2 d-flex align-items-end">
+              <button type="submit" class="btn btn-gradient-primary w-100">Tampilkan</button>
+            </div>
+          </div>
+        </form>
+
+        <!-- Chart Canvas -->
+        <canvas id="barChart" height="230"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
   <div class="container d-flex justify-content-center">
     <div class="row w-100">
       <div class="col-lg-6 grid-margin stretch-card">
@@ -86,5 +136,55 @@
     </div>
   </footer>
 </div>
+
+<script src="<?= base_url('admin/assets/js/chart.min.js') ?>"></script>
+<script>
+  const ctx = document.getElementById('barChart').getContext('2d');
+  const barChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: <?= json_encode(array_column($pkl, 'divisi_bagian')) ?>,
+      datasets: [
+        {
+          label: 'PKL',
+          data: <?= json_encode(array_column($pkl, 'jumlah')) ?>,
+          backgroundColor: 'rgba(54, 162, 235, 0.7)',
+        },
+        {
+          label: 'Riset',
+          data: <?= json_encode(array_column($riset, 'jumlah')) ?>,
+          backgroundColor: 'rgba(255, 206, 86, 0.7)',
+        },
+        {
+          label: 'Internship',
+          data: <?= json_encode(array_column($intern, 'jumlah')) ?>,
+          backgroundColor: 'rgba(75, 192, 192, 0.7)',
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        title: {
+          display: true,
+          text: 'Jumlah Mahasiswa/Siswa Aktif per Divisi & Bagian (<?= $bulan ?>/<?= $tahun ?>)'
+        },
+        legend: {
+          position: 'top',
+        }
+      },
+      scales: {
+        x: {
+          stacked: true
+        },
+        y: {
+          stacked: true,
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+
 
 <?= $this->endSection() ?>

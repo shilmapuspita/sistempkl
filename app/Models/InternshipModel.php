@@ -32,6 +32,19 @@ class InternshipModel extends Model
         END as STATUS
         ")->paginate($perPage);
     }
+
+    public function getSiswaAktifByMonth($month, $year)
+{
+    return $this->select("DIVISI, BAGIAN")
+        ->select("COUNT(*) as total")
+        ->where("MONTH(TGL_AWAL)", $month)
+        ->where("YEAR(TGL_AWAL)", $year)
+        ->where("TGL_AWAL <=", date('Y-m-t')) // aktif bulan ini dan seterusnya
+        ->where("TGL_AKHIR >=", date('Y-m-01'))
+        ->groupBy("DIVISI, BAGIAN")
+        ->findAll();
+}
+
 }
 
 

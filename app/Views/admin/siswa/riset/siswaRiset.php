@@ -61,21 +61,18 @@
                         placeholder="Nama pembimbing..." value="<?= esc($_GET['pembimbing'] ?? '') ?>">
                 </div>
                 <div class="col-md-4">
-                    <label for="tanggal_mulai_fix" class="form-label">Tanggal Mulai</label>
-                    <input type="date" name="tanggal_mulai_fix" id="tanggal_mulai" class="form-control"
-                        value="<?= esc($_GET['tanggal_mulai_fix'] ?? '') ?>">
+                    <label for="tanggal_mulai_fix">Tanggal Mulai</label>
+                    <input type="date" name="tanggal_mulai_fix" id="tanggal_mulai" class="form-control" value="<?= esc($_GET['tanggal_mulai_fix'] ?? '') ?>">
                 </div>
                 <div class="col-md-4">
-                    <label for="tgl_akhir_fix" class="form-label">Tanggal Akhir</label>
-                    <input type="date" name="tgl_akhir_fix" id="tanggal_akhir" class="form-control"
-                        value="<?= esc($_GET['tgl_akhir_fix'] ?? '') ?>">
+                    <label for="tgl_akhir_fix">Tanggal Akhir</label>
+                    <input type="date" name="tgl_akhir_fix" id="tanggal_akhir" class="form-control" value="<?= esc($_GET['tgl_akhir_fix'] ?? '') ?>">
                 </div>
                 <div class="col-md-4">
                     <label for="tanggal_daftar" class="form-label">Tanggal Daftar</label>
                     <input type="date" name="tanggal_daftar" id="tanggal_daftar" class="form-control"
                         value="<?= esc($_GET['tanggal_daftar'] ?? '') ?>">
                 </div>
-
                 <div class="col-md-12 d-flex justify-content-between gap-3 mt-3">
                     <button type="submit" class="btn text-white w-50"
                         style="background-color: #4A90E2; border-color: #4A90E2; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;"
@@ -174,24 +171,5 @@
         </div>
     </div>
 </div>
-
-<!-- untuk search -->
-<script>
-    document.getElementById("searchInput").addEventListener("keyup", function() {
-        let filter = this.value.toUpperCase();
-        let rows = document.querySelector("#siswaTable tbody").rows;
-
-        for (let i = 0; i < rows.length; i++) {
-            let txtValue = rows[i].textContent || rows[i].innerText;
-            rows[i].style.display = txtValue.toUpperCase().indexOf(filter) > -1 ? "" : "none";
-        }
-    });
-
-    // Aktifkan tooltip Bootstrap
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl);
-    });
-</script>
 
 <?= $this->endSection() ?>
