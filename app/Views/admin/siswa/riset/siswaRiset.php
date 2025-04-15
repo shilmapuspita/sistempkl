@@ -57,19 +57,29 @@
                 </div>
                 <div class="col-md-4">
                     <label for="tanggal_mulai">Tanggal Mulai</label>
-                    <input type="date" name="tanggal_mulai" id="tanggal_mulai" class="form-control" value="<?= esc($_GET['tanggal_mulai'] ?? '') ?>">
+                    <input type="date" name="tanggal_mulai_fix" id="tanggal_mulai" class="form-control" value="<?= esc($_GET['tanggal_mulai_fix'] ?? '') ?>">
                 </div>
                 <div class="col-md-4">
-                    <label for="tanggal_akhir">Tanggal Akhir</label>
-                    <input type="date" name="tanggal_akhir" id="tanggal_akhir" class="form-control" value="<?= esc($_GET['tanggal_akhir'] ?? '') ?>">
+                    <label for="tgl_akhir_fix">Tanggal Akhir</label>
+                    <input type="date" name="tgl_akhir_fix" id="tanggal_akhir" class="form-control" value="<?= esc($_GET['tgl_akhir_fix'] ?? '') ?>">
                 </div>
                 <div class="col-md-4">
                     <label for="tanggal_daftar">Tanggal Daftar</label>
                     <input type="date" name="tanggal_daftar" id="tanggal_daftar" class="form-control" value="<?= esc($_GET['tanggal_daftar'] ?? '') ?>">
                 </div>
-                <div class="col-md-4 d-flex align-items-end">
-                    <button type="submit" class="btn btn-primary me-2">Set Filter</button>
-                    <a href="<?= base_url('siswa/riset') ?>" class="btn btn-secondary">Clear Filter</a>
+                <div class="col-md-12 d-flex mt-3">
+                    <button type="submit" class="btn text-white flex-grow-1 me-2"
+                        style="background-color: #4A90E2; border-color: #4A90E2;"
+                        onmouseover="this.style.backgroundColor='#357ABD'; this.style.borderColor='#357ABD';"
+                        onmouseout="this.style.backgroundColor='#4A90E2'; this.style.borderColor='#4A90E2';">
+                        Set Filter
+                    </button>
+                    <a href="<?= base_url('siswa/PKL') ?>" class="btn text-white flex-grow-1"
+                        style="background-color: #B0B0B0; border-color: #B0B0B0;"
+                        onmouseover="this.style.backgroundColor='#909090'; this.style.borderColor='#909090';"
+                        onmouseout="this.style.backgroundColor='#B0B0B0'; this.style.borderColor='#B0B0B0';">
+                        Clear Filter
+                    </a>
                 </div>
             </div>
         </form>
@@ -126,8 +136,8 @@
                                             <td><?= esc($siswa['JURUSAN']) ?></td>
                                             <td><?= esc($siswa['DIVISI']) ?></td>
                                             <td><?= esc($siswa['BAGIAN']) ?></td>
-                                            <td><?= esc($siswa['TGL_MULAI']) ?></td>
-                                            <td><?= esc($siswa['TGL_AKHIR']) ?></td>
+                                            <td><?= date('d-m-Y', strtotime($siswa['tanggal_mulai_fix'])); ?></td>
+                                            <td><?= date('d-m-Y', strtotime($siswa['tgl_akhir_fix'])) ?></td>
                                             <td><?= esc($siswa['STATUS']) ?></td>
                                             <td><?= esc($siswa['NAMA_PEMB']) ?></td>
                                             <td class="text-center">
@@ -155,24 +165,5 @@
         </div>
     </div>
 </div>
-
-<!-- untuk search -->
-<script>
-    document.getElementById("searchInput").addEventListener("keyup", function() {
-        let filter = this.value.toUpperCase();
-        let rows = document.querySelector("#siswaTable tbody").rows;
-
-        for (let i = 0; i < rows.length; i++) {
-            let txtValue = rows[i].textContent || rows[i].innerText;
-            rows[i].style.display = txtValue.toUpperCase().indexOf(filter) > -1 ? "" : "none";
-        }
-    });
-
-    // Aktifkan tooltip Bootstrap
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl);
-    });
-</script>
 
 <?= $this->endSection() ?>

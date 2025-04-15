@@ -81,9 +81,6 @@
                         Clear Filter
                     </a>
                 </div>
-
-
-
             </div>
         </form>
 
