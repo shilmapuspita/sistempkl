@@ -8,7 +8,7 @@ class AdminController extends BaseController
 {
     protected $adminModel;
     protected $session;
-
+ 
     public function __construct()
     {
         $this->adminModel = new AdminModel();
