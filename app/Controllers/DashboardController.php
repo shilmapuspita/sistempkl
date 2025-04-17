@@ -10,6 +10,10 @@ class DashboardController extends BaseController
 {
     public function index()
     {
+        if (!session()->get('logged_in')) {
+            return redirect()->to('/login')->with('error', 'Silakan login terlebih dahulu.');
+        }
+
         $dashboardmodel = new DashboardModel();
         $siswaModel = new SiswaModel();
         $internModel = new InternshipModel();
@@ -55,12 +59,12 @@ class DashboardController extends BaseController
             ->orderBy('tahun', 'DESC')
             ->findAll();
 
-        // Bagian ini dipertahankan utuh
         $data = [
             'totalSiswa' => $dashboardmodel->getTotalSiswa(),
             'totalInstitusi' => $dashboardmodel->getTotalInstitusi(),
             'totalMentor' => $dashboardmodel->getTotalMentor(),
             'currentPage' => 'dashboard',
+            'username' => session()->get('username'),
 
             // Data tambahan untuk Chart.js
             'pkl' => $dataPKL,
@@ -74,21 +78,6 @@ class DashboardController extends BaseController
             'list_tahun' => array_column($listTahun, 'tahun'),
         ];
 
-{
-    if (!session()->get('logged_in')) {
-        return redirect()->to('/login')->with('error', 'Silakan login terlebih dahulu.');
+        return view('admin/dashboard', $data);
     }
-
-    $dashboardmodel = new DashboardModel();
-
-    $data = [
-        'totalSiswa' => $dashboardmodel->getTotalSiswa(),
-        'totalInstitusi' => $dashboardmodel->getTotalInstitusi(),
-        'totalMentor' => $dashboardmodel->getTotalMentor(),
-        'currentPage' => 'dashboard',
-        'username' => session()->get('username'), // atau admin_username jika itu yang kamu simpan
-    ];
-
-    return view('admin/dashboard', $data);
-}
 }
