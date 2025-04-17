@@ -77,16 +77,23 @@ class SiswaModel extends Model
 
         return $builder->paginate($perPage);
     }
-    public function getSiswaAktifByMonth($month, $year)
+    public function getSiswaAktifByMonth($month, $year, $jenis)
 {
-    return $this->select("DIVISI, BAGIAN")
-        ->select("COUNT(*) as total")
-        ->whereIn("JENIS_PKL", ['PKL', 'RISET'])
-        ->where("MONTH(tanggal_mulai_fix)", $month)
-        ->where("YEAR(tanggal_mulai_fix)", $year)
-        ->where("tanggal_mulai_fix <=", date('Y-m-t'))
-        ->where("tgl_akhir_fix >=", date('Y-m-01'))
-        ->groupBy("DIVISI, BAGIAN")
+    // Pastikan $month dalam format 2 digit (01, 02, ..., 12)
+    $month = str_pad($month, 2, '0', STR_PAD_LEFT);
+
+    // Hitung awal dan akhir bulan yang diminta
+    $start = "$year-$month-01";
+    $end = date('Y-m-t', strtotime($start)); // t = last day of the month
+
+    return $this->select("CONCAT(DIVISI, ' - ', BAGIAN) as divisi_bagian")
+        ->select("COUNT(*) as jumlah")
+        ->where("JENIS_PKL", $jenis)
+        ->where("tanggal_mulai_fix <=", $end)   // Siswa mulai sebelum atau pas akhir bulan
+        ->where("tgl_akhir_fix >=", $start)     // Siswa selesai setelah atau pas awal bulan
+        ->groupBy("divisi_bagian")
         ->findAll();
 }
 }
+
+
