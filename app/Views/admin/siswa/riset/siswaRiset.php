@@ -11,7 +11,6 @@
                 </span> All Data Mahasiswa/Siswa
             </h3>
         </div>
-
         <!-- Notifikasi Flashdata -->
         <?php if (session()->getFlashdata('success')) : ?>
             <div class="alert alert-success alert-dismissible fade show" role="alert">
