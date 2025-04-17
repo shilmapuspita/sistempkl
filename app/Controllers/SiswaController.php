@@ -53,22 +53,22 @@ class SiswaController extends Controller
             $this->siswaModel->like('NM_SISWA', $nama_siswa);
         }
         if (!empty($lembaga)) {
-            $this->siswaModel->where('LEMBAGA', $lembaga);
+            $this->siswaModel->like('LEMBAGA', $lembaga);
         }
         if (!empty($jurusan)) {
-            $this->siswaModel->where('JURUSAN', $jurusan);
+            $this->siswaModel->like('JURUSAN', $jurusan);
         }
         if (!empty($divisi)) {
-            $this->siswaModel->where('DIVISI', $divisi);
+            $this->siswaModel->like('DIVISI', $divisi);
         }
         if (!empty($bagian)) {
-            $this->siswaModel->where('BAGIAN', $bagian);
+            $this->siswaModel->like('BAGIAN', $bagian);
         }
         if (!empty($status)) {
             $this->siswaModel->having('STATUS', $status);
         }
         if (!empty($pembimbing)) {
-            $this->siswaModel->where('NAMA_PEMB', $pembimbing);
+            $this->siswaModel->like('NAMA_PEMB', $pembimbing);
         }
 
         if (!empty($tanggal_awal)) {
@@ -179,11 +179,73 @@ class SiswaController extends Controller
 
     public function showSiswaRiset()
     {
-        $model = new SiswaModel();
+        $this->siswaModel->select("
+        TANGGAL as TGL_DAFTAR, 
+        ID_PKL as ID,
+        NM_SISWA, 
+        JENIS_PKL, 
+        LEMBAGA, 
+        JURUSAN, 
+        DIVISI, 
+        BAGIAN, 
+        tanggal_mulai_fix, 
+        tgl_akhir_fix, 
+        NAMA_PEMB,
+        (CASE 
+            WHEN tanggal_mulai_fix > CURDATE() THEN 'Belum Mulai'
+            WHEN tanggal_mulai_fix <= CURDATE() AND tgl_akhir_fix >= CURDATE() THEN 'Aktif'
+            ELSE 'Sudah Selesai'
+        END) as STATUS
+    ")->where('JENIS_PKL', 'RISET');
+
+        // Ambil input filter
+        $nama_siswa     = $this->request->getGet('nama_siswa');
+        $lembaga        = $this->request->getGet('lembaga');
+        $jurusan        = $this->request->getGet('jurusan');
+        $divisi         = $this->request->getGet('divisi');
+        $bagian         = $this->request->getGet('bagian');
+        $pembimbing     = $this->request->getGet('pembimbing');
+        $status         = $this->request->getGet('status');
+        $tanggal_awal   = $this->request->getGet('tanggal_mulai');
+        $tanggal_akhir  = $this->request->getGet('tanggal_akhir');
+        $tanggal_daftar = $this->request->getGet('tanggal_daftar');
+
+        // Apply filter sesuai input
+        if (!empty($nama_siswa)) {
+            $this->siswaModel->like('NM_SISWA', $nama_siswa);
+        }
+        if (!empty($lembaga)) {
+            $this->siswaModel->like('LEMBAGA', $lembaga);
+        }
+        if (!empty($jurusan)) {
+            $this->siswaModel->like('JURUSAN', $jurusan);
+        }
+        if (!empty($divisi)) {
+            $this->siswaModel->like('DIVISI', $divisi);
+        }
+        if (!empty($bagian)) {
+            $this->siswaModel->like('BAGIAN', $bagian);
+        }
+        if (!empty($pembimbing)) {
+            $this->siswaModel->like('NAMA_PEMB', $pembimbing);        
+        }
+        if (!empty($status)) {
+            $this->siswaModel->having('STATUS', $status);
+        }
+        if (!empty($tanggal_awal)) {
+            $this->siswaModel->where("DATE(tanggal_mulai_fix) ", $tanggal_awal);
+        }
+        if (!empty($tanggal_akhir)) {
+            $this->siswaModel->where("DATE(tgl_akhir_fix) ", $tanggal_akhir);
+        }
+        if (!empty($tanggal_daftar)) {
+            $this->siswaModel->where("DATE(TANGGAL)", $tanggal_daftar);
+        }
+
         $data = [
-            'datasiswa' => $model->getFilteredData(10, 'RISET'),
-            'pager' => $model->pager,
-            'currentPage' => 'siswaRiset'
+            'datasiswa' => $this->siswaModel->paginate(10),
+            'pager' => $this->siswaModel->pager,
+            'currentPage' => $this->request->getVar('page') ?? 1
         ];
 
         return view('admin/siswa/riset/siswaRiset', $data);
