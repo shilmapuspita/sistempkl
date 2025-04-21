@@ -44,51 +44,44 @@ if (!session()->has('logged_in')) {
       </a>
     </div>
     <div class="navbar-menu-wrapper d-flex align-items-stretch">
-        <ul class="navbar-nav ms-auto">
-          <!-- Profil Dropdown -->
-          <li class="nav-item nav-profile dropdown">
-            <a class="nav-link d-flex align-items-center" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-              <!-- Foto Profil -->
-              <div class="nav-profile-image">
-                <img src="<?= base_url(session('foto') && session('foto') !== 'default.jpg' ? 'uploads/profile_pictures/' . session('foto') : 'admin/assets/images/default.jpg') ?>"
-                  alt="Foto Profil"
-                  class="profile-img" />
-              </div>
-              <!-- Nama Profil -->
-              <div class="nav-profile-text ms-2 d-flex align-items-center">
-                <p class="mb-0"><?= esc(session('username')) ?></p>
-              </div>
-              <!-- Ikon Dropdown -->
-              <i class="fa-solid fa-chevron-down text-primary"></i>
-            </a>
-            <!-- Dropdown Menu -->
-            <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-              <a class="dropdown-item" href="<?= base_url('admin/profile') ?>">
-                <i class="bi bi-pencil me-2 text-success"></i> Profile
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="<?= base_url('logout') ?>">
-                <i class="mdi mdi-logout me-2 text-primary"></i> Signout
-              </a>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item nav-profile dropdown">
+          <a class="nav-link d-flex align-items-center" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+            <div class="nav-profile-image">
+              <img src="<?= base_url(session('foto') && session('foto') !== 'default.jpg' ? 'uploads/profile_pictures/' . session('foto') : 'admin/assets/images/default.jpg') ?>"
+                alt="Foto Profil"
+                class="profile-img" />
             </div>
-          </li>
-        </ul>
+            <!-- Nama Profil -->
+            <div class="nav-profile-text ms-2 d-flex align-items-center">
+              <p class="mb-0"><?= esc(session('username')) ?></p>
+            </div>
+            <!-- Ikon Dropdown -->
+            <i class="fa-solid fa-chevron-down text-primary"></i>
+          </a>
+          <!-- Dropdown Menu -->
+          <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
+            <a class="dropdown-item" href="<?= base_url('admin/profile') ?>">
+              <i class="bi bi-pencil me-2 text-success"></i> Profile
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="<?= base_url('logout') ?>">
+              <i class="mdi mdi-logout me-2 text-primary"></i> Signout
+            </a>
+          </div>
+        </li>
+      </ul>
     </div>
-  
-
-
     <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
       <span class="mdi mdi-menu"></span>
     </button>
     </div>
   </nav>
-  <!-- partial -->
   <div class="container-fluid page-body-wrapper">
-    <!-- partial:partials/_sidebar.html -->
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
       <ul class="nav">
         <li class="nav-item">
-          <a class="nav-link <?= ($currentPage == 'admin' || $currentPage == 'dashboard') ? 'active' : '' ?>" href="<?= base_url('admin/dashboard'); ?>">
+          <a class="nav-link <?= (isset($currentPage) && ($currentPage == 'admin' || $currentPage == 'dashboard')) ? 'active' : '' ?>" href="<?= base_url('admin/dashboard'); ?>">
             <span class="menu-title">Dashboard</span>
             <i class="mdi mdi-home menu-icon"></i>
           </a>
