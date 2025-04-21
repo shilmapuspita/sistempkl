@@ -5,6 +5,8 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use App\Models\SiswaModel;
 use DateTime;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class SiswaController extends Controller
 {
@@ -84,7 +86,7 @@ class SiswaController extends Controller
         $data = [
             'datasiswa' => $this->siswaModel->paginate(10),
             'pager' => $this->siswaModel->pager,
-            'currentPage' => $this->request->getVar('page') ?? 1
+            'currentPage' => $this->request->getVar('page') ?? 1,
         ];
 
         return view('admin/siswa/PKL/siswaPKL', $data);
@@ -227,7 +229,7 @@ class SiswaController extends Controller
             $this->siswaModel->like('BAGIAN', $bagian);
         }
         if (!empty($pembimbing)) {
-            $this->siswaModel->like('NAMA_PEMB', $pembimbing);        
+            $this->siswaModel->like('NAMA_PEMB', $pembimbing);
         }
         if (!empty($status)) {
             $this->siswaModel->having('STATUS', $status);
@@ -334,4 +336,84 @@ class SiswaController extends Controller
         session()->setFlashdata('success', 'Data siswa riset berhasil dihapus!');
         return redirect()->to(base_url('siswa/riset'));
     }
+
+    public function exportForm()
+    {
+        return view('admin/siswa/PKL/siswaPKL', [
+            'currentPage' => 'siswaPKL',
+        ]);
+    }
+
+    public function exportSiswaPKL()
+{
+    $start_date = $this->request->getPost('start_date');
+    $end_date = $this->request->getPost('end_date');
+    $divisi = $this->request->getPost('divisi');
+    $pembimbing = $this->request->getPost('pembimbing');
+
+    $query = $this->siswaModel
+        ->select("TANGGAL as TGL_DAFTAR, ID_PKL as ID, NM_SISWA, JENIS_PKL, LEMBAGA, JURUSAN, DIVISI, BAGIAN, tanggal_mulai_fix, tgl_akhir_fix, NAMA_PEMB,
+            (CASE 
+                WHEN tanggal_mulai_fix > CURDATE() THEN 'Belum Mulai'
+                WHEN tanggal_mulai_fix <= CURDATE() AND tgl_akhir_fix >= CURDATE() THEN 'Aktif'
+                ELSE 'Sudah Selesai'
+            END) as STATUS")
+        ->where('JENIS_PKL', 'PKL');
+
+    if ($start_date && $end_date) {
+        $query->where('tanggal_mulai_fix >=', $start_date)
+              ->where('tgl_akhir_fix <=', $end_date);
+    }
+
+    if ($divisi) {
+        $query->where('DIVISI', $divisi);
+    }
+
+    if ($pembimbing) {
+        $query->where('NAMA_PEMB', $pembimbing);
+    }
+
+    $siswa = $query->findAll();
+
+    $spreadsheet = new Spreadsheet();
+    $sheet = $spreadsheet->getActiveSheet();
+
+    // Header
+    $sheet->setCellValue('A1', 'ID');
+    $sheet->setCellValue('B1', 'Nama');
+    $sheet->setCellValue('C1', 'Lembaga');
+    $sheet->setCellValue('D1', 'Jurusan');
+    $sheet->setCellValue('E1', 'Divisi');
+    $sheet->setCellValue('F1', 'Bagian');
+    $sheet->setCellValue('G1', 'Tanggal Mulai');
+    $sheet->setCellValue('H1', 'Tanggal Selesai');
+    $sheet->setCellValue('I1', 'Pembimbing');
+    $sheet->setCellValue('J1', 'Status');
+
+    // Data
+    $row = 2;
+    foreach ($siswa as $s) {
+        $sheet->setCellValue('A' . $row, $s['ID']);
+        $sheet->setCellValue('B' . $row, $s['NM_SISWA']);
+        $sheet->setCellValue('C' . $row, $s['LEMBAGA']);
+        $sheet->setCellValue('D' . $row, $s['JURUSAN']);
+        $sheet->setCellValue('E' . $row, $s['DIVISI']);
+        $sheet->setCellValue('F' . $row, $s['BAGIAN']);
+        $sheet->setCellValue('G' . $row, $s['tanggal_mulai_fix']);
+        $sheet->setCellValue('H' . $row, $s['tgl_akhir_fix']);
+        $sheet->setCellValue('I' . $row, $s['NAMA_PEMB']);
+        $sheet->setCellValue('J' . $row, $s['STATUS']);
+        $row++;
+    }
+
+    $writer = new Xlsx($spreadsheet);
+
+    $filename = 'data_siswa_pkl.xlsx';
+    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    header("Content-Disposition: attachment; filename=\"$filename\"");
+    header('Cache-Control: max-age=0');
+    $writer->save('php://output');
+    exit();
+}
+
 }

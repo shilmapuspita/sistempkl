@@ -73,4 +73,10 @@ $routes->get('admin/profile', 'AdminController::profile');
 $routes->get('admin/edit_profile', 'AdminController::editProfile'); 
 $routes->post('admin/update-profil', 'AdminController::updateProfile');
 
+// routes untuk ekspor data
+$routes->post('export-siswa', 'SiswaController::exportForm');
+$routes->post('/proses-ekspor', 'SiswaController::exportSiswaPKL');
+
+
+
 

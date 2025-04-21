@@ -93,6 +93,9 @@
                     </a>
                 </div>
             </div>
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exportModal">
+                <i class="bi bi-file-earmark-excel-fill me-2"></i> Export Excel
+            </button>
         </form>
 
         <div class="row">
@@ -135,40 +138,47 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $no = 1 + (10 * ($currentPage - 1)); ?>
-                                    <?php foreach ($datasiswa as $siswa) : ?>
+                                    <?php if (!empty($datasiswa) && is_array($datasiswa)) : ?>
+                                        <?php $no = 1 + (10 * (($currentPage ?? 1) - 1)); ?>
+                                        <?php foreach ($datasiswa as $siswa) : ?>
+                                            <tr>
+                                                <td><?= $no++; ?></td>
+                                                <td><?= esc($siswa['ID']) ?></td>
+                                                <td><?= esc($siswa['NM_SISWA']) ?></td>
+                                                <td><?= date('d-m-Y', strtotime($siswa['TGL_DAFTAR'])); ?></td>
+                                                <td><?= esc($siswa['JENIS_PKL']) ?></td>
+                                                <td><?= esc($siswa['LEMBAGA']) ?></td>
+                                                <td><?= esc($siswa['JURUSAN']) ?></td>
+                                                <td><?= esc($siswa['DIVISI']) ?></td>
+                                                <td><?= esc($siswa['BAGIAN']) ?></td>
+                                                <td><?= date('d-m-Y', strtotime($siswa['tanggal_mulai_fix'])); ?></td>
+                                                <td><?= date('d-m-Y', strtotime($siswa['tgl_akhir_fix'])) ?></td>
+                                                <td><?= esc($siswa['STATUS']) ?></td>
+                                                <td><?= esc($siswa['NAMA_PEMB']) ?></td>
+                                                <td class="text-center">
+                                                    <a href="<?= base_url('/siswa/PKL/edit/' . $siswa['ID']) ?>" class="btn btn-gradient-blue btn-sm shadow-sm" data-bs-toggle="tooltip" title="Edit">
+                                                        <i class="bi bi-pencil-square fs-6 align-middle"></i>
+                                                    </a>
+                                                    <a href="<?= base_url('/siswa/PKL/delete/' . $siswa['ID']) ?>" class="btn btn-gradient-blue btn-sm shadow-sm" data-bs-toggle="tooltip" title="Delete" onclick="return confirm('Yakin ingin menghapus data ini?')">
+                                                        <i class="bi bi-trash3-fill fs-6 align-middle"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php else : ?>
                                         <tr>
-                                            <td><?= $no++; ?></td>
-                                            <td><?= esc($siswa['ID']) ?></td>
-                                            <td><?= esc($siswa['NM_SISWA']) ?></td>
-                                            <td><?= date('d-m-Y', strtotime($siswa['TGL_DAFTAR'])); ?></td>
-                                            <td><?= esc($siswa['JENIS_PKL']) ?></td>
-                                            <td><?= esc($siswa['LEMBAGA']) ?></td>
-                                            <td><?= esc($siswa['JURUSAN']) ?></td>
-                                            <td><?= esc($siswa['DIVISI']) ?></td>
-                                            <td><?= esc($siswa['BAGIAN']) ?></td>
-                                            <td><?= date('d-m-Y', strtotime($siswa['tanggal_mulai_fix'])); ?></td>
-                                            <td><?= date('d-m-Y', strtotime($siswa['tgl_akhir_fix'])) ?></td>
-                                            <td><?= esc($siswa['STATUS']) ?></td>
-                                            <td><?= esc($siswa['NAMA_PEMB']) ?></td>
-                                            <td class="text-center">
-                                                <a href="<?= base_url('/siswa/PKL/edit/' . $siswa['ID']) ?>" class="btn btn-gradient-blue btn-sm shadow-sm" data-bs-toggle="tooltip" title="Edit">
-                                                    <i class="bi bi-pencil-square fs-6 align-middle"></i>
-                                                </a>
-                                                <a href="<?= base_url('/siswa/PKL/delete/' . $siswa['ID']) ?>" class="btn btn-gradient-blue btn-sm shadow-sm" data-bs-toggle="tooltip" title="Delete" onclick="return confirm('Yakin ingin menghapus data ini?')">
-                                                    <i class="bi bi-trash3-fill fs-6 align-middle"></i>
-                                                </a>
-                                            </td>
+                                            <td colspan="14" class="text-center">Tidak ada data tersedia.</td>
                                         </tr>
-                                    <?php endforeach; ?>
+                                    <?php endif; ?>
                                 </tbody>
                             </table>
                         </div>
 
-                        <!-- Pagination -->
-                        <div class="d-flex justify-content-center mt-3">
-                            <?= $pager->links() ?>
-                        </div>
+                        <?php if (!empty($pager)) : ?>
+                            <div class="d-flex justify-content-center mt-3">
+                                <?= $pager->links() ?>
+                            </div>
+                        <?php endif; ?>
 
                     </div>
                 </div>
@@ -176,4 +186,6 @@
         </div>
     </div>
 </div>
+
+<?= view('admin/siswa/PKL/ekspor') ?>
 <?= $this->endSection() ?>
