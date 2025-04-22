@@ -76,19 +76,29 @@
                 </div>
                 <div class="col-md-12 d-flex justify-content-between gap-3 mt-3">
                     <button type="submit" class="btn text-white w-50"
-                        style="background-color: #4A90E2; border-color: #4A90E2; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;"
+                        style="background-color: #4A90E2; border-color: #4A90E2; border-radius: 12px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;"
                         onmouseover="this.style.backgroundColor='#357ABD'; this.style.borderColor='#357ABD'; this.style.transform='translateY(-2px)';"
                         onmouseout="this.style.backgroundColor='#4A90E2'; this.style.borderColor='#4A90E2'; this.style.transform='translateY(0)';">
                         <i class="bi bi-funnel-fill me-2"></i> Set Filter
                     </button>
 
                     <a href="<?= base_url('siswa/PKL') ?>" class="btn text-white w-50"
-                        style="background-color: #B0B0B0; border-color: #B0B0B0; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;"
+                        style="background-color: #B0B0B0; border-color: #B0B0B0; border-radius: 12px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;"
                         onmouseover="this.style.backgroundColor='#909090'; this.style.borderColor='#909090'; this.style.transform='translateY(-2px)';"
                         onmouseout="this.style.backgroundColor='#B0B0B0'; this.style.borderColor='#B0B0B0'; this.style.transform='translateY(0)';">
                         <i class="bi bi-x-circle-fill me-2"></i> Clear Filter
                     </a>
                 </div>
+            </div>
+            
+            <div class="mt-3 mb-4">
+                <button type="button" class="btn text-white"
+                    style="background: linear-gradient(135deg, #1dd1a1, #10ac84); border: none; border-radius: 12px; padding: 12px 20px; font-weight: 600; box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1); transition: all 0.3s ease-in-out;"
+                    data-bs-toggle="modal" data-bs-target="#exportModal"
+                    onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 16px rgba(0,0,0,0.2)'"
+                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 14px rgba(0, 0, 0, 0.1)'">
+                    <i class="bi bi-file-earmark-excel-fill me-2"></i> Export Data
+                </button>
             </div>
         </form>
 
@@ -173,4 +183,5 @@
     </div>
 </div>
 
+<?= view('admin/siswa/riset/ekspor') ?>
 <?= $this->endSection() ?>

@@ -4,7 +4,7 @@
 
 <div class="modal fade" id="exportModal" tabindex="-1" aria-labelledby="exportModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <form id="exportFormPKL" action="<?= base_url('/proses-eksporPKL') ?>" method="post">
+        <form id="exportFormRiset" action="<?= base_url('/proses-eksporRiset') ?>" method="post">
             <?= csrf_field() ?>
             <div class="modal-content">
                 <div class="modal-header">
