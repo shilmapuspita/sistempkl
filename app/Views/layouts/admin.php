@@ -8,27 +8,18 @@ if (!session()->has('logged_in')) {
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>SISTEMPKL</title>
-  <!-- plugins:css -->
   <link rel="stylesheet" href="<?= base_url('admin/assets/vendors/mdi/css/materialdesignicons.min.css') ?>">
   <link rel="stylesheet" href="<?= base_url('admin/assets/vendors/ti-icons/css/themify-icons.css') ?>">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
   <link rel="stylesheet" href="<?= base_url('admin/assets/vendors/css/vendor.bundle.base.css') ?>">
   <link rel="stylesheet" href="<?= base_url('admin/assets/vendors/font-awesome/css/font-awesome.min.css') ?>">
-  <!-- endinject -->
-  <!-- Plugin css for this page -->
   <link rel="stylesheet" href="<?= base_url('admin/assets/vendors/font-awesome/css/font-awesome.min.css') ?>" />
   <link rel="stylesheet" href="<?= base_url('admin/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css') ?>">
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
-  <!-- endinject -->
-  <!-- Layout styles -->
   <link rel="stylesheet" href="<?= base_url('admin/assets/css/custom.css') ?>">
   <link rel="stylesheet" href="<?= base_url('admin/assets/css/style.css') ?>">
-  <!-- End layout styles -->
   <link rel="shortcut icon" href="<?= base_url('admin/assets/images/favicon.png') ?>" />
 
   <!-- Font font-awesome -->
@@ -36,7 +27,6 @@ if (!session()->has('logged_in')) {
 </head>
 
 <body>
-  <!-- partial:partials/_navbar.html -->
   <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
       <a class="navbar-brand brand-logo" href="<?= base_url('/') ?>">
@@ -56,10 +46,8 @@ if (!session()->has('logged_in')) {
             <div class="nav-profile-text ms-2 d-flex align-items-center">
               <p class="mb-0"><?= esc(session('username')) ?></p>
             </div>
-            <!-- Ikon Dropdown -->
             <i class="fa-solid fa-chevron-down text-primary"></i>
           </a>
-          <!-- Dropdown Menu -->
           <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
             <a class="dropdown-item" href="<?= base_url('admin/profile') ?>">
               <i class="bi bi-pencil me-2 text-success"></i> Profile
@@ -148,26 +136,16 @@ if (!session()->has('logged_in')) {
       </ul>
     </nav>
 
-    <!-- partial -->
     <?= $this->renderSection('content') ?>
-    <!-- container-scroller -->
-    <!-- plugins:js -->
     <script src="<?= base_url('admin/assets/vendors/js/vendor.bundle.base.js') ?>"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page -->
     <script src="<?= base_url('admin/assets/vendors/chart.js/chart.umd.js') ?>"></script>
     <script src="<?= base_url('admin/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js') ?>"></script>
-    <!-- End plugin js for this page -->
-    <!-- inject:js -->
     <script src="<?= base_url('admin/assets/js/off-canvas.js') ?>"></script>
     <script src="<?= base_url('admin/assets/js/misc.js') ?>"></script>
     <script src="<?= base_url('admin/assets/js/settings.js') ?>"></script>
     <script src="<?= base_url('admin/assets/js/todolist.js') ?>"></script>
     <script src="<?= base_url('admin/assets/js/jquery.cookie.js') ?>"></script>
-    <!-- endinject -->
-    <!-- Custom js for this page -->
     <script src="<?= base_url('admin/assets/js/dashboard.js') ?>"></script>
-    <!-- End custom js for this page -->
 </body>
 
 </html>

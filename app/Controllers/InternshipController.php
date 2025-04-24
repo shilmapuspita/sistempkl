@@ -40,8 +40,8 @@ class InternshipController extends Controller
             'jurusan'             => 'required',
             'divisi'             => 'required',
             'bagian'             => 'required',
-            'tgl_awal'             => 'required',
-            'tgl_akhir'             => 'required',
+            'TGL_AWAL'             => 'required',
+            'TGL_AKHIR'             => 'required',
             'nama_pemb'             => 'required',
         ]);
 
@@ -58,8 +58,8 @@ class InternshipController extends Controller
             'JURUSAN'       => strtoupper(esc($this->request->getPost('jurusan'))),
             'DIVISI'        => strtoupper(esc($this->request->getPost('divisi'))),
             'BAGIAN'        => strtoupper(esc($this->request->getPost('bagian'))),
-            'TGL_AWAL'      => strtoupper(esc($this->request->getPost('tgl_awal'))),
-            'TGL_AKHIR'     => strtoupper(esc($this->request->getPost('tgl_akhir'))),
+            'TGL_AWAL'      => strtoupper(esc($this->request->getPost('TGL_AWAL'))),
+            'TGL_AKHIR'     => strtoupper(esc($this->request->getPost('TGL_AKHIR'))),
             'NAMA_PEMB'     => strtoupper(esc($this->request->getPost('nama_pemb'))),
         ];
 
@@ -97,8 +97,8 @@ class InternshipController extends Controller
             'jurusan'             => 'required',
             'divisi'             => 'required',
             'bagian'             => 'required',
-            'tgl_awal'             => 'required',
-            'tgl_akhir'             => 'required',
+            'TGL_AWAL'             => 'required',
+            'TGL_AKHIR'             => 'required',
             'nama_pemb'             => 'required',
         ]);
 
@@ -116,8 +116,8 @@ class InternshipController extends Controller
             'JURUSAN'       => strtoupper(esc($this->request->getPost('jurusan'))),
             'DIVISI'        => strtoupper(esc($this->request->getPost('divisi'))),
             'BAGIAN'        => strtoupper(esc($this->request->getPost('bagian'))),
-            'TGL_AWAL'      => strtoupper(esc($this->request->getPost('tgl_awal'))),
-            'TGL_AKHIR'     => strtoupper(esc($this->request->getPost('tgl_akhir'))),
+            'TGL_AWAL'      => strtoupper(esc($this->request->getPost('TGL_AWAL'))),
+            'TGL_AKHIR'     => strtoupper(esc($this->request->getPost('TGL_AKHIR'))),
             'NAMA_PEMB'     => strtoupper(esc($this->request->getPost('nama_pemb'))),
         ]);
 
