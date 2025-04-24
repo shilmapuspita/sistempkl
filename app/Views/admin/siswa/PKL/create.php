@@ -98,11 +98,11 @@
 
                             <div class="form-group">
                                 <label><i class="fa-solid fa-calendar-plus"></i> Tanggal Awal</label>
-                                <input type="date" name="TGL_AWAL" class="form-control shadow-sm" required>
+                                <input type="date" name="tanggal_mulai_fix" class="form-control shadow-sm" required>
                             </div>
                             <div class="form-group">
                                 <label><i class="fa-solid fa-calendar-check"></i> Tanggal Akhir</label>
-                                <input type="date" name="TGL_AKHIR" class="form-control shadow-sm" required>
+                                <input type="date" name="tgl_akhir_fix" class="form-control shadow-sm" required>
                             </div>
                             <div class="form-group">
                                 <label><i class="fa-solid fa-user-tie"></i> Nama Pembimbing</label>

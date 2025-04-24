@@ -274,8 +274,8 @@ class SiswaController extends Controller
             'JURUSAN' => strtoupper($this->request->getPost('JURUSAN')),
             'DIVISI' => strtoupper($this->request->getPost('DIVISI')),
             'BAGIAN' => strtoupper($this->request->getPost('BAGIAN')),
-            'tanggal_mulai_fix' => $this->request->getPost('tanggal_mulai_fix'),
-            'tgl_akhir_fix' => $this->request->getPost('tgl_akhir_fix'),
+            'tanggal_mulai_fix' => ($this->request->getPost('tanggal_mulai_fix')),
+            'tgl_akhir_fix' => ($this->request->getPost('tgl_akhir_fix')),
             'NAMA_PEMB' => strtoupper($this->request->getPost('NAMA_PEMB')),
         ];
 
@@ -351,6 +351,10 @@ class SiswaController extends Controller
         $divisi = $this->request->getPost('divisi');
         $pembimbing = $this->request->getPost('pembimbing');
 
+        if (empty($start_date) && empty($end_date) && empty($divisi) && empty($pembimbing)) {
+            return redirect()->back()->with('error', 'Minimal satu filter harus diisi untuk ekspor data.');
+        }
+
         $query = $this->siswaModel
             ->select("TANGGAL as TGL_DAFTAR, ID_PKL as ID, NM_SISWA, JENIS_PKL, LEMBAGA, JURUSAN, DIVISI, BAGIAN, tanggal_mulai_fix, tgl_akhir_fix, NAMA_PEMB,
             (CASE 
@@ -360,25 +364,24 @@ class SiswaController extends Controller
             END) as STATUS")
             ->where('JENIS_PKL', 'PKL');
 
-        if ($start_date && $end_date) {
+        if (!empty($start_date) && !empty($end_date)) {
             $query->where('tanggal_mulai_fix >=', $start_date)
                 ->where('tgl_akhir_fix <=', $end_date);
         }
 
-        if ($divisi) {
+        if (!empty($divisi)) {
             $query->where('DIVISI', $divisi);
         }
 
-        if ($pembimbing) {
+        if (!empty($pembimbing)) {
             $query->where('NAMA_PEMB', $pembimbing);
         }
 
         $siswa = $query->findAll();
 
-        $spreadsheet = new Spreadsheet();
+        $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
 
-        // Header
         $sheet->setCellValue('A1', 'ID');
         $sheet->setCellValue('B1', 'Nama');
         $sheet->setCellValue('C1', 'Lembaga');
@@ -390,7 +393,6 @@ class SiswaController extends Controller
         $sheet->setCellValue('I1', 'Pembimbing');
         $sheet->setCellValue('J1', 'Status');
 
-        // Data
         $row = 2;
         foreach ($siswa as $s) {
             $sheet->setCellValue('A' . $row, $s['ID']);
@@ -406,9 +408,9 @@ class SiswaController extends Controller
             $row++;
         }
 
-        $writer = new Xlsx($spreadsheet);
-
+        $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
         $filename = 'data_siswa_pkl.xlsx';
+
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         header("Content-Disposition: attachment; filename=\"$filename\"");
         header('Cache-Control: max-age=0');
@@ -430,6 +432,10 @@ class SiswaController extends Controller
         $divisi = $this->request->getPost('divisi');
         $pembimbing = $this->request->getPost('pembimbing');
 
+        if (empty($start_date) && empty($end_date) && empty($divisi) && empty($pembimbing)) {
+            return redirect()->back()->with('error', 'Minimal satu filter harus diisi untuk ekspor data.');
+        }
+
         $query = $this->siswaModel
             ->select("TANGGAL as TGL_DAFTAR, ID_PKL as ID, NM_SISWA, JENIS_PKL, LEMBAGA, JURUSAN, DIVISI, BAGIAN, tanggal_mulai_fix, tgl_akhir_fix, NAMA_PEMB,
             (CASE 
@@ -437,27 +443,26 @@ class SiswaController extends Controller
                 WHEN tanggal_mulai_fix <= CURDATE() AND tgl_akhir_fix >= CURDATE() THEN 'Aktif'
                 ELSE 'Sudah Selesai'
             END) as STATUS")
-            ->where('JENIS_PKL', 'riset');
+            ->where('JENIS_PKL', 'Riset');
 
-        if ($start_date && $end_date) {
+        if (!empty($start_date) && !empty($end_date)) {
             $query->where('tanggal_mulai_fix >=', $start_date)
                 ->where('tgl_akhir_fix <=', $end_date);
         }
 
-        if ($divisi) {
+        if (!empty($divisi)) {
             $query->where('DIVISI', $divisi);
         }
 
-        if ($pembimbing) {
+        if (!empty($pembimbing)) {
             $query->where('NAMA_PEMB', $pembimbing);
         }
 
         $siswa = $query->findAll();
 
-        $spreadsheet = new Spreadsheet();
+        $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
 
-        // Header
         $sheet->setCellValue('A1', 'ID');
         $sheet->setCellValue('B1', 'Nama');
         $sheet->setCellValue('C1', 'Lembaga');
@@ -469,7 +474,6 @@ class SiswaController extends Controller
         $sheet->setCellValue('I1', 'Pembimbing');
         $sheet->setCellValue('J1', 'Status');
 
-        // Data
         $row = 2;
         foreach ($siswa as $s) {
             $sheet->setCellValue('A' . $row, $s['ID']);
@@ -485,9 +489,9 @@ class SiswaController extends Controller
             $row++;
         }
 
-        $writer = new Xlsx($spreadsheet);
+        $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
+        $filename = 'data_siswa_riset.xlsx';
 
-        $filename = 'data_siswa_pkl.xlsx';
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         header("Content-Disposition: attachment; filename=\"$filename\"");
         header('Cache-Control: max-age=0');

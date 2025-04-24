@@ -13,7 +13,6 @@
 
         <div class="card shadow-lg">
             <div class="card-body">
-                <!-- Alert Jika Ada Error -->
                 <?php if (session()->getFlashdata('errors')) : ?>
                     <div class="alert alert-danger">
                         <ul>
@@ -24,7 +23,6 @@
                     </div>
                 <?php endif; ?>
 
-                <!-- Alert Jika Sukses -->
                 <?php if (session()->getFlashdata('success')) : ?>
                     <div class="alert alert-success">
                         <?= session()->getFlashdata('success') ?>
@@ -39,21 +37,18 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <!-- Username -->
                             <div class="form-group">
                                 <label><i class="fa-solid fa-user-circle"></i> Username</label>
                                 <input type="text" class="form-control shadow-sm" id="username" name="username"
                                     value="<?= old('username', session('username')) ?>" required>
                             </div>
 
-                            <!-- Email -->
                             <div class="form-group">
                                 <label><i class="fa-solid fa-envelope"></i> Email</label>
                                 <input type="email" class="form-control shadow-sm" id="email" name="email"
                                     value="<?= old('email', session('email')) ?>" required>
                             </div>
 
-                            <!-- Foto Profil -->
                             <div class="form-group">
                                 <label><i class="fa-solid fa-image"></i> Foto Profil</label>
                                 <div class="mb-2">
@@ -66,7 +61,6 @@
                         </div>
                     </div>
 
-                    <!-- Tombol Simpan & Batal -->
                     <div class="d-flex justify-content-center mt-4">
                         <button type="submit" class="btn btn-gradient-blue me-2 shadow-sm">
                             <i class="fa-solid fa-save"></i> Simpan Perubahan
