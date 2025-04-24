@@ -23,7 +23,7 @@
         <div class="card bg-gradient-danger card-img-holder text-white">
           <div class="card-body">
             <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-            <h4 class="font-weight-normal mb-3">Mahasiswa/Siswa PKL/Riset <i class="mdi mdi-chart-line mdi-24px float-end"></i></h4>
+            <h4 class="font-weight-normal mb-3">Mahasiswa/Siswa Aktif PKL/Riset</h4>
             <h2 class="mb-3"><?= number_format($totalSiswa) ?></h2>
             <h6 class="card-text">Based On Data From 2007 To 2024</h6>
           </div>
@@ -51,61 +51,62 @@
     </div>
   </div>
 
-  <!-- Bar Chart + Filter Bulan/Tahun -->
   <div class="row">
-    <div class="col-lg-12 grid-margin stretch-card">
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title">Chart Mahasiswa/Siswa Aktif per Divisi & Bagian</h4>
+  <div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
 
-          <!-- Filter Bulan & Tahun -->
-          <form method="get" action="<?= base_url('admin/dashboard') ?>" class="mb-4">
-            <div class="row">
-              <div class="col-md-3">
-                <label for="bulan">Pilih Bulan:</label>
-                <select name="bulan" id="bulan" class="form-control">
-                  <?php
-                  $namaBulan = [
-                    '01' => 'Januari', '02' => 'Februari', '03' => 'Maret', '04' => 'April',
-                    '05' => 'Mei', '06' => 'Juni', '07' => 'Juli', '08' => 'Agustus',
-                    '09' => 'September', '10' => 'Oktober', '11' => 'November', '12' => 'Desember'
-                  ];
-                  foreach ($namaBulan as $num => $nama) {
-                    $selected = ($bulan ?? date('m')) === $num ? 'selected' : '';
-                    echo "<option value='$num' $selected>$nama</option>";
-                  }
-                  ?>
-                </select>
-              </div>
-
-              <div class="col-md-3">
-                <label for="tahun">Pilih Tahun:</label>
-                <select name="tahun" id="tahun" class="form-control">
-                  <?php
-                  $currentYear = date('Y');
-                  foreach ($list_tahun as $year) {
-                    $selected = ($tahun ?? $currentYear) == $year ? 'selected' : '';
-                    echo "<option value='$year' $selected>$year</option>";
-                  }
-                  ?>
-                </select>
-              </div>
-
-              <div class="col-md-2 d-flex align-items-end">
-                <button type="submit" class="btn btn-gradient-primary w-100">Tampilkan</button>
-              </div>
+        <!-- Filter Bulan & Tahun -->
+        <form method="get" action="<?= base_url('admin/dashboard') ?>" class="mb-4">
+          <div class="d-flex flex-wrap align-items-end gap-3">
+            <div>
+              <label for="bulan" class="font-weight-bold">Pilih Bulan :</label>
+              <select name="bulan" id="bulan" class="form-control" style="min-width: 150px;">
+                <?php
+                $namaBulan = [
+                  '01' => 'Januari', '02' => 'Februari', '03' => 'Maret', '04' => 'April',
+                  '05' => 'Mei', '06' => 'Juni', '07' => 'Juli', '08' => 'Agustus',
+                  '09' => 'September', '10' => 'Oktober', '11' => 'November', '12' => 'Desember'
+                ];
+                foreach ($namaBulan as $num => $nama) {
+                  $selected = ($bulan ?? date('m')) === $num ? 'selected' : '';
+                  echo "<option value='$num' $selected>$nama</option>";
+                }
+                ?>
+              </select>
             </div>
-          </form>
+            <div>
+              <label for="tahun" class="font-weight-bold">Pilih Tahun :</label>
+              <select name="tahun" id="tahun" class="form-control" style="min-width: 150px;">
+                <?php
+                $currentYear = date('Y');
+                foreach ($list_tahun as $year) {
+                  $selected = ($tahun ?? $currentYear) == $year ? 'selected' : '';
+                  echo "<option value='$year' $selected>$year</option>";
+                }
+                ?>
+              </select>
+            </div>
+            <div>
+              <button type="submit" class="btn btn-gradient-blue btn-sm shadow-sm d-flex align-items-center gap-2 px-4 py-2">
+                <i class="mdi mdi-magnify"></i> Tampilkan
+              </button>
+            </div>
 
-          <!-- Chart Canvas -->
-          <div style="overflow-x: auto;">
-            <canvas id="barChart" height="230"></canvas>
           </div>
+        </form>
+
+        <!-- Chart Canvas -->
+        <div style="overflow-x: auto;">
+          <canvas id="barChart" height="400"></canvas>
         </div>
       </div>
     </div>
   </div>
+</div>
 
+
+  <!-- Kalender dan To Do List -->
   <div class="container d-flex justify-content-center">
     <div class="row w-100">
       <div class="col-lg-6 grid-margin stretch-card">
@@ -144,30 +145,43 @@
 <script src="<?= base_url('admin/assets/js/chart.min.js') ?>"></script>
 <script>
   const ctx = document.getElementById('barChart').getContext('2d');
+
   const originalLabels = <?= json_encode($divisi_bagian) ?>;
   const shortenedLabels = originalLabels.map(label => {
     return label.length > 12 ? label.substring(0, 12) + '…' : label;
   });
 
+  const dataPKL = <?= json_encode($pkl) ?>;
+  const dataRiset = <?= json_encode($riset) ?>;
+  const dataIntern = <?= json_encode($intern) ?>;
+
+  const allValues = dataPKL.concat(dataRiset, dataIntern);
+  const maxVal = Math.max(...allValues);
+  const stepSize = 5;
+  const minStepCount = 4;
+  const calculatedMaxY = Math.max(Math.ceil(maxVal / stepSize) * stepSize, stepSize * minStepCount);
+
   const barChart = new Chart(ctx, {
     type: 'bar',
     data: {
       labels: shortenedLabels,
-      datasets: [
-        {
+      datasets: [{
           label: 'PKL',
-          data: <?= json_encode($pkl) ?>,
-          backgroundColor: 'rgba(54, 162, 235, 0.7)',
+          data: dataPKL,
+          backgroundColor: '#007bff', // Biru terang
+          borderRadius: 6
         },
         {
           label: 'Riset',
-          data: <?= json_encode($riset) ?>,
-          backgroundColor: 'rgba(255, 206, 86, 0.7)',
+          data: dataRiset,
+          backgroundColor: '#00c853', // Hijau terang
+          borderRadius: 6
         },
         {
           label: 'Internship',
-          data: <?= json_encode($intern) ?>,
-          backgroundColor: 'rgba(75, 192, 192, 0.7)',
+          data: dataIntern,
+          backgroundColor: '#ff6d00', // Oranye terang
+          borderRadius: 6
         }
       ]
     },
@@ -176,23 +190,30 @@
       maintainAspectRatio: false,
       scales: {
         y: {
-          beginAtZero: true,
           stacked: true,
+          beginAtZero: true,
+          max: calculatedMaxY,
           ticks: {
-            stepSize: 10,
+            stepSize: stepSize,
             callback: function(value) {
-              return Number.isInteger(value) ? value : null;
-            }
+              return value;
+            },
+            color: '#2c3e50'
+          },
+          grid: {
+            color: '#e0e0e0'
           }
         },
         x: {
           stacked: true,
           ticks: {
-            maxRotation: 0,
-            minRotation: 0,
+            color: '#2c3e50',
             font: {
-              size: 10
+              size: 11
             }
+          },
+          grid: {
+            display: false
           }
         }
       },
@@ -201,19 +222,34 @@
           callbacks: {
             title: function(context) {
               return originalLabels[context[0].dataIndex];
+            },
+            label: function(context) {
+              return `${context.dataset.label}: ${context.parsed.y}`;
             }
           }
         },
         legend: {
-          position: 'top'
+          position: 'top',
+          labels: {
+            color: '#2c3e50'
+          }
         },
         title: {
           display: true,
-          text: 'Jumlah Mahasiswa/Siswa Aktif per Divisi & Bagian (<?= $bulan ?>/<?= $tahun ?>)'
+          text: 'Jumlah Mahasiswa/Siswa Aktif per Divisi & Bagian (<?= $bulan ?>/<?= $tahun ?>)',
+          font: {
+            size: 18
+          },
+          color: '#2C3E50'
         }
       }
     }
   });
 </script>
+
+
+
+
+
 
 <?= $this->endSection() ?>

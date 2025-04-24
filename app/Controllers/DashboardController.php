@@ -18,16 +18,16 @@ class DashboardController extends BaseController
         $siswaModel = new SiswaModel();
         $internModel = new InternshipModel();
 
-        // Format bulan agar dua digit
+        // Format bulan biar jadi dua digit
         $bulan = str_pad($this->request->getGet('bulan') ?? date('m'), 2, '0', STR_PAD_LEFT);
         $tahun = $this->request->getGet('tahun') ?? date('Y');
 
-        // Ambil data aktif berdasarkan jenis dan waktu
+        // Ambil data aktif berdasarkan jenis dan waktu ini diambil dari model
         $rawPKL = $siswaModel->getSiswaAktifByMonth($bulan, $tahun, 'PKL');
         $rawRiset = $siswaModel->getSiswaAktifByMonth($bulan, $tahun, 'RISET');
         $rawIntern = $internModel->getSiswaAktifByMonth($bulan, $tahun);
 
-        // Gabungkan divisi_bagian dari semua sumber
+        // menggabungkan divisi_bagian dari semua sumber
         $divisiBagian = [];
 
         foreach (array_merge($rawPKL, $rawRiset, $rawIntern) as $item) {
@@ -37,7 +37,7 @@ class DashboardController extends BaseController
         $divisiBagian = array_unique($divisiBagian);
         sort($divisiBagian);
 
-        // Fungsi bantu untuk mapping
+        // Fungsi bantuan untuk mapping
         function mapJumlah($source, $divisiList)
         {
             $map = array_column($source, 'jumlah', 'divisi_bagian');
@@ -54,11 +54,25 @@ class DashboardController extends BaseController
         $dataRiset = mapJumlah($rawRiset, $divisiBagian);
         $dataIntern = mapJumlah($rawIntern, $divisiBagian);
 
-        $listTahun = $internModel->select('YEAR(TGL_AWAL) as tahun')
-            ->groupBy('tahun')
-            ->orderBy('tahun', 'DESC')
-            ->findAll();
+        // menampilkan tahun dengan minimal tahun 2013 dan otomatis diperbarui setiap tahunya
+        $db = \Config\Database::connect();
 
+        $queryTahun = $db->query("
+        SELECT MIN(tahun) AS min_tahun, MAX(tahun) AS max_tahun FROM (
+            SELECT YEAR(TGL_AWAL) AS tahun FROM datasiswa
+            UNION ALL
+            SELECT YEAR(TGL_AWAL) AS tahun FROM datapmmb
+        ) AS semua_tahun
+        ");
+
+        $tahunResult = $queryTahun->getRow();
+        $minTahun = max(2013, $tahunResult->min_tahun ?? date('Y'));
+        $maxTahun = max($tahunResult->max_tahun ?? date('Y'), date('Y')); // pastikan minimal tahun sekarang
+
+        $listTahun = range($minTahun, $maxTahun);
+
+
+        // ini untuk informasi total keseluruhan siswa, mentor dan institusi
         $data = [
             'totalSiswa' => $dashboardmodel->getTotalSiswa(),
             'totalInstitusi' => $dashboardmodel->getTotalInstitusi(),
@@ -75,7 +89,7 @@ class DashboardController extends BaseController
             // Untuk dropdown filter
             'bulan' => $bulan,
             'tahun' => $tahun,
-            'list_tahun' => array_column($listTahun, 'tahun'),
+            'list_tahun' => $listTahun,
         ];
 
         return view('admin/dashboard', $data);
