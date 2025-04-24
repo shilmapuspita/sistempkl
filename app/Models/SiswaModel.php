@@ -23,8 +23,8 @@ class SiswaModel extends Model
             JURUSAN, 
             DIVISI, 
             BAGIAN, 
-            tanggal_mulai_fix, 
-            tgl_akhir_fix, 
+            tanggal_mulai_fix
+            tgl_akhir_fix
             NAMA_PEMB,
             CASE 
                 WHEN tanggal_mulai_fix > CURDATE() THEN 'Belum Mulai'
@@ -42,8 +42,8 @@ class SiswaModel extends Model
         JURUSAN, 
         DIVISI, 
         BAGIAN, 
-        tanggal_mulai_fix, 
-        tgl_akhir_fix, 
+        tanggal_mulai_fix,
+        tgl_akhir_fix 
         NAMA_PEMB,
         CASE 
             WHEN tanggal_mulai_fix > CURDATE() THEN 'Belum Mulai'
@@ -89,8 +89,8 @@ class SiswaModel extends Model
     return $this->select("CONCAT(DIVISI, ' - ', BAGIAN) as divisi_bagian")
         ->select("COUNT(*) as jumlah")
         ->where("JENIS_PKL", $jenis)
-        ->where("tanggal_mulai_fix <=", $end)   // Siswa mulai sebelum atau pas akhir bulan
-        ->where("tgl_akhir_fix >=", $start)     // Siswa selesai setelah atau pas awal bulan
+        ->where("tanggal_mulai_fix <=", $end)   
+        ->where("tgl_akhir_fix >=", $start)     
         ->groupBy("divisi_bagian")
         ->findAll();
 }

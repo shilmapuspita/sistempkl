@@ -6,9 +6,9 @@
   <div class="content-wrapper">
     <div class="page-header">
       <h3 class="page-title">
-        <span class="btn btn-gradient-blue p-2 shadow-sm" >
+        <span class="btn btn-gradient-blue p-2 shadow-sm">
           <i class="fa-solid fa-chalkboard-teacher"></i>
-        </span>  All Data Mahasiswa Internship
+        </span> All Data Mahasiswa Internship
       </h3>
     </div>
 
@@ -42,7 +42,7 @@
                 <i class="fa-solid fa-magnifying-glass position-absolute text-primary"
                   style="left: 15px; top: 50%; transform: translateY(-50%); font-size: 16px;"></i>
               </div>
-              <a href="<?= base_url('siswa/intern/create') ?>" class="btn btn-gradient-blue btn-sm shadow-sm">
+              <a href="<?= base_url('/intern/create') ?>" class="btn btn-gradient-blue btn-sm shadow-sm">
                 <i class="fa-solid fa-user-plus"></i> Add Data
               </a>
             </div>
@@ -75,14 +75,14 @@
                       <td><?= esc($row['ID']); ?></td>
                       <td><?= esc($row['NO_SURAT']); ?></td>
                       <td><?= esc($row['BATCH']); ?></td>
-                      <td><?= esc($row['TGL_DAFTAR']); ?></td>
+                      <td><?= date('d-m-Y', strtotime($row['TGL_DAFTAR'])); ?></td>
                       <td><?= esc($row['NM_SISWA']); ?></td>
                       <td><?= esc($row['LEMBAGA']); ?></td>
                       <td><?= esc($row['JURUSAN']); ?></td>
                       <td><?= esc($row['DIVISI']); ?></td>
                       <td><?= esc($row['BAGIAN']); ?></td>
-                      <td><?= esc($row['TGL_MULAI']); ?></td>
-                      <td><?= esc($row['TGL_AKHIR']); ?></td>
+                      <td><?= date('d-m-Y', strtotime($row['TGL_AWAL'])); ?></td>
+                      <td><?= date('d-m-Y', strtotime($row['TGL_AKHIR'])); ?></td>
                       <td><?= esc($row['STATUS']); ?></td>
                       <td><?= esc($row['NAMA_PEMB']); ?></td>
                       <td class="text-center">
@@ -98,7 +98,6 @@
                 </tbody>
               </table>
             </div>
-            <!-- Menambahkan pagination -->
             <div class="d-flex justify-content-center mt-3">
               <?= $pager->links() ?>
             </div>
@@ -107,10 +106,7 @@
       </div>
     </div>
   </div>
-  <!-- content-wrapper ends -->
 </div>
-<!-- main-panel ends -->
-<!-- untuk search -->
 <script>
   document.getElementById("searchInput").addEventListener("keyup", function() {
     let filter = this.value.toUpperCase();
@@ -122,7 +118,6 @@
     }
   });
 
-  // Aktifkan tooltip Bootstrap
   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
   var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl);
