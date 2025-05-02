@@ -80,6 +80,7 @@
                                     <?php endforeach; ?>
                                 </select>
                             </div>
+
                             <div class="form-group">
                                 <label>
                                     <i class="fa-solid fa-briefcase me-2"></i> Bagian
@@ -108,7 +109,6 @@
                                         "PERPAJAKAN",
                                         "CORPORATE COMMUNICATION"
                                     ];
-
                                     foreach ($bagianList as $bagian) :
                                     ?>
                                         <option value="<?= $bagian ?>" <?= old('BAGIAN', $intern['BAGIAN']) == $bagian ? 'selected' : '' ?>><?= $bagian ?></option>

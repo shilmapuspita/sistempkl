@@ -139,6 +139,7 @@ class InternshipController extends Controller
         return view('admin/siswa/intern/edit', $data);
     }
 
+
     public function update($id)
     {
         $validation = $this->validate([
@@ -167,8 +168,8 @@ class InternshipController extends Controller
             'NM_SISWA'      => strtoupper(esc($this->request->getPost('nama'))),
             'LEMBAGA'       => strtoupper(esc($this->request->getPost('lembaga'))),
             'JURUSAN'       => strtoupper(esc($this->request->getPost('jurusan'))),
-            'DIVISI'        => strtoupper(esc($this->request->getPost('divisi'))),
-            'BAGIAN'        => strtoupper(esc($this->request->getPost('bagian'))),
+            'DIVISI'        => strtoupper(esc($this->request->getPost('DIVISI'))),
+            'BAGIAN'        => strtoupper(esc($this->request->getPost('BAGIAN'))),
             'TGL_AWAL'      => strtoupper(esc($this->request->getPost('TGL_AWAL'))),
             'TGL_AKHIR'     => strtoupper(esc($this->request->getPost('TGL_AKHIR'))),
             'NAMA_PEMB'     => strtoupper(esc($this->request->getPost('nama_pemb'))),

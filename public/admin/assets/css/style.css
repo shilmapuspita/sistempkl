@@ -26268,4 +26268,20 @@ table tbody tr:hover {
   background: linear-gradient(135deg, #00509E, #007BFF) !important; 
 }
 
+.bg-inti-gradient {
+  background: linear-gradient(to right, #16A8FA, #00F2F6);
+  color: #000080 !important;
+}
+
+.footer {
+  border-top: 1px solid #eaeaea;
+  font-size: 14px;
+  background-color: #f9f9f9;
+  color: #6c757d;
+  width: 100%;
+}
+
+
+
+
 /*# sourceMappingURL=maps/style.css.map */
