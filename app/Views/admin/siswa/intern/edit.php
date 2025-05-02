@@ -57,63 +57,64 @@
                                 <input type="text" name="jurusan" class="form-control shadow-sm text-uppercase" value="<?= old('jurusan', $intern['JURUSAN']) ?>" required>
                             </div>
                             <div class="form-group">
-                                <label><i class="fa-solid fa-layer-group me-2"></i> DIVISI</label>
-                                <select name="DIVISI" class="form-select form-select-sm shadow-sm text-uppercase" required>
-                                    <option value="" disabled <?= old('DIVISI', $intern['DIVISI']) == '' ? 'selected' : '' ?>>Pilih DIVISI</option>
-                                    <option value="Operation" <?= old('DIVISI', $intern['DIVISI']) == 'Operation' ? 'selected' : '' ?>>Operation</option>
-                                    <option value="Financial Planning & Analysis" <?= old('DIVISI', $intern['DIVISI']) == 'Financial Planning & Analysis' ? 'selected' : '' ?>>Financial Planning & Analysis</option>
-                                    <option value="Internal Audit Group" <?= old('DIVISI', $intern['DIVISI']) == 'Internal Audit Group' ? 'selected' : '' ?>>Internal Audit Group</option>
-                                    <option value="Commercial Engineering" <?= old('DIVISI', $intern['DIVISI']) == 'Commercial Engineering' ? 'selected' : '' ?>>Commercial Engineering</option>
-                                    <option value="Sales & Marketing" <?= old('DIVISI', $intern['DIVISI']) == 'Sales & Marketing' ? 'selected' : '' ?>>Sales & Marketing</option>
-                                    <option value="Procurement & Material Management" <?= old('DIVISI', $intern['DIVISI']) == 'Procurement & Material Management' ? 'selected' : '' ?>>Procurement & Material Management</option>
-                                    <option value="Corporate Secretary" <?= old('DIVISI', $intern['DIVISI']) == 'Corporate Secretary' ? 'selected' : '' ?>>Corporate Secretary</option>
-                                    <option value="Legal & Risk Management" <?= old('DIVISI', $intern['DIVISI']) == 'Legal & Risk Management' ? 'selected' : '' ?>>Legal & Risk Management</option>
-                                    <option value="Human Capital & General Affair" <?= old('DIVISI', $intern['DIVISI']) == 'Human Capital & General Affair' ? 'selected' : '' ?>>Human Capital & General Affair</option>
-                                    <option value="PT. IPMS" <?= old('DIVISI', $intern['DIVISI']) == 'PT. IPMS' ? 'selected' : '' ?>>PT. IPMS</option>
-                                    <option value="PT. IGOC" <?= old('DIVISI', $intern['DIVISI']) == 'PT. IGOC' ? 'selected' : '' ?>>PT. IGOC</option>
-                                    <option value="Satuan Pengawasan Intern" <?= old('DIVISI', $intern['DIVISI']) == 'Satuan Pengawasan Intern' ? 'selected' : '' ?>>Satuan Pengawasan Intern</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label><i class="fa-solid fa-briefcase me-2"></i> BAGIAN</label>
-                                <select name="BAGIAN" class="form-select form-select-sm shadow-sm text-uppercase" required>
-                                    <option value="" disabled <?= old('BAGIAN', $intern['BAGIAN']) == '' ? 'selected' : '' ?>>Pilih BAGIAN</option>
+                                <label>
+                                    <i class="fa-solid fa-layer-group me-2"></i> Divisi
+                                </label>
+                                <select name="DIVISI" class="form-control shadow-sm" style="appearance: auto;" required>
+                                    <option value="" disabled <?= empty(old('DIVISI', $intern['DIVISI'])) ? 'selected' : '' ?>>Pilih Divisi</option>
                                     <?php
-                                    $bagianList = [
-                                        "Production",
-                                        "Project Group",
-                                        "Treasury & Taxation",
-                                        "Financial Accounting",
-                                        "Operation Planning & Control",
-                                        "Audit Plan & Control",
-                                        "IT & Product Development",
-                                        "Account Manager",
-                                        "Procurement Planning & Control",
-                                        "Procurement",
-                                        "Corporate Communication",
-                                        "CSR & Community Development",
-                                        "Legal",
-                                        "Sales Engineering",
-                                        "Quality Management & HSE",
-                                        "Partnership",
-                                        "Sales & Marketing Operation",
-                                        "Human Capital",
-                                        "Sales & Marketing Planning & Control",
-                                        "Billing & Collection Management",
-                                        "Financial Planning, Controlling & Reporting",
-                                        "IT & Product Development Group",
-                                        "Business Development",
-                                        "Project",
-                                        "IT Service"
+                                    $divisiList = [
+                                        "COMMERCIAL ENGINEERING",
+                                        "DIVISI HUKUM & KEPATUHAN",
+                                        "DIVISI IT & DIGITAL SERVICE",
+                                        "DIVISI KEUANGAN DAN AKUNTANSI",
+                                        "DIVISI MSDM DAN UMUM",
+                                        "DIVISI PENGADAAN & MITRA USAHA",
+                                        "DIVISI REKAYASA & BANG PROD",
+                                        "INFORMATION TECHNOLOGY DAN UMUM"
                                     ];
-                                    foreach ($bagianList as $b):
+
+                                    foreach ($divisiList as $divisi) :
                                     ?>
-                                        <option value="<?= esc($b) ?>" <?= old('BAGIAN', $intern['BAGIAN']) == $b ? 'selected' : '' ?>><?= esc($b) ?></option>
+                                        <option value="<?= $divisi ?>" <?= old('DIVISI', $intern['DIVISI']) == $divisi ? 'selected' : '' ?>><?= $divisi ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
 
+                            <div class="form-group">
+                                <label>
+                                    <i class="fa-solid fa-briefcase me-2"></i> Bagian
+                                </label>
+                                <select name="BAGIAN" class="form-control shadow-sm" style="appearance: auto;" required>
+                                    <option value="" disabled <?= empty(old('BAGIAN', $intern['BAGIAN'])) ? 'selected' : '' ?>>Pilih Bagian</option>
+                                    <?php
+                                    $bagianList = [
+                                        "IT SERVICE",
+                                        "KERJASAMA & KEPATUHAN",
+                                        "ADMINISTRASI & PELAYANAN SDM",
+                                        "PENILAIAN & PENGEMBANGAN SDM",
+                                        "RENDAL IT & DS, MANRISKUAL",
+                                        "RENDAL PENGADAAN",
+                                        "PENAGIHAN & ASURANSI",
+                                        "PENDANAAN OPERASIONAL",
+                                        "BANG ORG & SISTEM MSDM",
+                                        "RENDAL REKBANGPROD MANRISKUAL",
+                                        "PENGEMBANGAN PRODUK",
+                                        "PENGADAAN 2",
+                                        "MITRA USAHA",
+                                        "INFORMATION TECHNOLOGY",
+                                        "DIVISI KEUANGAN DAN AKUNTANSI",
+                                        "AKUNTANSI MANAJEMEN",
+                                        "BAGIAN UMUM",
+                                        "PERPAJAKAN",
+                                        "CORPORATE COMMUNICATION"
+                                    ];
+                                    foreach ($bagianList as $bagian) :
+                                    ?>
+                                        <option value="<?= $bagian ?>" <?= old('BAGIAN', $intern['BAGIAN']) == $bagian ? 'selected' : '' ?>><?= $bagian ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
                             <div class="form-group">
                                 <label><i class="fa-solid fa-calendar-plus"></i> Tanggal Awal</label>
                                 <input type="date" name="TGL_AWAL" class="form-control shadow-sm" value="<?= old('TGL_AWAL', $intern['TGL_AWAL']) ?>" required>

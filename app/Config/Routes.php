@@ -49,13 +49,17 @@ $routes->get('siswa/riset/edit/(:num)', 'SiswaController::editSiswaRiset/$1');
 $routes->post('siswa/riset/update/(:num)', 'SiswaController::updateSiswaRiset/$1');
 $routes->get('siswa/riset/delete/(:num)', 'SiswaController::deleteSiswaRiset/$1');
 
-//routes data intern
+// routes data intern
 $routes->get('intern', 'InternshipController::showInternship');
+$routes->get('siswa/intern', 'InternshipController::showInternship');
 $routes->get('intern/create', 'InternshipController::create');
 $routes->post('intern/store', 'InternshipController::store');
 $routes->get('intern/edit/(:num)', 'InternshipController::edit/$1');
 $routes->post('intern/update/(:num)', 'InternshipController::update/$1');
 $routes->get('intern/delete/(:num)', 'InternshipController::delete/$1');
+$routes->get('intern/export/form', 'InternshipController::exportFormIntern');
+$routes->post('intern/ekspor', 'InternshipController::exportSiswaIntern');
+
 
 // routes untuk  login
 $routes->group('login', ['filter' => 'redirectIfAuthenticated'], function ($routes) {
