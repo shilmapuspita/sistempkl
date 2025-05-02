@@ -11,12 +11,12 @@ class InternshipController extends Controller
     {
         $model = new InternshipModel();
         $data = [
-            'datapmmb' => $model->getPaginateData(10), 
+            'datapmmb' => $model->getPaginateData(10),
             'pager' => $model->pager,
             'currentPage' => 'internship'
         ];
 
-        return view('admin/siswa/intern/intern', $data); 
+        return view('admin/siswa/intern/intern', $data);
     }
 
     public function create()
@@ -86,6 +86,7 @@ class InternshipController extends Controller
         return view('admin/siswa/intern/edit', $data);
     }
 
+
     public function update($id)
     {
         $validation = $this->validate([
@@ -95,8 +96,8 @@ class InternshipController extends Controller
             'nama'             => 'required',
             'lembaga'             => 'required',
             'jurusan'             => 'required',
-            'divisi'             => 'required',
-            'bagian'             => 'required',
+            'DIVISI'             => 'required',
+            'BAGIAN'             => 'required',
             'TGL_AWAL'             => 'required',
             'TGL_AKHIR'             => 'required',
             'nama_pemb'             => 'required',
@@ -114,8 +115,8 @@ class InternshipController extends Controller
             'NM_SISWA'      => strtoupper(esc($this->request->getPost('nama'))),
             'LEMBAGA'       => strtoupper(esc($this->request->getPost('lembaga'))),
             'JURUSAN'       => strtoupper(esc($this->request->getPost('jurusan'))),
-            'DIVISI'        => strtoupper(esc($this->request->getPost('divisi'))),
-            'BAGIAN'        => strtoupper(esc($this->request->getPost('bagian'))),
+            'DIVISI'        => strtoupper(esc($this->request->getPost('DIVISI'))),
+            'BAGIAN'        => strtoupper(esc($this->request->getPost('BAGIAN'))),
             'TGL_AWAL'      => strtoupper(esc($this->request->getPost('TGL_AWAL'))),
             'TGL_AKHIR'     => strtoupper(esc($this->request->getPost('TGL_AKHIR'))),
             'NAMA_PEMB'     => strtoupper(esc($this->request->getPost('nama_pemb'))),

@@ -19,36 +19,39 @@
     </div>
     <!-- Statistik Dashboard -->
     <div class="row">
-      <div class="col-md-4 stretch-card grid-margin">
-        <div class="card bg-gradient-danger card-img-holder text-white">
-          <div class="card-body">
-            <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-            <h4 class="font-weight-normal mb-3">Mahasiswa/Siswa Aktif PKL/Riset</h4>
-            <h2 class="mb-3"><?= number_format($totalSiswa) ?></h2>
-            <h6 class="card-text">Based On Data From 2007 To 2024</h6>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 stretch-card grid-margin">
-        <div class="card bg-gradient-info card-img-holder text-white">
-          <div class="card-body">
-            <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-            <h4 class="font-weight-normal mb-3">Collaborating Institutions <i class="mdi mdi-bookmark-outline mdi-24px float-end"></i></h4>
-            <h2 class="mb-3"><?= number_format($totalInstitusi) ?> Institutions</h2>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 stretch-card grid-margin">
-        <div class="card bg-gradient-success card-img-holder text-white">
-          <div class="card-body">
-            <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-            <h3 class="font-weight-normal mb-3">Mentor <i class="mdi mdi-diamond mdi-24px float-end"></i></h3>
-            <h2 class="mb-3"><?= number_format($totalMentor) ?></h2>
-            <h6 class="card-text">Experienced Mentors In Their Fields</h6>
-          </div>
-        </div>
+  <div class="col-md-4 stretch-card grid-margin">
+    <div class="card bg-inti-gradient card-img-holder">
+      <div class="card-body">
+        <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
+        <h4 class="card-text">Mahasiswa/Siswa Aktif PKL/Riset</h4>
+        <h2 class="mb-3"><?= number_format($totalSiswa) ?></h2>
+        <!-- <h6 class="card-text">Based On Data From 2007 To 2024</h6> -->
+        <h6 class="card-text"> Students Currently Active as of <?= date('F d, Y') ?></h6>
+
       </div>
     </div>
+  </div>
+  <div class="col-md-4 stretch-card grid-margin">
+    <div class="card bg-inti-gradient card-img-holder">
+      <div class="card-body">
+        <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
+        <h4 class="card-text">Collaborating Institutions <i class="mdi mdi-bookmark-outline mdi-24px float-end"></i></h4>
+        <h2 class="mb-3"><?= number_format($totalInstitusi) ?> Institutions</h2>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 stretch-card grid-margin">
+    <div class="card bg-inti-gradient card-img-holder">
+      <div class="card-body">
+        <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
+        <h3 class="card-text">Mentor <i class="mdi mdi-diamond mdi-24px float-end"></i></h3>
+        <h2 class="mb-3"><?= number_format($totalMentor) ?></h2>
+        <h6 class="card-text">Experienced Mentors In Their Fields</h6>
+      </div>
+    </div>
+  </div>
+</div>
+
   </div>
 
   <div class="row">
@@ -122,7 +125,7 @@
             <h4 class="card-title text-dark text-center">Todo List</h4>
             <div class="add-items d-flex">
               <input type="text" class="form-control todo-list-input" placeholder="What do you need to do today?">
-              <button class="add btn btn-gradient-primary font-weight-bold todo-list-add-btn" id="add-task">Add</button>
+              <button class="add btn btn-gradient-blue font-weight-bold todo-list-add-btn" id="add-task">Add</button>
             </div>
             <div class="list-wrapper">
               <ul class="d-flex flex-column-reverse todo-list todo-list-custom">
@@ -134,12 +137,17 @@
     </div>
   </div>
 
-  <footer class="footer">
-    <div class="d-sm-flex justify-content-center justify-content-sm-between">
-      <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2025 <a href="https://www.instagram.com/deanpramona?igsh=b2k2bXI2amVub2J5" target="_blank">Dean Pramona</a>. All rights reserved.</span>
-      <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
-    </div>
-  </footer>
+<!-- Footer wrapper full width -->
+<footer class="footer bg-white shadow-sm py-3 mt-4 w-100">
+  <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+    <span class="text-muted small text-center text-md-left mb-2 mb-md-0">
+      © <?= date('Y') ?> <a href="https://www.instagram.com/deanpramona" class="text-primary fw-bold" target="_blank">Dean Pramona</a>. All rights reserved.
+    </span>
+    <span class="text-muted small text-center text-md-right">
+      Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i> by INTI Team
+    </span>
+  </div>
+</footer>
 </div>
 
 <script src="<?= base_url('admin/assets/js/chart.min.js') ?>"></script>
@@ -168,19 +176,19 @@
       datasets: [{
           label: 'PKL',
           data: dataPKL,
-          backgroundColor: '#007bff', // Biru terang
+          backgroundColor: '#2D5FFE',
           borderRadius: 6
         },
         {
           label: 'Riset',
           data: dataRiset,
-          backgroundColor: '#00c853', // Hijau terang
+          backgroundColor: '#16A8FA', 
           borderRadius: 6
         },
         {
           label: 'Internship',
           data: dataIntern,
-          backgroundColor: '#ff6d00', // Oranye terang
+          backgroundColor: '#00F2F6', 
           borderRadius: 6
         }
       ]
