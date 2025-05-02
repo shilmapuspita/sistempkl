@@ -10,7 +10,6 @@ class SiswaModel extends Model
     protected $primaryKey = 'ID_PKL';
     protected $allowedFields = ['NM_SISWA', 'TANGGAL', 'JENIS_PKL', 'LEMBAGA', 'JURUSAN', 'DIVISI', 'BAGIAN', 'tanggal_mulai_fix', 'tgl_akhir_fix', 'NAMA_PEMB'];
 
-    // Fungsi untuk mengambil data dengan filter tanggal dan pagination
     public function getFilteredData($perPage, $jenisPKL = null, $startDate = null, $endDate = null, $regDate = null)
     {
         $builder = $this;
@@ -56,7 +55,6 @@ class SiswaModel extends Model
             $builder = $builder->where("JENIS_PKL", $jenisPKL);
         }
 
-        // Filter tanggal mulai dan akhir
         if (!empty($startDate) && !empty($endDate)) {
             $builder = $builder->where("tanggal_mulai_fix >=", $startDate)
                                ->where("tgl_akhir_fix <=", $endDate);
@@ -68,7 +66,6 @@ class SiswaModel extends Model
                 ->where("tgl_akhir_fix <=", $endDate);
         }
 
-        // Filter berdasarkan tanggal pendaftaran
         if (!empty($regDate)) {
             $regDate = date('Y-m-d', strtotime(str_replace('/', '-', $regDate)));
             $builder = $builder->where("DATE(TANGGAL)", $regDate);
@@ -79,12 +76,10 @@ class SiswaModel extends Model
     }
     public function getSiswaAktifByMonth($month, $year, $jenis)
 {
-    // Pastikan $month dalam format 2 digit (01, 02, ..., 12)
     $month = str_pad($month, 2, '0', STR_PAD_LEFT);
 
-    // Hitung awal dan akhir bulan yang diminta
     $start = "$year-$month-01";
-    $end = date('Y-m-t', strtotime($start)); // t = last day of the month
+    $end = date('Y-m-t', strtotime($start)); 
 
     return $this->select("CONCAT(DIVISI, ' - ', BAGIAN) as divisi_bagian")
         ->select("COUNT(*) as jumlah")
