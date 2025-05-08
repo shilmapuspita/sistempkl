@@ -132,16 +132,75 @@ class SiswaController extends Controller
             return redirect()->to(base_url('siswaPKL'))->with('error', 'Data tidak ditemukan!');
         }
 
-        $siswa['tanggal_mulai_fix'] = date('Y-m-d', strtotime($siswa['tanggal_mulai_fix']));
-        $siswa['tgl_akhir_fix'] = date('Y-m-d', strtotime($siswa['tgl_akhir_fix']));
+        $siswa['tanggal_mulai_fix'] = !empty($siswa['tanggal_mulai_fix']) ? date('Y-m-d', strtotime($siswa['tanggal_mulai_fix'])) : '';
+        $siswa['tgl_akhir_fix'] = !empty($siswa['tgl_akhir_fix']) ? date('Y-m-d', strtotime($siswa['tgl_akhir_fix'])) : '';
+
+        $divisiList = [
+            "SALES & MARKETING",
+            "SIS TEK FO",
+            "OPERASI CELCO, PRODUKSI DAN PURNAJUAL",
+            "COMMERCIAL ENGINEERING",
+            "SE",
+            "TAN",
+            "ADMINISTRASI PERKANTORAN",
+            "SEK PER",
+            "PENGEMBANGAN PRODUK",
+            "ACC PE",
+            "HUMAN CAPITAL MANAGEMENT",
+            "MANAJEMEN SDM",
+            "ADMINISTRASI KEUANGAN",
+            "SEKRETARIS PERUSAHAAN",
+            "HUKUM DAN PAT",
+            "PENGADAAN DAN LOGISTIK",
+            "PERENCANAAN DAN DUKUNGAN PROYEK TITO",
+            "SPI",
+            "ACC CELCO",
+            "PEMBANGUNAN DAN MIGRASI PROYEK TITO",
+            "PKBL",
+            "DAAN DAN LOG",
+            "MANAJEMEN",
+            "ACCOUNT PE",
+            "SISTEM DAN TEKNOLOGI INFORMASI"
+        ];
+
+        $bagianList = [
+            "SALES ENGINEERING",
+            "BANGSIS DAN TEKFO",
+            "PERENCANAAN, PENGENDALIAN DAN KUALITAS PROYEK",
+            "MITRA USAHA",
+            "PART MGT",
+            "SIS DAN JAK TAN",
+            "ADMINISTRASI PERKANTORAN",
+            "UMUM DAN PROPERTY",
+            "GAR DAN SIS LAP KUG",
+            "KUNG BANG",
+            "RICE",
+            "MATERIAL PROYEK",
+            "MANAGED SERVICES",
+            "REPAIR DAN PRODUKSI",
+            "CHAN DAN BRAND MGT",
+            "INFRAS TEK FO",
+            "HUMAN INVESTMENT",
+            "YAN SDM DAN REMUN",
+            "ADMINISTRASI DAN PENDUKUNG PROYEK",
+            "BANGSIS SDM DAN ORG",
+            "BANG SDM DAN PK",
+            "ADMINISTRASI KEUANGAN",
+            "BANG PROD GROUP 1",
+            "PKBL",
+            "BANG PROD GROUP 2"
+        ];
 
         $data = [
             'siswa' => $siswa,
+            'divisiList' => $divisiList,
+            'bagianList' => $bagianList,
             'currentPage' => 'siswaPKL'
         ];
 
         return view('admin/siswa/PKL/edit', $data);
     }
+
 
     public function updateSiswaPKL($id)
     {
@@ -292,11 +351,69 @@ class SiswaController extends Controller
             return redirect()->to(base_url('siswaRiset'))->with('error', 'Data tidak ditemukan!');
         }
 
-        $siswa['tanggal_mulai_fix'] = date('Y-m-d', strtotime($siswa['tanggal_mulai_fix']));
-        $siswa['tgl_akhir_fix'] = date('Y-m-d', strtotime($siswa['tgl_akhir_fix']));
+        $siswa['tanggal_mulai_fix'] = !empty($siswa['tanggal_mulai_fix']) ? date('Y-m-d', strtotime($siswa['tanggal_mulai_fix'])) : '';
+        $siswa['tgl_akhir_fix'] = !empty($siswa['tgl_akhir_fix']) ? date('Y-m-d', strtotime($siswa['tgl_akhir_fix'])) : '';
+
+        $divisiList = [
+            "SALES & MARKETING",
+            "SIS TEK FO",
+            "OPERASI CELCO, PRODUKSI DAN PURNAJUAL",
+            "COMMERCIAL ENGINEERING",
+            "SE",
+            "TAN",
+            "ADMINISTRASI PERKANTORAN",
+            "SEK PER",
+            "PENGEMBANGAN PRODUK",
+            "ACC PE",
+            "HUMAN CAPITAL MANAGEMENT",
+            "MANAJEMEN SDM",
+            "ADMINISTRASI KEUANGAN",
+            "SEKRETARIS PERUSAHAAN",
+            "HUKUM DAN PAT",
+            "PENGADAAN DAN LOGISTIK",
+            "PERENCANAAN DAN DUKUNGAN PROYEK TITO",
+            "SPI",
+            "ACC CELCO",
+            "PEMBANGUNAN DAN MIGRASI PROYEK TITO",
+            "PKBL",
+            "DAAN DAN LOG",
+            "MANAJEMEN",
+            "ACCOUNT PE",
+            "SISTEM DAN TEKNOLOGI INFORMASI"
+        ];
+
+        $bagianList = [
+            "SALES ENGINEERING",
+            "BANGSIS DAN TEKFO",
+            "PERENCANAAN, PENGENDALIAN DAN KUALITAS PROYEK",
+            "MITRA USAHA",
+            "PART MGT",
+            "SIS DAN JAK TAN",
+            "ADMINISTRASI PERKANTORAN",
+            "UMUM DAN PROPERTY",
+            "GAR DAN SIS LAP KUG",
+            "KUNG BANG",
+            "RICE",
+            "MATERIAL PROYEK",
+            "MANAGED SERVICES",
+            "REPAIR DAN PRODUKSI",
+            "CHAN DAN BRAND MGT",
+            "INFRAS TEK FO",
+            "HUMAN INVESTMENT",
+            "YAN SDM DAN REMUN",
+            "ADMINISTRASI DAN PENDUKUNG PROYEK",
+            "BANGSIS SDM DAN ORG",
+            "BANG SDM DAN PK",
+            "ADMINISTRASI KEUANGAN",
+            "BANG PROD GROUP 1",
+            "PKBL",
+            "BANG PROD GROUP 2"
+        ];
 
         $data = [
             'siswa' => $siswa,
+            'divisiList' => $divisiList,
+            'bagianList' => $bagianList,
             'currentPage' => 'siswaRiset'
         ];
 

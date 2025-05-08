@@ -44,14 +44,29 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label><i class="fa-solid fa-users"></i> Divisi</label>
-                                <input type="text" name="DIVISI" class="form-control shadow-sm text-uppercase"
-                                    value="<?= isset($siswa['DIVISI']) ? esc($siswa['DIVISI']) : '' ?>" required>
+                                <label for="divisi">Divisi</label>
+                                <select name="DIVISI" id="divisi" class="form-control" style="appearance: auto;" required>
+                                    <option value="" disabled <?= empty($siswa['DIVISI']) ? 'selected' : '' ?>>-- Pilih Divisi --</option>
+                                    <?php foreach ($divisiList as $divisi): ?>
+                                        <option value="<?= htmlspecialchars($divisi) ?>"
+                                            <?= strcasecmp(trim($siswa['DIVISI']), trim($divisi)) === 0 ? 'selected' : '' ?>>
+                                            <?= htmlspecialchars($divisi) ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
                             </div>
+
                             <div class="form-group">
-                                <label><i class="fa-solid fa-layer-group"></i> Bagian</label>
-                                <input type="text" name="BAGIAN" class="form-control shadow-sm text-uppercase"
-                                    value="<?= isset($siswa['BAGIAN']) ? esc($siswa['BAGIAN']) : '' ?>" required>
+                                <label for="bagian">Bagian</label>
+                                <select name="BAGIAN" id="bagian" class="form-control" style="appearance: auto;" required>
+                                    <option value="" disabled <?= empty($siswa['BAGIAN']) ? 'selected' : '' ?>>-- Pilih Bagian --</option>
+                                    <?php foreach ($bagianList as $bagian): ?>
+                                        <option value="<?= htmlspecialchars($bagian) ?>"
+                                            <?= strcasecmp(trim($siswa['BAGIAN']), trim($bagian)) === 0 ? 'selected' : '' ?>>
+                                            <?= htmlspecialchars($bagian) ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label><i class="fa-solid fa-calendar-plus"></i> Tanggal Awal</label>
