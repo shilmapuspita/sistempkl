@@ -69,8 +69,8 @@ $routes->group('login', ['filter' => 'redirectIfAuthenticated'], function ($rout
 $routes->get('logout', 'AdminController::logout');
 
 // routes untuk register
-$routes->get('/admin/register', 'AdminController::register');
-$routes->post('/admin/register', 'AdminController::processRegister');
+$routes->get('admin/register', 'AdminController::register');
+$routes->post('admin/register', 'AdminController::processRegister');
 
 // routes untuk profile
 $routes->get('admin/profile', 'AdminController::profile');

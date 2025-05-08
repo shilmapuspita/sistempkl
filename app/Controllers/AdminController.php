@@ -47,7 +47,7 @@ class AdminController extends BaseController
         ]);
 
         if (!$validation->withRequest($this->request)->run()) {
-            return redirect()->to('/register')->withInput()->with('errors', $validation->getErrors());
+            return redirect()->to('admin/register')->withInput()->with('errors', $validation->getErrors());
         }
 
         $this->adminModel->insert([
