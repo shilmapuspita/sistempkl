@@ -88,11 +88,21 @@
     <h6>𐙚˚ Start your journey now!</h6>
     <br>
     <?php if (session()->getFlashdata('error')): ?>
-      <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
-    <?php endif; ?>
-    <?php if (session()->getFlashdata('success')): ?>
-      <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
-    <?php endif; ?>
+    <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
+<?php endif; ?>
+<?php if (session()->getFlashdata('success')): ?>
+    <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
+<?php endif; ?>
+<?php if (session()->getFlashdata('errors')): ?>
+    <div class="alert alert-danger text-start">
+        <ul>
+            <?php foreach (session()->getFlashdata('errors') as $error): ?>
+                <li><?= esc($error) ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endif; ?>
+
 
     <form action="<?= base_url('admin/register') ?>" method="post">
       <input type="text" name="username" placeholder="Username" required>
