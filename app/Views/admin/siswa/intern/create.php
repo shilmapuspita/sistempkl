@@ -61,43 +61,26 @@
                                 <label><i class="fa-solid fa-book"></i> Jurusan</label>
                                 <input type="text" name="jurusan" class="form-control shadow-sm rounded-3 text-uppercase" value="<?= old('jurusan') ?>" required>
                             </div>
-                            <div class="form-group mb-4">
-                                <label><i class="fa-solid fa-layer-group me-2"></i> Divisi</label>
-                                <select class="form-select form-select-sm shadow-sm rounded-3" name="divisi" id="exampleInputDivisi" required>
+                            <div class="form-group">
+                                <label>
+                                    <i class="fa-solid fa-layer-group me-2"></i> Divisi
+                                </label>
+                                <select class="form-select form-select-sm shadow-sm select2" name="DIVISI" required>
                                     <option value="" selected disabled>Pilih Divisi</option>
-                                    <option value="COMMERCIAL ENGINEERING" <?= old('divisi') == 'COMMERCIAL ENGINEERING' ? 'selected' : '' ?>>COMMERCIAL ENGINEERING</option>
-                                    <option value="DIVISI HUKUM & KEPATUHAN" <?= old('divisi') == 'DIVISI HUKUM & KEPATUHAN' ? 'selected' : '' ?>>DIVISI HUKUM & KEPATUHAN</option>
-                                    <option value="DIVISI IT & DIGITAL SERVICE" <?= old('divisi') == 'DIVISI IT & DIGITAL SERVICE' ? 'selected' : '' ?>>DIVISI IT & DIGITAL SERVICE</option>
-                                    <option value="DIVISI KEUANGAN DAN AKUNTANSI" <?= old('divisi') == 'DIVISI KEUANGAN DAN AKUNTANSI' ? 'selected' : '' ?>>DIVISI KEUANGAN DAN AKUNTANSI</option>
-                                    <option value="DIVISI MSDM DAN UMUM" <?= old('divisi') == 'DIVISI MSDM DAN UMUM' ? 'selected' : '' ?>>DIVISI MSDM DAN UMUM</option>
-                                    <option value="DIVISI PENGADAAN & MITRA USAHA" <?= old('divisi') == 'DIVISI PENGADAAN & MITRA USAHA' ? 'selected' : '' ?>>DIVISI PENGADAAN & MITRA USAHA</option>
-                                    <option value="DIVISI REKAYASA & BANG PROD" <?= old('divisi') == 'DIVISI REKAYASA & BANG PROD' ? 'selected' : '' ?>>DIVISI REKAYASA & BANG PROD</option>
-                                    <option value="INFORMATION TECHNOLOGY DAN UMUM" <?= old('divisi') == 'INFORMATION TECHNOLOGY DAN UMUM' ? 'selected' : '' ?>>INFORMATION TECHNOLOGY DAN UMUM</option>
+                                    <?php foreach ($divisi as $d): ?>
+                                        <option value="<?= esc($d['DIVISI']) ?>"><?= esc($d['DIVISI']) ?></option>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
-                            <div class="form-group mb-4">
-                                <label><i class="fa-solid fa-briefcase me-2"></i> Bagian</label>
-                                <select class="form-select form-select-sm shadow-sm rounded-3" name="bagian" id="exampleInputBagian" required>
+                            <div class="form-group">
+                                <label>
+                                    <i class="fa-solid fa-briefcase me-2"></i> Bagian
+                                </label>
+                                <select class="form-select form-select-sm shadow-sm select2" name="BAGIAN" required>
                                     <option value="" selected disabled>Pilih Bagian</option>
-                                    <option value="IT SERVICE" <?= old('bagian') == 'IT SERVICE' ? 'selected' : '' ?>>IT SERVICE</option>
-                                    <option value="BAGIAN KERJASAMA & KEPATUHAN" <?= old('bagian') == 'BAGIAN KERJASAMA & KEPATUHAN' ? 'selected' : '' ?>>KERJASAMA & KEPATUHAN</option>
-                                    <option value="BAGIAN ADMINISTRASI & PELAYANAN SDM" <?= old('bagian') == 'BAGIAN ADMINISTRASI & PELAYANAN SDM' ? 'selected' : '' ?>>ADMINISTRASI & PELAYANAN SDM</option>
-                                    <option value="BAGIAN PENILAIAN & PENGEMBANGAN SDM" <?= old('bagian') == 'BAGIAN PENILAIAN & PENGEMBANGAN SDM' ? 'selected' : '' ?>>PENILAIAN & PENGEMBANGAN SDM</option>
-                                    <option value="BAGIAN RENDAL IT & DS, MANRISKUAL" <?= old('bagian') == 'BAGIAN RENDAL IT & DS, MANRISKUAL' ? 'selected' : '' ?>>RENDAL IT & DS, MANRISKUAL</option>
-                                    <option value="BAGIAN RENDAL PENGADAAN" <?= old('bagian') == 'BAGIAN RENDAL PENGADAAN' ? 'selected' : '' ?>>RENDAL PENGADAAN</option>
-                                    <option value="BAGIAN PENAGIHAN & ASURANSI" <?= old('bagian') == 'BAGIAN PENAGIHAN & ASURANSI' ? 'selected' : '' ?>>PENAGIHAN & ASURANSI</option>
-                                    <option value="BAGIAN PENDANAAN OPERASIONAL" <?= old('bagian') == 'BAGIAN PENDANAAN OPERASIONAL' ? 'selected' : '' ?>>PENDANAAN OPERASIONAL</option>
-                                    <option value="BAGIAN BANG ORG & SISTEM MSDM" <?= old('bagian') == 'BAGIAN BANG ORG & SISTEM MSDM' ? 'selected' : '' ?>>BANG ORG & SISTEM MSDM</option>
-                                    <option value="BAGIAN RENDAL REKBANGPROD MANRISKUAL" <?= old('bagian') == 'BAGIAN RENDAL REKBANGPROD MANRISKUAL' ? 'selected' : '' ?>>RENDAL REKBANGPROD MANRISKUAL</option>
-                                    <option value="BAGIAN PENGEMBANGAN PRODUK" <?= old('bagian') == 'BAGIAN PENGEMBANGAN PRODUK' ? 'selected' : '' ?>>PENGEMBANGAN PRODUK</option>
-                                    <option value="BAGIAN PENGADAAN 2" <?= old('bagian') == 'BAGIAN PENGADAAN 2' ? 'selected' : '' ?>>PENGADAAN 2</option>
-                                    <option value="BAGIAN MITRA USAHA" <?= old('bagian') == 'BAGIAN MITRA USAHA' ? 'selected' : '' ?>>MITRA USAHA</option>
-                                    <option value="BAGIAN INFORMATION TECHNOLOGY" <?= old('bagian') == 'BAGIAN INFORMATION TECHNOLOGY' ? 'selected' : '' ?>>INFORMATION TECHNOLOGY</option>
-                                    <option value="DIVISI KEUANGAN DAN AKUNTANSI" <?= old('bagian') == 'DIVISI KEUANGAN DAN AKUNTANSI' ? 'selected' : '' ?>>DIVISI KEUANGAN DAN AKUNTANSI</option>
-                                    <option value="BAGIAN AKUNTANSI MANAJEMEN" <?= old('bagian') == 'BAGIAN AKUNTANSI MANAJEMEN' ? 'selected' : '' ?>>AKUNTANSI MANAJEMEN</option>
-                                    <option value="BAGIAN UMUM" <?= old('bagian') == 'BAGIAN UMUM' ? 'selected' : '' ?>>BAGIAN UMUM</option>
-                                    <option value="BAGIAN PERPAJAKAN" <?= old('bagian') == 'BAGIAN PERPAJAKAN' ? 'selected' : '' ?>>PERPAJAKAN</option>
-                                    <option value="CORPORATE COMMUNICATION" <?= old('bagian') == 'CORPORATE COMMUNICATION' ? 'selected' : '' ?>>CORPORATE COMMUNICATION</option>
+                                    <?php foreach ($bagian as $b): ?>
+                                        <option value="<?= esc($b['BAGIAN']) ?>"><?= esc($b['BAGIAN']) ?></option>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
 

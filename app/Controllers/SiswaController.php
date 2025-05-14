@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 use App\Models\SiswaModel;
+use App\Models\MentorModel;
 use DateTime;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -94,10 +95,13 @@ class SiswaController extends Controller
 
     public function createSiswaPKL()
     {
+        $mentorModel = new MentorModel();
 
         $data = [
             'title' => 'Tambah Siswa PKL',
             'currentPage' => 'siswaPKL',
+            'divisi' => $mentorModel->getDivisiUnik(),
+            'bagian' => $mentorModel->getBagianUnik()
         ];
 
         return view('admin/siswa/PKL/create', $data);
@@ -135,63 +139,12 @@ class SiswaController extends Controller
         $siswa['tanggal_mulai_fix'] = !empty($siswa['tanggal_mulai_fix']) ? date('Y-m-d', strtotime($siswa['tanggal_mulai_fix'])) : '';
         $siswa['tgl_akhir_fix'] = !empty($siswa['tgl_akhir_fix']) ? date('Y-m-d', strtotime($siswa['tgl_akhir_fix'])) : '';
 
-        $divisiList = [
-            "SALES & MARKETING",
-            "SIS TEK FO",
-            "OPERASI CELCO, PRODUKSI DAN PURNAJUAL",
-            "COMMERCIAL ENGINEERING",
-            "SE",
-            "TAN",
-            "ADMINISTRASI PERKANTORAN",
-            "SEK PER",
-            "PENGEMBANGAN PRODUK",
-            "ACC PE",
-            "HUMAN CAPITAL MANAGEMENT",
-            "MANAJEMEN SDM",
-            "ADMINISTRASI KEUANGAN",
-            "SEKRETARIS PERUSAHAAN",
-            "HUKUM DAN PAT",
-            "PENGADAAN DAN LOGISTIK",
-            "PERENCANAAN DAN DUKUNGAN PROYEK TITO",
-            "SPI",
-            "ACC CELCO",
-            "PEMBANGUNAN DAN MIGRASI PROYEK TITO",
-            "PKBL",
-            "DAAN DAN LOG",
-            "MANAJEMEN",
-            "ACCOUNT PE",
-            "SISTEM DAN TEKNOLOGI INFORMASI"
-        ];
-
-        $bagianList = [
-            "SALES ENGINEERING",
-            "BANGSIS DAN TEKFO",
-            "PERENCANAAN, PENGENDALIAN DAN KUALITAS PROYEK",
-            "MITRA USAHA",
-            "PART MGT",
-            "SIS DAN JAK TAN",
-            "ADMINISTRASI PERKANTORAN",
-            "UMUM DAN PROPERTY",
-            "GAR DAN SIS LAP KUG",
-            "KUNG BANG",
-            "RICE",
-            "MATERIAL PROYEK",
-            "MANAGED SERVICES",
-            "REPAIR DAN PRODUKSI",
-            "CHAN DAN BRAND MGT",
-            "INFRAS TEK FO",
-            "HUMAN INVESTMENT",
-            "YAN SDM DAN REMUN",
-            "ADMINISTRASI DAN PENDUKUNG PROYEK",
-            "BANGSIS SDM DAN ORG",
-            "BANG SDM DAN PK",
-            "ADMINISTRASI KEUANGAN",
-            "BANG PROD GROUP 1",
-            "PKBL",
-            "BANG PROD GROUP 2"
-        ];
+        $mentorModel = new MentorModel();
+        $divisiList = array_column($mentorModel->getDivisiUnik(), 'DIVISI');
+        $bagianList = array_column($mentorModel->getBagianUnik(), 'BAGIAN');
 
         $data = [
+            'title' => 'Edit Siswa PKL',
             'siswa' => $siswa,
             'divisiList' => $divisiList,
             'bagianList' => $bagianList,
@@ -200,7 +153,6 @@ class SiswaController extends Controller
 
         return view('admin/siswa/PKL/edit', $data);
     }
-
 
     public function updateSiswaPKL($id)
     {
@@ -314,9 +266,13 @@ class SiswaController extends Controller
 
     public function createSiswaRiset()
     {
+        $mentorModel = new MentorModel();
+
         $data = [
             'title' => 'Tambah Siswa Riset',
             'currentPage' => 'siswaRiset',
+            'divisi' => $mentorModel->getDivisiUnik(),
+            'bagian' => $mentorModel->getBagianUnik()
         ];
 
         return view('admin/siswa/Riset/create', $data);
@@ -354,63 +310,12 @@ class SiswaController extends Controller
         $siswa['tanggal_mulai_fix'] = !empty($siswa['tanggal_mulai_fix']) ? date('Y-m-d', strtotime($siswa['tanggal_mulai_fix'])) : '';
         $siswa['tgl_akhir_fix'] = !empty($siswa['tgl_akhir_fix']) ? date('Y-m-d', strtotime($siswa['tgl_akhir_fix'])) : '';
 
-        $divisiList = [
-            "SALES & MARKETING",
-            "SIS TEK FO",
-            "OPERASI CELCO, PRODUKSI DAN PURNAJUAL",
-            "COMMERCIAL ENGINEERING",
-            "SE",
-            "TAN",
-            "ADMINISTRASI PERKANTORAN",
-            "SEK PER",
-            "PENGEMBANGAN PRODUK",
-            "ACC PE",
-            "HUMAN CAPITAL MANAGEMENT",
-            "MANAJEMEN SDM",
-            "ADMINISTRASI KEUANGAN",
-            "SEKRETARIS PERUSAHAAN",
-            "HUKUM DAN PAT",
-            "PENGADAAN DAN LOGISTIK",
-            "PERENCANAAN DAN DUKUNGAN PROYEK TITO",
-            "SPI",
-            "ACC CELCO",
-            "PEMBANGUNAN DAN MIGRASI PROYEK TITO",
-            "PKBL",
-            "DAAN DAN LOG",
-            "MANAJEMEN",
-            "ACCOUNT PE",
-            "SISTEM DAN TEKNOLOGI INFORMASI"
-        ];
-
-        $bagianList = [
-            "SALES ENGINEERING",
-            "BANGSIS DAN TEKFO",
-            "PERENCANAAN, PENGENDALIAN DAN KUALITAS PROYEK",
-            "MITRA USAHA",
-            "PART MGT",
-            "SIS DAN JAK TAN",
-            "ADMINISTRASI PERKANTORAN",
-            "UMUM DAN PROPERTY",
-            "GAR DAN SIS LAP KUG",
-            "KUNG BANG",
-            "RICE",
-            "MATERIAL PROYEK",
-            "MANAGED SERVICES",
-            "REPAIR DAN PRODUKSI",
-            "CHAN DAN BRAND MGT",
-            "INFRAS TEK FO",
-            "HUMAN INVESTMENT",
-            "YAN SDM DAN REMUN",
-            "ADMINISTRASI DAN PENDUKUNG PROYEK",
-            "BANGSIS SDM DAN ORG",
-            "BANG SDM DAN PK",
-            "ADMINISTRASI KEUANGAN",
-            "BANG PROD GROUP 1",
-            "PKBL",
-            "BANG PROD GROUP 2"
-        ];
+        $mentorModel = new MentorModel();
+        $divisiList = array_column($mentorModel->getDivisiUnik(), 'DIVISI');
+        $bagianList = array_column($mentorModel->getBagianUnik(), 'BAGIAN');
 
         $data = [
+            'title' => 'Edit Siswa Riset',
             'siswa' => $siswa,
             'divisiList' => $divisiList,
             'bagianList' => $bagianList,

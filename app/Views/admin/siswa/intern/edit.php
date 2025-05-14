@@ -62,21 +62,11 @@
                                 </label>
                                 <select name="DIVISI" class="form-control shadow-sm" style="appearance: auto;" required>
                                     <option value="" disabled <?= empty(old('DIVISI', $intern['DIVISI'])) ? 'selected' : '' ?>>Pilih Divisi</option>
-                                    <?php
-                                    $divisiList = [
-                                        "COMMERCIAL ENGINEERING",
-                                        "DIVISI HUKUM & KEPATUHAN",
-                                        "DIVISI IT & DIGITAL SERVICE",
-                                        "DIVISI KEUANGAN DAN AKUNTANSI",
-                                        "DIVISI MSDM DAN UMUM",
-                                        "DIVISI PENGADAAN & MITRA USAHA",
-                                        "DIVISI REKAYASA & BANG PROD",
-                                        "INFORMATION TECHNOLOGY DAN UMUM"
-                                    ];
-
-                                    foreach ($divisiList as $divisi) :
-                                    ?>
-                                        <option value="<?= $divisi ?>" <?= old('DIVISI', $intern['DIVISI']) == $divisi ? 'selected' : '' ?>><?= $divisi ?></option>
+                                    <?php foreach ($divisiList as $divisi): ?>
+                                        <option value="<?= esc($divisi) ?>"
+                                            <?= old('DIVISI', $intern['DIVISI']) == $divisi ? 'selected' : '' ?>>
+                                            <?= esc($divisi) ?>
+                                        </option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
@@ -87,31 +77,11 @@
                                 </label>
                                 <select name="BAGIAN" class="form-control shadow-sm" style="appearance: auto;" required>
                                     <option value="" disabled <?= empty(old('BAGIAN', $intern['BAGIAN'])) ? 'selected' : '' ?>>Pilih Bagian</option>
-                                    <?php
-                                    $bagianList = [
-                                        "IT SERVICE",
-                                        "KERJASAMA & KEPATUHAN",
-                                        "ADMINISTRASI & PELAYANAN SDM",
-                                        "PENILAIAN & PENGEMBANGAN SDM",
-                                        "RENDAL IT & DS, MANRISKUAL",
-                                        "RENDAL PENGADAAN",
-                                        "PENAGIHAN & ASURANSI",
-                                        "PENDANAAN OPERASIONAL",
-                                        "BANG ORG & SISTEM MSDM",
-                                        "RENDAL REKBANGPROD MANRISKUAL",
-                                        "PENGEMBANGAN PRODUK",
-                                        "PENGADAAN 2",
-                                        "MITRA USAHA",
-                                        "INFORMATION TECHNOLOGY",
-                                        "DIVISI KEUANGAN DAN AKUNTANSI",
-                                        "AKUNTANSI MANAJEMEN",
-                                        "BAGIAN UMUM",
-                                        "PERPAJAKAN",
-                                        "CORPORATE COMMUNICATION"
-                                    ];
-                                    foreach ($bagianList as $bagian) :
-                                    ?>
-                                        <option value="<?= $bagian ?>" <?= old('BAGIAN', $intern['BAGIAN']) == $bagian ? 'selected' : '' ?>><?= $bagian ?></option>
+                                    <?php foreach ($bagianList as $bagian): ?>
+                                        <option value="<?= esc($bagian) ?>"
+                                            <?= old('BAGIAN', $intern['BAGIAN']) == $bagian ? 'selected' : '' ?>>
+                                            <?= esc($bagian) ?>
+                                        </option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
