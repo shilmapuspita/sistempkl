@@ -21111,7 +21111,7 @@ code {
 }
 
 .bg-gradient-success, .datepicker-custom .datepicker.datepicker-inline .datepicker-days .table-condensed tbody tr td.day.today:before {
-  background: linear-gradient(to right, #84d9d2, #07cdae) !important;
+  background: linear-gradient(to right, #2D5FFE, #00F2F6) !important;
 }
 
 .bg-gradient-info {
@@ -24113,8 +24113,8 @@ dl li {
 }
 .datepicker.datepicker-dropdown .datepicker-days table.table-condensed thead tr th.datepicker-switch,
 .datepicker.datepicker-inline .datepicker-days table.table-condensed thead tr th.datepicker-switch {
-  color: #434a54;
-  background: #ffffff;
+  color: #00F2F6;
+  background: #00F2F6;
   padding-bottom: 1rem;
   padding-top: 1rem;
   font-size: 1rem;
@@ -24160,11 +24160,11 @@ dl li {
 }
 .datepicker.datepicker-dropdown .datepicker-days table.table-condensed tbody td.day:hover,
 .datepicker.datepicker-inline .datepicker-days table.table-condensed tbody td.day:hover {
-  background: #ffffff;
+  background: #00F2F6;
 }
 .datepicker.datepicker-dropdown .datepicker-days table.table-condensed tbody td.day.active,
 .datepicker.datepicker-inline .datepicker-days table.table-condensed tbody td.day.active {
-  color: #000000;
+  color: #00F2F6;
   background: transparent;
   position: relative;
   z-index: 1;
@@ -24188,7 +24188,7 @@ dl li {
 }
 .datepicker.datepicker-dropdown .datepicker-days table.table-condensed tbody td.day.today,
 .datepicker.datepicker-inline .datepicker-days table.table-condensed tbody td.day.today {
-  color: #fff;
+  color: #00F2F6;
   background: transparent;
   position: relative;
   z-index: 1;
@@ -24383,7 +24383,7 @@ dl li {
 .datepicker-custom .datepicker.datepicker-inline .datepicker-years .table-condensed thead,
 .datepicker-custom .datepicker.datepicker-inline .datepicker-decades .table-condensed thead,
 .datepicker-custom .datepicker.datepicker-inline .datepicker-centuries .table-condensed thead {
-  background: linear-gradient(to right, #84d9d2, #07cdae);
+  background: linear-gradient(to right, #16A8FA, #00F2F6);
 }
 .datepicker-custom .datepicker.datepicker-inline .datepicker-days .table-condensed thead tr th.next, .datepicker-custom .datepicker.datepicker-inline .datepicker-days .table-condensed thead tr th.prev, .datepicker-custom .datepicker.datepicker-inline .datepicker-days .table-condensed thead tr th.datepicker-switch, .datepicker-custom .datepicker.datepicker-inline .datepicker-days .table-condensed thead tr th.dow,
 .datepicker-custom .datepicker.datepicker-inline .datepicker-months .table-condensed thead tr th.next,
