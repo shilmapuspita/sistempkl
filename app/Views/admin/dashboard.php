@@ -255,9 +255,4 @@
   });
 </script>
 
-
-
-
-
-
 <?= $this->endSection() ?>

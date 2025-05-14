@@ -38,7 +38,6 @@ class DashboardModel extends Model
     return $pklAktif + $risetAktif + $internAktif;
 }
 
-
     public function getTotalInstitusi()
     {
         return $this->db->table('lembaga')
