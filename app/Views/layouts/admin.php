@@ -11,20 +11,25 @@ if (!session()->has('logged_in')) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>SISTEMPKL</title>
+
+  <!-- Vendor CSS -->
   <link rel="stylesheet" href="<?= base_url('admin/assets/vendors/mdi/css/materialdesignicons.min.css') ?>">
   <link rel="stylesheet" href="<?= base_url('admin/assets/vendors/ti-icons/css/themify-icons.css') ?>">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
   <link rel="stylesheet" href="<?= base_url('admin/assets/vendors/css/vendor.bundle.base.css') ?>">
   <link rel="stylesheet" href="<?= base_url('admin/assets/vendors/font-awesome/css/font-awesome.min.css') ?>">
-  <link rel="stylesheet" href="<?= base_url('admin/assets/vendors/font-awesome/css/font-awesome.min.css') ?>" />
   <link rel="stylesheet" href="<?= base_url('admin/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css') ?>">
   <link rel="stylesheet" href="<?= base_url('admin/assets/css/custom.css') ?>">
   <link rel="stylesheet" href="<?= base_url('admin/assets/css/style.css') ?>">
   <link rel="shortcut icon" href="<?= base_url('admin/assets/images/favicon.png') ?>" />
 
-  <!-- Font font-awesome -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- ✅ Select2 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 </head>
+
 
 <body>
   <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -146,6 +151,26 @@ if (!session()->has('logged_in')) {
     <script src="<?= base_url('admin/assets/js/todolist.js') ?>"></script>
     <script src="<?= base_url('admin/assets/js/jquery.cookie.js') ?>"></script>
     <script src="<?= base_url('admin/assets/js/dashboard.js') ?>"></script>
+
+    <!-- ✅ jQuery (wajib sebelum Select2 JS) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <!-- ✅ Select2 JS -->
+    <script>
+      $(document).ready(function() {
+        $('#exampleInputDivisi').select2({
+          placeholder: "Pilih Divisi",
+          width: '100%'
+        });
+
+        $('#exampleInputBagian').select2({
+          placeholder: "Pilih Bagian",
+          width: '100%'
+        });
+      });
+    </script>
 </body>
 
 </html>

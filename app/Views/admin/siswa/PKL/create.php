@@ -41,61 +41,29 @@
                                 <input type="text" name="JURUSAN" class="form-control shadow-sm text-uppercase" required>
                             </div>
                         </div>
-
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>
                                     <i class="fa-solid fa-layer-group me-2"></i> Divisi
                                 </label>
-                                <select class="form-select form-select-sm shadow-sm" name="DIVISI" id="exampleInputDivisi" required>
+                                <select class="form-select form-select-sm shadow-sm select2" name="DIVISI" required>
                                     <option value="" selected disabled>Pilih Divisi</option>
-                                    <option value="Operation">Operation</option>
-                                    <option value="Financial Planning & Analysis">Financial Planning & Analysis</option>
-                                    <option value="Internal Audit Group">Internal Audit Group</option>
-                                    <option value="Commercial Engineering">Commercial Engineering</option>
-                                    <option value="Sales & Marketing">Sales & Marketing</option>
-                                    <option value="Procurement & Material Management">Procurement & Material Management</option>
-                                    <option value="Corporate Secretary">Corporate Secretary</option>
-                                    <option value="Legal & Risk Management">Legal & Risk Management</option>
-                                    <option value="Human Capital & General Affair">Human Capital & General Affair</option>
-                                    <option value="PT. IPMS">PT. IPMS</option>
-                                    <option value="PT. IGOC">PT. IGOC</option>
-                                    <option value="Satuan Pengawasan Intern">Satuan Pengawasan Intern</option>
+                                    <?php foreach ($divisi as $d): ?>
+                                        <option value="<?= esc($d['DIVISI']) ?>"><?= esc($d['DIVISI']) ?></option>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>
                                     <i class="fa-solid fa-briefcase me-2"></i> Bagian
                                 </label>
-                                <select class="form-select form-select-sm shadow-sm" name="BAGIAN" id="exampleInputBagian" required>
+                                <select class="form-select form-select-sm shadow-sm select2" name="BAGIAN" required>
                                     <option value="" selected disabled>Pilih Bagian</option>
-                                    <option value="Production">Production</option>
-                                    <option value="Project Group">Project Group</option>
-                                    <option value="Treasury & Taxation">Treasury & Taxation</option>
-                                    <option value="Financial Accounting">Financial Accounting</option>
-                                    <option value="Operation Planning & Control">Operation Planning & Control</option>
-                                    <option value="Audit Plan & Control">Audit Plan & Control</option>
-                                    <option value="IT & Product Development">IT & Product Development</option>
-                                    <option value="Account Manager">Account Manager</option>
-                                    <option value="Procurement Planning & Control">Procurement Planning & Control</option>
-                                    <option value="Procurement">Procurement</option>
-                                    <option value="Corporate Communication">Corporate Communication</option>
-                                    <option value="CSR & Community Development">CSR & Community Development</option>
-                                    <option value="Legal">Legal</option>
-                                    <option value="Sales Engineering">Sales Engineering</option>
-                                    <option value="Quality Management & HSE">Quality Management & HSE</option>
-                                    <option value="Partnership">Partnership</option>
-                                    <option value="Sales & Marketing Operation">Sales & Marketing Operation</option>
-                                    <option value="Human Capital">Human Capital</option>
-                                    <option value="Sales & Marketing Planning & Control">Sales & Marketing Planning & Control</option>
-                                    <option value="Billing & Collection Management">Billing & Collection Management</option>
-                                    <option value="Financial Planning, Controlling & Reporting">Financial Planning, Controlling & Reporting</option>
-                                    <option value="IT & Product Development Group">IT & Product Development Group</option>
-                                    <option value="Business Development">Business Development</option>
-                                    <option value="Project">Project</option>
+                                    <?php foreach ($bagian as $b): ?>
+                                        <option value="<?= esc($b['BAGIAN']) ?>"><?= esc($b['BAGIAN']) ?></option>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
-
                             <div class="form-group">
                                 <label><i class="fa-solid fa-calendar-plus"></i> Tanggal Awal</label>
                                 <input type="date" name="tanggal_mulai_fix" class="form-control shadow-sm" required>

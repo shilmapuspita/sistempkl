@@ -29,8 +29,38 @@ class MentorController extends BaseController
 
     public function create()
     {
-        return view('admin/mentor/create', ['currentPage' => 'mentor']);
+        $db = \Config\Database::connect();
+
+        $divisi1 = $db->table('datasiswa')->select('divisi')->groupBy('divisi')->get()->getResultArray();
+        $divisi2 = $db->table('datapmmb')->select('divisi')->groupBy('divisi')->get()->getResultArray();
+
+        $bagian1 = $db->table('datasiswa')->select('bagian')->groupBy('bagian')->get()->getResultArray();
+        $bagian2 = $db->table('datapmmb')->select('bagian')->groupBy('bagian')->get()->getResultArray();
+
+        $allDivisi = array_merge(array_column($divisi1, 'divisi'), array_column($divisi2, 'divisi'));
+        $allBagian = array_merge(array_column($bagian1, 'bagian'), array_column($bagian2, 'bagian'));
+
+        $divisiBersih = array_filter($allDivisi, function ($item) {
+            return preg_match('/[a-zA-Z0-9]/', $item);
+        });
+
+        $bagianBersih = array_filter($allBagian, function ($item) {
+            return preg_match('/[a-zA-Z0-9]/', $item);
+        });
+
+        $divisiBersih = array_unique($divisiBersih);
+        sort($divisiBersih);
+
+        $bagianBersih = array_unique($bagianBersih);
+        sort($bagianBersih);
+
+        return view('admin/mentor/create', [
+            'currentPage' => 'mentor',
+            'divisiList' => $divisiBersih,
+            'bagianList' => $bagianBersih,
+        ]);
     }
+
 
     public function store()
     {
@@ -172,7 +202,7 @@ class MentorController extends BaseController
                     empty(trim($row['A'])) && empty(trim($row['B'])) && empty(trim($row['C'])) &&
                     empty(trim($row['D'])) && empty(trim($row['E'])) && empty(trim($row['F'])) && empty(trim($row['G']))
                 ) {
-                    continue; 
+                    continue;
                 }
 
                 // Insert ke database

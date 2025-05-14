@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 use App\Models\InternshipModel;
+use App\Models\MentorModel;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
@@ -38,9 +39,13 @@ class InternshipController extends Controller
 
     public function create()
     {
+        $mentorModel = new MentorModel();
+
         $data = [
             'title' => 'Tambah Siswa Intern',
             'currentPage' => 'intern',
+            'divisi' => $mentorModel->getDivisiUnik(),
+            'bagian' => $mentorModel->getBagianUnik()
         ];
 
         return view('admin/siswa/intern/create', $data);
@@ -92,44 +97,15 @@ class InternshipController extends Controller
         $intern = $internModel->find($id);
 
         if (!$intern) {
-            return redirect()->to('/intern')->with('errors', 'Data Mahasiswa tidak ditemukan.');
+            return redirect()->to(base_url('intern'))->with('error', 'Data tidak ditemukan!');
         }
 
-        // Hardcoded list divisi dan bagian
-        $divisiList = [
-            'COMMERCIAL ENGINEERING',
-            'DIVISI HUKUM & KEPATUHAN',
-            'DIVISI IT & DIGITAL SERVICE',
-            'DIVISI KEUANGAN DAN AKUNTANSI',
-            'DIVISI MSDM DAN UMUM',
-            'DIVISI PENGADAAN & MITRA USAHA',
-            'DIVISI REKAYASA & BANG PROD',
-            'INFORMATION TECHNOLOGY DAN UMUM'
-        ];
-
-        $bagianList = [
-            'IT SERVICE',
-            'BAGIAN KERJASAMA & KEPATUHAN',
-            'BAGIAN ADMINISTRASI & PELAYANAN SDM',
-            'BAGIAN PENILAIAN & PENGEMBANGAN SDM',
-            'BAGIAN RENDAL IT & DS, MANRISKUAL',
-            'BAGIAN RENDAL PENGADAAN',
-            'BAGIAN PENAGIHAN & ASURANSI',
-            'BAGIAN PENDANAAN OPERASIONAL',
-            'BAGIAN BANG ORG & SISTEM MSDM',
-            'BAGIAN RENDAL REKBANGPROD MANRISKUAL',
-            'BAGIAN PENGEMBANGAN PRODUK',
-            'BAGIAN PENGADAAN 2',
-            'BAGIAN MITRA USAHA',
-            'BAGIAN INFORMATION TECHNOLOGY',
-            'DIVISI KEUANGAN DAN AKUNTANSI',
-            'BAGIAN AKUNTANSI MANAJEMEN',
-            'BAGIAN UMUM',
-            'BAGIAN PERPAJAKAN',
-            'CORPORATE COMMUNICATION'
-        ];
+        $mentorModel = new MentorModel();
+        $divisiList = array_column($mentorModel->getDivisiUnik(), 'DIVISI');
+        $bagianList = array_column($mentorModel->getBagianUnik(), 'BAGIAN');
 
         $data = [
+            'title' => 'Edit Siswa Intern',
             'intern' => $intern,
             'divisiList' => $divisiList,
             'bagianList' => $bagianList,

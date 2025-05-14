@@ -45,25 +45,24 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="divisi">Divisi</label>
-                                <select name="DIVISI" id="divisi" class="form-control" style="appearance: auto;" required>
+                                <select name="DIVISI" id="divisi" class="form-control select2"style="appearance: auto;"required>
                                     <option value="" disabled <?= empty($siswa['DIVISI']) ? 'selected' : '' ?>>-- Pilih Divisi --</option>
                                     <?php foreach ($divisiList as $divisi): ?>
-                                        <option value="<?= htmlspecialchars($divisi) ?>"
+                                        <option value="<?= esc($divisi) ?>"
                                             <?= strcasecmp(trim($siswa['DIVISI']), trim($divisi)) === 0 ? 'selected' : '' ?>>
-                                            <?= htmlspecialchars($divisi) ?>
+                                            <?= esc($divisi) ?>
                                         </option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
-
                             <div class="form-group">
                                 <label for="bagian">Bagian</label>
-                                <select name="BAGIAN" id="bagian" class="form-control" style="appearance: auto;" required>
+                                <select name="BAGIAN" id="bagian" class="form-control select2"style="appearance: auto;" required>
                                     <option value="" disabled <?= empty($siswa['BAGIAN']) ? 'selected' : '' ?>>-- Pilih Bagian --</option>
                                     <?php foreach ($bagianList as $bagian): ?>
-                                        <option value="<?= htmlspecialchars($bagian) ?>"
+                                        <option value="<?= esc($bagian) ?>"
                                             <?= strcasecmp(trim($siswa['BAGIAN']), trim($bagian)) === 0 ? 'selected' : '' ?>>
-                                            <?= htmlspecialchars($bagian) ?>
+                                            <?= esc($bagian) ?>
                                         </option>
                                     <?php endforeach; ?>
                                 </select>

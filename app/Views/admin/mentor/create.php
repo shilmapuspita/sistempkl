@@ -16,7 +16,6 @@
                 <h4 class="card-title text-center text-primary fw-bold">FORMULIR DATA MENTOR</h4>
                 <br>
 
-                
                 <?php if (session()->getFlashdata('success')) : ?>
                     <div class="alert alert-success">
                         <?= session()->getFlashdata('success') ?>
@@ -32,7 +31,7 @@
                         </ul>
                     </div>
                 <?php endif; ?>
-                
+
                 <form action="<?= base_url('/mentor/store') ?>" method="post">
                     <?= csrf_field() ?>
 
@@ -50,15 +49,9 @@
                                 <label><i class="fa-solid fa-building"></i> Divisi</label>
                                 <select class="form-select form-select-sm shadow-sm" name="divisi" required>
                                     <option value="" selected disabled>Pilih Divisi</option>
-                                    <option value="Operation">Operation</option>
-                                    <option value="Financial Planning & Analysis">Financial Planning & Analysis</option>
-                                    <option value="Internal Audit Group">Internal Audit Group</option>
-                                    <option value="Commercial Engineering">Commercial Engineering</option>
-                                    <option value="Sales & Marketing">Sales & Marketing</option>
-                                    <option value="Procurement & Material Management">Procurement & Material Management</option>
-                                    <option value="Corporate Secretary">Corporate Secretary</option>
-                                    <option value="Legal & Risk Management">Legal & Risk Management</option>
-                                    <option value="Human Capital & General Affair">Human Capital & General Affair</option>
+                                    <?php foreach ($divisiList as $divisi): ?>
+                                        <option value="<?= esc($divisi) ?>"><?= esc($divisi) ?></option>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
                         </div>
@@ -68,14 +61,9 @@
                                 <label><i class="fa-solid fa-briefcase"></i> Bagian</label>
                                 <select class="form-select form-select-sm shadow-sm" name="bagian" required>
                                     <option value="" selected disabled>Pilih Bagian</option>
-                                    <option value="Production">Production</option>
-                                    <option value="Project Group">Project Group</option>
-                                    <option value="Treasury & Taxation">Treasury & Taxation</option>
-                                    <option value="Financial Accounting">Financial Accounting</option>
-                                    <option value="Operation Planning & Control">Operation Planning & Control</option>
-                                    <option value="Audit Plan & Control">Audit Plan & Control</option>
-                                    <option value="IT & Product Development">IT & Product Development</option>
-                                    <option value="Account Manager">Account Manager</option>
+                                    <?php foreach ($bagianList as $bagian): ?>
+                                        <option value="<?= esc($bagian) ?>"><?= esc($bagian) ?></option>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
                             <div class="form-group">
