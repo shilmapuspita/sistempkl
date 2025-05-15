@@ -45,7 +45,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="divisi">Divisi</label>
-                                <select name="DIVISI" id="divisi" class="form-control select2"style="appearance: auto;"required>
+                                <select name="DIVISI" id="divisi" class="form-control select2" style="appearance: auto;" required>
                                     <option value="" disabled <?= empty($siswa['DIVISI']) ? 'selected' : '' ?>>-- Pilih Divisi --</option>
                                     <?php foreach ($divisiList as $divisi): ?>
                                         <option value="<?= esc($divisi) ?>"
@@ -57,7 +57,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="bagian">Bagian</label>
-                                <select name="BAGIAN" id="bagian" class="form-control select2"style="appearance: auto;" required>
+                                <select name="BAGIAN" id="bagian" class="form-control select2" style="appearance: auto;" required>
                                     <option value="" disabled <?= empty($siswa['BAGIAN']) ? 'selected' : '' ?>>-- Pilih Bagian --</option>
                                     <?php foreach ($bagianList as $bagian): ?>
                                         <option value="<?= esc($bagian) ?>"
@@ -79,7 +79,42 @@
                             </div>
                             <div class="form-group">
                                 <label><i class="fa-solid fa-user-tie"></i> Nama Pembimbing</label>
-                                <input type="text" name="NAMA_PEMB" class="form-control shadow-sm text-uppercase" value="<?= $siswa['NAMA_PEMB'] ?>" required>
+                                <select name="NAMA_PEMB" class="form-select form-select-sm shadow-sm text-uppercase" required>
+                                    <option value="" disabled>Pilih Pembimbing</option>
+                                    <?php
+                                    $list_pembimbing = [
+                                        "DANA SUHENDAR",
+                                        "YULIATNO RAWOSIIII",
+                                        "HERI JOKO PRASETYO",
+                                        "JOKO HARYONO",
+                                        "BONTANG PRASOJO",
+                                        "LISDA N. RACHMAWATI",
+                                        "TRISWARA",
+                                        "TITO GEORGE L.S.",
+                                        "TATANG SOLIHIN",
+                                        "YAYAT RUHIYAT",
+                                        "SURYAMAN DAHLAN",
+                                        "NEDI KURNIADI",
+                                        "MULYO SANYOTO",
+                                        "SUPRIATNA DIDI KOSIM",
+                                        "AGUS KOSASIH A.K",
+                                        "YANARDIAN AGRIANTO",
+                                        "JAJANG KOSWARA",
+                                        "KASNANTA SUWITA",
+                                        "MAMAN SUPARMAN S.",
+                                        "TRIA SUSIAWATI",
+                                        "GUPUH SARWO EDI",
+                                        "ANDIK EKO K.P. SSi MT",
+                                        "HERDA HERMANSYAH",
+                                        "EDDIE WILLIAM S.",
+                                        "YOYO SYAMSUDIN DISASTRA"
+                                    ];
+                                    foreach ($list_pembimbing as $pemb) {
+                                        $selected = ($siswa['NAMA_PEMB'] ?? '') == $pemb ? 'selected' : '';
+                                        echo "<option value=\"$pemb\" $selected>$pemb</option>";
+                                    }
+                                    ?>
+                                </select>
                             </div>
                         </div>
                     </div>

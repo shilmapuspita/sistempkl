@@ -95,7 +95,30 @@
                             </div>
                             <div class="form-group">
                                 <label><i class="fa-solid fa-user-tie"></i> Nama Pembimbing</label>
-                                <input type="text" name="nama_pemb" class="form-control shadow-sm text-uppercase" value="<?= old('nama_pemb', $intern['NAMA_PEMB']) ?>" required>
+                                <?php
+                                $selectedPemb = old('nama_pemb') ?? $intern['NAMA_PEMB'] ?? '';
+                                ?>
+                                <select name="nama_pemb" class="form-select form-select-sm shadow-sm rounded-3">
+                                    <option value="" disabled <?= $selectedPemb == '' ? 'selected' : '' ?>>Pilih Pembimbing</option>
+                                    <option value="SETYO UTORO" <?= $selectedPemb == 'SETYO UTORO' ? 'selected' : '' ?>>SETYO UTORO</option>
+                                    <option value="PUTTY OCTAVIANY PURWADIPUTRI" <?= $selectedPemb == 'PUTTY OCTAVIANY PURWADIPUTRI' ? 'selected' : '' ?>>PUTTY OCTAVIANY PURWADIPUTRI</option>
+                                    <option value="NENDEN SITI AISYAH" <?= $selectedPemb == 'NENDEN SITI AISYAH' ? 'selected' : '' ?>>NENDEN SITI AISYAH</option>
+                                    <option value="RESNA RIA ASMARA" <?= $selectedPemb == 'RESNA RIA ASMARA' ? 'selected' : '' ?>>RESNA RIA ASMARA</option>
+                                    <option value="TUMINAH" <?= $selectedPemb == 'TUMINAH' ? 'selected' : '' ?>>TUMINAH</option>
+                                    <option value="RIKA FITRIA" <?= $selectedPemb == 'RIKA FITRIA' ? 'selected' : '' ?>>RIKA FITRIA</option>
+                                    <option value="MARTAULI SINTA PUTRI" <?= $selectedPemb == 'MARTAULI SINTA PUTRI' ? 'selected' : '' ?>>MARTAULI SINTA PUTRI</option>
+                                    <option value="TATI SRI HARTATI" <?= $selectedPemb == 'TATI SRI HARTATI' ? 'selected' : '' ?>>TATI SRI HARTATI</option>
+                                    <option value="MULIASARI HARTANTI" <?= $selectedPemb == 'MULIASARI HARTANTI' ? 'selected' : '' ?>>MULIASARI HARTANTI</option>
+                                    <option value="DJUHARTONO" <?= $selectedPemb == 'DJUHARTONO' ? 'selected' : '' ?>>DJUHARTONO</option>
+                                    <option value="PURNOMO ADJI" <?= $selectedPemb == 'PURNOMO ADJI' ? 'selected' : '' ?>>PURNOMO ADJI</option>
+                                    <option value="YUANOVITA HAPSARI" <?= $selectedPemb == 'YUANOVITA HAPSARI' ? 'selected' : '' ?>>YUANOVITA HAPSARI</option>
+                                    <option value="KARINA MEYRITA DEWI" <?= $selectedPemb == 'KARINA MEYRITA DEWI' ? 'selected' : '' ?>>KARINA MEYRITA DEWI</option>
+                                    <option value="ERIK ARFIANSYAH" <?= $selectedPemb == 'ERIK ARFIANSYAH' ? 'selected' : '' ?>>ERIK ARFIANSYAH</option>
+                                    <option value="ELLEN HUTABARAT" <?= $selectedPemb == 'ELLEN HUTABARAT' ? 'selected' : '' ?>>ELLEN HUTABARAT</option>
+                                    <option value="ASEP IWAN SUHENDAR" <?= $selectedPemb == 'ASEP IWAN SUHENDAR' ? 'selected' : '' ?>>ASEP IWAN SUHENDAR</option>
+                                    <option value="RACHMAT SUGIARTO" <?= $selectedPemb == 'RACHMAT SUGIARTO' ? 'selected' : '' ?>>RACHMAT SUGIARTO</option>
+                                    <option value="LUTHFY" <?= $selectedPemb == 'LUTHFY' ? 'selected' : '' ?>>LUTHFY</option>
+                                </select>
                             </div>
                         </div>
                     </div>
