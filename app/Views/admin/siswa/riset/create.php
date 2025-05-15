@@ -73,9 +73,36 @@
                                 <label><i class="fa-solid fa-calendar-check"></i> Tanggal Akhir</label>
                                 <input type="date" name="tgl_akhir_fix" class="form-control shadow-sm" required>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group mb-4">
                                 <label><i class="fa-solid fa-user-tie"></i> Nama Pembimbing</label>
-                                <input type="text" name="NAMA_PEMB" class="form-control shadow-sm text-uppercase" required>
+                                <select name="NAMA_PEMB" class="form-select form-select-sm shadow-sm rounded-3" required>
+                                    <option value="" selected disabled>Pilih Pembimbing</option>
+                                    <option value="DANA SUHENDAR" <?= old('NAMA_PEMB') == 'DANA SUHENDAR' ? 'selected' : '' ?>>DANA SUHENDAR</option>
+                                    <option value="YULIATNO RAWOSIIII" <?= old('NAMA_PEMB') == 'YULIATNO RAWOSIIII' ? 'selected' : '' ?>>YULIATNO RAWOSIIII</option>
+                                    <option value="HERI JOKO PRASETYO" <?= old('NAMA_PEMB') == 'HERI JOKO PRASETYO' ? 'selected' : '' ?>>HERI JOKO PRASETYO</option>
+                                    <option value="JOKO HARYONO" <?= old('NAMA_PEMB') == 'JOKO HARYONO' ? 'selected' : '' ?>>JOKO HARYONO</option>
+                                    <option value="BONTANG PRASOJO" <?= old('NAMA_PEMB') == 'BONTANG PRASOJO' ? 'selected' : '' ?>>BONTANG PRASOJO</option>
+                                    <option value="LISDA N. RACHMAWATI" <?= old('NAMA_PEMB') == 'LISDA N. RACHMAWATI' ? 'selected' : '' ?>>LISDA N. RACHMAWATI</option>
+                                    <option value="TRISWARA" <?= old('NAMA_PEMB') == 'TRISWARA' ? 'selected' : '' ?>>TRISWARA</option>
+                                    <option value="TITO GEORGE L.S." <?= old('NAMA_PEMB') == 'TITO GEORGE L.S.' ? 'selected' : '' ?>>TITO GEORGE L.S.</option>
+                                    <option value="TATANG SOLIHIN" <?= old('NAMA_PEMB') == 'TATANG SOLIHIN' ? 'selected' : '' ?>>TATANG SOLIHIN</option>
+                                    <option value="YAYAT RUHIYAT" <?= old('NAMA_PEMB') == 'YAYAT RUHIYAT' ? 'selected' : '' ?>>YAYAT RUHIYAT</option>
+                                    <option value="SURYAMAN DAHLAN" <?= old('NAMA_PEMB') == 'SURYAMAN DAHLAN' ? 'selected' : '' ?>>SURYAMAN DAHLAN</option>
+                                    <option value="NEDI KURNIADI" <?= old('NAMA_PEMB') == 'NEDI KURNIADI' ? 'selected' : '' ?>>NEDI KURNIADI</option>
+                                    <option value="MULYO SANYOTO" <?= old('NAMA_PEMB') == 'MULYO SANYOTO' ? 'selected' : '' ?>>MULYO SANYOTO</option>
+                                    <option value="SUPRIATNA DIDI KOSIM" <?= old('NAMA_PEMB') == 'SUPRIATNA DIDI KOSIM' ? 'selected' : '' ?>>SUPRIATNA DIDI KOSIM</option>
+                                    <option value="AGUS KOSASIH A.K" <?= old('NAMA_PEMB') == 'AGUS KOSASIH A.K' ? 'selected' : '' ?>>AGUS KOSASIH A.K</option>
+                                    <option value="YANARDIAN AGRIANTO" <?= old('NAMA_PEMB') == 'YANARDIAN AGRIANTO' ? 'selected' : '' ?>>YANARDIAN AGRIANTO</option>
+                                    <option value="JAJANG KOSWARA" <?= old('NAMA_PEMB') == 'JAJANG KOSWARA' ? 'selected' : '' ?>>JAJANG KOSWARA</option>
+                                    <option value="KASNANTA SUWITA" <?= old('NAMA_PEMB') == 'KASNANTA SUWITA' ? 'selected' : '' ?>>KASNANTA SUWITA</option>
+                                    <option value="MAMAN SUPARMAN S." <?= old('NAMA_PEMB') == 'MAMAN SUPARMAN S.' ? 'selected' : '' ?>>MAMAN SUPARMAN S.</option>
+                                    <option value="TRIA SUSIAWATI" <?= old('NAMA_PEMB') == 'TRIA SUSIAWATI' ? 'selected' : '' ?>>TRIA SUSIAWATI</option>
+                                    <option value="GUPUH SARWO EDI" <?= old('NAMA_PEMB') == 'GUPUH SARWO EDI' ? 'selected' : '' ?>>GUPUH SARWO EDI</option>
+                                    <option value="ANDIK EKO K.P. SSi MT" <?= old('NAMA_PEMB') == 'ANDIK EKO K.P. SSi MT' ? 'selected' : '' ?>>ANDIK EKO K.P. SSi MT</option>
+                                    <option value="HERDA HERMANSYAH" <?= old('NAMA_PEMB') == 'HERDA HERMANSYAH' ? 'selected' : '' ?>>HERDA HERMANSYAH</option>
+                                    <option value="EDDIE WILLIAM S." <?= old('NAMA_PEMB') == 'EDDIE WILLIAM S.' ? 'selected' : '' ?>>EDDIE WILLIAM S.</option>
+                                    <option value="YOYO SYAMSUDIN DISASTRA" <?= old('NAMA_PEMB') == 'YOYO SYAMSUDIN DISASTRA' ? 'selected' : '' ?>>YOYO SYAMSUDIN DISASTRA</option>
+                                </select>
                             </div>
                         </div>
                     </div>

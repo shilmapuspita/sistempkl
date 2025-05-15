@@ -220,7 +220,7 @@ class SiswaController extends Controller
         $pembimbing     = $this->request->getGet('pembimbing');
         $status         = $this->request->getGet('status');
         $tanggal_awal   = $this->request->getGet('tanggal_mulai');
-        $tanggal_akhir  = $this->request->getGet('tanggal_akhir');
+        $tanggal_akhir = $this->request->getGet('tgl_akhir_fix');
         $tanggal_daftar = $this->request->getGet('tanggal_daftar');
 
         // Apply filter sesuai input
