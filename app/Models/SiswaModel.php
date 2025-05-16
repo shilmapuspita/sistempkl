@@ -75,20 +75,23 @@ class SiswaModel extends Model
         return $builder->paginate($perPage);
     }
     public function getSiswaAktifByMonth($month, $year, $jenis)
-{
-    $month = str_pad($month, 2, '0', STR_PAD_LEFT);
+    {
+        $month = str_pad($month, 2, '0', STR_PAD_LEFT);
 
-    $start = "$year-$month-01";
-    $end = date('Y-m-t', strtotime($start)); 
+        $start = "$year-$month-01";
+        $end = date('Y-m-t', strtotime($start));
+        $today = date('Y-m-d');
 
-    return $this->select("CONCAT(DIVISI, ' - ', BAGIAN) as divisi_bagian")
-        ->select("COUNT(*) as jumlah")
-        ->where("JENIS_PKL", $jenis)
-        ->where("tanggal_mulai_fix <=", $end)   
-        ->where("tgl_akhir_fix >=", $start)     
-        ->groupBy("divisi_bagian")
-        ->findAll();
-}
+        return $this->select("CONCAT(DIVISI, ' - ', BAGIAN) as divisi_bagian")
+            ->select("COUNT(*) as jumlah")
+            ->where("JENIS_PKL", $jenis)
+            ->where("tanggal_mulai_fix <=", $end)
+            ->where("tgl_akhir_fix >=", $start)
+            ->where("tanggal_mulai_fix <=", $today) // pastikan tanggal mulai tidak di masa depan
+            ->where("tgl_akhir_fix >=", $today) // pastikan tanggal akhir tidak di masa lalu
+            ->groupBy("divisi_bagian")
+            ->findAll();
+    }
 }
 
 

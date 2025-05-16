@@ -27,15 +27,37 @@ class DashboardController extends BaseController
         $rawRiset = $siswaModel->getSiswaAktifByMonth($bulan, $tahun, 'RISET');
         $rawIntern = $internModel->getSiswaAktifByMonth($bulan, $tahun);
 
-        // menggabungkan divisi_bagian dari semua sumber
-        $divisiBagian = [];
+        // Debug output data mentah untuk pengecekan
+        // echo "<pre>Raw PKL:\n";
+        // print_r($rawPKL);
+        // echo "</pre>";
 
-        foreach (array_merge($rawPKL, $rawRiset, $rawIntern) as $item) {
-            $divisiBagian[] = $item['divisi_bagian'];
+        // echo "<pre>Raw Riset:\n";
+        // print_r($rawRiset);
+        // echo "</pre>";
+
+        // echo "<pre>Raw Internship:\n";
+        // print_r($rawIntern);
+        // echo "</pre>";
+
+        // menggabungkan divisi_bagian dari semua sumber
+        // Gabungkan semua data
+        $allData = array_merge($rawPKL, $rawRiset, $rawIntern);
+
+        // Hitung total siswa per divisi_bagian
+        $divisiJumlahMap = [];
+
+        foreach ($allData as $item) {
+            $key = $item['divisi_bagian'];
+            $divisiJumlahMap[$key] = ($divisiJumlahMap[$key] ?? 0) + (int)$item['jumlah'];
         }
 
-        $divisiBagian = array_unique($divisiBagian);
-        sort($divisiBagian);
+        // Hanya ambil divisi yang jumlah totalnya > 0
+        $divisiBagian = array_keys(array_filter($divisiJumlahMap, function ($jumlah) {
+            return $jumlah > 0;
+        }));
+
+        sort($divisiBagian); // optional: urutkan divisinya
 
         // Fungsi bantuan untuk mapping
         function mapJumlah($source, $divisiList)

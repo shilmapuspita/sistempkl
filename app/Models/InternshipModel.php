@@ -103,11 +103,14 @@ class InternshipModel extends Model
 
         $start = "$year-$month-01";
         $end = date('Y-m-t', strtotime($start));
+        $today = date('Y-m-d');
 
         return $this->select("CONCAT(DIVISI, ' - ', BAGIAN) as divisi_bagian")
             ->select("COUNT(*) as jumlah")
             ->where("TGL_AWAL <=", $end)
             ->where("TGL_AKHIR >=", $start)
+            ->where("TGL_AWAL <=", $today) // pastikan tanggal mulai tidak di masa depan
+            ->where("TGL_AKHIR >=", $today) // pastikan tanggal akhir tidak di masa lalu
             ->groupBy("divisi_bagian")
             ->findAll();
     }

@@ -12,15 +12,16 @@ if (!session()->has('logged_in')) {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <title>SISTEMPKL</title>
 
-  <!-- Vendor CSS dan FontAwesome -->
-  <link rel="stylesheet" href="<?= base_url('admin/assets/vendors/mdi/css/materialdesignicons.min.css') ?>" />
-  <link rel="stylesheet" href="<?= base_url('admin/assets/vendors/ti-icons/css/themify-icons.css') ?>" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" />
-  <link rel="stylesheet" href="<?= base_url('admin/assets/vendors/css/vendor.bundle.base.css') ?>" />
-  <link rel="stylesheet" href="<?= base_url('admin/assets/vendors/font-awesome/css/font-awesome.min.css') ?>" />
-  <link rel="stylesheet" href="<?= base_url('admin/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css') ?>" />
-  <link rel="stylesheet" href="<?= base_url('admin/assets/css/custom.css') ?>" />
-  <link rel="stylesheet" href="<?= base_url('admin/assets/css/style.css') ?>" />
+  <!-- Vendor CSS -->
+  <link rel="stylesheet" href="<?= base_url('admin/assets/vendors/mdi/css/materialdesignicons.min.css') ?>">
+  <link rel="stylesheet" href="<?= base_url('admin/assets/vendors/ti-icons/css/themify-icons.css') ?>">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="<?= base_url('admin/assets/vendors/css/vendor.bundle.base.css') ?>">
+  <link rel="stylesheet" href="<?= base_url('admin/assets/vendors/font-awesome/css/font-awesome.min.css') ?>">
+  <link rel="stylesheet" href="<?= base_url('admin/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css') ?>">
+  <link rel="stylesheet" href="<?= base_url('admin/assets/css/custom.css') ?>">
+  <link rel="stylesheet" href="<?= base_url('admin/assets/css/style.css') ?>">
+  <link rel="stylesheet" href="<?= base_url('admin/assets/css/custom.footer.css') ?>">
   <link rel="shortcut icon" href="<?= base_url('admin/assets/images/favicon.png') ?>" />
 
   <!-- Font Awesome CDN -->
@@ -28,73 +29,6 @@ if (!session()->has('logged_in')) {
 
   <!-- Select2 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-  
-  <style>
-    /* Tambahan CSS fix untuk sidebar collapse */
-
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100vh;
-      width: 250px;
-      background-color: #fff;
-      border-right: 1px solid #ddd;
-      padding-top: 70px; /* Sesuaikan dengan tinggi navbar */
-      transition: width 0.3s ease;
-      overflow-x: hidden;
-      z-index: 1000;
-    }
-
-    .sidebar.collapsed {
-      width: 70px !important;
-    }
-
-    .sidebar .menu-title {
-      transition: opacity 0.3s ease;
-      white-space: nowrap;
-    }
-
-    .sidebar.collapsed .menu-title {
-      opacity: 0;
-      pointer-events: none;
-      display: none;
-    }
-
-    /* Tombol toggle sidebar */
-    #sidebarToggle {
-      position: fixed;
-      top: 80px;
-      left: 260px;
-      z-index: 1100;
-      background-color: #fff;
-      border: 1px solid #ccc;
-      border-radius: 50%;
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: left 0.3s ease, transform 0.3s ease;
-    }
-
-    #sidebarToggle.collapsed {
-      left: 80px;
-      transform: rotate(180deg);
-    }
-
-    /* Main content bergeser sesuai sidebar */
-    .main-content {
-      margin-left: 250px;
-      padding: 20px;
-      transition: margin-left 0.3s ease;
-    }
-
-    .page-body-wrapper.sidebar-collapsed .main-content {
-      margin-left: 70px;
-    }
-  </style>
 </head>
 
 <body>
@@ -136,11 +70,10 @@ if (!session()->has('logged_in')) {
     </button>
   </nav>
 
-  <div class="container-fluid page-body-wrapper" id="wrapper">
-    <!-- Sidebar -->
-    <nav class="sidebar" id="sidebar">
-      <ul class="nav" style="margin-top: 2.1rem;">
-        <!-- Dashboard -->
+  <!-- Sidebar -->
+  <div class="container-fluid page-body-wrapper">
+    <nav class="sidebar sidebar-offcanvas" id="sidebar">
+      <ul class="nav">
         <li class="nav-item">
           <a class="nav-link <?= (isset($currentPage) && ($currentPage == 'admin' || $currentPage == 'dashboard')) ? 'active' : '' ?>"
             href="<?= base_url('admin/dashboard'); ?>">
@@ -215,14 +148,8 @@ if (!session()->has('logged_in')) {
         </li>
       </ul>
     </nav>
-
-    <button id="sidebarToggle" class="sidebar-toggle-btn">
-      <i class="fa-solid fa-chevron-left"></i>
-    </button>
-
-    <div class="main-content">
+  
       <?= $this->renderSection('content') ?>
-    </div>
 
   </div>
 
@@ -252,19 +179,12 @@ if (!session()->has('logged_in')) {
         width: '100%'
       });
     });
-
-    // Toggle Sidebar
-    const toggleBtn = document.getElementById('sidebarToggle');
-    const sidebar = document.getElementById('sidebar');
-    const wrapper = document.getElementById('wrapper');
-
-    toggleBtn.addEventListener('click', () => {
-      sidebar.classList.toggle('collapsed');
-      toggleBtn.classList.toggle('collapsed');
-      wrapper.classList.toggle('sidebar-collapsed');
-    });
   </script>
 
+<!-- Footer -->
+<footer class="footer bg-white shadow-sm py-3 mt-4 w-100">
+  <div class="container-fluid d-flex flex-column flex-md-row justify-content-between align-items-center">
+  </div>
+</footer>
 </body>
-
 </html>
