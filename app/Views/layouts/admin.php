@@ -21,6 +21,7 @@ if (!session()->has('logged_in')) {
   <link rel="stylesheet" href="<?= base_url('admin/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css') ?>">
   <link rel="stylesheet" href="<?= base_url('admin/assets/css/custom.css') ?>">
   <link rel="stylesheet" href="<?= base_url('admin/assets/css/style.css') ?>">
+  <link rel="stylesheet" href="<?= base_url('admin/assets/css/custom.footer.css') ?>">
   <link rel="shortcut icon" href="<?= base_url('admin/assets/images/favicon.png') ?>" />
 
   <!-- Font Awesome -->
@@ -70,6 +71,7 @@ if (!session()->has('logged_in')) {
     </button>
     </div>
   </nav>
+  <!-- Sidebar -->
   <div class="container-fluid page-body-wrapper">
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
       <ul class="nav">
@@ -141,6 +143,7 @@ if (!session()->has('logged_in')) {
       </ul>
     </nav>
 
+
     <?= $this->renderSection('content') ?>
     <script src="<?= base_url('admin/assets/vendors/js/vendor.bundle.base.js') ?>"></script>
     <script src="<?= base_url('admin/assets/vendors/chart.js/chart.umd.js') ?>"></script>
@@ -171,6 +174,11 @@ if (!session()->has('logged_in')) {
         });
       });
     </script>
-</body>
 
+<!-- Footer -->
+<footer class="footer bg-white shadow-sm py-3 mt-4 w-100">
+  <div class="container-fluid d-flex flex-column flex-md-row justify-content-between align-items-center">
+  </div>
+</footer>
+</body>
 </html>
