@@ -137,18 +137,6 @@
     </div>
   </div>
 
-<!-- Footer wrapper full width -->
-<footer class="footer bg-white shadow-sm py-3 mt-4 w-100">
-  <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
-    <span class="text-muted small text-center text-md-left mb-2 mb-md-0">
-      © <?= date('Y') ?> <a href="https://www.instagram.com/deanpramona" class="text-primary fw-bold" target="_blank">Dean Pramona</a>. All rights reserved.
-    </span>
-    <span class="text-muted small text-center text-md-right">
-      Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i> by INTI Team
-    </span>
-  </div>
-</footer>
-</div>
 
 <script src="<?= base_url('admin/assets/js/chart.min.js') ?>"></script>
 <script>

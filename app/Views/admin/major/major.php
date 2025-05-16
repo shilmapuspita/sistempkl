@@ -86,7 +86,7 @@
           </div>
           <!-- Menambahkan pagination -->
           <div class="d-flex justify-content-center mt-3">
-            <?= $pager->links('default', 'custom_pagination') ?>
+            <?= $pager->links() ?>
 
           </div>
         </div>
