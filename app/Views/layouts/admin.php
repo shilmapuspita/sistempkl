@@ -69,17 +69,26 @@ if (!session()->has('logged_in')) {
       <span class="mdi mdi-menu"></span>
     </button>
   </nav>
+<<<<<<<<< Temporary merge branch 1
   <!-- Sidebar -->
-    <div class="container-fluid page-body-wrapper">
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <ul class="nav">
-          <li class="nav-item">
-            <a class="nav-link <?= (isset($currentPage) && ($currentPage == 'admin' || $currentPage == 'dashboard')) ? 'active' : '' ?>"
-              href="<?= base_url('admin/dashboard'); ?>">
-              <i class="mdi mdi-home menu-icon"></i>
-              <span class="menu-title">Dashboard</span>
-            </a>
-          </li>
+  <div class="container-fluid page-body-wrapper">
+    <nav class="sidebar sidebar-offcanvas" id="sidebar">
+      <ul class="nav">
+=========
+
+  <div class="container-fluid page-body-wrapper" id="wrapper">
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar">
+      <ul class="nav" style="margin-top: 2.1rem;">
+        <!-- Dashboard -->
+>>>>>>>>> Temporary merge branch 2
+        <li class="nav-item">
+          <a class="nav-link <?= (isset($currentPage) && ($currentPage == 'admin' || $currentPage == 'dashboard')) ? 'active' : '' ?>"
+            href="<?= base_url('admin/dashboard'); ?>">
+            <i class="mdi mdi-home menu-icon"></i>
+            <span class="menu-title">Dashboard</span>
+          </a>
+        </li>
 
           <!-- PKL/RISET dengan submenu -->
           <li class="nav-item has-submenu <?= in_array($currentPage, ['siswa', 'siswaPKL', 'siswaRiset', 'intern']) ? 'active' : '' ?>">
@@ -138,53 +147,90 @@ if (!session()->has('logged_in')) {
             </a>
           </li>
 
-          <!-- KA. Urusan/Surat -->
-          <li class="nav-item">
-            <a class="nav-link <?= ($currentPage == 'ka_urusan') ? 'active' : '' ?>" href="<?= base_url('/ka-urusan'); ?>">
-              <i class="mdi mdi-file-document menu-icon"></i>
-              <span class="menu-title">KA. Urusan/Surat</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
+        <!-- KA. Urusan/Surat -->
+        <li class="nav-item">
+          <a class="nav-link <?= ($currentPage == 'ka_urusan') ? 'active' : '' ?>" href="<?= base_url('/ka-urusan'); ?>">
+            <i class="mdi mdi-file-document menu-icon"></i>
+            <span class="menu-title">KA. Urusan/Surat</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
 
+<<<<<<<<< Temporary merge branch 1
 
+    <?= $this->renderSection('content') ?>
+    <script src="<?= base_url('admin/assets/vendors/js/vendor.bundle.base.js') ?>"></script>
+    <script src="<?= base_url('admin/assets/vendors/chart.js/chart.umd.js') ?>"></script>
+    <script src="<?= base_url('admin/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js') ?>"></script>
+    <script src="<?= base_url('admin/assets/js/off-canvas.js') ?>"></script>
+    <script src="<?= base_url('admin/assets/js/misc.js') ?>"></script>
+    <script src="<?= base_url('admin/assets/js/settings.js') ?>"></script>
+    <script src="<?= base_url('admin/assets/js/todolist.js') ?>"></script>
+    <script src="<?= base_url('admin/assets/js/jquery.cookie.js') ?>"></script>
+    <script src="<?= base_url('admin/assets/js/dashboard.js') ?>"></script>
+=========
+    <button id="sidebarToggle" class="sidebar-toggle-btn">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+>>>>>>>>> Temporary merge branch 2
+
+    <div class="main-content">
       <?= $this->renderSection('content') ?>
-      <script src="<?= base_url('admin/assets/vendors/js/vendor.bundle.base.js') ?>"></script>
-      <script src="<?= base_url('admin/assets/vendors/chart.js/chart.umd.js') ?>"></script>
-      <script src="<?= base_url('admin/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js') ?>"></script>
-      <script src="<?= base_url('admin/assets/js/off-canvas.js') ?>"></script>
-      <script src="<?= base_url('admin/assets/js/misc.js') ?>"></script>
-      <script src="<?= base_url('admin/assets/js/settings.js') ?>"></script>
-      <script src="<?= base_url('admin/assets/js/todolist.js') ?>"></script>
-      <script src="<?= base_url('admin/assets/js/jquery.cookie.js') ?>"></script>
-      <script src="<?= base_url('admin/assets/js/dashboard.js') ?>"></script>
+    </div>
+
+  </div>
+
+  <!-- Script Vendor -->
+  <script src="<?= base_url('admin/assets/vendors/js/vendor.bundle.base.js') ?>"></script>
+  <script src="<?= base_url('admin/assets/vendors/chart.js/chart.umd.js') ?>"></script>
+  <script src="<?= base_url('admin/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js') ?>"></script>
+  <script src="<?= base_url('admin/assets/js/off-canvas.js') ?>"></script>
+  <script src="<?= base_url('admin/assets/js/misc.js') ?>"></script>
+  <script src="<?= base_url('admin/assets/js/settings.js') ?>"></script>
+  <script src="<?= base_url('admin/assets/js/todolist.js') ?>"></script>
+  <script src="<?= base_url('admin/assets/js/jquery.cookie.js') ?>"></script>
+  <script src="<?= base_url('admin/assets/js/dashboard.js') ?>"></script>
 
       <!-- jQuery dan Select2 -->
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-      <!-- ✅ Select2 JS -->
-      <script>
-        $(document).ready(function() {
-          $('#exampleInputDivisi').select2({
-            placeholder: "Pilih Divisi",
-            width: '100%'
-          });
+  <script>
+    $(document).ready(function () {
+      $('#exampleInputDivisi').select2({
+        placeholder: "Pilih Divisi",
+        width: '100%'
+      });
+<<<<<<<<< Temporary merge branch 1
+    </script>
+=========
+      $('#exampleInputBagian').select2({
+        placeholder: "Pilih Bagian",
+        width: '100%'
+      });
+    });
 
-          $('#exampleInputBagian').select2({
-            placeholder: "Pilih Bagian",
-            width: '100%'
-          });
-        });
-      </script>
+    // Toggle Sidebar
+    const toggleBtn = document.getElementById('sidebarToggle');
+    const sidebar = document.getElementById('sidebar');
+    const wrapper = document.getElementById('wrapper');
 
-      <!-- Footer -->
-      <footer class="footer bg-white shadow-sm py-3 mt-4 w-100">
-        <div class="container-fluid d-flex flex-column flex-md-row justify-content-between align-items-center">
-        </div>
-      </footer>
-    </div>
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('collapsed');
+      toggleBtn.classList.toggle('collapsed');
+      wrapper.classList.toggle('sidebar-collapsed');
+    });
+  </script>
+
+</body>
+>>>>>>>>> Temporary merge branch 2
+
+<!-- Footer -->
+<footer class="footer bg-white shadow-sm py-3 mt-4 w-100">
+  <div class="container-fluid d-flex flex-column flex-md-row justify-content-between align-items-center">
+  </div>
+</footer>
 </body>
 
 </html>
