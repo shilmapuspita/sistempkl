@@ -139,10 +139,10 @@ if (!session()->has('logged_in')) {
           </li>
 
           <li class="nav-item">
-            <a class="nav-link <?= ($currentPage == 'mentor') ? 'active' : '' ?>" href="<?= base_url('/mentor'); ?>">
+            <a class="nav-link <?= ($currentPage == 'mentor') ? 'active' : '' ?>" href="<?= base_url('/mentor'); ?>"> 
               <div>
-                <i class="mdi mdi-account-tie menu-icon"></i>
-                <span class="menu-title">Mentor</span>
+              <i class="mdi mdi-account-tie menu-icon"></i>
+              <span class="menu-title">Mentor</span>
               </div>
             </a>
           </li>
@@ -220,7 +220,7 @@ if (!session()->has('logged_in')) {
       });
     });
   </script>
-
+ 
 </body>
 
 </html>
