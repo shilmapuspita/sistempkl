@@ -103,12 +103,35 @@ class MentorController extends BaseController
             return redirect()->to('/mentor')->with('error', 'Data mentor tidak ditemukan!');
         }
 
-        $data = [
-            'mentor' => $mentor,
-            'currentPage' => 'mentor'
-        ];
+        $db = \Config\Database::connect();
 
-        return view('admin/mentor/edit', $data);
+        // Ambil divisi dan bagian dari dua tabel
+        $divisi1 = $db->table('datasiswa')->select('divisi')->groupBy('divisi')->get()->getResultArray();
+        $divisi2 = $db->table('datapmmb')->select('divisi')->groupBy('divisi')->get()->getResultArray();
+
+        $bagian1 = $db->table('datasiswa')->select('bagian')->groupBy('bagian')->get()->getResultArray();
+        $bagian2 = $db->table('datapmmb')->select('bagian')->groupBy('bagian')->get()->getResultArray();
+
+        // Gabungkan dan bersihkan data
+        $allDivisi = array_merge(array_column($divisi1, 'divisi'), array_column($divisi2, 'divisi'));
+        $allBagian = array_merge(array_column($bagian1, 'bagian'), array_column($bagian2, 'bagian'));
+
+        $divisiBersih = array_filter($allDivisi, fn($item) => preg_match('/[a-zA-Z0-9]/', $item));
+        $bagianBersih = array_filter($allBagian, fn($item) => preg_match('/[a-zA-Z0-9]/', $item));
+
+        $divisiBersih = array_unique($divisiBersih);
+        sort($divisiBersih);
+
+        $bagianBersih = array_unique($bagianBersih);
+
+        sort($bagianBersih);
+
+        return view('admin/mentor/edit', [
+            'mentor' => $mentor,
+            'currentPage' => 'mentor',
+            'divisiList' => $divisiBersih,
+            'bagianList' => $bagianBersih,
+        ]);
     }
 
     public function update($id)
