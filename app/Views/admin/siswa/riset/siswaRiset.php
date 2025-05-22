@@ -180,7 +180,6 @@
             </div>
         </div>
     </div>
-</div>
 
 <?= view('admin/siswa/riset/ekspor') ?>
 <?= $this->endSection() ?>
