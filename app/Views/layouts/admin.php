@@ -5,6 +5,7 @@ if (!session()->has('logged_in')) {
 ?>
 
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -105,10 +106,10 @@ if (!session()->has('logged_in')) {
       </div>
     </nav>
 
-    <!-- WRAPPER: SIDEBAR + MAIN -->
+    <!-- SIDEBAR + MAIN -->
     <div class="container-fluid page-body-wrapper">
 
-      <!-- SIDEBAR -->
+      <!-- sidebar -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav" style="margin-top: 30px;">
 
