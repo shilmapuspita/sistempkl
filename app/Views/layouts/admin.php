@@ -74,6 +74,9 @@ if (!session()->has('logged_in')) {
         </a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-stretch">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span class="mdi mdi-menu"></span>
+          </button>
         <ul class="navbar-nav ms-auto">
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link d-flex align-items-center" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
@@ -139,10 +142,10 @@ if (!session()->has('logged_in')) {
           </li>
 
           <li class="nav-item">
-            <a class="nav-link <?= ($currentPage == 'mentor') ? 'active' : '' ?>" href="<?= base_url('/mentor'); ?>"> 
+            <a class="nav-link <?= ($currentPage == 'mentor') ? 'active' : '' ?>" href="<?= base_url('/mentor'); ?>">
               <div>
-              <i class="mdi mdi-account-tie menu-icon"></i>
-              <span class="menu-title">Mentor</span>
+                <i class="mdi mdi-account-tie menu-icon"></i>
+                <span class="menu-title">Mentor</span>
               </div>
             </a>
           </li>
@@ -178,16 +181,17 @@ if (!session()->has('logged_in')) {
       </nav>
 
       <?= $this->renderSection('content') ?>
-
       <!-- FOOTER -->
       <footer class="footer">
         <div class="container-fluid d-flex flex-column flex-md-row justify-content-between align-items-center">
-          <span>© 2025 Your Website</span>
-          <a href="#">Contact</a>
+          <span>Copyright © 2025</span>
+          <!-- <a href="#">Contact</a> -->
         </div>
       </footer>
     </div>
   </div>
+
+
 
 
   <!-- script js -->
@@ -220,7 +224,7 @@ if (!session()->has('logged_in')) {
       });
     });
   </script>
- 
+
 </body>
 
 </html>

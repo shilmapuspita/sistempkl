@@ -193,7 +193,6 @@
       </div>
     </div>
   </div>
-</div>
 <script>
   document.getElementById("searchInput").addEventListener("keyup", function() {
     let filter = this.value.toUpperCase();

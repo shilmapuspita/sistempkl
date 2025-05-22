@@ -143,7 +143,8 @@
       </div>
     </div>
   </div>
-
+   
+<!-- </div> -->
   <script src="<?= base_url('admin/assets/js/chart.min.js') ?>"></script>
   <script>
     const ctx = document.getElementById('barChart').getContext('2d');
