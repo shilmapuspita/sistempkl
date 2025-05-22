@@ -17,15 +17,15 @@
                 <br>
 
                 <?php if (session()->getFlashdata('errors')) : ?>
-                            <div class="alert alert-danger">
-                                <ul>
-                                    <?php foreach (session()->getFlashdata('errors') as $error) : ?>
-                                        <li><?= esc($error) ?></li>
-                                    <?php endforeach; ?>
-                                </ul>
-                            </div>
-                        <?php endif; ?>
-                        
+                    <div class="alert alert-danger">
+                        <ul>
+                            <?php foreach (session()->getFlashdata('errors') as $error) : ?>
+                                <li><?= esc($error) ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                <?php endif; ?>
+
                 <form action="<?= base_url('/mentor/update/' . $mentor['ID_PEMBIMBING']) ?>" method="post">
                     <?= csrf_field() ?>
 
@@ -41,11 +41,26 @@
                             </div>
                             <div class="form-group">
                                 <label><i class="fa-solid fa-briefcase"></i> Divisi</label>
-                                <input type="text" name="divisi" class="form-control shadow-sm text-uppercase" value="<?= old('divisi', $mentor['DIVISI']) ?>" required>
+                                <select class="form-select form-select-sm shadow-sm text-uppercase" name="divisi" required>
+                                    <option value="" disabled <?= old('divisi', $mentor['DIVISI']) == '' ? 'selected' : '' ?>>Pilih Divisi</option>
+                                    <?php foreach ($divisiList as $divisi): ?>
+                                        <option value="<?= esc($divisi) ?>" <?= old('divisi', $mentor['DIVISI']) == $divisi ? 'selected' : '' ?>>
+                                            <?= esc($divisi) ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
                             </div>
+
                             <div class="form-group">
                                 <label><i class="fa-solid fa-building"></i> Bagian</label>
-                                <input type="text" name="bagian" class="form-control shadow-sm text-uppercase" value="<?= old('bagian', $mentor['BAGIAN']) ?>" required>
+                                <select class="form-select form-select-sm shadow-sm text-uppercase" name="bagian" required>
+                                    <option value="" disabled <?= old('bagian', $mentor['BAGIAN']) == '' ? 'selected' : '' ?>>Pilih Bagian</option>
+                                    <?php foreach ($bagianList as $bagian): ?>
+                                        <option value="<?= esc($bagian) ?>" <?= old('bagian', $mentor['BAGIAN']) == $bagian ? 'selected' : '' ?>>
+                                            <?= esc($bagian) ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
                             </div>
                         </div>
 
