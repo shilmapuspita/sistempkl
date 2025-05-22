@@ -123,6 +123,7 @@ class MentorController extends BaseController
         sort($divisiBersih);
 
         $bagianBersih = array_unique($bagianBersih);
+
         sort($bagianBersih);
 
         return view('admin/mentor/edit', [
