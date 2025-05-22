@@ -20844,10 +20844,10 @@ code {
 
 /* Footer */
 .footer {
-  background: #f2edf3;
+  background: #E2ECF3;
   color: color(dark);
   border-top: 1px solid #e7dee9;
-  padding: 30px 1rem;
+  padding: 15px 1rem;
   transition: all 0.25s ease;
   -moz-transition: all 0.25s ease;
   -webkit-transition: all 0.25s ease;
@@ -25531,6 +25531,7 @@ dl li {
 
 .sidebar {
   background-color: #FFFFFF !important;
+  width: 260px;
 }
 
 .sidebar .nav-item:hover {
@@ -26257,8 +26258,7 @@ table tbody tr:hover {
 .btn-gradient-blue {
   background: linear-gradient(135deg, #1B98E0, #00509E) !important; 
   border: none !important;
-  border-radius: 5px !important; /* Sudut lebih membulat */
-  /* padding: 10px 14px; Sesuaikan ukuran */
+  border-radius: 5px !important;
   color: white !important;
   transition: 0.3s;
 
@@ -26273,12 +26273,6 @@ table tbody tr:hover {
   color: #000080 !important;
 }
 
-.footer {
-  border-top: 1px solid #eaeaea;
-  font-size: 14px;
-  background-color: #f9f9f9;
-  color: #6c757d;
-  width: 100%;
-}
+
 
 /*# sourceMappingURL=maps/style.css.map */

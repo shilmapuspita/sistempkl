@@ -64,5 +64,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- main-panel ends -->
-                <?= $this->endSection() ?>
+            </div>
+        </div>
+    </div>
+    <!-- main-panel ends -->
+    <?= $this->endSection() ?>
