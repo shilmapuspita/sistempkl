@@ -107,74 +107,74 @@ if (!session()->has('logged_in')) {
 
       <!-- SIDEBAR -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
-            <ul class="nav" style="margin-top: 30px;">
+        <ul class="nav" style="margin-top: 30px;">
 
-              <li class="nav-item">
-                <a class="nav-link <?= ($currentPage == 'dashboard') ? 'active' : '' ?>" href="<?= base_url('admin/dashboard'); ?>">
-                  <div>
-                    <i class="mdi mdi-home menu-icon"></i>
-                    <span class="menu-title">Dashboard</span>
-                  </div>
-                </a>
-              </li>
+          <li class="nav-item">
+            <a class="nav-link <?= ($currentPage == 'dashboard') ? 'active' : '' ?>" href="<?= base_url('admin/dashboard'); ?>">
+              <div>
+                <i class="mdi mdi-home menu-icon"></i>
+                <span class="menu-title">Dashboard</span>
+              </div>
+            </a>
+          </li>
 
-              <li class="nav-item <?= (in_array($currentPage, ['siswa', 'siswaPKL', 'siswaRiset', 'intern'])) ? 'active' : '' ?>">
-                <a class="nav-link <?= (in_array($currentPage, ['siswa', 'siswaPKL', 'siswaRiset', 'intern'])) ? 'active' : '' ?>"
-                  data-bs-toggle="collapse" href="#ui-basic"
-                  aria-expanded="<?= (in_array($currentPage, ['siswa', 'siswaPKL', 'siswaRiset', 'intern'])) ? 'true' : 'false' ?>"
-                  aria-controls="ui-basic">
-                  <div>
-                    <i class="mdi mdi-clipboard-text menu-icon"></i>
-                    <span class="menu-title">PKL/RISET</span>
-                  </div>
-                  <i class="menu-arrow"></i>
-                </a>
-                <div class="collapse <?= (in_array($currentPage, ['siswa', 'siswaPKL', 'siswaRiset', 'intern'])) ? 'show' : '' ?>" id="ui-basic">
-                  <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link <?= ($currentPage == 'siswaPKL') ? 'active' : '' ?>" href="<?= base_url('siswa/PKL'); ?>">Data Siswa PKL</a></li>
-                    <li class="nav-item"><a class="nav-link <?= ($currentPage == 'siswaRiset') ? 'active' : '' ?>" href="<?= base_url('siswa/riset'); ?>">Data Siswa Riset</a></li>
-                    <li class="nav-item"><a class="nav-link <?= ($currentPage == 'intern') ? 'active' : '' ?>" href="<?= base_url('/intern'); ?>">Data Internship</a></li>
-                  </ul>
-                </div>
-              </li>
+          <li class="nav-item <?= (in_array($currentPage, ['siswa', 'siswaPKL', 'siswaRiset', 'intern'])) ? 'active' : '' ?>">
+            <a class="nav-link <?= (in_array($currentPage, ['siswa', 'siswaPKL', 'siswaRiset', 'intern'])) ? 'active' : '' ?>"
+              data-bs-toggle="collapse" href="#ui-basic"
+              aria-expanded="<?= (in_array($currentPage, ['siswa', 'siswaPKL', 'siswaRiset', 'intern'])) ? 'true' : 'false' ?>"
+              aria-controls="ui-basic">
+              <div>
+                <i class="mdi mdi-clipboard-text menu-icon"></i>
+                <span class="menu-title">PKL/RISET</span>
+              </div>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse <?= (in_array($currentPage, ['siswa', 'siswaPKL', 'siswaRiset', 'intern'])) ? 'show' : '' ?>" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link <?= ($currentPage == 'siswaPKL') ? 'active' : '' ?>" href="<?= base_url('siswa/PKL'); ?>">Data Siswa PKL</a></li>
+                <li class="nav-item"><a class="nav-link <?= ($currentPage == 'siswaRiset') ? 'active' : '' ?>" href="<?= base_url('siswa/riset'); ?>">Data Siswa Riset</a></li>
+                <li class="nav-item"><a class="nav-link <?= ($currentPage == 'intern') ? 'active' : '' ?>" href="<?= base_url('/intern'); ?>">Data Internship</a></li>
+              </ul>
+            </div>
+          </li>
 
-              <li class="nav-item">
-                <a class="nav-link <?= ($currentPage == 'mentor') ? 'active' : '' ?>" href="<?= base_url('/mentor'); ?>">
-                  <div>
-                    <i class="mdi mdi-account-tie menu-icon"></i>
-                    <span class="menu-title">Mentor</span>
-                  </div>
-                </a>
-              </li>
+          <li class="nav-item">
+            <a class="nav-link <?= ($currentPage == 'mentor') ? 'active' : '' ?>" href="<?= base_url('/mentor'); ?>"> 
+              <div>
+              <i class="mdi mdi-account-tie menu-icon"></i>
+              <span class="menu-title">Mentor</span>
+              </div>
+            </a>
+          </li>
 
-              <li class="nav-item">
-                <a class="nav-link <?= ($currentPage == 'lembaga') ? 'active' : '' ?>" href="<?= base_url('/lembaga'); ?>">
-                  <div>
-                    <i class="mdi mdi-city menu-icon"></i>
-                    <span class="menu-title">Institution</span>
-                  </div>
-                </a>
-              </li>
+          <li class="nav-item">
+            <a class="nav-link <?= ($currentPage == 'lembaga') ? 'active' : '' ?>" href="<?= base_url('/lembaga'); ?>">
+              <div>
+                <i class="mdi mdi-city menu-icon"></i>
+                <span class="menu-title">Institution</span>
+              </div>
+            </a>
+          </li>
 
-              <li class="nav-item">
-                <a class="nav-link <?= ($currentPage == 'major') ? 'active' : '' ?>" href="<?= base_url('/major'); ?>">
-                  <div>
-                    <i class="mdi mdi-book-open-variant menu-icon"></i>
-                    <span class="menu-title">Major</span>
-                  </div>
-                </a>
-              </li>
+          <li class="nav-item">
+            <a class="nav-link <?= ($currentPage == 'major') ? 'active' : '' ?>" href="<?= base_url('/major'); ?>">
+              <div>
+                <i class="mdi mdi-book-open-variant menu-icon"></i>
+                <span class="menu-title">Major</span>
+              </div>
+            </a>
+          </li>
 
-              <li class="nav-item">
-                <a class="nav-link <?= ($currentPage == 'ka_urusan') ? 'active' : '' ?>" href="<?= base_url('/ka-urusan'); ?>">
-                  <div>
-                    <i class="mdi mdi-file-document menu-icon"></i>
-                    <span class="menu-title">KA. Urusan/Surat</span>
-                  </div>
-                </a>
-              </li>
+          <li class="nav-item">
+            <a class="nav-link <?= ($currentPage == 'ka_urusan') ? 'active' : '' ?>" href="<?= base_url('/ka-urusan'); ?>">
+              <div>
+                <i class="mdi mdi-file-document menu-icon"></i>
+                <span class="menu-title">KA. Urusan/Surat</span>
+              </div>
+            </a>
+          </li>
 
-            </ul>
+        </ul>
       </nav>
 
       <?= $this->renderSection('content') ?>
@@ -188,6 +188,7 @@ if (!session()->has('logged_in')) {
       </footer>
     </div>
   </div>
+
 
   <!-- script js -->
   <script src="<?= base_url('admin/assets/vendors/js/vendor.bundle.base.js') ?>"></script>
@@ -219,7 +220,7 @@ if (!session()->has('logged_in')) {
       });
     });
   </script>
-
+ 
 </body>
 
 </html>
