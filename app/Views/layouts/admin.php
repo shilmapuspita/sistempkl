@@ -31,37 +31,6 @@ if (!session()->has('logged_in')) {
   <!-- ✅ Select2 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
-  <style>
-    .sidebar .nav .nav-link {
-      display: flex !important;
-      align-items: center !important;
-      justify-content: space-between;
-      padding: 10px 15px;
-      gap: 10px;
-    }
-
-    .sidebar .nav .nav-link>div {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .sidebar .nav .menu-icon {
-      font-size: 18px;
-      min-width: 20px;
-      text-align: center;
-    }
-
-    .sidebar .nav .menu-title {
-      font-size: 14px;
-      white-space: nowrap;
-    }
-
-    .sidebar .nav .menu-arrow {
-      font-size: 12px;
-      margin-left: auto;
-    }
-  </style>
 </head>
 
 <body>
@@ -76,8 +45,8 @@ if (!session()->has('logged_in')) {
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-stretch">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-            <span class="mdi mdi-menu"></span>
-          </button>
+          <span class="mdi mdi-menu"></span>
+        </button>
         <ul class="navbar-nav ms-auto">
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link d-flex align-items-center" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">

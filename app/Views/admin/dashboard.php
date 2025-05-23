@@ -4,7 +4,7 @@
 
 <?php if (session()->getFlashdata('success')) : ?>
   <div class="alert alert-success position-absolute p-2 px-3 shadow-sm"
-    style="top: 25px; left: 230px; z-index: 1050; font-size: 14px; font-weight: bold;">
+    style="top: 25px; left: 330px; z-index: 1050; font-size: 14px; font-weight: bold;">
     <?= session()->getFlashdata('success'); ?>
   </div>
 <?php endif; ?>
@@ -51,7 +51,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="row">
       <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
@@ -143,8 +143,8 @@
       </div>
     </div>
   </div>
-   
-<!-- </div> -->
+
+  <!-- </div> -->
   <script src="<?= base_url('admin/assets/js/chart.min.js') ?>"></script>
   <script>
     const ctx = document.getElementById('barChart').getContext('2d');
@@ -251,4 +251,3 @@
   </script>
 
   <?= $this->endSection() ?>
-  
