@@ -11,15 +11,22 @@ class MajorController extends Controller
     public function showJurusan()
     {
         $model = new JurusanModel();
+        $keyword = $this->request->getGet('keyword');
+
+        if ($keyword) {
+            $model->like('ID_JURUSAN', $keyword)
+                ->orLike('NAMA_JURUSAN', $keyword);
+        }
+
         $data = [
-            'jurusan' => $model->getPaginateData(10),
-            'pager' => $model->pager,
-            'currentPage' => 'major'
+            'jurusan'      => $model->paginate(10),
+            'pager'        => $model->pager,
+            'currentPage'  => 'major',
+            'keyword'      => $keyword
         ];
 
         return view('admin/major/major', $data);
     }
-
 
     public function create()
     {

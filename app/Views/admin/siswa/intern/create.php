@@ -65,7 +65,7 @@
                                 <label>
                                     <i class="fa-solid fa-layer-group me-2"></i> Divisi
                                 </label>
-                                <select class="form-select form-select-sm shadow-sm select2" name="DIVISI" required>
+                                <select class="form-select form-select-sm shadow-sm select2" name="divisi" required>
                                     <option value="" selected disabled>Pilih Divisi</option>
                                     <?php foreach ($divisi as $d): ?>
                                         <option value="<?= esc($d['DIVISI']) ?>"><?= esc($d['DIVISI']) ?></option>
@@ -76,7 +76,7 @@
                                 <label>
                                     <i class="fa-solid fa-briefcase me-2"></i> Bagian
                                 </label>
-                                <select class="form-select form-select-sm shadow-sm select2" name="BAGIAN" required>
+                                <select class="form-select form-select-sm shadow-sm select2" name="bagian" required>
                                     <option value="" selected disabled>Pilih Bagian</option>
                                     <?php foreach ($bagian as $b): ?>
                                         <option value="<?= esc($b['BAGIAN']) ?>"><?= esc($b['BAGIAN']) ?></option>

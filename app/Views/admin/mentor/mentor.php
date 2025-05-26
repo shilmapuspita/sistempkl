@@ -1,5 +1,4 @@
 <?= $this->extend('layouts/admin') ?>
-
 <?= $this->section('content') ?>
 
 <div class="main-panel">
@@ -47,11 +46,19 @@
             </form>
 
             <div class="d-flex justify-content-between align-items-center mb-3 mt-4">
-              <div class="position-relative w-50">
-                <input type="text" id="searchInput" class="form-control shadow-sm ps-5 rounded-pill" placeholder="Cari mentor...">
-                <i class="fa-solid fa-magnifying-glass position-absolute text-primary"
-                  style="left: 15px; top: 50%; transform: translateY(-50%); font-size: 16px;"></i>
-              </div>
+              <form method="get" id="searchForm" class="d-flex w-50">
+                <div class="position-relative w-100">
+                  <input
+                    type="text"
+                    name="keyword"
+                    id="searchKeyword"
+                    value="<?= esc($keyword ?? '') ?>"
+                    class="form-control shadow-sm ps-5 rounded-pill"
+                    placeholder="Cari mentor...">
+                  <i class="fa-solid fa-magnifying-glass position-absolute text-primary"
+                    style="left: 15px; top: 50%; transform: translateY(-50%); font-size: 16px;"></i>
+                </div>
+              </form>
               <a href="<?= base_url('/mentor/create') ?>" class="btn btn-gradient-blue btn-sm shadow-sm d-flex align-items-center gap-2">
                 <i class="fa-solid fa-user-plus"></i> Add Data
               </a>
@@ -110,7 +117,15 @@
 
             <!-- Pagination -->
             <div class="d-flex justify-content-center mt-3">
-              <?= $pager->links() ?>
+              <?php
+              $pagination_links = $pager->links();
+
+              if (!empty($keyword)) {
+                $pagination_links = preg_replace('/href="([^"]+)"/', 'href="$1&keyword=' . urlencode($keyword) . '"', $pagination_links);
+              }
+
+              echo $pagination_links;
+              ?>
             </div>
 
           </div>
@@ -118,25 +133,26 @@
       </div>
     </div>
   </div>
-<!-- </div> -->
-<!-- </div> -->
 
-<!-- untuk search -->
-<script>
-  document.getElementById("searchInput").addEventListener("keyup", function() {
-    let filter = this.value.toUpperCase();
-    let rows = document.querySelector("#mentorTable tbody").rows;
 
-    for (let i = 0; i < rows.length; i++) {
-      let txtValue = rows[i].textContent || rows[i].innerText;
-      rows[i].style.display = txtValue.toUpperCase().indexOf(filter) > -1 ? "" : "none";
-    }
-  });
+  <script>
+    let debounceTimer;
+    const delay = 500; // delay pencarian 500ms setelah user berhenti mengetik
 
-  // Aktifkan tooltip Bootstrap
-  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-  var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
-    return new bootstrap.Tooltip(tooltipTriggerEl);
-  });
-</script>
-<?= $this->endSection() ?>
+    document.getElementById('searchKeyword').addEventListener('input', function() {
+      clearTimeout(debounceTimer);
+      const keyword = this.value.trim();
+      const baseUrl = '<?= base_url('/mentor') ?>';
+
+      debounceTimer = setTimeout(() => {
+        if (keyword.length > 0) {
+          window.location.href = `${baseUrl}?keyword=${encodeURIComponent(keyword)}`;
+        } else {
+          window.location.href = baseUrl;
+        }
+      }, delay);
+    });
+  </script>
+
+
+  <?= $this->endSection() ?>

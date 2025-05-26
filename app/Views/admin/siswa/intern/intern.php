@@ -124,11 +124,6 @@
             <br>
 
             <div class="d-flex justify-content-between align-items-center mb-3">
-              <div class="position-relative w-50">
-                <input type="text" id="searchInput" class="form-control shadow-sm ps-5 rounded-pill" placeholder="Cari siswa...">
-                <i class="fa-solid fa-magnifying-glass position-absolute text-primary"
-                  style="left: 15px; top: 50%; transform: translateY(-50%); font-size: 16px;"></i>
-              </div>
               <a href="<?= base_url('intern/create') ?>" class="btn btn-gradient-blue btn-sm shadow-sm">
                 <i class="fa-solid fa-user-plus"></i> Add Data
               </a>

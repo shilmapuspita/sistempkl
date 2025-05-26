@@ -12,18 +12,31 @@ class LembagaController extends BaseController
     {
         $this->lembagaModel = new LembagaModel();
     }
-
     public function showLembaga()
     {
+        $keyword = $this->request->getGet('keyword');
+
+        if ($keyword) {
+            $lembaga = $this->lembagaModel
+                ->like('ID_LEMBAGA', $keyword)
+                ->orLike('NAMA_LEMBAGA', $keyword)
+                ->orLike('ALAMAT_LEMBAGA', $keyword)
+                ->orLike('TELP_LEMBAGA', $keyword)
+                ->orLike('EMAIL_LEMBAGA', $keyword)
+                ->paginate(10);
+        } else {
+            $lembaga = $this->lembagaModel->paginate(10);
+        }
+
         $data = [
             'currentPage' => 'lembaga',
-            'lembaga' => $this->lembagaModel->paginate(10),
-            'pager' => $this->lembagaModel->pager
+            'lembaga' => $lembaga,
+            'pager' => $this->lembagaModel->pager,
+            'keyword' => $keyword
         ];
 
         return view('admin/lembaga/lembaga', $data);
     }
-
     public function create()
     {
         $data = [
