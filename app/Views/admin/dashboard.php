@@ -35,7 +35,7 @@
         <div class="card bg-inti-gradient card-img-holder">
           <div class="card-body">
             <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-            <h3 class="card-text">Collaborating Institutions <i class="mdi mdi-bookmark-outline mdi-24px float-end"></i></h3>
+            <h3 class="card-text">Collaborating Institutions</h3>
             <br><h3 class="mb-3"><?= number_format($totalInstitusi) ?>
             <br>
              Institutions</h3>
@@ -46,7 +46,7 @@
         <div class="card bg-inti-gradient card-img-holder">
           <div class="card-body">
             <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-            <h2 class="card-text">Mentor <i class="mdi mdi-diamond mdi-24px float-end"></i></h2>
+            <h2 class="card-text">Mentor </h2>
             <br>
             <h2 class="mb-3"><?= number_format($totalMentor) ?></h2>
             <h5 class="card-text">Experienced Mentors In Their Fields</h5>

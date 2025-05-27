@@ -83,42 +83,42 @@
 
 <body>
   <div class="register-container">
-    <img src="/assets/img/inti.png" alt="Logo">
-    <h4>Welcome! Let's Create an Account</h4>
-    <h6>𐙚˚ Start your journey now!</h6>
-    <br>
-    <?php if (session()->getFlashdata('error')): ?>
-    <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
-<?php endif; ?>
-<?php if (session()->getFlashdata('success')): ?>
-    <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
-<?php endif; ?>
-<?php if (session()->getFlashdata('errors')): ?>
-    <div class="alert alert-danger text-start">
-        <ul>
+    <<img src="<?= base_url('assets/img/inti.png') ?>" alt="Logo">
+      <h4>Welcome! Let's Create an Account</h4>
+      <h6>𐙚˚ Start your journey now!</h6>
+      <br>
+      <?php if (session()->getFlashdata('error')): ?>
+        <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
+      <?php endif; ?>
+      <?php if (session()->getFlashdata('success')): ?>
+        <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
+      <?php endif; ?>
+      <?php if (session()->getFlashdata('errors')): ?>
+        <div class="alert alert-danger text-start">
+          <ul>
             <?php foreach (session()->getFlashdata('errors') as $error): ?>
-                <li><?= esc($error) ?></li>
+              <li><?= esc($error) ?></li>
             <?php endforeach; ?>
-        </ul>
-    </div>
-<?php endif; ?>
+          </ul>
+        </div>
+      <?php endif; ?>
 
 
-    <form action="<?= base_url('admin/register') ?>" method="post">
-      <input type="text" name="username" placeholder="Username" required>
-      <input type="password" name="password" placeholder="Password" required>
-      <button type="submit">REGISTER</button>
-    </form>
-    <br>
-    <div class="text-center mt-4">
-    <span class="d-inline-flex align-items-baseline">
-        Already have an account? 
-        <a href="<?= base_url('/login') ?>" class="text-primary fw-bold ms-1" 
-           style="text-decoration: none; border-bottom: 1px solid currentColor;">
+      <form action="<?= base_url('admin/register') ?>" method="post">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">REGISTER</button>
+      </form>
+      <br>
+      <div class="text-center mt-4">
+        <span class="d-inline-flex align-items-baseline">
+          Already have an account?
+          <a href="<?= base_url('/login') ?>" class="text-primary fw-bold ms-1"
+            style="text-decoration: none; border-bottom: 1px solid currentColor;">
             Login
-        </a>
-    </span>
-</div>
+          </a>
+        </span>
+      </div>
 
   </div>
 

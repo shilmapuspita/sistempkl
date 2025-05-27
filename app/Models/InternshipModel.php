@@ -109,8 +109,6 @@ class InternshipModel extends Model
             ->select("COUNT(*) as jumlah")
             ->where("TGL_AWAL <=", $end)
             ->where("TGL_AKHIR >=", $start)
-            ->where("TGL_AWAL <=", $today) // pastikan tanggal mulai tidak di masa depan
-            ->where("TGL_AKHIR >=", $today) // pastikan tanggal akhir tidak di masa lalu
             ->groupBy("divisi_bagian")
             ->findAll();
     }
