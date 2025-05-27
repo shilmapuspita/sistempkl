@@ -5,12 +5,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>SISTEMPKL Admin</title>
-  <link rel="stylesheet" href="/admin/assets/vendors/mdi/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="/admin/assets/vendors/ti-icons/css/themify-icons.css">
-  <link rel="stylesheet" href="/admin/assets/vendors/css/vendor.bundle.base.css">
-  <link rel="stylesheet" href="/admin/assets/vendors/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/admin/assets/css/style.css">
-  <link rel="shortcut icon" href="/admin/assets/images/favicon.png" />
+  <link rel="stylesheet" href="<?= base_url('admin/assets/vendors/mdi/css/materialdesignicons.min.css') ?>">
+  <link rel="stylesheet" href="<?= base_url('admin/assets/vendors/ti-icons/css/themify-icons.css') ?>">
+  <link rel="stylesheet" href="<?= base_url('admin/assets/vendors/css/vendor.bundle.base.css') ?>">
+  <link rel="stylesheet" href="<?= base_url('admin/assets/vendors/font-awesome/css/font-awesome.min.css') ?>">
+  <link rel="stylesheet" href="<?= base_url('admin/assets/css/style.css') ?>">
+  <link rel="shortcut icon" href="<?= base_url('admin/assets/images/favicon.png') ?>" />
   <style>
     body {
       background: linear-gradient(135deg, #00509E, #1B98E0) !important;
@@ -80,7 +80,7 @@
 
 <body>
   <div class="login-container">
-    <img src="/assets/img/inti.png" alt="Logo">
+    <img src="<?= base_url('assets/img/inti.png') ?>" alt="Logo">
     <h4>Haloo! Let's Start Today with Bismillah</h4>
     <h6>⋆˚ Sign In for Start the Dayyy! ♡</h6>
     <?php if (session()->getFlashdata('error')): ?>
@@ -97,14 +97,14 @@
     </form>
     <br>
     <div class="text-center mt-2">
-    <span class="d-inline-flex align-items-baseline">
-        Belum punya akun? 
-        <a href="<?= base_url('admin/register') ?>" class="text-primary fw-bold ms-1" 
-           style="text-decoration: none; border-bottom: 1px solid currentColor;">
-            Register
+      <span class="d-inline-flex align-items-baseline">
+        Belum punya akun?
+        <a href="<?= base_url('admin/register') ?>" class="text-primary fw-bold ms-1"
+          style="text-decoration: none; border-bottom: 1px solid currentColor;">
+          Register
         </a>
-    </span>
-</div>
+      </span>
+    </div>
   </div>
 </body>
 

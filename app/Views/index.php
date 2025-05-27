@@ -294,7 +294,7 @@
 
     <div class="container copyright text-center mt-4">
       <div class="credits">
-        by Shilma Puspita
+        PT INTI TEAM
       </div>
     </div>
 

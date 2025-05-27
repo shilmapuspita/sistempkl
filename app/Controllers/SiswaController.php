@@ -322,7 +322,7 @@ class SiswaController extends Controller
             'currentPage' => 'siswaRiset'
         ];
 
-        return view('admin/siswa/Riset/edit', $data);
+        return view('admin/siswa/riset/edit', $data);
     }
 
     public function updateSiswaRiset($id)
