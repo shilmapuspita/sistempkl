@@ -17,9 +17,17 @@ class MentorController extends BaseController
 
     public function showMentor()
     {
+        $keyword = $this->request->getGet('keyword');
+        $dataMentor = $this->mentorModel;
+
+        if (!empty($keyword)) {
+            $dataMentor = $dataMentor->like('NAMA', $keyword)->orLike('NIP', $keyword);
+        }
+
         $data = [
-            'pembimbing' => $this->mentorModel->getPaginateData(10),
-            'pager' => $this->mentorModel->pager,
+            'pembimbing' => $dataMentor->paginate(10),
+            'pager' => $dataMentor->pager,
+            'keyword' => $keyword,
             'currentPage' => 'mentor'
         ];
 
@@ -186,24 +194,20 @@ class MentorController extends BaseController
     {
         $file = $this->request->getFile('excel_file');
 
-        // Cek apakah file diunggah
         if (!$file || $file->getError() == 4) {
             return redirect()->to('/mentor')->with('error', 'Tidak ada file yang diunggah!');
         }
 
-        // Cek ekstensi yang diperbolehkan
         $allowedExtensions = ['xls', 'xlsx'];
         if (!in_array($file->getExtension(), $allowedExtensions)) {
             return redirect()->to('/mentor')->with('error', 'Format file harus .xls atau .xlsx!');
         }
 
-        // Cek ukuran file (max 2MB)
         if ($file->getSize() > 2097152) {
             return redirect()->to('/mentor')->with('error', 'Ukuran file terlalu besar (max 2MB)!');
         }
 
         try {
-            // Load file Excel
             $spreadsheet = IOFactory::load($file->getTempName());
             $sheet = $spreadsheet->getActiveSheet();
             $mentorModel = new MentorModel();
@@ -211,16 +215,13 @@ class MentorController extends BaseController
             // Ambil data dalam bentuk array
             $dataRows = $sheet->toArray(null, true, true, true);
 
-            // Cek apakah jumlah kolom sesuai dengan header
             if (count($dataRows) < 2) {
                 return redirect()->to('/mentor')->with('error', 'File kosong atau tidak memiliki data!');
             }
 
-            // Loop mulai dari baris ke-2 (skip header)
             for ($i = 2; $i <= count($dataRows); $i++) {
                 $row = $dataRows[$i];
 
-                // Cek apakah semua kolom kosong, jika ya, skip
                 if (
                     empty(trim($row['A'])) && empty(trim($row['B'])) && empty(trim($row['C'])) &&
                     empty(trim($row['D'])) && empty(trim($row['E'])) && empty(trim($row['F'])) && empty(trim($row['G']))

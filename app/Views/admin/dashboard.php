@@ -23,7 +23,7 @@
         <div class="card bg-inti-gradient card-img-holder">
           <div class="card-body">
             <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-            <h4 class="card-text">Mahasiswa/Siswa Aktif PKL/Riset</h4>
+            <h3 class="card-text">Mahasiswa/Siswa Aktif PKL/Riset</h3>
             <h2 class="mb-3"><?= number_format($totalSiswa) ?></h2>
             <!-- <h6 class="card-text">Based On Data From 2007 To 2024</h6> -->
             <h6 class="card-text"> Students Currently Active as of <?= date('F d, Y') ?></h6>
@@ -35,8 +35,10 @@
         <div class="card bg-inti-gradient card-img-holder">
           <div class="card-body">
             <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-            <h4 class="card-text">Collaborating Institutions <i class="mdi mdi-bookmark-outline mdi-24px float-end"></i></h4>
-            <h2 class="mb-3"><?= number_format($totalInstitusi) ?> Institutions</h2>
+            <h3 class="card-text">Collaborating Institutions <i class="mdi mdi-bookmark-outline mdi-24px float-end"></i></h3>
+            <br><h3 class="mb-3"><?= number_format($totalInstitusi) ?>
+            <br>
+             Institutions</h3>
           </div>
         </div>
       </div>
@@ -44,9 +46,10 @@
         <div class="card bg-inti-gradient card-img-holder">
           <div class="card-body">
             <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-            <h3 class="card-text">Mentor <i class="mdi mdi-diamond mdi-24px float-end"></i></h3>
+            <h2 class="card-text">Mentor <i class="mdi mdi-diamond mdi-24px float-end"></i></h2>
+            <br>
             <h2 class="mb-3"><?= number_format($totalMentor) ?></h2>
-            <h6 class="card-text">Experienced Mentors In Their Fields</h6>
+            <h5 class="card-text">Experienced Mentors In Their Fields</h5>
           </div>
         </div>
       </div>
@@ -189,64 +192,84 @@
         ]
       },
       options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          y: {
-            stacked: true,
-            beginAtZero: true,
-            max: calculatedMaxY,
-            ticks: {
-              stepSize: stepSize,
-              callback: function(value) {
-                return value;
-              },
-              color: '#2c3e50'
-            },
-            grid: {
-              color: '#e0e0e0'
-            }
-          },
-          x: {
-            stacked: true,
-            ticks: {
-              color: '#2c3e50',
-              font: {
-                size: 11
-              }
-            },
-            grid: {
-              display: false
-            }
-          }
+  responsive: true,
+  maintainAspectRatio: false,
+  scales: {
+    y: {
+      stacked: true,
+      beginAtZero: true,
+      max: calculatedMaxY,
+      ticks: {
+        stepSize: stepSize,
+        callback: function(value) {
+          return value;
         },
-        plugins: {
-          tooltip: {
-            callbacks: {
-              title: function(context) {
-                return originalLabels[context[0].dataIndex];
-              },
-              label: function(context) {
-                return `${context.dataset.label}: ${context.parsed.y}`;
-              }
-            }
-          },
-          legend: {
-            position: 'top',
-            labels: {
-              color: '#2c3e50'
-            }
-          },
-          title: {
-            display: true,
-            text: 'Jumlah Mahasiswa/Siswa Aktif per Divisi & Bagian (<?= $bulan ?>/<?= $tahun ?>)',
-            font: {
-              size: 18
-            },
-            color: '#2C3E50'
-          }
+        color: '#2c3e50',
+        font: {
+          family: 'Trebuchet MS',
+          size: 12
+        }
+      },
+      grid: {
+        color: '#e0e0e0'
+      }
+    },
+    x: {
+      stacked: true,
+      ticks: {
+        color: '#2c3e50',
+        font: {
+          family: 'Trebuchet MS',
+          size: 12
+        }
+      },
+      grid: {
+        display: false
+      }
+    }
+  },
+  plugins: {
+    tooltip: {
+      titleFont: {
+        family: 'Trebuchet MS',
+        size: 14
+      },
+      bodyFont: {
+        family: 'Trebuchet MS',
+        size: 13
+      },
+      callbacks: {
+        title: function(context) {
+          return originalLabels[context[0].dataIndex];
+        },
+        label: function(context) {
+          return `${context.dataset.label}: ${context.parsed.y}`;
         }
       }
+    },
+    legend: {
+      position: 'top',
+      labels: {
+        color: '#2c3e50',
+        font: {
+          family: 'Trebuchet MS',
+          size: 13
+        }
+      }
+    },
+    title: {
+      display: true,
+      text: 'Jumlah Mahasiswa/Siswa Aktif per Divisi & Bagian (<?= $bulan ?>/<?= $tahun ?>)',
+      font: {
+        family: 'Trebuchet MS',
+        size: 18,
+        weight: 'bold'
+      },
+      color: '#2C3E50'
+    }
+  }
+}
+
     });
   </script>
 

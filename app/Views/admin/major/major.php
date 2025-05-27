@@ -38,11 +38,16 @@
 
             <!-- Pencarian & Add Button -->
             <div class="d-flex justify-content-between align-items-center mb-3">
-              <div class="position-relative w-50">
-                <input type="text" id="searchInput" class="form-control shadow-sm ps-5 rounded-pill" placeholder="Cari jurusan ...">
+              <form method="get" id="searchForm" class="position-relative w-50">
+                <input type="text"
+                  name="keyword"
+                  id="searchInput"
+                  class="form-control shadow-sm ps-5 rounded-pill"
+                  placeholder="Cari jurusan ..."
+                  value="<?= esc($keyword ?? '') ?>">
                 <i class="fa-solid fa-magnifying-glass position-absolute text-primary"
                   style="left: 15px; top: 50%; transform: translateY(-50%); font-size: 16px;"></i>
-              </div>
+              </form>
               <a href="<?= base_url('/major/create') ?>" class="btn btn-gradient-blue btn-sm shadow-sm">
                 <i class="fa-solid fa-user-plus"></i> Add Data
               </a>
@@ -94,23 +99,30 @@
     </div>
   </div>
   <!-- content-wrapper ends -->
-<!-- main-panel ends -->
-<!-- untuk search -->
-<script>
-  document.getElementById("searchInput").addEventListener("keyup", function() {
-    let filter = this.value.toUpperCase();
-    let rows = document.querySelector("#jurusanTable tbody").rows;
+  <!-- main-panel ends -->
+  <!-- untuk search -->
+  <script>
+    let debounceTimer;
+    const delay = 500;
 
-    for (let i = 0; i < rows.length; i++) {
-      let txtValue = rows[i].textContent || rows[i].innerText;
-      rows[i].style.display = txtValue.toUpperCase().indexOf(filter) > -1 ? "" : "none";
-    }
-  });
+    document.getElementById('searchInput').addEventListener('input', function() {
+      clearTimeout(debounceTimer);
+      const keyword = this.value.trim();
+      const baseUrl = '<?= base_url('/major') ?>';
 
-  // Aktifkan tooltip Bootstrap
-  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-  var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
-    return new bootstrap.Tooltip(tooltipTriggerEl);
-  });
-</script>
-<?= $this->endSection() ?>
+      debounceTimer = setTimeout(() => {
+        if (keyword.length > 0) {
+          window.location.href = `${baseUrl}?keyword=${encodeURIComponent(keyword)}`;
+        } else {
+          window.location.href = baseUrl;
+        }
+      }, delay);
+    });
+
+    // Aktifkan tooltip Bootstrap
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+  </script>
+  <?= $this->endSection() ?>
