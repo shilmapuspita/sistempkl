@@ -80,7 +80,6 @@ class SiswaModel extends Model
 
         $start = "$year-$month-01";
         $end = date('Y-m-t', strtotime($start));
-        $today = date('Y-m-d');
 
         return $this->select("CONCAT(DIVISI, ' - ', BAGIAN) as divisi_bagian")
             ->select("COUNT(*) as jumlah")

@@ -33,7 +33,7 @@
       <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
-            <h2 class="card-title text-center text-primary fw-bold">JURUSAN LEMBAGA PENDIDIKAN MITRA PT INTI</h2>
+            <h2 class="card-title text-center text-primary fw-bold">PROGRAM STUDI LEMBAGA PENDIDIKAN MITRA PT INTI</h2>
             <br>
 
             <!-- Pencarian & Add Button -->
@@ -43,7 +43,7 @@
                   name="keyword"
                   id="searchInput"
                   class="form-control shadow-sm ps-5 rounded-pill"
-                  placeholder="Cari jurusan ..."
+                  placeholder="Cari program studi ..."
                   value="<?= esc($keyword ?? '') ?>">
                 <i class="fa-solid fa-magnifying-glass position-absolute text-primary"
                   style="left: 15px; top: 50%; transform: translateY(-50%); font-size: 16px;"></i>
@@ -56,8 +56,8 @@
               <thead class="bg-primary text-white">
                 <tr>
                   <th>No</th>
-                  <th>ID Jurusan</th>
-                  <th>Jurusan</th>
+                  <th>ID Program Studi</th>
+                  <th>Program Studi</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -91,8 +91,7 @@
           </div>
 
           <div class="d-flex justify-content-center mt-3">
-            <?= $pager->links() ?>
-
+            <?= $pager->links('default', 'custom_pagination') ?> 
           </div>
         </div>
       </div>

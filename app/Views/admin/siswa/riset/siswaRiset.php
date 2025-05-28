@@ -167,7 +167,7 @@
 
                         <!-- Pagination -->
                         <div class="d-flex justify-content-center mt-3">
-                            <?= $pager->links() ?>
+                             <?= $pager->links('default', 'custom_pagination') ?> 
                         </div>
 
                     </div>

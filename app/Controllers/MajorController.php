@@ -19,7 +19,7 @@ class MajorController extends Controller
         }
 
         $data = [
-            'jurusan'      => $model->paginate(10),
+            'jurusan'      => $model->paginate(10, 'default'),
             'pager'        => $model->pager,
             'currentPage'  => 'major',
             'keyword'      => $keyword
