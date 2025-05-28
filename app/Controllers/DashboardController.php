@@ -27,18 +27,6 @@ class DashboardController extends BaseController
         $rawRiset = $siswaModel->getSiswaAktifByMonth($bulan, $tahun, 'RISET');
         $rawIntern = $internModel->getSiswaAktifByMonth($bulan, $tahun);
 
-        // Debug output data mentah untuk pengecekan
-        // echo "<pre>Raw PKL:\n";
-        // print_r($rawPKL);
-        // echo "</pre>";
-
-        // echo "<pre>Raw Riset:\n";
-        // print_r($rawRiset);
-        // echo "</pre>";
-
-        // echo "<pre>Raw Internship:\n";
-        // print_r($rawIntern);
-        // echo "</pre>";
 
         // menggabungkan divisi_bagian dari semua sumber
         // Gabungkan semua data
