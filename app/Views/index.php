@@ -293,7 +293,7 @@
 
     <div class="container copyright text-center mt-4">
       <div class="credits">
-        PT INTI TEAM
+        by PT INTI TEAM
       </div>
     </div>
 
