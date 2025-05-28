@@ -30,34 +30,6 @@ class AdminController extends BaseController
         return view('admin/dashboard', $data);
     }
 
-    public function register()
-    {
-        return view('admin/register', [
-            'title' => 'Register',
-            'currentPage' => 'register'
-        ]);
-    }
-
-    public function processRegister()
-    {
-        $validation = \Config\Services::validation();
-        $validation->setRules([
-            'username' => 'required|min_length[3]|is_unique[admin.username]',
-            'password' => 'required|min_length[6]'
-        ]);
-
-        if (!$validation->withRequest($this->request)->run()) {
-            return redirect()->to('admin/register')->withInput()->with('errors', $validation->getErrors());
-        }
-
-        $this->adminModel->insert([
-            'username' => $this->request->getPost('username'),
-            'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT)
-        ]);
-
-        return redirect()->to('/login')->with('success', 'Registrasi berhasil, silakan login.');
-    }
-
     public function login()
     {
         if ($this->session->get('logged_in')) {
