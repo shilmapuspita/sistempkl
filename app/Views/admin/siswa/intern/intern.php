@@ -154,7 +154,7 @@
                   <?php foreach ($datapmmb as $row) : ?>
                     <tr>
                       <td><?= $no++; ?></td>
-                      <td><?= esc($row['ID']); ?></td>
+                      <td><?= esc($row['ID_PKL']); ?></td>
                       <td><?= esc($row['NO']); ?></td>
                       <td><?= esc($row['BATCH']); ?></td>
                       <td><?= date('d-m-Y', strtotime($row['TANGGAL'])); ?></td>
@@ -165,13 +165,13 @@
                       <td><?= esc($row['BAGIAN']); ?></td>
                       <td><?= date('d-m-Y', strtotime($row['TGL_AWAL'])); ?></td>
                       <td><?= date('d-m-Y', strtotime($row['TGL_AKHIR'])); ?></td>
-                      <td><?= esc($row['STATUS']); ?></td>
+                      <td><?= esc($row['status']); ?></td>
                       <td><?= esc($row['NAMA_PEMB']); ?></td>
                       <td class="text-center">
-                        <a href="<?= base_url('intern/edit/' . $row['ID']) ?>" class="btn btn-gradient-blue btn-sm shadow-sm" data-bs-toggle="tooltip" title="Edit">
+                        <a href="<?= base_url('intern/edit/' . $row['ID_PKL']) ?>" class="btn btn-gradient-blue btn-sm shadow-sm" data-bs-toggle="tooltip" title="Edit">
                           <i class="bi bi-pencil-square fs-6 align-middle"></i>
                         </a>
-                        <a href="<?= base_url('intern/delete/' . $row['ID']) ?>" class="btn btn-gradient-blue btn-sm shadow-sm" data-bs-toggle="tooltip" title="Delete" onclick="return confirm('Yakin ingin menghapus data ini?')">
+                        <a href="<?= base_url('intern/delete/' . $row['ID_PKL']) ?>" class="btn btn-gradient-blue btn-sm shadow-sm" data-bs-toggle="tooltip" title="Delete" onclick="return confirm('Yakin ingin menghapus data ini?')">
                           <i class="bi bi-trash3-fill fs-6 align-middle"></i>
                         </a>
                       </td>

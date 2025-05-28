@@ -14,30 +14,30 @@
             <div class="card-body">
                 <h4 class="card-title text-center text-primary fw-bold">FORMULIR DATA JURUSAN</h4>
                 <br>
-                    <?php if (session()->getFlashdata('success')) : ?>
-                            <div class="alert alert-success">
-                                <?= session()->getFlashdata('success') ?>
-                            </div>
-                        <?php endif; ?>
+                <?php if (session()->getFlashdata('success')) : ?>
+                    <div class="alert alert-success">
+                        <?= session()->getFlashdata('success') ?>
+                    </div>
+                <?php endif; ?>
 
-                        <?php if (session()->getFlashdata('errors')) : ?>
-                            <div class="alert alert-danger">
-                                <ul>
-                                    <?php foreach (session()->getFlashdata('errors') as $error) : ?>
-                                        <li><?= esc($error) ?></li>
-                                    <?php endforeach; ?>
-                                </ul>
-                            </div>
-                        <?php endif; ?>
+                <?php if (session()->getFlashdata('errors')) : ?>
+                    <div class="alert alert-danger">
+                        <ul>
+                            <?php foreach (session()->getFlashdata('errors') as $error) : ?>
+                                <li><?= esc($error) ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                <?php endif; ?>
 
-                        <form class="forms-sample" action="<?= base_url('/major/store') ?>" method="post">
-                        <?= csrf_field() ?>
-                            <div class="form-group">
-                                <label><i class="fa-solid fa-briefcase"></i> Nama Jurusan</label>
-                                <input type="text" class="form-control" id="exampleInputName1" name="nama_jurusan" value="<?= old('nama_jurusan') ?>" required>
-                            </div>
-                            
-                            <div class="d-flex justify-content-center mt-4">
+                <form class="forms-sample" action="<?= base_url('/major/store') ?>" method="post">
+                    <?= csrf_field() ?>
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-briefcase"></i> Nama Jurusan</label>
+                        <input type="text" class="form-control" id="exampleInputName1" name="nama_jurusan" value="<?= old('nama_jurusan') ?>" required>
+                    </div>
+
+                    <div class="d-flex justify-content-center mt-4">
                         <button type="submit" class="btn btn-gradient-blue me-2 shadow-sm">
                             <i class="fa-solid fa-floppy-disk"></i> Simpan
                         </button>
@@ -45,10 +45,9 @@
                             <i class="fa-solid fa-xmark"></i> Batal
                         </a>
                     </div>
-                        </form>
-                    </div>
-                </div>
+                </form>
             </div>
+        </div>
+    </div>
 
-        <!-- main-panel ends -->
-        <?= $this->endSection() ?>
+    <?= $this->endSection() ?>

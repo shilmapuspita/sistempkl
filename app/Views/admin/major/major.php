@@ -89,7 +89,7 @@
               </tbody>
             </table>
           </div>
-          <!-- Menambahkan pagination -->
+
           <div class="d-flex justify-content-center mt-3">
             <?= $pager->links() ?>
 
@@ -98,9 +98,6 @@
       </div>
     </div>
   </div>
-  <!-- content-wrapper ends -->
-  <!-- main-panel ends -->
-  <!-- untuk search -->
   <script>
     let debounceTimer;
     const delay = 500;

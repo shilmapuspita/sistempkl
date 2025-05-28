@@ -97,14 +97,14 @@
     </form>
     <br>
     <div class="text-center mt-2">
-    <span class="d-inline-flex align-items-baseline">
-        Belum punya akun? 
-        <a href="<?= base_url('admin/register') ?>" class="text-primary fw-bold ms-1" 
-           style="text-decoration: none; border-bottom: 1px solid currentColor;">
-            Register
+      <span class="d-inline-flex align-items-baseline">
+        Belum punya akun?
+        <a href="<?= base_url('admin/register') ?>" class="text-primary fw-bold ms-1"
+          style="text-decoration: none; border-bottom: 1px solid currentColor;">
+          Register
         </a>
-    </span>
-</div>
+      </span>
+    </div>
   </div>
 </body>
 

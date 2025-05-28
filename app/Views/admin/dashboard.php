@@ -25,7 +25,6 @@
             <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
             <h3 class="card-text">Mahasiswa/Siswa Aktif PKL/Riset</h3>
             <h2 class="mb-3"><?= number_format($totalSiswa) ?></h2>
-            <!-- <h6 class="card-text">Based On Data From 2007 To 2024</h6> -->
             <h6 class="card-text"> Students Currently Active as of <?= date('F d, Y') ?></h6>
 
           </div>
@@ -147,7 +146,6 @@
     </div>
   </div>
 
-  <!-- </div> -->
   <script src="<?= base_url('admin/assets/js/chart.min.js') ?>"></script>
   <script>
     const ctx = document.getElementById('barChart').getContext('2d');

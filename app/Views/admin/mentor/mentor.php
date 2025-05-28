@@ -115,7 +115,6 @@
               </table>
             </div>
 
-            <!-- Pagination -->
             <div class="d-flex justify-content-center mt-3">
               <?php
               $pagination_links = $pager->links();
@@ -137,7 +136,7 @@
 
   <script>
     let debounceTimer;
-    const delay = 500; // delay pencarian 500ms setelah user berhenti mengetik
+    const delay = 500;
 
     document.getElementById('searchKeyword').addEventListener('input', function() {
       clearTimeout(debounceTimer);

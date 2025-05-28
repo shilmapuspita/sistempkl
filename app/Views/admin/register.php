@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>SISTEMPKL Admin - Register</title>
@@ -88,20 +87,20 @@
     <h6>𐙚˚ Start your journey now!</h6>
     <br>
     <?php if (session()->getFlashdata('error')): ?>
-    <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
-<?php endif; ?>
-<?php if (session()->getFlashdata('success')): ?>
-    <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
-<?php endif; ?>
-<?php if (session()->getFlashdata('errors')): ?>
-    <div class="alert alert-danger text-start">
+      <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
+    <?php endif; ?>
+    <?php if (session()->getFlashdata('success')): ?>
+      <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
+    <?php endif; ?>
+    <?php if (session()->getFlashdata('errors')): ?>
+      <div class="alert alert-danger text-start">
         <ul>
-            <?php foreach (session()->getFlashdata('errors') as $error): ?>
-                <li><?= esc($error) ?></li>
-            <?php endforeach; ?>
+          <?php foreach (session()->getFlashdata('errors') as $error): ?>
+            <li><?= esc($error) ?></li>
+          <?php endforeach; ?>
         </ul>
-    </div>
-<?php endif; ?>
+      </div>
+    <?php endif; ?>
 
 
     <form action="<?= base_url('admin/register') ?>" method="post">
@@ -111,14 +110,14 @@
     </form>
     <br>
     <div class="text-center mt-4">
-    <span class="d-inline-flex align-items-baseline">
-        Already have an account? 
-        <a href="<?= base_url('/login') ?>" class="text-primary fw-bold ms-1" 
-           style="text-decoration: none; border-bottom: 1px solid currentColor;">
-            Login
+      <span class="d-inline-flex align-items-baseline">
+        Already have an account?
+        <a href="<?= base_url('/login') ?>" class="text-primary fw-bold ms-1"
+          style="text-decoration: none; border-bottom: 1px solid currentColor;">
+          Login
         </a>
-    </span>
-</div>
+      </span>
+    </div>
 
   </div>
 
