@@ -87,8 +87,6 @@ class SiswaModel extends Model
             ->where("JENIS_PKL", $jenis)
             ->where("tanggal_mulai_fix <=", $end)
             ->where("tgl_akhir_fix >=", $start)
-            ->where("tanggal_mulai_fix <=", $today) // pastikan tanggal mulai tidak di masa depan
-            ->where("tgl_akhir_fix >=", $today) // pastikan tanggal akhir tidak di masa lalu
             ->groupBy("divisi_bagian")
             ->findAll();
     }
