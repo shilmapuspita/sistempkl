@@ -40,9 +40,18 @@
                 <label for="file_excel" class="form-label fw-bold text-primary">Upload File Excel</label>
                 <input class="form-control border-primary" type="file" name="excel_file" id="excel_file" required>
               </div>
+              <div class="row align-items-center">
+        <div class="col-md-6">
               <button type="submit" class="btn btn-gradient-blue px-4 py-2 d-flex align-items-center gap-2 shadow-sm">
                 <i class="fa-solid fa-upload"></i> Upload
               </button>
+              </div>
+        <div class="col-md-6 text-md-end mt-2 mt-md-0">
+            <a href="<?= base_url('/templates/format_data_pembimbing.xlsx') ?>" class="text-decoration-none small ms-2" download>
+                ⬇️ Download Format Template
+            </a>
+        </div>
+    </div>
             </form>
 
             <div class="d-flex justify-content-between align-items-center mb-3 mt-4">
@@ -117,15 +126,7 @@
 
             <!-- Pagination -->
             <div class="d-flex justify-content-center mt-3">
-              <?php
-              $pagination_links = $pager->links();
-
-              if (!empty($keyword)) {
-                $pagination_links = preg_replace('/href="([^"]+)"/', 'href="$1&keyword=' . urlencode($keyword) . '"', $pagination_links);
-              }
-
-              echo $pagination_links;
-              ?>
+ <?= $pager->links('default', 'custom_pagination') ?> 
             </div>
 
           </div>
