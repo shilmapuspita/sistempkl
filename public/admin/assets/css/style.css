@@ -26371,6 +26371,18 @@ table tbody tr:hover {
     background-color: #424F5E;
 }
 
+.select2-selection--single {
+    height: 38px !important; /* Match Bootstrap form-control height */
+    display: flex !important;
+    align-items: center !important;
+    padding: 4px 12px !important;
+    box-sizing: border-box;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: inherit !important;
+    padding-left: 0 !important;
+}
     
 
 
