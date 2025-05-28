@@ -99,7 +99,7 @@
           <div class="col-lg-6 ps-lg-4 content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
             <h3>PT INTI (Persero)</h3>
             <p>
-            PT INTI (Persero), one of the state-owned enterprises in strategic industries, was officially established on December 30, 1974. The Company headquartered in Jalan Moch Toha No. 77 Bandung has portfolio in the fields of Manufacture, System Integrator, and Digital. To support its business, PT INTI (Persero) also operates an eight hectares production facility on Jalan Moch Toha No 225 which produces telecommunications and electronic devices.
+              PT INTI (Persero), one of the state-owned enterprises in strategic industries, was officially established on December 30, 1974. The Company headquartered in Jalan Moch Toha No. 77 Bandung has portfolio in the fields of Manufacture, System Integrator, and Digital. To support its business, PT INTI (Persero) also operates an eight hectares production facility on Jalan Moch Toha No 225 which produces telecommunications and electronic devices.
             </p>
           </div>
 
@@ -123,21 +123,20 @@
               <span data-purecounter-start="0" data-purecounter-end="190" data-purecounter-duration="1" class="purecounter"></span>
               <p>Mentor</p>
             </div>
-          </div><!-- End Stats Item -->
-
+          </div>
           <div class="col-lg-4 col-md-6">
             <div class="stats-item text-center w-100 h-100">
               <span data-purecounter-start="0" data-purecounter-end="617" data-purecounter-duration="1" class="purecounter"></span>
               <p>Collaborating Institutions</p>
             </div>
-          </div><!-- End Stats Item -->
+          </div>
 
           <div class="col-lg-4 col-md-6">
             <div class="stats-item text-center w-100 h-100">
               <span data-purecounter-start="0" data-purecounter-end="17179" data-purecounter-duration="1" class="purecounter"></span>
               <p>Siswa/Mahasiswa PKL/Magang</p>
             </div>
-          </div><!-- End Stats Item -->
+          </div>
 
         </div>
 
@@ -155,41 +154,41 @@
 
           <div class="col-xl-3 col-md-4 client-logo">
             <img src="assets/img/clients/telkom.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
+          </div>
 
           <div class="col-xl-3 col-md-4 client-logo">
             <img src="assets/img/clients/unpad.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
+          </div>
 
           <div class="col-xl-3 col-md-4 client-logo">
             <img src="assets/img/clients/unikom.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
+          </div>
 
           <div class="col-xl-3 col-md-4 client-logo">
             <img src="assets/img/clients/lpkia.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
+          </div>
 
           <div class="col-xl-3 col-md-4 client-logo">
             <img src="assets/img/clients/smkn4.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
+          </div>
 
           <div class="col-xl-3 col-md-4 client-logo">
             <img src="assets/img/clients/upi.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
+          </div>
 
           <div class="col-xl-3 col-md-4 client-logo">
             <img src="assets/img/clients/polban.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
+          </div>
 
           <div class="col-xl-3 col-md-4 client-logo">
             <img src="assets/img/clients/pasundan.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
+          </div>
 
         </div>
 
       </div>
 
-    </section><!-- /Clients Section -->
+    </section>
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio section">
@@ -204,7 +203,7 @@
           Untuk memastikan kelancaran proses penerimaan, penempatan, dan pelaksanaan PKL atau riset di PT. INTI serta menjaga reputasi perusahaan,
           diperlukan prosedur yang dapat dijadikan panduan bagi peserta dalam menjalankan kegiatan ini.
         </p>
-      </div><!-- End Section Title -->
+      </div>
 
       <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
 
@@ -226,7 +225,7 @@
                 <i class="bi bi-zoom-in"></i>
               </a>
             </div>
-          </div><!-- End Portfolio Item -->
+          </div>
 
           <!-- Flowchart -->
           <div class="portfolio-item isotope-item filter-product d-none">
@@ -238,9 +237,9 @@
                 <i class="bi bi-zoom-in"></i>
               </a>
             </div>
-          </div><!-- End Portfolio Item -->
+          </div>
 
-        </div><!-- End Portfolio Container -->
+        </div>
 
       </div>
 
@@ -277,24 +276,24 @@
 
         <div class="col-lg-4 col-md-12 footer-map">
           <h4>Our Location</h4>
-          <div class="ratio ratio-16x9">
+          <div class="map-responsive rounded shadow-sm">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.899355913216!2d107.60497827508406!3d-6.913622367582785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e98c7aa5c30d%3A0x3cb1b4ff0982e4f8!2sPT%20Industri%20Telekomunikasi%20Indonesia%20(INTI)!5e0!3m2!1sid!2sid!4v1707929000000"
-              class="rounded shadow-sm"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.5998441053894!2d107.60303162695311!3d-6.938334700000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e63a66953993%3A0x248047e0057191ae!2sPT.%20Inti%20(Persero)!5e0!3m2!1sen!2sid!4v1748407752990!5m2!1sen!2sid"
+              width="100%"
+              height="250"
+              style="border:0;"
               allowfullscreen=""
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade">
             </iframe>
           </div>
         </div>
-
-
       </div>
     </div>
 
     <div class="container copyright text-center mt-4">
       <div class="credits">
-        PT INTI TEAM
+        by PT INTI TEAM
       </div>
     </div>
 

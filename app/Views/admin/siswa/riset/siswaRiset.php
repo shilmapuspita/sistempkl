@@ -139,9 +139,9 @@
                                     <?php foreach ($datasiswa as $siswa) : ?>
                                         <tr>
                                             <td><?= $no++; ?></td>
-                                            <td><?= esc($siswa['ID']) ?></td>
+                                            <td><?= esc($siswa['ID_PKL']) ?></td>
                                             <td><?= esc($siswa['NM_SISWA']) ?></td>
-                                            <td><?= date('d-m-Y', strtotime($siswa['TGL_DAFTAR'])); ?></td>
+                                            <td><?= date('d-m-Y', strtotime($siswa['TANGGAL'])); ?></td>
                                             <td><?= esc($siswa['JENIS_PKL']) ?></td>
                                             <td><?= esc($siswa['LEMBAGA']) ?></td>
                                             <td><?= esc($siswa['JURUSAN']) ?></td>
@@ -149,13 +149,13 @@
                                             <td><?= esc($siswa['BAGIAN']) ?></td>
                                             <td><?= date('d-m-Y', strtotime($siswa['tanggal_mulai_fix'])); ?></td>
                                             <td><?= date('d-m-Y', strtotime($siswa['tgl_akhir_fix'])) ?></td>
-                                            <td><?= esc($siswa['STATUS']) ?></td>
+                                            <td><?= esc($siswa['status']) ?></td>
                                             <td><?= esc($siswa['NAMA_PEMB']) ?></td>
                                             <td class="text-center">
-                                                <a href="<?= base_url('siswa/riset/edit/' . $siswa['ID']) ?>" class="btn btn-gradient-blue btn-sm shadow-sm" data-bs-toggle="tooltip" title="Edit">
+                                                <a href="<?= base_url('siswa/riset/edit/' . $siswa['ID_PKL']) ?>" class="btn btn-gradient-blue btn-sm shadow-sm" data-bs-toggle="tooltip" title="Edit">
                                                     <i class="bi bi-pencil-square fs-6 align-middle"></i>
                                                 </a>
-                                                <a href="<?= base_url('siswa/riset/delete/' . $siswa['ID']) ?>" class="btn btn-gradient-blue btn-sm shadow-sm" data-bs-toggle="tooltip" title="Delete" onclick="return confirm('Yakin ingin menghapus data ini?')">
+                                                <a href="<?= base_url('siswa/riset/delete/' . $siswa['ID_PKL']) ?>" class="btn btn-gradient-blue btn-sm shadow-sm" data-bs-toggle="tooltip" title="Delete" onclick="return confirm('Yakin ingin menghapus data ini?')">
                                                     <i class="bi bi-trash3-fill fs-6 align-middle"></i>
                                                 </a>
                                             </td>

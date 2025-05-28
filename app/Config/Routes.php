@@ -81,6 +81,10 @@ $routes->post('admin/update-profil', 'AdminController::updateProfile');
 $routes->post('export-siswa', 'SiswaController::exportForm');
 $routes->post('/proses-eksporPKL', 'SiswaController::exportSiswaPKL');
 $routes->post('/proses-eksporRiset', 'SiswaController::exportSiswaRiset');
+$routes->post('intern/ekspor', 'InternshipController::exportSiswaIntern');
+
+
+
 
 
 

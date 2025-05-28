@@ -45,5 +45,4 @@
             </div>
         </div>
     </div>
-        <!-- main-panel ends -->
-        <?= $this->endSection() ?>
+    <?= $this->endSection() ?>

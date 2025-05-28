@@ -86,7 +86,7 @@
                 </tbody>
               </table>
             </div>
-            <!-- Menambahkan pagination -->
+
             <div class="d-flex justify-content-center mt-3">
               <?= $pager->links() ?>
             </div>
@@ -95,8 +95,6 @@
       </div>
     </div>
   </div>
-  <!-- content-wrapper ends -->
-  <!-- main-panel ends -->
 
   <script>
     let debounceTimer;

@@ -20,6 +20,7 @@ class SiswaController extends Controller
 
     public function showSiswaPKL()
     {
+        // Select data siswa PKL
         $this->siswaModel->select("
         TANGGAL as TGL_DAFTAR, 
         ID_PKL as ID,
@@ -39,7 +40,7 @@ class SiswaController extends Controller
         END) as STATUS
     ")->where('JENIS_PKL', 'PKL');
 
-        //ambil inputan filter
+        // Ambil filter dari URL
         $nama_siswa = $this->request->getGet('nama_siswa');
         $lembaga = $this->request->getGet('lembaga');
         $jurusan = $this->request->getGet('jurusan');
@@ -51,7 +52,7 @@ class SiswaController extends Controller
         $tanggal_akhir = $this->request->getGet('tgl_akhir_fix');
         $tanggal_daftar = $this->request->getGet('tanggal_daftar');
 
-        //filter sesuai dari inputan
+        // Terapkan filter
         if (!empty($nama_siswa)) {
             $this->siswaModel->like('NM_SISWA', $nama_siswa);
         }
@@ -75,19 +76,28 @@ class SiswaController extends Controller
         }
 
         if (!empty($tanggal_awal)) {
-            $this->siswaModel->where("DATE(tanggal_mulai_fix) ", $tanggal_awal);
+            $this->siswaModel->where("DATE(tanggal_mulai_fix)", $tanggal_awal);
         }
         if (!empty($tanggal_akhir)) {
-            $this->siswaModel->where("DATE(tgl_akhir_fix) ", $tanggal_akhir);
+            $this->siswaModel->where("DATE(tgl_akhir_fix)", $tanggal_akhir);
         }
         if (!empty($tanggal_daftar)) {
             $this->siswaModel->where("DATE(TANGGAL)", $tanggal_daftar);
         }
 
+        // Ambil daftar lembaga untuk dropdown di modal ekspor
+        $lembagaList = $this->siswaModel
+            ->select('LEMBAGA')
+            ->groupBy('LEMBAGA')
+            ->orderBy('LEMBAGA', 'ASC')
+            ->findAll();
+
+        // Kirim data ke view
         $data = [
             'datasiswa' => $this->siswaModel->paginate(10),
             'pager' => $this->siswaModel->pager,
             'currentPage' => $this->request->getVar('page') ?? 1,
+            'lembagaList' => $lembagaList
         ];
 
         return view('admin/siswa/PKL/siswaPKL', $data);
@@ -211,7 +221,6 @@ class SiswaController extends Controller
         END) as STATUS
     ")->where('JENIS_PKL', 'RISET');
 
-        // Ambil input filter
         $nama_siswa     = $this->request->getGet('nama_siswa');
         $lembaga        = $this->request->getGet('lembaga');
         $jurusan        = $this->request->getGet('jurusan');
@@ -220,10 +229,9 @@ class SiswaController extends Controller
         $pembimbing     = $this->request->getGet('pembimbing');
         $status         = $this->request->getGet('status');
         $tanggal_awal   = $this->request->getGet('tanggal_mulai');
-        $tanggal_akhir = $this->request->getGet('tgl_akhir_fix');
+        $tanggal_akhir  = $this->request->getGet('tgl_akhir_fix');
         $tanggal_daftar = $this->request->getGet('tanggal_daftar');
 
-        // Apply filter sesuai input
         if (!empty($nama_siswa)) {
             $this->siswaModel->like('NM_SISWA', $nama_siswa);
         }
@@ -246,23 +254,31 @@ class SiswaController extends Controller
             $this->siswaModel->having('STATUS', $status);
         }
         if (!empty($tanggal_awal)) {
-            $this->siswaModel->where("DATE(tanggal_mulai_fix) ", $tanggal_awal);
+            $this->siswaModel->where("DATE(tanggal_mulai_fix)", $tanggal_awal);
         }
         if (!empty($tanggal_akhir)) {
-            $this->siswaModel->where("DATE(tgl_akhir_fix) ", $tanggal_akhir);
+            $this->siswaModel->where("DATE(tgl_akhir_fix)", $tanggal_akhir);
         }
         if (!empty($tanggal_daftar)) {
             $this->siswaModel->where("DATE(TANGGAL)", $tanggal_daftar);
         }
 
+        $lembagaList = $this->siswaModel
+            ->select('LEMBAGA')
+            ->groupBy('LEMBAGA')
+            ->orderBy('LEMBAGA', 'ASC')
+            ->findAll();
+
         $data = [
             'datasiswa' => $this->siswaModel->paginate(10),
             'pager' => $this->siswaModel->pager,
-            'currentPage' => $this->request->getVar('page') ?? 1
+            'currentPage' => $this->request->getVar('page') ?? 1,
+            'lembagaList' => $lembagaList
         ];
 
         return view('admin/siswa/riset/siswaRiset', $data);
     }
+
 
     public function createSiswaRiset()
     {
@@ -361,8 +377,28 @@ class SiswaController extends Controller
 
     public function exportFormPKL()
     {
-        return view('admin/siswa/PKL/siswaPKL', [
+        $rawList = $this->siswaModel->select('LEMBAGA')->findAll();
+        $uniqueLembaga = [];
+
+        foreach ($rawList as $item) {
+            $lembagaRaw = $item['LEMBAGA'] ?? '';
+            $key = mb_strtolower(trim($lembagaRaw));
+            if ($key === '') continue;
+            if (!isset($uniqueLembaga[$key])) {
+                $uniqueLembaga[$key] = trim($lembagaRaw);
+            }
+        }
+
+        natcasesort($uniqueLembaga);
+
+        $lembagaList = [];
+        foreach ($uniqueLembaga as $val) {
+            $lembagaList[] = ['LEMBAGA' => $val];
+        }
+
+        return view('admin/siswa/PKL/ekspor', [
             'currentPage' => 'siswaPKL',
+            'lembagaList' => $lembagaList,
         ]);
     }
 
@@ -372,8 +408,10 @@ class SiswaController extends Controller
         $end_date = $this->request->getPost('end_date');
         $divisi = $this->request->getPost('divisi');
         $pembimbing = $this->request->getPost('pembimbing');
+        $lembaga = $this->request->getPost('lembaga');
 
-        if (empty($start_date) && empty($end_date) && empty($divisi) && empty($pembimbing)) {
+        // Pastikan minimal satu filter diisi
+        if (empty($start_date) && empty($end_date) && empty($divisi) && empty($pembimbing) && empty($lembaga)) {
             return redirect()->back()->with('error', 'Minimal satu filter harus diisi untuk ekspor data.');
         }
 
@@ -386,9 +424,13 @@ class SiswaController extends Controller
             END) as STATUS")
             ->where('JENIS_PKL', 'PKL');
 
-        if (!empty($start_date) && !empty($end_date)) {
-            $query->where('tanggal_mulai_fix >=', $start_date)
-                ->where('tgl_akhir_fix <=', $end_date);
+        // Filter fleksibel
+        if (!empty($start_date)) {
+            $query->where('tanggal_mulai_fix >=', $start_date);
+        }
+
+        if (!empty($end_date)) {
+            $query->where('tgl_akhir_fix <=', $end_date);
         }
 
         if (!empty($divisi)) {
@@ -399,11 +441,21 @@ class SiswaController extends Controller
             $query->where('NAMA_PEMB', $pembimbing);
         }
 
+        if (!empty($lembaga)) {
+            $query->where('LEMBAGA', $lembaga);
+        }
+
         $siswa = $query->findAll();
 
-        $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
+        if (empty($siswa)) {
+            return redirect()->back()->with('error', 'Data tidak ditemukan. Silakan cek kembali filter yang digunakan.');
+        }
+
+        // Buat file Excel
+        $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
 
+        // Header kolom
         $sheet->setCellValue('A1', 'ID');
         $sheet->setCellValue('B1', 'Nama');
         $sheet->setCellValue('C1', 'Lembaga');
@@ -430,12 +482,14 @@ class SiswaController extends Controller
             $row++;
         }
 
-        $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
+        // Output ke Excel
+        $writer = new Xlsx($spreadsheet);
         $filename = 'data_siswa_pkl.xlsx';
 
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         header("Content-Disposition: attachment; filename=\"$filename\"");
         header('Cache-Control: max-age=0');
+
         $writer->save('php://output');
         exit();
     }
@@ -453,10 +507,11 @@ class SiswaController extends Controller
         $end_date = $this->request->getPost('end_date');
         $divisi = $this->request->getPost('divisi');
         $pembimbing = $this->request->getPost('pembimbing');
+        $lembaga = $this->request->getPost('lembaga');
 
-        if (empty($start_date) && empty($end_date) && empty($divisi) && empty($pembimbing)) {
-            return redirect()->back()->with('error', 'Minimal satu filter harus diisi untuk ekspor data.');
-        }
+        if (empty($start_date) && empty($end_date) && empty($divisi) && empty($pembimbing) && empty($lembaga)) {
+    return redirect()->back()->with('error', 'Minimal satu filter harus diisi untuk ekspor data.');
+}
 
         $query = $this->siswaModel
             ->select("TANGGAL as TGL_DAFTAR, ID_PKL as ID, NM_SISWA, JENIS_PKL, LEMBAGA, JURUSAN, DIVISI, BAGIAN, tanggal_mulai_fix, tgl_akhir_fix, NAMA_PEMB,
@@ -478,6 +533,10 @@ class SiswaController extends Controller
 
         if (!empty($pembimbing)) {
             $query->where('NAMA_PEMB', $pembimbing);
+        }
+
+        if (!empty($lembaga)) {
+            $query->like('LEMBAGA', $lembaga);
         }
 
         $siswa = $query->findAll();
