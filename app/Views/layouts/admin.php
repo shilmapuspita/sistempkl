@@ -11,7 +11,7 @@ if (!session()->has('logged_in')) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>SISTEMPKL</title>
+  <title>SISTEMPKL INTI</title>
 
   <!-- Vendor CSS -->
   <link rel="stylesheet" href="<?= base_url('admin/assets/vendors/mdi/css/materialdesignicons.min.css') ?>">
@@ -150,9 +150,6 @@ if (!session()->has('logged_in')) {
       </footer>
     </div>
   </div>
-
-
-
 
   <!-- script js -->
   <script src="<?= base_url('admin/assets/vendors/js/vendor.bundle.base.js') ?>"></script>
